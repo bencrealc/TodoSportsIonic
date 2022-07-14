@@ -1,0 +1,27 @@
+{
+  "todoSportsIonicApp": {
+    "posesion": {
+      "home": {
+        "title": "Posesions",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Posesion",
+        "createOrEditLabel": "Crear o editar Posesion",
+        "notFound": "Ningún Posesions encontrado"
+      },
+      "created": "Un nuevo Posesion ha sido creado con el identificador {{ param }}",
+      "updated": "Un Posesion ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Posesion ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Posesion {{ id }}?"
+      },
+      "detail": {
+        "title": "Posesion"
+      },
+      "id": "ID",
+      "team": "Team",
+      "paused": "Paused",
+      "time": "Time",
+      "match": "Match"
+    }
+  }
+}

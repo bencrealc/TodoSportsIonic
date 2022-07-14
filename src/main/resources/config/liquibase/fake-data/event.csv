@@ -1,0 +1,11 @@
+id;event_type;team
+1;PENALTI;false
+2;JUEGO;false
+3;PENALTI;true
+4;ROJA;true
+5;TIRO;true
+6;FALTA;false
+7;TIRO;false
+8;JUEGO;true
+9;DE;true
+10;PENALTI;true

@@ -1,0 +1,32 @@
+{
+  "applications": "*",
+  "changelogDate": "20220714082129",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "event",
+  "fields": [
+    {
+      "fieldName": "eventType",
+      "fieldType": "EventType",
+      "fieldValues": "GOL,FALTA,AMARILLA,ROJA,TIRO,CORNER,PENALTI,FUERA,DE,JUEGO"
+    },
+    {
+      "fieldName": "team",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Event",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "match",
+      "otherEntityRelationshipName": "event",
+      "relationshipName": "match",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

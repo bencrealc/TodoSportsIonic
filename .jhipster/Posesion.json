@@ -1,0 +1,35 @@
+{
+  "applications": "*",
+  "changelogDate": "20220714082130",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "posesion",
+  "fields": [
+    {
+      "fieldName": "team",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "paused",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "time",
+      "fieldType": "Instant"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Posesion",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "match",
+      "otherEntityRelationshipName": "posesion",
+      "relationshipName": "match",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

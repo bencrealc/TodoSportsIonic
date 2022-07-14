@@ -1,0 +1,70 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-match-heading" data-cy="MatchCreateUpdateHeading" jhiTranslate="todoSportsIonicApp.match.home.createOrEditLabel">
+        Create or edit a Match
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="todoSportsIonicApp.match.local" for="field_local">Local</label>
+          <input type="text" class="form-control" name="local" id="field_local" data-cy="local" formControlName="local" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="todoSportsIonicApp.match.away" for="field_away">Away</label>
+          <input type="text" class="form-control" name="away" id="field_away" data-cy="away" formControlName="away" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="todoSportsIonicApp.match.event" for="field_event">Event</label>
+          <select class="form-control" id="field_event" data-cy="event" name="event" formControlName="event">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="eventOption.id === editForm.get('event')!.value?.id ? editForm.get('event')!.value : eventOption"
+              *ngFor="let eventOption of eventsSharedCollection; trackBy: trackEventById"
+            >
+              {{ eventOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="todoSportsIonicApp.match.posesion" for="field_posesion">Posesion</label>
+          <select class="form-control" id="field_posesion" data-cy="posesion" name="posesion" formControlName="posesion">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="posesionOption.id === editForm.get('posesion')!.value?.id ? editForm.get('posesion')!.value : posesionOption"
+              *ngFor="let posesionOption of posesionsSharedCollection; trackBy: trackPosesionById"
+            >
+              {{ posesionOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

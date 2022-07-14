@@ -1,0 +1,48 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="match">
+      <h2 data-cy="matchDetailsHeading"><span jhiTranslate="todoSportsIonicApp.match.detail.title">Match</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ match.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="todoSportsIonicApp.match.local">Local</span></dt>
+        <dd>
+          <span>{{ match.local }}</span>
+        </dd>
+        <dt><span jhiTranslate="todoSportsIonicApp.match.away">Away</span></dt>
+        <dd>
+          <span>{{ match.away }}</span>
+        </dd>
+        <dt><span jhiTranslate="todoSportsIonicApp.match.event">Event</span></dt>
+        <dd>
+          <div *ngIf="match.event">
+            <a [routerLink]="['/event', match.event?.id, 'view']">{{ match.event?.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="todoSportsIonicApp.match.posesion">Posesion</span></dt>
+        <dd>
+          <div *ngIf="match.posesion">
+            <a [routerLink]="['/posesion', match.posesion?.id, 'view']">{{ match.posesion?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/match', match.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
