@@ -1,0 +1,19 @@
+{
+  "generator-jhipster": {
+    "authenticationType": "jwt",
+    "baseName": "TodoSportsIonic",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-ionic"
+      }
+    ],
+    "enableTranslation": true,
+    "jhipsterVersion": "7.8.1",
+    "prettierDefaultIndent": 2,
+    "projectName": "JHipster project"
+  },
+  "generator-jhipster-ionic": {
+    "appDir": "..",
+    "ionicDir": null
+  }
+}

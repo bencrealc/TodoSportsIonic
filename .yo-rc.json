@@ -1,0 +1,59 @@
+{
+  "generator-jhipster": {
+    "applicationType": "monolith",
+    "authenticationType": "jwt",
+    "baseName": "TodoSportsIonic",
+    "blueprints": [
+      {
+        "name": "generator-jhipster-ionic",
+        "version": "8.0.0"
+      }
+    ],
+    "buildTool": "maven",
+    "cacheProvider": "no",
+    "clientFramework": "angularX",
+    "clientPackageManager": "npm",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "creationTimestamp": 1657786334855,
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "devServerPort": 4200,
+    "dtoSuffix": "DTO",
+    "enableGradleEnterprise": false,
+    "enableHibernateCache": false,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "entitySuffix": "",
+    "jhiPrefix": "jhi",
+    "jhipsterVersion": "7.8.1",
+    "jwtSecretKey": "ZjU2OGRjNzc4ZTAzZWFhNzNlMDk2YjQyMTg5NWZmNjU2ZWE1MDg4NTI2MmEwNmYyODY1NTcxZDRiM2Q3MTA1ZDY5YmVmZDIyN2I2ODM2ZDExOTlkYzVjMjZiMGExNmQzNTlkNTViM2FiZDM5Yzg2ZmM1OThlYTI4NTI5YTY1MWM=",
+    "languages": ["es", "en"],
+    "messageBroker": false,
+    "nativeLanguage": "es",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-ionic",
+        "version": "8.0.0"
+      }
+    ],
+    "packageName": "com.todosports",
+    "pages": [],
+    "prodDatabaseType": "postgresql",
+    "reactive": true,
+    "searchEngine": false,
+    "serverPort": "8080",
+    "serverSideOptions": [],
+    "serviceDiscoveryType": "no",
+    "skipCheckLengthOfIdentifier": false,
+    "skipFakeData": false,
+    "skipUserManagement": false,
+    "testFrameworks": [],
+    "websocket": false,
+    "withAdminUi": true
+  },
+  "generator-jhipster-ionic": {
+    "appDir": null,
+    "ionicDir": "ionic4j"
+  }
+}

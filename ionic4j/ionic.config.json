@@ -1,0 +1,7 @@
+{
+  "name": "TodoSportsIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
