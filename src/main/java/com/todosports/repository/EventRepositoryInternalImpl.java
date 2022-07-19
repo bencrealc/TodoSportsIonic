@@ -5,6 +5,7 @@ import static org.springframework.data.relational.core.query.Criteria.where;
 import com.todosports.domain.Event;
 import com.todosports.domain.enumeration.EventType;
 import com.todosports.repository.rowmapper.EventRowMapper;
+import com.todosports.repository.rowmapper.MatchRowMapper;
 import io.r2dbc.spi.Row;
 import io.r2dbc.spi.RowMetadata;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import org.springframework.data.relational.core.sql.Condition;
 import org.springframework.data.relational.core.sql.Conditions;
 import org.springframework.data.relational.core.sql.Expression;
 import org.springframework.data.relational.core.sql.Select;
-import org.springframework.data.relational.core.sql.SelectBuilder.SelectFromAndJoin;
+import org.springframework.data.relational.core.sql.SelectBuilder.SelectFromAndJoinCondition;
 import org.springframework.data.relational.core.sql.Table;
 import org.springframework.data.relational.repository.support.MappingRelationalEntityInformation;
 import org.springframework.r2dbc.core.DatabaseClient;
@@ -43,13 +44,16 @@ class EventRepositoryInternalImpl extends SimpleR2dbcRepository<Event, Long> imp
     private final R2dbcEntityTemplate r2dbcEntityTemplate;
     private final EntityManager entityManager;
 
+    private final MatchRowMapper matchMapper;
     private final EventRowMapper eventMapper;
 
     private static final Table entityTable = Table.aliased("event", EntityManager.ENTITY_ALIAS);
+    private static final Table matchTable = Table.aliased("match", "e_match");
 
     public EventRepositoryInternalImpl(
         R2dbcEntityTemplate template,
         EntityManager entityManager,
+        MatchRowMapper matchMapper,
         EventRowMapper eventMapper,
         R2dbcEntityOperations entityOperations,
         R2dbcConverter converter
@@ -62,6 +66,7 @@ class EventRepositoryInternalImpl extends SimpleR2dbcRepository<Event, Long> imp
         this.db = template.getDatabaseClient();
         this.r2dbcEntityTemplate = template;
         this.entityManager = entityManager;
+        this.matchMapper = matchMapper;
         this.eventMapper = eventMapper;
     }
 
@@ -72,7 +77,14 @@ class EventRepositoryInternalImpl extends SimpleR2dbcRepository<Event, Long> imp
 
     RowsFetchSpec<Event> createQuery(Pageable pageable, Condition whereClause) {
         List<Expression> columns = EventSqlHelper.getColumns(entityTable, EntityManager.ENTITY_ALIAS);
-        SelectFromAndJoin selectFrom = Select.builder().select(columns).from(entityTable);
+        columns.addAll(MatchSqlHelper.getColumns(matchTable, "match"));
+        SelectFromAndJoinCondition selectFrom = Select
+            .builder()
+            .select(columns)
+            .from(entityTable)
+            .leftOuterJoin(matchTable)
+            .on(Column.create("match_id", entityTable))
+            .equals(Column.create("id", matchTable));
         // we do not support Criteria here for now as of https://github.com/jhipster/generator-jhipster/issues/18269
         String select = entityManager.createSelect(selectFrom, Event.class, pageable, whereClause);
         return db.sql(select).map(this::process);
@@ -91,6 +103,7 @@ class EventRepositoryInternalImpl extends SimpleR2dbcRepository<Event, Long> imp
 
     private Event process(Row row, RowMetadata metadata) {
         Event entity = eventMapper.apply(row, "e");
+        entity.setMatch(matchMapper.apply(row, "match"));
         return entity;
     }
 

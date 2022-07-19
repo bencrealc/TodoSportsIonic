@@ -1,14 +1,16 @@
 .poslocal-btn {
   --background: #2d63c8;
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
+  font-size: 15px;
   white-space: normal;
   --color: #fff;
 }
 .posvisit-btn {
   --background: #f06243;
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
+  font-size: 14px;
   white-space: normal;
   float: right;
   --color: #fff;
@@ -16,12 +18,14 @@
 .pausa-btn {
   --background: #ffff43;
   margin-top: 40px;
+  font-size: 15px;
   --color: #000;
 }
 .eventos-btn {
   --background: #49ff43;
-  width: 150px;
-  height: 150px;
+  width: 80px;
+  height: 80px;
+  font-size: 15px;
   margin-left: 33%;
   margin-right: 30%;
   --color: #000;

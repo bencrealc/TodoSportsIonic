@@ -25,7 +25,7 @@
       "otherEntityName": "match",
       "otherEntityRelationshipName": "event",
       "relationshipName": "match",
-      "relationshipType": "one-to-many"
+      "relationshipType": "many-to-one"
     }
   ],
   "service": "serviceImpl"

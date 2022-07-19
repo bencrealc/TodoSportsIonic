@@ -3,6 +3,8 @@ package com.todosports.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
@@ -28,18 +30,12 @@ public class Match implements Serializable {
     private String away;
 
     @Transient
-    @JsonIgnoreProperties(value = { "matches" }, allowSetters = true)
-    private Event event;
+    @JsonIgnoreProperties(value = { "match" }, allowSetters = true)
+    private Set<Event> events = new HashSet<>();
 
     @Transient
-    @JsonIgnoreProperties(value = { "matches" }, allowSetters = true)
-    private Posesion posesion;
-
-    @Column("event_id")
-    private Long eventId;
-
-    @Column("posesion_id")
-    private Long posesionId;
+    @JsonIgnoreProperties(value = { "match" }, allowSetters = true)
+    private Set<Posesion> posesions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -82,48 +78,66 @@ public class Match implements Serializable {
         this.away = away;
     }
 
-    public Event getEvent() {
-        return this.event;
+    public Set<Event> getEvents() {
+        return this.events;
     }
 
-    public void setEvent(Event event) {
-        this.event = event;
-        this.eventId = event != null ? event.getId() : null;
+    public void setEvents(Set<Event> events) {
+        if (this.events != null) {
+            this.events.forEach(i -> i.setMatch(null));
+        }
+        if (events != null) {
+            events.forEach(i -> i.setMatch(this));
+        }
+        this.events = events;
     }
 
-    public Match event(Event event) {
-        this.setEvent(event);
+    public Match events(Set<Event> events) {
+        this.setEvents(events);
         return this;
     }
 
-    public Posesion getPosesion() {
-        return this.posesion;
-    }
-
-    public void setPosesion(Posesion posesion) {
-        this.posesion = posesion;
-        this.posesionId = posesion != null ? posesion.getId() : null;
-    }
-
-    public Match posesion(Posesion posesion) {
-        this.setPosesion(posesion);
+    public Match addEvent(Event event) {
+        this.events.add(event);
+        event.setMatch(this);
         return this;
     }
 
-    public Long getEventId() {
-        return this.eventId;
+    public Match removeEvent(Event event) {
+        this.events.remove(event);
+        event.setMatch(null);
+        return this;
     }
 
-    public void setEventId(Long event) {
-        this.eventId = event;
+    public Set<Posesion> getPosesions() {
+        return this.posesions;
     }
 
-    public Long getPosesionId() {
-        return this.posesionId;
+    public void setPosesions(Set<Posesion> posesions) {
+        if (this.posesions != null) {
+            this.posesions.forEach(i -> i.setMatch(null));
+        }
+        if (posesions != null) {
+            posesions.forEach(i -> i.setMatch(this));
+        }
+        this.posesions = posesions;
     }
 
-    public void setPosesionId(Long posesion) {
-        this.posesionId = posesion;
+    public Match posesions(Set<Posesion> posesions) {
+        this.setPosesions(posesions);
+        return this;
+    }
+
+    public Match addPosesion(Posesion posesion) {
+        this.posesions.add(posesion);
+        posesion.setMatch(this);
+        return this;
+    }
+
+    public Match removePosesion(Posesion posesion) {
+        this.posesions.remove(posesion);
+        posesion.setMatch(null);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

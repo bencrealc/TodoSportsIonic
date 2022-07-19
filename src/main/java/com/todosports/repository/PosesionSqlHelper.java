@@ -15,6 +15,7 @@ public class PosesionSqlHelper {
         columns.add(Column.aliased("paused", table, columnPrefix + "_paused"));
         columns.add(Column.aliased("time", table, columnPrefix + "_time"));
 
+        columns.add(Column.aliased("match_id", table, columnPrefix + "_match_id"));
         return columns;
     }
 }

@@ -3,8 +3,6 @@ package com.todosports.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.todosports.domain.enumeration.EventType;
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
@@ -29,8 +27,11 @@ public class Event implements Serializable {
     private Boolean team;
 
     @Transient
-    @JsonIgnoreProperties(value = { "event", "posesion" }, allowSetters = true)
-    private Set<Match> matches = new HashSet<>();
+    @JsonIgnoreProperties(value = { "events", "posesions" }, allowSetters = true)
+    private Match match;
+
+    @Column("match_id")
+    private Long matchId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -73,35 +74,26 @@ public class Event implements Serializable {
         this.team = team;
     }
 
-    public Set<Match> getMatches() {
-        return this.matches;
+    public Match getMatch() {
+        return this.match;
     }
 
-    public void setMatches(Set<Match> matches) {
-        if (this.matches != null) {
-            this.matches.forEach(i -> i.setEvent(null));
-        }
-        if (matches != null) {
-            matches.forEach(i -> i.setEvent(this));
-        }
-        this.matches = matches;
+    public void setMatch(Match match) {
+        this.match = match;
+        this.matchId = match != null ? match.getId() : null;
     }
 
-    public Event matches(Set<Match> matches) {
-        this.setMatches(matches);
+    public Event match(Match match) {
+        this.setMatch(match);
         return this;
     }
 
-    public Event addMatch(Match match) {
-        this.matches.add(match);
-        match.setEvent(this);
-        return this;
+    public Long getMatchId() {
+        return this.matchId;
     }
 
-    public Event removeMatch(Match match) {
-        this.matches.remove(match);
-        match.setEvent(null);
-        return this;
+    public void setMatchId(Long match) {
+        this.matchId = match;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here

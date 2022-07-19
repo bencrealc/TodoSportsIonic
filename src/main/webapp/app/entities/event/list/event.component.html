@@ -35,6 +35,7 @@
           <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
           <th scope="col"><span jhiTranslate="todoSportsIonicApp.event.eventType">Event Type</span></th>
           <th scope="col"><span jhiTranslate="todoSportsIonicApp.event.team">Team</span></th>
+          <th scope="col"><span jhiTranslate="todoSportsIonicApp.event.match">Match</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -45,6 +46,11 @@
           </td>
           <td jhiTranslate="{{ 'todoSportsIonicApp.EventType.' + event.eventType }}">{{ event.eventType }}</td>
           <td>{{ event.team }}</td>
+          <td>
+            <div *ngIf="event.match">
+              <a [routerLink]="['/match', event.match?.id, 'view']">{{ event.match?.id }}</a>
+            </div>
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button type="submit" [routerLink]="['/event', event.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

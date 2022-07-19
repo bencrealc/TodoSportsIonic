@@ -26,6 +26,12 @@
         <dd>
           <span>{{ posesion.time | formatMediumDatetime }}</span>
         </dd>
+        <dt><span jhiTranslate="todoSportsIonicApp.posesion.match">Match</span></dt>
+        <dd>
+          <div *ngIf="posesion.match">
+            <a [routerLink]="['/match', posesion.match?.id, 'view']">{{ posesion.match?.id }}</a>
+          </div>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

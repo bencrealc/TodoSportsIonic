@@ -36,6 +36,7 @@
           <th scope="col"><span jhiTranslate="todoSportsIonicApp.posesion.team">Team</span></th>
           <th scope="col"><span jhiTranslate="todoSportsIonicApp.posesion.paused">Paused</span></th>
           <th scope="col"><span jhiTranslate="todoSportsIonicApp.posesion.time">Time</span></th>
+          <th scope="col"><span jhiTranslate="todoSportsIonicApp.posesion.match">Match</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -47,6 +48,11 @@
           <td>{{ posesion.team }}</td>
           <td>{{ posesion.paused }}</td>
           <td>{{ posesion.time | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="posesion.match">
+              <a [routerLink]="['/match', posesion.match?.id, 'view']">{{ posesion.match?.id }}</a>
+            </div>
+          </td>
           <td class="text-end">
             <div class="btn-group">
               <button

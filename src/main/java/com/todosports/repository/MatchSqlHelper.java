@@ -14,8 +14,6 @@ public class MatchSqlHelper {
         columns.add(Column.aliased("local", table, columnPrefix + "_local"));
         columns.add(Column.aliased("away", table, columnPrefix + "_away"));
 
-        columns.add(Column.aliased("event_id", table, columnPrefix + "_event_id"));
-        columns.add(Column.aliased("posesion_id", table, columnPrefix + "_posesion_id"));
         return columns;
     }
 }

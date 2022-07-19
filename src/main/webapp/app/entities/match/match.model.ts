@@ -5,8 +5,8 @@ export interface IMatch {
   id?: number;
   local?: string | null;
   away?: string | null;
-  event?: IEvent | null;
-  posesion?: IPosesion | null;
+  events?: IEvent[] | null;
+  posesions?: IPosesion[] | null;
 }
 
 export class Match implements IMatch {
@@ -14,8 +14,8 @@ export class Match implements IMatch {
     public id?: number,
     public local?: string | null,
     public away?: string | null,
-    public event?: IEvent | null,
-    public posesion?: IPosesion | null
+    public events?: IEvent[] | null,
+    public posesions?: IPosesion[] | null
   ) {}
 }
 

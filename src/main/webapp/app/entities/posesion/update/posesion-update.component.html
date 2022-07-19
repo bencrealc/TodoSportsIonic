@@ -37,6 +37,19 @@
             />
           </div>
         </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="todoSportsIonicApp.posesion.match" for="field_match">Match</label>
+          <select class="form-control" id="field_match" data-cy="match" name="match" formControlName="match">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="matchOption.id === editForm.get('match')!.value?.id ? editForm.get('match')!.value : matchOption"
+              *ngFor="let matchOption of matchesSharedCollection; trackBy: trackMatchById"
+            >
+              {{ matchOption.id }}
+            </option>
+          </select>
+        </div>
       </div>
 
       <div>

@@ -3,13 +3,15 @@ import { HttpResponse } from '@angular/common/http';
 import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 
 import dayjs from 'dayjs/esm';
 import { DATE_TIME_FORMAT } from 'app/config/input.constants';
 
 import { IPosesion, Posesion } from '../posesion.model';
 import { PosesionService } from '../service/posesion.service';
+import { IMatch } from 'app/entities/match/match.model';
+import { MatchService } from 'app/entities/match/service/match.service';
 
 @Component({
   selector: 'jhi-posesion-update',
@@ -18,14 +20,22 @@ import { PosesionService } from '../service/posesion.service';
 export class PosesionUpdateComponent implements OnInit {
   isSaving = false;
 
+  matchesSharedCollection: IMatch[] = [];
+
   editForm = this.fb.group({
     id: [],
     team: [],
     paused: [],
     time: [],
+    match: [],
   });
 
-  constructor(protected posesionService: PosesionService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
+  constructor(
+    protected posesionService: PosesionService,
+    protected matchService: MatchService,
+    protected activatedRoute: ActivatedRoute,
+    protected fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ posesion }) => {
@@ -35,6 +45,8 @@ export class PosesionUpdateComponent implements OnInit {
       }
 
       this.updateForm(posesion);
+
+      this.loadRelationshipsOptions();
     });
   }
 
@@ -50,6 +62,10 @@ export class PosesionUpdateComponent implements OnInit {
     } else {
       this.subscribeToSaveResponse(this.posesionService.create(posesion));
     }
+  }
+
+  trackMatchById(_index: number, item: IMatch): number {
+    return item.id!;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IPosesion>>): void {
@@ -77,7 +93,18 @@ export class PosesionUpdateComponent implements OnInit {
       team: posesion.team,
       paused: posesion.paused,
       time: posesion.time ? posesion.time.format(DATE_TIME_FORMAT) : null,
+      match: posesion.match,
     });
+
+    this.matchesSharedCollection = this.matchService.addMatchToCollectionIfMissing(this.matchesSharedCollection, posesion.match);
+  }
+
+  protected loadRelationshipsOptions(): void {
+    this.matchService
+      .query()
+      .pipe(map((res: HttpResponse<IMatch[]>) => res.body ?? []))
+      .pipe(map((matches: IMatch[]) => this.matchService.addMatchToCollectionIfMissing(matches, this.editForm.get('match')!.value)))
+      .subscribe((matches: IMatch[]) => (this.matchesSharedCollection = matches));
   }
 
   protected createFromForm(): IPosesion {
@@ -87,6 +114,7 @@ export class PosesionUpdateComponent implements OnInit {
       team: this.editForm.get(['team'])!.value,
       paused: this.editForm.get(['paused'])!.value,
       time: this.editForm.get(['time'])!.value ? dayjs(this.editForm.get(['time'])!.value, DATE_TIME_FORMAT) : undefined,
+      match: this.editForm.get(['match'])!.value,
     };
   }
 }

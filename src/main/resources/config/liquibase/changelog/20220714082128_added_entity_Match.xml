@@ -20,12 +20,6 @@
             <column name="away" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="event_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="posesion_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>

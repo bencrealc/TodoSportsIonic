@@ -27,8 +27,8 @@ enum EventType {
 service all with serviceImpl
 
 relationship ManyToOne {
-    Match to Event
-    Match to Posesion
+    Event to Match
+    Posesion to Match
 }
 // Set an angular suffix
 // angularSuffix * with mySuffix

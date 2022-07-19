@@ -14,6 +14,7 @@ public class EventSqlHelper {
         columns.add(Column.aliased("event_type", table, columnPrefix + "_event_type"));
         columns.add(Column.aliased("team", table, columnPrefix + "_team"));
 
+        columns.add(Column.aliased("match_id", table, columnPrefix + "_match_id"));
         return columns;
     }
 }

@@ -25,13 +25,13 @@
       "otherEntityName": "event",
       "otherEntityRelationshipName": "match",
       "relationshipName": "event",
-      "relationshipType": "many-to-one"
+      "relationshipType": "one-to-many"
     },
     {
       "otherEntityName": "posesion",
       "otherEntityRelationshipName": "match",
       "relationshipName": "posesion",
-      "relationshipType": "many-to-one"
+      "relationshipType": "one-to-many"
     }
   ],
   "service": "serviceImpl"

@@ -6,7 +6,7 @@ export interface IPosesion {
   team?: boolean | null;
   paused?: boolean | null;
   time?: dayjs.Dayjs | null;
-  matches?: IMatch[] | null;
+  match?: IMatch | null;
 }
 
 export class Posesion implements IPosesion {
@@ -15,7 +15,7 @@ export class Posesion implements IPosesion {
     public team?: boolean | null,
     public paused?: boolean | null,
     public time?: dayjs.Dayjs | null,
-    public matches?: IMatch[] | null
+    public match?: IMatch | null
   ) {
     this.team = this.team ?? false;
     this.paused = this.paused ?? false;

@@ -35,8 +35,6 @@
           <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
           <th scope="col"><span jhiTranslate="todoSportsIonicApp.match.local">Local</span></th>
           <th scope="col"><span jhiTranslate="todoSportsIonicApp.match.away">Away</span></th>
-          <th scope="col"><span jhiTranslate="todoSportsIonicApp.match.event">Event</span></th>
-          <th scope="col"><span jhiTranslate="todoSportsIonicApp.match.posesion">Posesion</span></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -47,16 +45,6 @@
           </td>
           <td>{{ match.local }}</td>
           <td>{{ match.away }}</td>
-          <td>
-            <div *ngIf="match.event">
-              <a [routerLink]="['/event', match.event?.id, 'view']">{{ match.event?.id }}</a>
-            </div>
-          </td>
-          <td>
-            <div *ngIf="match.posesion">
-              <a [routerLink]="['/posesion', match.posesion?.id, 'view']">{{ match.posesion?.id }}</a>
-            </div>
-          </td>
           <td class="text-end">
             <div class="btn-group">
               <button type="submit" [routerLink]="['/match', match.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">

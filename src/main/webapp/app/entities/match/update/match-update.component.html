@@ -22,32 +22,6 @@
           <label class="form-label" jhiTranslate="todoSportsIonicApp.match.away" for="field_away">Away</label>
           <input type="text" class="form-control" name="away" id="field_away" data-cy="away" formControlName="away" />
         </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="todoSportsIonicApp.match.event" for="field_event">Event</label>
-          <select class="form-control" id="field_event" data-cy="event" name="event" formControlName="event">
-            <option [ngValue]="null"></option>
-            <option
-              [ngValue]="eventOption.id === editForm.get('event')!.value?.id ? editForm.get('event')!.value : eventOption"
-              *ngFor="let eventOption of eventsSharedCollection; trackBy: trackEventById"
-            >
-              {{ eventOption.id }}
-            </option>
-          </select>
-        </div>
-
-        <div class="row mb-3">
-          <label class="form-label" jhiTranslate="todoSportsIonicApp.match.posesion" for="field_posesion">Posesion</label>
-          <select class="form-control" id="field_posesion" data-cy="posesion" name="posesion" formControlName="posesion">
-            <option [ngValue]="null"></option>
-            <option
-              [ngValue]="posesionOption.id === editForm.get('posesion')!.value?.id ? editForm.get('posesion')!.value : posesionOption"
-              *ngFor="let posesionOption of posesionsSharedCollection; trackBy: trackPosesionById"
-            >
-              {{ posesionOption.id }}
-            </option>
-          </select>
-        </div>
       </div>
 
       <div>

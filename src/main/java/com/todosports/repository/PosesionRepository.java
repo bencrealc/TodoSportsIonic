@@ -15,6 +15,12 @@ import reactor.core.publisher.Mono;
 @SuppressWarnings("unused")
 @Repository
 public interface PosesionRepository extends ReactiveCrudRepository<Posesion, Long>, PosesionRepositoryInternal {
+    @Query("SELECT * FROM posesion entity WHERE entity.match_id = :id")
+    Flux<Posesion> findByMatch(Long id);
+
+    @Query("SELECT * FROM posesion entity WHERE entity.match_id IS NULL")
+    Flux<Posesion> findAllWhereMatchIsNull();
+
     @Override
     <S extends Posesion> Mono<S> save(S entity);
 

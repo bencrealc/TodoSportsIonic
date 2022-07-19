@@ -27,8 +27,6 @@ public class MatchRowMapper implements BiFunction<Row, String, Match> {
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
         entity.setLocal(converter.fromRow(row, prefix + "_local", String.class));
         entity.setAway(converter.fromRow(row, prefix + "_away", String.class));
-        entity.setEventId(converter.fromRow(row, prefix + "_event_id", Long.class));
-        entity.setPosesionId(converter.fromRow(row, prefix + "_posesion_id", Long.class));
         return entity;
     }
 }
