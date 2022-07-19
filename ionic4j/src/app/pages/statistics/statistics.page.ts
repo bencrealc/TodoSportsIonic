@@ -2,7 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { PickerController } from '@ionic/angular';
 import { NavController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 import { EventsService } from 'src/app/services/events/events.service';
+import { finalize, map } from 'rxjs/operators';
+import { Event } from 'src/app/services/events/event.model';
+import { EventType } from 'src/app/services/events/enumerations/event-type.model';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-statistics',
@@ -10,28 +15,24 @@ import { EventsService } from 'src/app/services/events/events.service';
   styleUrls: ['./statistics.page.scss'],
 })
 export class StatisticsPage implements OnInit {
-  private selectedEvento: string;
-  private selectedEquipo: string;
-  private EventsService: EventsService;
-  private eventErrorString: string;
-  private eventSuccessString: string;
-  private existingEventError: string;
-  private invalidPasswordError: string;
+  isSaving = false;
+  eventTypeValues = Object.keys(EventType);
+
+  editForm = this.fb.group({
+    id: [],
+    eventType: [],
+    team: [],
+    match: [],
+  });
 
   constructor(
     private pickerController: PickerController,
     public navController: NavController,
     public eventsService: EventsService,
     public toastController: ToastController,
-    public translateService: TranslateService
-  ) {
-    this.translateService.get(['EVENT_ERROR', 'EVENT_SUCCESS', 'EXISTING_EVENT_ERROR', 'INVALID_PASSWORD_ERROR']).subscribe(values => {
-      this.eventErrorString = values.EVENT_ERROR;
-      this.eventSuccessString = values.EVENT_SUCCESS;
-      this.existingEventError = values.EXISTING_EVENT_ERROR;
-      this.invalidPasswordError = values.INVALID_PASSWORD_ERROR;
-    });
-  }
+    public translateService: TranslateService,
+    protected fb: FormBuilder
+  ) {}
 
   ngOnInit() {}
 
@@ -39,15 +40,15 @@ export class StatisticsPage implements OnInit {
     const picker = await this.pickerController.create({
       buttons: [
         {
-          text: 'Cancel',
+          text: 'Cancelar',
           role: 'cancel',
         },
         {
-          text: 'Confirm',
-
-          handler: selected => {
-            this.selectedEvento = selected.evento.value;
-            this.selectedEquipo = selected.equipo.value;
+          text: 'Confirmar',
+          handler: (value: any) => {
+            //TODO Save
+            console.log(value['equipo']['value']);
+            console.log(value['evento']['value']);
           },
         },
       ],
@@ -55,19 +56,19 @@ export class StatisticsPage implements OnInit {
         {
           name: 'evento',
           options: [
-            { text: 'Amarilla', value: 'amarilla' },
-            { text: 'Roja', value: 'roja' },
-            { text: 'Gol', value: 'gol' },
-            { text: 'Falta', value: 'falta' },
-            { text: 'Tiro', value: 'tiro' },
-            { text: 'Corner', value: 'corner' },
+            { text: 'Amarilla', value: EventType.AMARILLA },
+            { text: 'Roja', value: EventType.ROJA },
+            { text: 'Gol', value: EventType.GOL },
+            { text: 'Falta', value: EventType.FALTA },
+            { text: 'Tiro', value: EventType.TIRO },
+            { text: 'Corner', value: EventType.CORNER },
           ],
         },
         {
           name: 'equipo',
           options: [
-            { text: 'Equipo local', value: 'local' },
-            { text: 'Equipo visitante', value: 'visitante' },
+            { text: 'Equipo local', value: false },
+            { text: 'Equipo visitante', value: true },
           ],
         },
       ],
@@ -75,7 +76,38 @@ export class StatisticsPage implements OnInit {
     await picker.present();
   }
 
-  doCreateEvent() {
+  save(): void {
+    this.isSaving = true;
+    const event = this.createFromForm();
+    this.subscribeToSaveResponse(this.eventsService.create(event));
+  }
+
+  protected createFromForm(): Event {
+    return {
+      ...new Event(),
+      id: this.editForm.get(['id'])!.value,
+      eventType: this.editForm.get(['eventType'])!.value,
+      team: this.editForm.get(['team'])!.value,
+      match: null,
+    };
+  }
+
+  protected subscribeToSaveResponse(result: Observable<ArrayBuffer>): void {
+    result.pipe(finalize(() => this.onSaveFinalize())).subscribe({
+      next: () => this.onSaveSuccess(),
+      error: () => this.onSaveError(),
+    });
+  }
+
+  protected onSaveSuccess(): void {}
+
+  protected onSaveError(): void {
+    // Api for inheritance.
+  }
+
+  protected onSaveFinalize(): void {}
+
+  /* doCreateEvent() {
     this.EventsService.createEvent(this.selectedEvento).subscribe(
       async () => {
         const toast = await this.toastController.create({
@@ -102,5 +134,5 @@ export class StatisticsPage implements OnInit {
         toast.present();
       }
     );
-  }
+  }*/
 }
