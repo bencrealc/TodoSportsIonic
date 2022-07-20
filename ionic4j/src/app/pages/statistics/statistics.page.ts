@@ -8,6 +8,8 @@ import { finalize, map } from 'rxjs/operators';
 import { Event } from 'src/app/services/events/event.model';
 import { EventType } from 'src/app/services/events/enumerations/event-type.model';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Posesion } from 'src/app/services/posesion/posesion.model';
+import { PosesionService } from 'src/app/services/posesion/posesion.service';
 
 @Component({
   selector: 'app-statistics',
@@ -18,19 +20,13 @@ export class StatisticsPage implements OnInit {
   isSaving = false;
   eventTypeValues = Object.keys(EventType);
 
-  editForm = this.fb.group({
-    id: [],
-    eventType: [],
-    team: [],
-    match: [],
-  });
-
   Local: String = new Date().toLocaleString();
 
   constructor(
     private pickerController: PickerController,
     public navController: NavController,
     public eventsService: EventsService,
+    public posesionService: PosesionService,
     public toastController: ToastController,
     public translateService: TranslateService,
     protected fb: FormBuilder
@@ -39,15 +35,15 @@ export class StatisticsPage implements OnInit {
   ngOnInit() {}
 
   async localButton() {
-    this.Local = new Date().toLocaleString().replace(',', '');
-
-    console.log([this.Local]);
+    this.savePause(false, false, new Date());
   }
 
   async visitButton() {
-    this.Local = new Date().toLocaleString().replace(',', '');
+    this.savePause(true, false, new Date());
+  }
 
-    console.log([this.Local]);
+  async pausedButton() {
+    this.savePause(null, false, new Date());
   }
 
   async eventosButton() {
@@ -61,6 +57,7 @@ export class StatisticsPage implements OnInit {
           text: 'Confirmar',
           handler: (value: any) => {
             //TODO Save
+            this.save(value['evento']['value'], value['equipo']['value']);
             console.log(value['equipo']['value']);
             console.log(value['evento']['value']);
           },
@@ -91,19 +88,32 @@ export class StatisticsPage implements OnInit {
     await picker.present();
   }
 
-  save(): void {
+  save(eventTypeValue, teamValue): void {
     this.isSaving = true;
-    const event = this.createFromForm();
+    const event = this.createFromForm(eventTypeValue, teamValue);
     this.subscribeToSaveResponse(this.eventsService.create(event));
   }
 
-  protected createFromForm(): Event {
+  savePause(teamValue, pausedValue, timeValue): void {
+    this.isSaving = true;
+    const event = this.createFromPosesion(teamValue, pausedValue, timeValue);
+    this.subscribeToSaveResponse(this.posesionService.create(event));
+  }
+
+  protected createFromForm(eventTypeValue, teamValue): Event {
     return {
       ...new Event(),
-      id: this.editForm.get(['id'])!.value,
-      eventType: this.editForm.get(['eventType'])!.value,
-      team: this.editForm.get(['team'])!.value,
-      match: null,
+      eventType: eventTypeValue,
+      team: teamValue,
+    };
+  }
+
+  protected createFromPosesion(teamValue, pausedValue, timeValue): Posesion {
+    return {
+      ...new Posesion(),
+      team: teamValue,
+      paused: pausedValue,
+      time: timeValue,
     };
   }
 

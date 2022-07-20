@@ -8,7 +8,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,23 +52,12 @@ public class PosesionResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/posesions")
-    public Mono<ResponseEntity<Posesion>> createPosesion(@RequestBody Posesion posesion) throws URISyntaxException {
+    public Mono<Posesion> createPosesion(@RequestBody Posesion posesion) throws URISyntaxException {
         log.debug("REST request to save Posesion : {}", posesion);
         if (posesion.getId() != null) {
             throw new BadRequestAlertException("A new posesion cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        return posesionService
-            .save(posesion)
-            .map(result -> {
-                try {
-                    return ResponseEntity
-                        .created(new URI("/api/posesions/" + result.getId()))
-                        .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-                        .body(result);
-                } catch (URISyntaxException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+        return posesionService.save(posesion);
     }
 
     /**

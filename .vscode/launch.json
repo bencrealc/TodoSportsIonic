@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-TodoSportsIonicApp<todo-sports-ionic>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.todosports.TodoSportsIonicApp",
+            "projectName": "todo-sports-ionic",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

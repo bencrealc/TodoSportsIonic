@@ -4,11 +4,11 @@ import com.todosports.domain.Event;
 import com.todosports.repository.EventRepository;
 import com.todosports.service.EventService;
 import com.todosports.web.rest.errors.BadRequestAlertException;
+import java.io.Console;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,23 +53,12 @@ public class EventResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/events")
-    public Mono<ResponseEntity<Event>> createEvent(@RequestBody Event event) throws URISyntaxException {
+    public Mono<Event> createEvent(@RequestBody Event event) throws URISyntaxException {
         log.debug("REST request to save Event : {}", event);
         if (event.getId() != null) {
             throw new BadRequestAlertException("A new event cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        return eventService
-            .save(event)
-            .map(result -> {
-                try {
-                    return ResponseEntity
-                        .created(new URI("/api/events/" + result.getId()))
-                        .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-                        .body(result);
-                } catch (URISyntaxException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+        return eventService.save(event);
     }
 
     /**
