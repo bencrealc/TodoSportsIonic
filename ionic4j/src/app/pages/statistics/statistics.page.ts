@@ -25,6 +25,8 @@ export class StatisticsPage implements OnInit {
     match: [],
   });
 
+  Local: String = new Date().toLocaleString();
+
   constructor(
     private pickerController: PickerController,
     public navController: NavController,
@@ -35,6 +37,18 @@ export class StatisticsPage implements OnInit {
   ) {}
 
   ngOnInit() {}
+
+  async localButton() {
+    this.Local = new Date().toLocaleString().replace(',', '');
+
+    console.log([this.Local]);
+  }
+
+  async visitButton() {
+    this.Local = new Date().toLocaleString().replace(',', '');
+
+    console.log([this.Local]);
+  }
 
   async eventosButton() {
     const picker = await this.pickerController.create({
@@ -62,6 +76,7 @@ export class StatisticsPage implements OnInit {
             { text: 'Falta', value: EventType.FALTA },
             { text: 'Tiro', value: EventType.TIRO },
             { text: 'Corner', value: EventType.CORNER },
+            { text: 'Fuera de Juego', value: EventType.FUERADEJUEGO },
           ],
         },
         {
