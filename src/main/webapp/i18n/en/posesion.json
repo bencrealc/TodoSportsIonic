@@ -19,8 +19,8 @@
       },
       "id": "ID",
       "team": "Team",
-      "paused": "Paused",
-      "time": "Time",
+      "start": "Start",
+      "end": "End",
       "match": "Match"
     }
   }

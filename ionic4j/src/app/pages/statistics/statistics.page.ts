@@ -45,7 +45,7 @@ export class StatisticsPage implements OnInit {
           text: 'Confirmar',
           handler: (value: any) => {
             //TODO Save
-            this.savePause(false, value['tipoPos']['value']);
+            this.actionTipoPos(false, value['tipoPos']['value']);
             console.log(false, value['tipoPos']['value']);
           },
         },
@@ -54,9 +54,9 @@ export class StatisticsPage implements OnInit {
         {
           name: 'tipoPos',
           options: [
-            { text: 'Inicio', value: new Date() },
-            { text: 'Fin', value: new Date() },
-            { text: 'Cambio', value: new Date() },
+            { text: 'Inicio', value: 1 },
+            { text: 'Fin', value: 2 },
+            { text: 'Cambio', value: 3 },
           ],
         },
       ],
@@ -75,7 +75,7 @@ export class StatisticsPage implements OnInit {
           text: 'Confirmar',
           handler: (value: any) => {
             //TODO Save
-            this.savePause(true, value['tipoPos']['value']);
+            this.actionTipoPos(true, value['tipoPos']['value']);
             console.log(true, value['tipoPos']['value']);
           },
         },
@@ -84,18 +84,14 @@ export class StatisticsPage implements OnInit {
         {
           name: 'tipoPos',
           options: [
-            { text: 'Inicio', value: new Date() },
-            { text: 'Fin', value: new Date() },
-            { text: 'Cambio', value: new Date() },
+            { text: 'Inicio', value: 1 },
+            { text: 'Fin', value: 2 },
+            { text: 'Cambio', value: 3 },
           ],
         },
       ],
     });
     await picker.present();
-  }
-
-  async pausedButton() {
-    this.savePause(null, new Date());
   }
 
   async eventosButton() {
@@ -125,7 +121,7 @@ export class StatisticsPage implements OnInit {
             { text: 'Falta', value: EventType.FALTA },
             { text: 'Tiro', value: EventType.TIRO },
             { text: 'Corner', value: EventType.CORNER },
-            { text: 'Fuera de Juego', value: EventType.FUERADEJUEGO },
+            { text: 'Fuera de Juego', value: EventType.FUERA_DE_JUEGO },
           ],
         },
         {
@@ -146,10 +142,20 @@ export class StatisticsPage implements OnInit {
     this.subscribeToSaveResponse(this.eventsService.create(event));
   }
 
-  savePause(teamValue, timeValue): void {
+  actionTipoPos(teamValue, tipoPosValue): void {
     this.isSaving = true;
-    const event = this.createFromPosesion(teamValue, timeValue);
-    this.subscribeToSaveResponse(this.posesionService.create(event));
+    if (tipoPosValue == 1) {
+      const posesion = this.createFromPosesion(teamValue, new Date());
+      this.subscribeToSaveResponse(this.posesionService.create(posesion));
+    }
+    if (tipoPosValue == 2) {
+      const event = this.closeFromPosesion(teamValue, new Date());
+      this.subscribeToSaveResponse(this.posesionService.close(event));
+    }
+    if (tipoPosValue == 3) {
+      const event = this.createFromPosesion(teamValue, new Date());
+      this.subscribeToSaveResponse(this.posesionService.change(event));
+    }
   }
 
   protected createFromForm(eventTypeValue, teamValue): Event {
@@ -164,7 +170,15 @@ export class StatisticsPage implements OnInit {
     return {
       ...new Posesion(),
       team: teamValue,
-      time: timeValue,
+      start: timeValue,
+    };
+  }
+
+  protected closeFromPosesion(teamValue, timeValue): Posesion {
+    return {
+      ...new Posesion(),
+      team: teamValue,
+      jhi_end: timeValue,
     };
   }
 
@@ -182,33 +196,4 @@ export class StatisticsPage implements OnInit {
   }
 
   protected onSaveFinalize(): void {}
-
-  /* doCreateEvent() {
-    this.EventsService.createEvent(this.selectedEvento).subscribe(
-      async () => {
-        const toast = await this.toastController.create({
-          message: this.eventSuccessString,
-          duration: 3000,
-          position: 'top',
-        });
-        toast.present();
-      },
-      async response => {
-        // Unable to sign up
-        const error = JSON.parse(response.error);
-        let displayError = this.eventErrorString;
-        if (response.status === 400 && error.type.includes('already-used')) {
-          displayError = this.existingEventError;
-        } else if (response.status === 400 && error.message === 'error.validation') {
-          displayError = this.invalidPasswordError;
-        }
-        const toast = await this.toastController.create({
-          message: displayError,
-          duration: 3000,
-          position: 'middle',
-        });
-        toast.present();
-      }
-    );
-  }*/
 }

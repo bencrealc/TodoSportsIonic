@@ -34,8 +34,8 @@
         <tr>
           <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
           <th scope="col"><span jhiTranslate="todoSportsIonicApp.posesion.team">Team</span></th>
-          <th scope="col"><span jhiTranslate="todoSportsIonicApp.posesion.paused">Paused</span></th>
-          <th scope="col"><span jhiTranslate="todoSportsIonicApp.posesion.time">Time</span></th>
+          <th scope="col"><span jhiTranslate="todoSportsIonicApp.posesion.start">Start</span></th>
+          <th scope="col"><span jhiTranslate="todoSportsIonicApp.posesion.end">End</span></th>
           <th scope="col"><span jhiTranslate="todoSportsIonicApp.posesion.match">Match</span></th>
           <th scope="col"></th>
         </tr>
@@ -46,8 +46,8 @@
             <a [routerLink]="['/posesion', posesion.id, 'view']">{{ posesion.id }}</a>
           </td>
           <td>{{ posesion.team }}</td>
-          <td>{{ posesion.paused }}</td>
-          <td>{{ posesion.time | formatMediumDatetime }}</td>
+          <td>{{ posesion.start | formatMediumDatetime }}</td>
+          <td>{{ posesion.end | formatMediumDatetime }}</td>
           <td>
             <div *ngIf="posesion.match">
               <a [routerLink]="['/match', posesion.match?.id, 'view']">{{ posesion.match?.id }}</a>

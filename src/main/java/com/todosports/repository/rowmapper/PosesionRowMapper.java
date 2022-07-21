@@ -27,8 +27,8 @@ public class PosesionRowMapper implements BiFunction<Row, String, Posesion> {
         Posesion entity = new Posesion();
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
         entity.setTeam(converter.fromRow(row, prefix + "_team", Boolean.class));
-        entity.setPaused(converter.fromRow(row, prefix + "_paused", Boolean.class));
-        entity.setTime(converter.fromRow(row, prefix + "_time", Instant.class));
+        entity.setStart(converter.fromRow(row, prefix + "_start", Instant.class));
+        entity.setEnd(converter.fromRow(row, prefix + "_jhi_end", Instant.class));
         entity.setMatchId(converter.fromRow(row, prefix + "_match_id", Long.class));
         return entity;
     }

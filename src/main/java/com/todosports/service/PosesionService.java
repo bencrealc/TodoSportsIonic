@@ -62,4 +62,8 @@ public interface PosesionService {
      * @return a Mono to signal the deletion
      */
     Mono<Void> delete(Long id);
+
+    Mono<Posesion> close(Posesion posesion);
+
+    Mono<Posesion> change(Posesion posesion);
 }

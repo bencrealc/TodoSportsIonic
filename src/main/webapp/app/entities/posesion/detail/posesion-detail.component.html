@@ -18,13 +18,13 @@
         <dd>
           <span>{{ posesion.team }}</span>
         </dd>
-        <dt><span jhiTranslate="todoSportsIonicApp.posesion.paused">Paused</span></dt>
+        <dt><span jhiTranslate="todoSportsIonicApp.posesion.start">Start</span></dt>
         <dd>
-          <span>{{ posesion.paused }}</span>
+          <span>{{ posesion.start | formatMediumDatetime }}</span>
         </dd>
-        <dt><span jhiTranslate="todoSportsIonicApp.posesion.time">Time</span></dt>
+        <dt><span jhiTranslate="todoSportsIonicApp.posesion.end">End</span></dt>
         <dd>
-          <span>{{ posesion.time | formatMediumDatetime }}</span>
+          <span>{{ posesion.end | formatMediumDatetime }}</span>
         </dd>
         <dt><span jhiTranslate="todoSportsIonicApp.posesion.match">Match</span></dt>
         <dd>

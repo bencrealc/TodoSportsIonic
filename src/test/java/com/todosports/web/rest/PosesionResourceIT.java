@@ -37,11 +37,11 @@ class PosesionResourceIT {
     private static final Boolean DEFAULT_TEAM = false;
     private static final Boolean UPDATED_TEAM = true;
 
-    private static final Boolean DEFAULT_PAUSED = false;
-    private static final Boolean UPDATED_PAUSED = true;
+    private static final Instant DEFAULT_START = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_START = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
-    private static final Instant DEFAULT_TIME = Instant.ofEpochMilli(0L);
-    private static final Instant UPDATED_TIME = Instant.now().truncatedTo(ChronoUnit.MILLIS);
+    private static final Instant DEFAULT_END = Instant.ofEpochMilli(0L);
+    private static final Instant UPDATED_END = Instant.now().truncatedTo(ChronoUnit.MILLIS);
 
     private static final String ENTITY_API_URL = "/api/posesions";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -67,7 +67,7 @@ class PosesionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Posesion createEntity(EntityManager em) {
-        Posesion posesion = new Posesion().team(DEFAULT_TEAM).paused(DEFAULT_PAUSED).time(DEFAULT_TIME);
+        Posesion posesion = new Posesion().team(DEFAULT_TEAM).start(DEFAULT_START).end(DEFAULT_END);
         return posesion;
     }
 
@@ -78,7 +78,7 @@ class PosesionResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Posesion createUpdatedEntity(EntityManager em) {
-        Posesion posesion = new Posesion().team(UPDATED_TEAM).paused(UPDATED_PAUSED).time(UPDATED_TIME);
+        Posesion posesion = new Posesion().team(UPDATED_TEAM).start(UPDATED_START).end(UPDATED_END);
         return posesion;
     }
 
@@ -119,8 +119,8 @@ class PosesionResourceIT {
         assertThat(posesionList).hasSize(databaseSizeBeforeCreate + 1);
         Posesion testPosesion = posesionList.get(posesionList.size() - 1);
         assertThat(testPosesion.getTeam()).isEqualTo(DEFAULT_TEAM);
-        assertThat(testPosesion.getPaused()).isEqualTo(DEFAULT_PAUSED);
-        assertThat(testPosesion.getTime()).isEqualTo(DEFAULT_TIME);
+        assertThat(testPosesion.getStart()).isEqualTo(DEFAULT_START);
+        assertThat(testPosesion.getEnd()).isEqualTo(DEFAULT_END);
     }
 
     @Test
@@ -169,8 +169,8 @@ class PosesionResourceIT {
         assertThat(posesionList).hasSize(1);
         Posesion testPosesion = posesionList.get(0);
         assertThat(testPosesion.getTeam()).isEqualTo(DEFAULT_TEAM);
-        assertThat(testPosesion.getPaused()).isEqualTo(DEFAULT_PAUSED);
-        assertThat(testPosesion.getTime()).isEqualTo(DEFAULT_TIME);
+        assertThat(testPosesion.getStart()).isEqualTo(DEFAULT_START);
+        assertThat(testPosesion.getEnd()).isEqualTo(DEFAULT_END);
     }
 
     @Test
@@ -193,10 +193,10 @@ class PosesionResourceIT {
             .value(hasItem(posesion.getId().intValue()))
             .jsonPath("$.[*].team")
             .value(hasItem(DEFAULT_TEAM.booleanValue()))
-            .jsonPath("$.[*].paused")
-            .value(hasItem(DEFAULT_PAUSED.booleanValue()))
-            .jsonPath("$.[*].time")
-            .value(hasItem(DEFAULT_TIME.toString()));
+            .jsonPath("$.[*].start")
+            .value(hasItem(DEFAULT_START.toString()))
+            .jsonPath("$.[*].end")
+            .value(hasItem(DEFAULT_END.toString()));
     }
 
     @Test
@@ -219,10 +219,10 @@ class PosesionResourceIT {
             .value(is(posesion.getId().intValue()))
             .jsonPath("$.team")
             .value(is(DEFAULT_TEAM.booleanValue()))
-            .jsonPath("$.paused")
-            .value(is(DEFAULT_PAUSED.booleanValue()))
-            .jsonPath("$.time")
-            .value(is(DEFAULT_TIME.toString()));
+            .jsonPath("$.start")
+            .value(is(DEFAULT_START.toString()))
+            .jsonPath("$.end")
+            .value(is(DEFAULT_END.toString()));
     }
 
     @Test
@@ -246,7 +246,7 @@ class PosesionResourceIT {
 
         // Update the posesion
         Posesion updatedPosesion = posesionRepository.findById(posesion.getId()).block();
-        updatedPosesion.team(UPDATED_TEAM).paused(UPDATED_PAUSED).time(UPDATED_TIME);
+        updatedPosesion.team(UPDATED_TEAM).start(UPDATED_START).end(UPDATED_END);
 
         webTestClient
             .put()
@@ -262,8 +262,8 @@ class PosesionResourceIT {
         assertThat(posesionList).hasSize(databaseSizeBeforeUpdate);
         Posesion testPosesion = posesionList.get(posesionList.size() - 1);
         assertThat(testPosesion.getTeam()).isEqualTo(UPDATED_TEAM);
-        assertThat(testPosesion.getPaused()).isEqualTo(UPDATED_PAUSED);
-        assertThat(testPosesion.getTime()).isEqualTo(UPDATED_TIME);
+        assertThat(testPosesion.getStart()).isEqualTo(UPDATED_START);
+        assertThat(testPosesion.getEnd()).isEqualTo(UPDATED_END);
     }
 
     @Test
@@ -353,8 +353,8 @@ class PosesionResourceIT {
         assertThat(posesionList).hasSize(databaseSizeBeforeUpdate);
         Posesion testPosesion = posesionList.get(posesionList.size() - 1);
         assertThat(testPosesion.getTeam()).isEqualTo(UPDATED_TEAM);
-        assertThat(testPosesion.getPaused()).isEqualTo(DEFAULT_PAUSED);
-        assertThat(testPosesion.getTime()).isEqualTo(DEFAULT_TIME);
+        assertThat(testPosesion.getStart()).isEqualTo(DEFAULT_START);
+        assertThat(testPosesion.getEnd()).isEqualTo(DEFAULT_END);
     }
 
     @Test
@@ -368,7 +368,7 @@ class PosesionResourceIT {
         Posesion partialUpdatedPosesion = new Posesion();
         partialUpdatedPosesion.setId(posesion.getId());
 
-        partialUpdatedPosesion.team(UPDATED_TEAM).paused(UPDATED_PAUSED).time(UPDATED_TIME);
+        partialUpdatedPosesion.team(UPDATED_TEAM).start(UPDATED_START).end(UPDATED_END);
 
         webTestClient
             .patch()
@@ -384,8 +384,8 @@ class PosesionResourceIT {
         assertThat(posesionList).hasSize(databaseSizeBeforeUpdate);
         Posesion testPosesion = posesionList.get(posesionList.size() - 1);
         assertThat(testPosesion.getTeam()).isEqualTo(UPDATED_TEAM);
-        assertThat(testPosesion.getPaused()).isEqualTo(UPDATED_PAUSED);
-        assertThat(testPosesion.getTime()).isEqualTo(UPDATED_TIME);
+        assertThat(testPosesion.getStart()).isEqualTo(UPDATED_START);
+        assertThat(testPosesion.getEnd()).isEqualTo(UPDATED_END);
     }
 
     @Test

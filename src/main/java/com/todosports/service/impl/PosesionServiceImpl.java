@@ -33,6 +33,21 @@ public class PosesionServiceImpl implements PosesionService {
     }
 
     @Override
+    public Mono<Posesion> close(Posesion posesion) {
+        log.debug("Request to save Posesion : {}", posesion);
+        Posesion posesion2 = posesionRepository.findByLastStart();
+        posesion2.setEnd(posesion.getEnd());
+        return posesionRepository.save(posesion2);
+    }
+
+    @Override
+    public Mono<Posesion> change(Posesion posesion) {
+        log.debug("Request to save Posesion : {}", posesion);
+        posesionRepository.save(posesion);
+        return close(posesion);
+    }
+
+    @Override
     public Mono<Posesion> update(Posesion posesion) {
         log.debug("Request to save Posesion : {}", posesion);
         return posesionRepository.save(posesion);
@@ -48,11 +63,11 @@ public class PosesionServiceImpl implements PosesionService {
                 if (posesion.getTeam() != null) {
                     existingPosesion.setTeam(posesion.getTeam());
                 }
-                if (posesion.getPaused() != null) {
-                    existingPosesion.setPaused(posesion.getPaused());
+                if (posesion.getStart() != null) {
+                    existingPosesion.setStart(posesion.getStart());
                 }
-                if (posesion.getTime() != null) {
-                    existingPosesion.setTime(posesion.getTime());
+                if (posesion.getEnd() != null) {
+                    existingPosesion.setEnd(posesion.getEnd());
                 }
 
                 return existingPosesion;

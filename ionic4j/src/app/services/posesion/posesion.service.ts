@@ -10,4 +10,12 @@ export class PosesionService {
   create(posesion) {
     return this.apiService.post('posesions', posesion, { observe: 'response' });
   }
+
+  close(posesion) {
+    return this.apiService.post('posesions/close', posesion, { observe: 'response' });
+  }
+
+  change(posesion) {
+    return this.apiService.post('posesions/change', posesion, { observe: 'response' });
+  }
 }
