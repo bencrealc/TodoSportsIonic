@@ -35,15 +35,67 @@ export class StatisticsPage implements OnInit {
   ngOnInit() {}
 
   async localButton() {
-    this.savePause(false, false, new Date());
+    const picker = await this.pickerController.create({
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Confirmar',
+          handler: (value: any) => {
+            //TODO Save
+            this.savePause(false, value['tipoPos']['value']);
+            console.log(false, value['tipoPos']['value']);
+          },
+        },
+      ],
+      columns: [
+        {
+          name: 'tipoPos',
+          options: [
+            { text: 'Inicio', value: new Date() },
+            { text: 'Fin', value: new Date() },
+            { text: 'Cambio', value: new Date() },
+          ],
+        },
+      ],
+    });
+    await picker.present();
   }
 
   async visitButton() {
-    this.savePause(true, false, new Date());
+    const picker = await this.pickerController.create({
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        },
+        {
+          text: 'Confirmar',
+          handler: (value: any) => {
+            //TODO Save
+            this.savePause(true, value['tipoPos']['value']);
+            console.log(true, value['tipoPos']['value']);
+          },
+        },
+      ],
+      columns: [
+        {
+          name: 'tipoPos',
+          options: [
+            { text: 'Inicio', value: new Date() },
+            { text: 'Fin', value: new Date() },
+            { text: 'Cambio', value: new Date() },
+          ],
+        },
+      ],
+    });
+    await picker.present();
   }
 
   async pausedButton() {
-    this.savePause(null, false, new Date());
+    this.savePause(null, new Date());
   }
 
   async eventosButton() {
@@ -94,9 +146,9 @@ export class StatisticsPage implements OnInit {
     this.subscribeToSaveResponse(this.eventsService.create(event));
   }
 
-  savePause(teamValue, pausedValue, timeValue): void {
+  savePause(teamValue, timeValue): void {
     this.isSaving = true;
-    const event = this.createFromPosesion(teamValue, pausedValue, timeValue);
+    const event = this.createFromPosesion(teamValue, timeValue);
     this.subscribeToSaveResponse(this.posesionService.create(event));
   }
 
@@ -108,11 +160,10 @@ export class StatisticsPage implements OnInit {
     };
   }
 
-  protected createFromPosesion(teamValue, pausedValue, timeValue): Posesion {
+  protected createFromPosesion(teamValue, timeValue): Posesion {
     return {
       ...new Posesion(),
       team: teamValue,
-      paused: pausedValue,
       time: timeValue,
     };
   }
