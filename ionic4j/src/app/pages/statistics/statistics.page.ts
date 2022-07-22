@@ -34,7 +34,10 @@ export class StatisticsPage implements OnInit {
 
   ngOnInit() {}
 
-  async localButton() {
+  async cambioButton() {}
+  async finButton() {}
+
+  async inicioButton() {
     const picker = await this.pickerController.create({
       buttons: [
         {
@@ -45,57 +48,22 @@ export class StatisticsPage implements OnInit {
           text: 'Confirmar',
           handler: (value: any) => {
             //TODO Save
-            this.savePause(false, value['tipoPos']['value']);
-            console.log(false, value['tipoPos']['value']);
+            this.savePause(value['equipo']['value'], new Date());
+            console.log(value['equipo']['value'], new Date());
           },
         },
       ],
       columns: [
         {
-          name: 'tipoPos',
+          name: 'equipo',
           options: [
-            { text: 'Inicio', value: new Date() },
-            { text: 'Fin', value: new Date() },
-            { text: 'Cambio', value: new Date() },
+            { text: 'Local', value: false },
+            { text: 'Visitante', value: true },
           ],
         },
       ],
     });
     await picker.present();
-  }
-
-  async visitButton() {
-    const picker = await this.pickerController.create({
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-        },
-        {
-          text: 'Confirmar',
-          handler: (value: any) => {
-            //TODO Save
-            this.savePause(true, value['tipoPos']['value']);
-            console.log(true, value['tipoPos']['value']);
-          },
-        },
-      ],
-      columns: [
-        {
-          name: 'tipoPos',
-          options: [
-            { text: 'Inicio', value: new Date() },
-            { text: 'Fin', value: new Date() },
-            { text: 'Cambio', value: new Date() },
-          ],
-        },
-      ],
-    });
-    await picker.present();
-  }
-
-  async pausedButton() {
-    this.savePause(null, new Date());
   }
 
   async eventosButton() {

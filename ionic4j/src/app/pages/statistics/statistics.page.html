@@ -5,8 +5,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="localButton()" size="large" class="poslocal-btn">Posesion local</ion-button>
-  <ion-button (click)="eventosButton()" size="large" class="eventos-btn">Eventos</ion-button>
-  <ion-button (click)="visitButton()" size="large" class="posvisit-btn">Posesion visitante</ion-button>
-  <ion-button (click)="pausedButton()" expand="block" class="pausa-btn" size="large">Pausa</ion-button>
+  <ion-item>
+    <ion-button (click)="inicioButton()" size="large" class="poslocal-btn">Inicio Posesion</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-button (click)="eventosButton()" size="large" class="eventos-btn">Eventos</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-button (click)="cambioButton()" size="large" class="cambio-btn">Cambio Posesion</ion-button>
+  </ion-item>
+  <ion-item>
+    <ion-button (click)="finButton()" size="large" class="posvisit-btn">Fin Posesion</ion-button>
+  </ion-item>
 </ion-content>
