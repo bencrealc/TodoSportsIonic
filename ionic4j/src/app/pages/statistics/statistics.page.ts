@@ -178,7 +178,7 @@ export class StatisticsPage implements OnInit {
     return {
       ...new Posesion(),
       team: teamValue,
-      jhi_end: timeValue,
+      end: timeValue,
     };
   }
 

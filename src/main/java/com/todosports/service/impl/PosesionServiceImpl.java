@@ -3,7 +3,6 @@ package com.todosports.service.impl;
 import com.todosports.domain.Posesion;
 import com.todosports.repository.PosesionRepository;
 import com.todosports.service.PosesionService;
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -35,17 +34,23 @@ public class PosesionServiceImpl implements PosesionService {
     @Override
     public Mono<Posesion> close(Posesion posesion) {
         log.debug("Request to save Posesion : {}", posesion);
-        Posesion posesion2 = posesionRepository.findByLastStart();
-        posesion2.setEnd(posesion.getEnd());
-        return posesionRepository.save(posesion2);
+        posesionRepository
+            .count()
+            .map(l -> {
+                posesion.setId(l.longValue());
+                return posesion;
+            });
+
+        log.info("Posesion nueva" + posesion);
+        return this.partialUpdate(posesion);
     }
 
-    @Override
+    /*@Override
     public Mono<Posesion> change(Posesion posesion) {
         log.debug("Request to save Posesion : {}", posesion);
         posesionRepository.save(posesion);
         return close(posesion);
-    }
+    }*/
 
     @Override
     public Mono<Posesion> update(Posesion posesion) {

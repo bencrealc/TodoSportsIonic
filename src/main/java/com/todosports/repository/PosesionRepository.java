@@ -2,6 +2,7 @@ package com.todosports.repository;
 
 import com.todosports.domain.Posesion;
 import java.time.Instant;
+import java.util.List;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.relational.core.query.Criteria;
@@ -21,9 +22,6 @@ public interface PosesionRepository extends ReactiveCrudRepository<Posesion, Lon
 
     @Query("SELECT * FROM posesion entity WHERE entity.match_id IS NULL")
     Flux<Posesion> findAllWhereMatchIsNull();
-
-    @Query("SELECT * FROM posesion entity ORDER BY entity.start DESC LIMIT 1")
-    Posesion findByLastStart();
 
     @Override
     <S extends Posesion> Mono<S> save(S entity);
