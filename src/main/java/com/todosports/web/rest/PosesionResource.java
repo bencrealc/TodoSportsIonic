@@ -70,14 +70,14 @@ public class PosesionResource {
         return posesionService.close(posesion);
     }
 
-    /*@PostMapping("/posesions/change")
+    @PostMapping("/posesions/change")
     public Mono<Posesion> changePosesion(@RequestBody Posesion posesion) throws URISyntaxException {
         log.debug("REST request to save Posesion : {}", posesion);
         if (posesion.getId() != null) {
             throw new BadRequestAlertException("A new posesion cannot already have an ID", ENTITY_NAME, "idexists");
         }
         return posesionService.change(posesion);
-    }*/
+    }
 
     /**
      * {@code PUT  /posesions/:id} : Updates an existing posesion.
