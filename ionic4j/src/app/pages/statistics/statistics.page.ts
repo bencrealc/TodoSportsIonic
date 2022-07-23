@@ -48,7 +48,7 @@ export class StatisticsPage implements OnInit {
           text: 'Confirmar',
           handler: (value: any) => {
             //TODO Save
-            this.savePause(value['equipo']['value'], new Date());
+            //this.savePause(value['equipo']['value'], new Date());
             console.log(value['equipo']['value'], new Date());
           },
         },
@@ -93,7 +93,7 @@ export class StatisticsPage implements OnInit {
             { text: 'Falta', value: EventType.FALTA },
             { text: 'Tiro', value: EventType.TIRO },
             { text: 'Corner', value: EventType.CORNER },
-            { text: 'Fuera de Juego', value: EventType.FUERADEJUEGO },
+            { text: 'Fuera de Juego', value: EventType.FUERA_DE_JUEGO },
           ],
         },
         {
@@ -114,11 +114,11 @@ export class StatisticsPage implements OnInit {
     this.subscribeToSaveResponse(this.eventsService.create(event));
   }
 
-  savePause(teamValue, timeValue): void {
-    this.isSaving = true;
-    const event = this.createFromPosesion(teamValue, timeValue);
-    this.subscribeToSaveResponse(this.posesionService.create(event));
-  }
+  // savePause(teamValue, timeValue): void {
+  // this.isSaving = true;
+  //const event = this.createFromPosesion(teamValue, timeValue);
+  //this.subscribeToSaveResponse(this.posesionService.create(event));
+  //}
 
   protected createFromForm(eventTypeValue, teamValue): Event {
     return {
@@ -128,13 +128,13 @@ export class StatisticsPage implements OnInit {
     };
   }
 
-  protected createFromPosesion(teamValue, timeValue): Posesion {
-    return {
-      ...new Posesion(),
-      team: teamValue,
-      time: timeValue,
-    };
-  }
+  //  protected createFromPosesion(teamValue, timeValue): Posesion {
+  //  return {
+  //  ...new Posesion(),
+  //team: teamValue,
+  //time: timeValue,
+  //};
+  //}
 
   protected subscribeToSaveResponse(result: Observable<ArrayBuffer>): void {
     result.pipe(finalize(() => this.onSaveFinalize())).subscribe({

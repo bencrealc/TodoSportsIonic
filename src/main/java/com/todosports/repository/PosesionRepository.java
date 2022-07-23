@@ -1,6 +1,8 @@
 package com.todosports.repository;
 
 import com.todosports.domain.Posesion;
+import java.time.Instant;
+import java.util.List;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.r2dbc.repository.Query;
 import org.springframework.data.relational.core.query.Criteria;

@@ -3,8 +3,6 @@ package com.todosports.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.todosports.domain.enumeration.EventType;
 import java.io.Serializable;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
@@ -20,7 +18,6 @@ public class Event implements Serializable {
 
     @Id
     @Column("id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     @Column("event_type")

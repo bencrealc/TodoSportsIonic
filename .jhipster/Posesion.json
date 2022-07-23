@@ -10,11 +10,11 @@
       "fieldType": "Boolean"
     },
     {
-      "fieldName": "paused",
-      "fieldType": "Boolean"
+      "fieldName": "start",
+      "fieldType": "Instant"
     },
     {
-      "fieldName": "time",
+      "fieldName": "end",
       "fieldType": "Instant"
     }
   ],

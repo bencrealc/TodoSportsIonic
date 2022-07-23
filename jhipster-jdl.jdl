@@ -14,7 +14,7 @@ entity Event {
 
 entity Posesion{
 	team Boolean,
-    start Instant
+    start Instant,
     end Instant
     
 }

@@ -23,11 +23,11 @@ public class Posesion implements Serializable {
     @Column("team")
     private Boolean team;
 
-    @Column("paused")
-    private Boolean paused;
+    @Column("start")
+    private Instant start;
 
-    @Column("time")
-    private Instant time;
+    @Column("jhi_end")
+    private Instant end;
 
     @Transient
     @JsonIgnoreProperties(value = { "events", "posesions" }, allowSetters = true)
@@ -64,30 +64,30 @@ public class Posesion implements Serializable {
         this.team = team;
     }
 
-    public Boolean getPaused() {
-        return this.paused;
+    public Instant getStart() {
+        return this.start;
     }
 
-    public Posesion paused(Boolean paused) {
-        this.setPaused(paused);
+    public Posesion start(Instant start) {
+        this.setStart(start);
         return this;
     }
 
-    public void setPaused(Boolean paused) {
-        this.paused = paused;
+    public void setStart(Instant start) {
+        this.start = start;
     }
 
-    public Instant getTime() {
-        return this.time;
+    public Instant getEnd() {
+        return this.end;
     }
 
-    public Posesion time(Instant time) {
-        this.setTime(time);
+    public Posesion end(Instant end) {
+        this.setEnd(end);
         return this;
     }
 
-    public void setTime(Instant time) {
-        this.time = time;
+    public void setEnd(Instant end) {
+        this.end = end;
     }
 
     public Match getMatch() {
@@ -137,8 +137,8 @@ public class Posesion implements Serializable {
         return "Posesion{" +
             "id=" + getId() +
             ", team='" + getTeam() + "'" +
-            ", paused='" + getPaused() + "'" +
-            ", time='" + getTime() + "'" +
+            ", start='" + getStart() + "'" +
+            ", end='" + getEnd() + "'" +
             "}";
     }
 }

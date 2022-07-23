@@ -3,7 +3,6 @@ package com.todosports.service.impl;
 import com.todosports.domain.Posesion;
 import com.todosports.repository.PosesionRepository;
 import com.todosports.service.PosesionService;
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -33,6 +32,27 @@ public class PosesionServiceImpl implements PosesionService {
     }
 
     @Override
+    public Mono<Posesion> close(Posesion posesion) {
+        log.debug("Request to save Posesion : {}", posesion);
+        posesionRepository
+            .count()
+            .map(l -> {
+                posesion.setId(l.longValue());
+                return posesion;
+            });
+
+        log.info("Posesion nueva" + posesion);
+        return this.partialUpdate(posesion);
+    }
+
+    /*@Override
+    public Mono<Posesion> change(Posesion posesion) {
+        log.debug("Request to save Posesion : {}", posesion);
+        posesionRepository.save(posesion);
+        return close(posesion);
+    }*/
+
+    @Override
     public Mono<Posesion> update(Posesion posesion) {
         log.debug("Request to save Posesion : {}", posesion);
         return posesionRepository.save(posesion);
@@ -48,11 +68,11 @@ public class PosesionServiceImpl implements PosesionService {
                 if (posesion.getTeam() != null) {
                     existingPosesion.setTeam(posesion.getTeam());
                 }
-                if (posesion.getPaused() != null) {
-                    existingPosesion.setPaused(posesion.getPaused());
+                if (posesion.getStart() != null) {
+                    existingPosesion.setStart(posesion.getStart());
                 }
-                if (posesion.getTime() != null) {
-                    existingPosesion.setTime(posesion.getTime());
+                if (posesion.getEnd() != null) {
+                    existingPosesion.setEnd(posesion.getEnd());
                 }
 
                 return existingPosesion;

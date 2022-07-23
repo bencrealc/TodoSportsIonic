@@ -11,7 +11,5 @@ public enum EventType {
     TIRO,
     CORNER,
     PENALTI,
-    FUERA,
-    DE,
-    JUEGO,
+    FUERA_DE_JUEGO,
 }

@@ -8,6 +8,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,11 +55,29 @@ public class PosesionResource {
     @PostMapping("/posesions")
     public Mono<Posesion> createPosesion(@RequestBody Posesion posesion) throws URISyntaxException {
         log.debug("REST request to save Posesion : {}", posesion);
-        if (posesion.getId() != null) {
+        if (posesion.getId() != null && posesion.getEnd() != null) {
             throw new BadRequestAlertException("A new posesion cannot already have an ID", ENTITY_NAME, "idexists");
         }
         return posesionService.save(posesion);
     }
+
+    @PostMapping("/posesions/close")
+    public Mono<Posesion> endPosesion(@RequestBody Posesion posesion) throws URISyntaxException {
+        log.debug("REST request to save Posesion : {}", posesion);
+        if (posesion.getId() != null && posesion.getStart() != null) {
+            throw new BadRequestAlertException("A new posesion cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        return posesionService.close(posesion);
+    }
+
+    /*@PostMapping("/posesions/change")
+    public Mono<Posesion> changePosesion(@RequestBody Posesion posesion) throws URISyntaxException {
+        log.debug("REST request to save Posesion : {}", posesion);
+        if (posesion.getId() != null) {
+            throw new BadRequestAlertException("A new posesion cannot already have an ID", ENTITY_NAME, "idexists");
+        }
+        return posesionService.change(posesion);
+    }*/
 
     /**
      * {@code PUT  /posesions/:id} : Updates an existing posesion.
