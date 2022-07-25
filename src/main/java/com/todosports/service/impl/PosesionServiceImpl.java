@@ -33,24 +33,30 @@ public class PosesionServiceImpl implements PosesionService {
 
     @Override
     public Mono<Posesion> close(Posesion posesion) {
-        log.debug("Request to save Posesion : {}", posesion);
-        posesionRepository
-            .count()
-            .map(l -> {
-                posesion.setId(l.longValue());
-                return posesion;
-            });
-
-        log.info("Posesion nueva" + posesion);
-        return this.partialUpdate(posesion);
+        log.debug("Request to close Posesion : {}", posesion);
+        return posesionRepository
+            .findByMaxStart()
+            .map(existingPosesion -> {
+                existingPosesion.setEnd(posesion.getEnd());
+                return existingPosesion;
+            })
+            .flatMap(posesionRepository::save);
     }
 
-    /*@Override
+    @Override
     public Mono<Posesion> change(Posesion posesion) {
-        log.debug("Request to save Posesion : {}", posesion);
-        posesionRepository.save(posesion);
-        return close(posesion);
-    }*/
+        return posesionRepository
+            .findByMaxStart()
+            .map(existingPosesion -> {
+                existingPosesion.setEnd(posesion.getStart());
+                return existingPosesion;
+            })
+            .flatMap(posesionRepository::save)
+            .map(savedPosesion -> {
+                return posesion;
+            })
+            .flatMap(posesionRepository::save);
+    }
 
     @Override
     public Mono<Posesion> update(Posesion posesion) {

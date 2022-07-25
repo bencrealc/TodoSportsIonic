@@ -18,6 +18,8 @@ public interface PosesionService {
 
     Mono<Posesion> close(Posesion posesion);
 
+    Mono<Posesion> change(Posesion posesion);
+
     /**
      * Updates a posesion.
      *
