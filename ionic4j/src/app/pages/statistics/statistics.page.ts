@@ -35,7 +35,38 @@ export class StatisticsPage implements OnInit {
   ngOnInit() {}
 
   async cambioButton() {}
-  async finButton() {}
+
+  async finButton() {
+    var pg = require('pg');
+
+    var connectionString = {
+      user: 'admin',
+      host: 'localhost',
+      database: 'db',
+      password: 'admin',
+      port: 5432,
+    };
+
+    var pool = new pg.Pool(connectionString);
+
+    pool.connect(function (err, client, done) {
+      const query = client.query(new pg.Query('SELECT * from products'));
+      query.on('row', row => {
+        console.log(row);
+      });
+      query.on('end', res => {
+        // pool shutdown
+        console.log('ending');
+        pool.end();
+      });
+      query.on('error', res => {
+        console.log(res);
+      });
+
+      done();
+    });
+    //console.log(query);
+  }
 
   async inicioButton() {
     const picker = await this.pickerController.create({
@@ -48,7 +79,7 @@ export class StatisticsPage implements OnInit {
           text: 'Confirmar',
           handler: (value: any) => {
             //TODO Save
-            //this.savePause(value['equipo']['value'], new Date());
+            this.saveInicio(value['equipo']['value']);
             console.log(value['equipo']['value'], new Date());
           },
         },
@@ -113,12 +144,42 @@ export class StatisticsPage implements OnInit {
     const event = this.createFromForm(eventTypeValue, teamValue);
     this.subscribeToSaveResponse(this.eventsService.create(event));
   }
+  actionTipoPos(teamValue, tipoPosValue): void {
+    this.isSaving = true;
+    if (tipoPosValue == 1) {
+      const posesion = this.createFromPosesion(teamValue, new Date());
+      this.subscribeToSaveResponse(this.posesionService.create(posesion));
+    }
+    if (tipoPosValue == 2) {
+      const event = this.closeFromPosesion(teamValue, new Date());
+      this.subscribeToSaveResponse(this.posesionService.close(event));
+    }
+    if (tipoPosValue == 3) {
+      const event = this.createFromPosesion(teamValue, new Date());
+      this.subscribeToSaveResponse(this.posesionService.change(event));
+    }
+  }
+  saveInicio(teamValue): void {
+    this.isSaving = true;
+    const posesion = this.createFromPosesion(teamValue, new Date());
+    this.subscribeToSaveResponse(this.posesionService.create(posesion));
+  }
 
-  // savePause(teamValue, timeValue): void {
-  // this.isSaving = true;
-  //const event = this.createFromPosesion(teamValue, timeValue);
-  //this.subscribeToSaveResponse(this.posesionService.create(event));
-  //}
+  protected createFromPosesion(teamValue, timeValue): Posesion {
+    return {
+      ...new Posesion(),
+      team: teamValue,
+      start: timeValue,
+    };
+  }
+
+  protected closeFromPosesion(teamValue, timeValue): Posesion {
+    return {
+      ...new Posesion(),
+      team: teamValue,
+      end: timeValue,
+    };
+  }
 
   protected createFromForm(eventTypeValue, teamValue): Event {
     return {
@@ -127,14 +188,6 @@ export class StatisticsPage implements OnInit {
       team: teamValue,
     };
   }
-
-  //  protected createFromPosesion(teamValue, timeValue): Posesion {
-  //  return {
-  //  ...new Posesion(),
-  //team: teamValue,
-  //time: timeValue,
-  //};
-  //}
 
   protected subscribeToSaveResponse(result: Observable<ArrayBuffer>): void {
     result.pipe(finalize(() => this.onSaveFinalize())).subscribe({
