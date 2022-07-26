@@ -34,40 +34,6 @@ export class StatisticsPage implements OnInit {
 
   ngOnInit() {}
 
-  async cambioButton() {}
-
-  async finButton() {
-    var pg = require('pg');
-
-    var connectionString = {
-      user: 'admin',
-      host: 'localhost',
-      database: 'db',
-      password: 'admin',
-      port: 5432,
-    };
-
-    var pool = new pg.Pool(connectionString);
-
-    pool.connect(function (err, client, done) {
-      const query = client.query(new pg.Query('SELECT * from products'));
-      query.on('row', row => {
-        console.log(row);
-      });
-      query.on('end', res => {
-        // pool shutdown
-        console.log('ending');
-        pool.end();
-      });
-      query.on('error', res => {
-        console.log(res);
-      });
-
-      done();
-    });
-    //console.log(query);
-  }
-
   async inicioButton() {
     const picker = await this.pickerController.create({
       buttons: [
@@ -144,25 +110,33 @@ export class StatisticsPage implements OnInit {
     const event = this.createFromForm(eventTypeValue, teamValue);
     this.subscribeToSaveResponse(this.eventsService.create(event));
   }
-  actionTipoPos(teamValue, tipoPosValue): void {
-    this.isSaving = true;
-    if (tipoPosValue == 1) {
-      const posesion = this.createFromPosesion(teamValue, new Date());
-      this.subscribeToSaveResponse(this.posesionService.create(posesion));
-    }
-    if (tipoPosValue == 2) {
-      const event = this.closeFromPosesion(teamValue, new Date());
-      this.subscribeToSaveResponse(this.posesionService.close(event));
-    }
-    if (tipoPosValue == 3) {
-      const event = this.createFromPosesion(teamValue, new Date());
-      this.subscribeToSaveResponse(this.posesionService.change(event));
-    }
-  }
+
   saveInicio(teamValue): void {
     this.isSaving = true;
     const posesion = this.createFromPosesion(teamValue, new Date());
     this.subscribeToSaveResponse(this.posesionService.create(posesion));
+  }
+
+  saveFinal(): void {
+    this.isSaving = true;
+    //const teamValue = this.posesionService.query();
+    const event = this.closeFromPosesion(null, new Date());
+    this.subscribeToSaveResponse(this.posesionService.close(event));
+  }
+
+  saveChange(): void {
+    this.isSaving = true;
+    //const teamValue = this.posesionService.query();
+    const event = this.createFromPosesion(null, new Date());
+    this.subscribeToSaveResponse(this.posesionService.change(event));
+  }
+
+  protected createFromForm(eventTypeValue, teamValue): Event {
+    return {
+      ...new Event(),
+      eventType: eventTypeValue,
+      team: teamValue,
+    };
   }
 
   protected createFromPosesion(teamValue, timeValue): Posesion {
@@ -181,14 +155,6 @@ export class StatisticsPage implements OnInit {
     };
   }
 
-  protected createFromForm(eventTypeValue, teamValue): Event {
-    return {
-      ...new Event(),
-      eventType: eventTypeValue,
-      team: teamValue,
-    };
-  }
-
   protected subscribeToSaveResponse(result: Observable<ArrayBuffer>): void {
     result.pipe(finalize(() => this.onSaveFinalize())).subscribe({
       next: () => this.onSaveSuccess(),
@@ -203,33 +169,4 @@ export class StatisticsPage implements OnInit {
   }
 
   protected onSaveFinalize(): void {}
-
-  /* doCreateEvent() {
-    this.EventsService.createEvent(this.selectedEvento).subscribe(
-      async () => {
-        const toast = await this.toastController.create({
-          message: this.eventSuccessString,
-          duration: 3000,
-          position: 'top',
-        });
-        toast.present();
-      },
-      async response => {
-        // Unable to sign up
-        const error = JSON.parse(response.error);
-        let displayError = this.eventErrorString;
-        if (response.status === 400 && error.type.includes('already-used')) {
-          displayError = this.existingEventError;
-        } else if (response.status === 400 && error.message === 'error.validation') {
-          displayError = this.invalidPasswordError;
-        }
-        const toast = await this.toastController.create({
-          message: displayError,
-          duration: 3000,
-          position: 'middle',
-        });
-        toast.present();
-      }
-    );
-  }*/
 }
