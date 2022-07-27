@@ -1,3 +1,7 @@
+.padre {
+  display: flex;
+  justify-content: center;
+}
 .poslocal-btn {
   --background: #2d63c8;
   width: 80px;
@@ -15,18 +19,19 @@
   float: right;
   --color: #fff;
 }
-.pausa-btn {
-  --background: #ffff43;
-  margin-top: 40px;
-  font-size: 15px;
-  --color: #000;
-}
+
 .eventos-btn {
   --background: #49ff43;
   width: 80px;
   height: 80px;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 15px;
-  margin-left: 33%;
-  margin-right: 30%;
+  --color: #000;
+}
+.pausa-btn {
+  --background: #ffff43;
+  margin-top: 40px;
+  font-size: 15px;
   --color: #000;
 }
