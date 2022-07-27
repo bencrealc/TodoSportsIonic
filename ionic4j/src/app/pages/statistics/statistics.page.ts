@@ -35,6 +35,24 @@ export class StatisticsPage implements OnInit {
   ngOnInit() {}
 
   async localButton() {
+    const toastLocal = await this.toastController.create({
+      message: 'El equipo local ha obtenido la posesión',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
+    const toastVisit = await this.toastController.create({
+      message: 'El equipo visitante ha obtenido la posesión',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
+    const toastFin = await this.toastController.create({
+      message: 'El equipo local ha finalizado la posesión',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
     const picker = await this.pickerController.create({
       buttons: [
         {
@@ -46,6 +64,13 @@ export class StatisticsPage implements OnInit {
           handler: (value: any) => {
             //TODO Save
             this.actionTipoPos(false, value['tipoPos']['value']);
+            if (value['tipoPos']['value'] == 1) {
+              toastLocal.present();
+            } else if (value['tipoPos']['value'] == 2) {
+              toastFin.present();
+            } else {
+              toastVisit.present();
+            }
             console.log(false, value['tipoPos']['value']);
           },
         },
@@ -65,6 +90,24 @@ export class StatisticsPage implements OnInit {
   }
 
   async visitButton() {
+    const toastLocal = await this.toastController.create({
+      message: 'El equipo local ha obtenido la posesión',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
+    const toastVisit = await this.toastController.create({
+      message: 'El equipo visitante ha obtenido la posesión',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
+    const toastFin = await this.toastController.create({
+      message: 'El equipo visitante ha finalizado la posesión',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
     const picker = await this.pickerController.create({
       buttons: [
         {
@@ -76,6 +119,13 @@ export class StatisticsPage implements OnInit {
           handler: (value: any) => {
             //TODO Save
             this.actionTipoPos(true, value['tipoPos']['value']);
+            if (value['tipoPos']['value'] == 1) {
+              toastVisit.present();
+            } else if (value['tipoPos']['value'] == 2) {
+              toastFin.present();
+            } else {
+              toastLocal.present();
+            }
             console.log(true, value['tipoPos']['value']);
           },
         },
