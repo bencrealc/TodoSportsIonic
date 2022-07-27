@@ -36,10 +36,24 @@ export class StatisticsPage implements OnInit {
 
   async localButton() {
     this.savePause(false, false, new Date());
+    const toast = await this.toastController.create({
+      position: 'top',
+      message: 'El equipo local ha obtenido la posesión',
+      color: 'light',
+      duration: 2000,
+    });
+    toast.present();
   }
 
   async visitButton() {
     this.savePause(true, false, new Date());
+    const toast = await this.toastController.create({
+      position: 'top',
+      message: 'El equipo visitante ha obtenido la posesión',
+      color: 'light',
+      duration: 2000,
+    });
+    toast.present();
   }
 
   async pausedButton() {
