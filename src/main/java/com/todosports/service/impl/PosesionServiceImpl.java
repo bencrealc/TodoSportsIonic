@@ -59,7 +59,12 @@ public class PosesionServiceImpl implements PosesionService {
             })
             .flatMap(posesionRepository::save)
             .map(savedPosesion -> {
-                posesion.setTeam(posesion.getTeam());
+                if (savedPosesion.getTeam()) {
+                    posesion.setTeam(false);
+                } else {
+                    posesion.setTeam(true);
+                }
+
                 return posesion;
             })
             .flatMap(posesionRepository::save);
