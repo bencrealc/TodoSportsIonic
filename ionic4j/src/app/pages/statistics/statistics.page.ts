@@ -35,6 +35,18 @@ export class StatisticsPage implements OnInit {
   ngOnInit() {}
 
   async inicioButton() {
+    const toastLocal = await this.toastController.create({
+      message: 'El equipo local ha obtenido la posesión',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
+    const toastVisit = await this.toastController.create({
+      message: 'El equipo visitante ha obtenido la posesión',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
     const picker = await this.pickerController.create({
       buttons: [
         {
@@ -46,6 +58,12 @@ export class StatisticsPage implements OnInit {
           handler: (value: any) => {
             //TODO Save
             this.saveInicio(value['equipo']['value']);
+            if (value['equipo']['value'] == false) {
+              toastLocal.present();
+            } else {
+              toastVisit.present();
+            }
+
             console.log(value['equipo']['value'], new Date());
           },
         },
