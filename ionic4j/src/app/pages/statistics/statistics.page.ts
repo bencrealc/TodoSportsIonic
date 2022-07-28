@@ -34,10 +34,19 @@ export class StatisticsPage implements OnInit {
 
   ngOnInit() {}
 
-  async cambioButton() {}
-  async finButton() {}
-
   async inicioButton() {
+    const toastLocal = await this.toastController.create({
+      message: 'El equipo local ha obtenido la posesión',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
+    const toastVisit = await this.toastController.create({
+      message: 'El equipo visitante ha obtenido la posesión',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
     const picker = await this.pickerController.create({
       buttons: [
         {
@@ -48,7 +57,13 @@ export class StatisticsPage implements OnInit {
           text: 'Confirmar',
           handler: (value: any) => {
             //TODO Save
-            this.savePause(value['equipo']['value'], new Date());
+            this.saveInicio(value['equipo']['value']);
+            if (value['equipo']['value'] == false) {
+              toastLocal.present();
+            } else {
+              toastVisit.present();
+            }
+
             console.log(value['equipo']['value'], new Date());
           },
         },
@@ -93,7 +108,7 @@ export class StatisticsPage implements OnInit {
             { text: 'Falta', value: EventType.FALTA },
             { text: 'Tiro', value: EventType.TIRO },
             { text: 'Corner', value: EventType.CORNER },
-            { text: 'Fuera de Juego', value: EventType.FUERADEJUEGO },
+            { text: 'Fuera de Juego', value: EventType.FUERA_DE_JUEGO },
           ],
         },
         {
@@ -114,10 +129,24 @@ export class StatisticsPage implements OnInit {
     this.subscribeToSaveResponse(this.eventsService.create(event));
   }
 
-  savePause(teamValue, timeValue): void {
+  saveInicio(teamValue): void {
     this.isSaving = true;
-    const event = this.createFromPosesion(teamValue, timeValue);
-    this.subscribeToSaveResponse(this.posesionService.create(event));
+    const posesion = this.createFromPosesion(teamValue, new Date());
+    this.subscribeToSaveResponse(this.posesionService.create(posesion));
+  }
+
+  saveFinal(): void {
+    this.isSaving = true;
+    //const teamValue = this.posesionService.query();
+    const event = this.closeFromPosesion(null, new Date());
+    this.subscribeToSaveResponse(this.posesionService.close(event));
+  }
+
+  saveChange(): void {
+    this.isSaving = true;
+    //const teamValue = this.posesionService.query();
+    const event = this.createFromPosesion(null, new Date());
+    this.subscribeToSaveResponse(this.posesionService.change(event));
   }
 
   protected createFromForm(eventTypeValue, teamValue): Event {
@@ -132,7 +161,15 @@ export class StatisticsPage implements OnInit {
     return {
       ...new Posesion(),
       team: teamValue,
-      time: timeValue,
+      start: timeValue,
+    };
+  }
+
+  protected closeFromPosesion(teamValue, timeValue): Posesion {
+    return {
+      ...new Posesion(),
+      team: teamValue,
+      end: timeValue,
     };
   }
 
@@ -150,33 +187,4 @@ export class StatisticsPage implements OnInit {
   }
 
   protected onSaveFinalize(): void {}
-
-  /* doCreateEvent() {
-    this.EventsService.createEvent(this.selectedEvento).subscribe(
-      async () => {
-        const toast = await this.toastController.create({
-          message: this.eventSuccessString,
-          duration: 3000,
-          position: 'top',
-        });
-        toast.present();
-      },
-      async response => {
-        // Unable to sign up
-        const error = JSON.parse(response.error);
-        let displayError = this.eventErrorString;
-        if (response.status === 400 && error.type.includes('already-used')) {
-          displayError = this.existingEventError;
-        } else if (response.status === 400 && error.message === 'error.validation') {
-          displayError = this.invalidPasswordError;
-        }
-        const toast = await this.toastController.create({
-          message: displayError,
-          duration: 3000,
-          position: 'middle',
-        });
-        toast.present();
-      }
-    );
-  }*/
 }

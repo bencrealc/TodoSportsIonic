@@ -14,13 +14,13 @@ entity Event {
 
 entity Posesion{
 	team Boolean,
-    paused Boolean,
-    time Instant
+    start Instant,
+    end Instant
     
 }
 
 enum EventType {
-    GOL, FALTA, AMARILLA, ROJA, TIRO, CORNER, PENALTI, FUERA DE JUEGO
+    GOL, FALTA, AMARILLA, ROJA, TIRO, CORNER, PENALTI, FUERA_DE_JUEGO
 }
 
 // Set service options to all except few

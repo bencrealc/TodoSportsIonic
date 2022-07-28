@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api/api.service';
+import { Posesion } from './posesion.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,5 +10,17 @@ export class PosesionService {
 
   create(posesion) {
     return this.apiService.post('posesions', posesion, { observe: 'response' });
+  }
+
+  query() {
+    return this.apiService.get('posesions', null, { observe: 'response' });
+  }
+
+  close(posesion) {
+    return this.apiService.post('posesions/close', posesion, { observe: 'response' });
+  }
+
+  change(posesion) {
+    return this.apiService.post('posesions/change', posesion, { observe: 'response' });
   }
 }

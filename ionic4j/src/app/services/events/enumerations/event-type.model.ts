@@ -13,5 +13,5 @@ export enum EventType {
 
   PENALTI = 'PENALTI',
 
-  FUERADEJUEGO = 'FUERA DE JUEGO',
+  FUERA_DE_JUEGO = 'FUERA_DE_JUEGO',
 }

@@ -25,8 +25,8 @@ export class PosesionUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     team: [],
-    paused: [],
-    time: [],
+    start: [],
+    end: [],
     match: [],
   });
 
@@ -41,7 +41,8 @@ export class PosesionUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ posesion }) => {
       if (posesion.id === undefined) {
         const today = dayjs().startOf('day');
-        posesion.time = today;
+        posesion.start = today;
+        posesion.end = today;
       }
 
       this.updateForm(posesion);
@@ -91,8 +92,8 @@ export class PosesionUpdateComponent implements OnInit {
     this.editForm.patchValue({
       id: posesion.id,
       team: posesion.team,
-      paused: posesion.paused,
-      time: posesion.time ? posesion.time.format(DATE_TIME_FORMAT) : null,
+      start: posesion.start ? posesion.start.format(DATE_TIME_FORMAT) : null,
+      end: posesion.end ? posesion.end.format(DATE_TIME_FORMAT) : null,
       match: posesion.match,
     });
 
@@ -112,8 +113,8 @@ export class PosesionUpdateComponent implements OnInit {
       ...new Posesion(),
       id: this.editForm.get(['id'])!.value,
       team: this.editForm.get(['team'])!.value,
-      paused: this.editForm.get(['paused'])!.value,
-      time: this.editForm.get(['time'])!.value ? dayjs(this.editForm.get(['time'])!.value, DATE_TIME_FORMAT) : undefined,
+      start: this.editForm.get(['start'])!.value ? dayjs(this.editForm.get(['start'])!.value, DATE_TIME_FORMAT) : undefined,
+      end: this.editForm.get(['end'])!.value ? dayjs(this.editForm.get(['end'])!.value, DATE_TIME_FORMAT) : undefined,
       match: this.editForm.get(['match'])!.value,
     };
   }
