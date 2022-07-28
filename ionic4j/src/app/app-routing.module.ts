@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'statistics',
     loadChildren: () => import('./pages/statistics/statistics.module').then(m => m.StatisticsPageModule),
   },
+  {
+    path: 'matches',
+    loadChildren: () => import('./pages/matches/matches.module').then(m => m.MatchesPageModule),
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
