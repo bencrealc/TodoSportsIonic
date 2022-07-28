@@ -30,7 +30,7 @@ public class Posesion implements Serializable {
     private Instant end;
 
     @Transient
-    @JsonIgnoreProperties(value = { "events", "posesions" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "events", "posesions", "teams" }, allowSetters = true)
     private Match match;
 
     @Column("match_id")

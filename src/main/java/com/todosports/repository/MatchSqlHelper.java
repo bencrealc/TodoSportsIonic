@@ -13,6 +13,7 @@ public class MatchSqlHelper {
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
         columns.add(Column.aliased("local", table, columnPrefix + "_local"));
         columns.add(Column.aliased("away", table, columnPrefix + "_away"));
+        columns.add(Column.aliased("match_day", table, columnPrefix + "_match_day"));
 
         return columns;
     }

@@ -27,7 +27,7 @@ public class Event implements Serializable {
     private Boolean team;
 
     @Transient
-    @JsonIgnoreProperties(value = { "events", "posesions" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "events", "posesions", "teams" }, allowSetters = true)
     private Match match;
 
     @Column("match_id")

@@ -22,6 +22,10 @@
         <dd>
           <span>{{ match.away }}</span>
         </dd>
+        <dt><span jhiTranslate="todoSportsIonicApp.match.matchDay">Match Day</span></dt>
+        <dd>
+          <span>{{ match.matchDay | formatMediumDatetime }}</span>
+        </dd>
       </dl>
 
       <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

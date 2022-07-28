@@ -51,6 +51,9 @@ public class MatchServiceImpl implements MatchService {
                 if (match.getAway() != null) {
                     existingMatch.setAway(match.getAway());
                 }
+                if (match.getMatchDay() != null) {
+                    existingMatch.setMatchDay(match.getMatchDay());
+                }
 
                 return existingMatch;
             })

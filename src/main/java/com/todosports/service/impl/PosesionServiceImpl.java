@@ -1,14 +1,9 @@
 package com.todosports.service.impl;
 
-import com.fasterxml.jackson.annotation.JacksonInject.Value;
 import com.todosports.domain.Posesion;
 import com.todosports.repository.PosesionRepository;
 import com.todosports.service.PosesionService;
-//import liquibase.repackaged.net.sf.jsqlparser.expression.DateTimeLiteralExpression.DateTime;
-
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.Date;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -35,39 +30,6 @@ public class PosesionServiceImpl implements PosesionService {
     public Mono<Posesion> save(Posesion posesion) {
         log.debug("Request to save Posesion : {}", posesion);
         return posesionRepository.save(posesion);
-    }
-
-    @Override
-    public Mono<Posesion> close(Posesion posesion) {
-        log.debug("Request to close Posesion : {}", posesion);
-        return posesionRepository
-            .findByMaxStart()
-            .map(existingPosesion -> {
-                existingPosesion.setEnd(posesion.getEnd());
-                return existingPosesion;
-            })
-            .flatMap(posesionRepository::save);
-    }
-
-    @Override
-    public Mono<Posesion> change(Posesion posesion) {
-        return posesionRepository
-            .findByMaxStart()
-            .map(existingPosesion -> {
-                existingPosesion.setEnd(posesion.getStart());
-                return existingPosesion;
-            })
-            .flatMap(posesionRepository::save)
-            .map(savedPosesion -> {
-                if (savedPosesion.getTeam()) {
-                    posesion.setTeam(false);
-                } else {
-                    posesion.setTeam(true);
-                }
-
-                return posesion;
-            })
-            .flatMap(posesionRepository::save);
     }
 
     @Override

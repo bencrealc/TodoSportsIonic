@@ -10,6 +10,7 @@
         "match": "Match",
         "event": "Event",
         "posesion": "Posesion",
+        "team": "Team",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

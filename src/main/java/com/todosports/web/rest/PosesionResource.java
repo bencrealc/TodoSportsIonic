@@ -53,30 +53,23 @@ public class PosesionResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/posesions")
-    public Mono<Posesion> createPosesion(@RequestBody Posesion posesion) throws URISyntaxException {
-        log.debug("REST request to save Posesion : {}", posesion);
-        if (posesion.getId() != null && posesion.getEnd() != null) {
-            throw new BadRequestAlertException("A new posesion cannot already have an ID", ENTITY_NAME, "idexists");
-        }
-        return posesionService.save(posesion);
-    }
-
-    @PostMapping("/posesions/close")
-    public Mono<Posesion> endPosesion(@RequestBody Posesion posesion) throws URISyntaxException {
-        log.debug("REST request to save Posesion : {}", posesion);
-        if (posesion.getId() != null && posesion.getStart() != null) {
-            throw new BadRequestAlertException("A new posesion cannot already have an ID", ENTITY_NAME, "idexists");
-        }
-        return posesionService.close(posesion);
-    }
-
-    @PostMapping("/posesions/change")
-    public Mono<Posesion> changePosesion(@RequestBody Posesion posesion) throws URISyntaxException {
+    public Mono<ResponseEntity<Posesion>> createPosesion(@RequestBody Posesion posesion) throws URISyntaxException {
         log.debug("REST request to save Posesion : {}", posesion);
         if (posesion.getId() != null) {
             throw new BadRequestAlertException("A new posesion cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        return posesionService.change(posesion);
+        return posesionService
+            .save(posesion)
+            .map(result -> {
+                try {
+                    return ResponseEntity
+                        .created(new URI("/api/posesions/" + result.getId()))
+                        .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+                        .body(result);
+                } catch (URISyntaxException e) {
+                    throw new RuntimeException(e);
+                }
+            });
     }
 
     /**

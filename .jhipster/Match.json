@@ -12,6 +12,10 @@
     {
       "fieldName": "away",
       "fieldType": "String"
+    },
+    {
+      "fieldName": "matchDay",
+      "fieldType": "Instant"
     }
   ],
   "fluentMethods": true,
@@ -32,6 +36,13 @@
       "otherEntityRelationshipName": "match",
       "relationshipName": "posesion",
       "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "team",
+      "otherEntityRelationshipName": "match",
+      "ownerSide": false,
+      "relationshipName": "team",
+      "relationshipType": "many-to-many"
     }
   ],
   "service": "serviceImpl"

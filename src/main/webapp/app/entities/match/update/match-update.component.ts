@@ -5,6 +5,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 
+import dayjs from 'dayjs/esm';
+import { DATE_TIME_FORMAT } from 'app/config/input.constants';
+
 import { IMatch, Match } from '../match.model';
 import { MatchService } from '../service/match.service';
 
@@ -19,12 +22,18 @@ export class MatchUpdateComponent implements OnInit {
     id: [],
     local: [],
     away: [],
+    matchDay: [],
   });
 
   constructor(protected matchService: MatchService, protected activatedRoute: ActivatedRoute, protected fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ match }) => {
+      if (match.id === undefined) {
+        const today = dayjs().startOf('day');
+        match.matchDay = today;
+      }
+
       this.updateForm(match);
     });
   }
@@ -67,6 +76,7 @@ export class MatchUpdateComponent implements OnInit {
       id: match.id,
       local: match.local,
       away: match.away,
+      matchDay: match.matchDay ? match.matchDay.format(DATE_TIME_FORMAT) : null,
     });
   }
 
@@ -76,6 +86,7 @@ export class MatchUpdateComponent implements OnInit {
       id: this.editForm.get(['id'])!.value,
       local: this.editForm.get(['local'])!.value,
       away: this.editForm.get(['away'])!.value,
+      matchDay: this.editForm.get(['matchDay'])!.value ? dayjs(this.editForm.get(['matchDay'])!.value, DATE_TIME_FORMAT) : undefined,
     };
   }
 }
