@@ -44,6 +44,15 @@ const routes: Routes = [
         ],
       },
       {
+        path: 'teamCreate',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../team/teamCreate.module').then(m => m.TeamCreatePageModule),
+          },
+        ],
+      },
+      {
         path: '',
         redirectTo: '/tabs/home',
         pathMatch: 'full',

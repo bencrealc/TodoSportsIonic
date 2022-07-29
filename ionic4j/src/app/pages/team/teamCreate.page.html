@@ -1,0 +1,13 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create New Team</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<form (ngSubmit)="save()">
+  <ion-item>
+    <ion-label>Team Name</ion-label>
+    <ion-input type="text" [(ngModel)]="team.name" name="name"></ion-input>
+  </ion-item>
+  <button ion-button type="submit" block>Add Team</button>
+</form>
