@@ -1,9 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Partidos disponibles</ion-title>
+    <ion-title jhiTranslate="todoSportsIonicApp.match.home.title">Matches</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-router-link (click)="partidos()">Partido1</ion-router-link>
+  <ion-grid>
+    <ion-button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+      <ion-icon icon="sync"></ion-icon>
+      <ion-title jhiTranslate="todoSportsIonicApp.match.home.refreshListLabel">Refresh List</ion-title>
+    </ion-button>
+    <ion-button
+      id="jh-create-entity"
+      data-cy="entityCreateButton"
+      class="btn btn-primary jh-create-entity create-match"
+      [routerLink]="['/match/new']"
+    >
+      <ion-icon icon="plus"></ion-icon>
+      <ion-title jhiTranslate="todoSportsIonicApp.match.home.createLabel"> Create a new Match</ion-title>
+    </ion-button>
+  </ion-grid>
 </ion-content>

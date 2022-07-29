@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { PickerController } from '@ionic/angular';
-import { NavController, ToastController } from '@ionic/angular';
-import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
-import { EventsService } from 'src/app/services/events/events.service';
-import { finalize, map } from 'rxjs/operators';
-import { Event } from 'src/app/services/events/event.model';
-import { EventType } from 'src/app/services/events/enumerations/event-type.model';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Match } from 'src/app/services/match/match.model';
 import { MatchService } from 'src/app/services/match/match.service';
+
+import { HttpResponse } from '@angular/common/http';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+//import { MatchDeleteDialogComponent } from '../delete/match-delete-dialog.component';
 
 @Component({
   selector: 'app-matches',
@@ -17,24 +13,41 @@ import { MatchService } from 'src/app/services/match/match.service';
   styleUrls: ['./matches.page.scss'],
 })
 export class MatchesPage implements OnInit {
-  isSaving = false;
-  eventTypeValues = Object.keys(EventType);
+  matches?: Match[];
+  isLoading = false;
 
-  Local: String = new Date().toLocaleString();
+  constructor(protected matchService: MatchService, protected modalService: NgbModal) {}
 
-  constructor(
-    private pickerController: PickerController,
-    public navController: NavController,
-    public eventsService: EventsService,
-    public matchService: MatchService,
-    public toastController: ToastController,
-    public translateService: TranslateService,
-    protected fb: FormBuilder
-  ) {}
+  loadAll(): void {
+    this.isLoading = true;
 
-  ngOnInit() {}
-
-  partidos() {
-    console.log(this.matchService.query());
+    this.matchService.query().subscribe({
+      next: (res: HttpResponse<Match[]>) => {
+        this.isLoading = false;
+        this.matches = res.body ?? [];
+      },
+      error: () => {
+        this.isLoading = false;
+      },
+    });
   }
+
+  ngOnInit(): void {
+    this.loadAll();
+  }
+
+  trackId(_index: number, item: Match): number {
+    return item.id!;
+  }
+  /*
+  delete(match: Match): void {
+    const modalRef = this.modalService.open(MatchDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.match = match;
+    // unsubscribe not needed because closed completes on modal close
+    modalRef.closed.subscribe(reason => {
+      if (reason === 'deleted') {
+        this.loadAll();
+      }
+    });
+  }*/
 }

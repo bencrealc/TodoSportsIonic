@@ -16,3 +16,6 @@ export class Match {
     this.posesion = posesion ? posesion : null;
   }
 }
+export function getMatchIdentifier(match: Match): number | undefined {
+  return match.id;
+}
