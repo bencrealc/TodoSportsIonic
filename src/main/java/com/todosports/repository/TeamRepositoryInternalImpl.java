@@ -114,7 +114,7 @@ class TeamRepositoryInternalImpl extends SimpleR2dbcRepository<Team, Long> imple
 
     @Override
     public <S extends Team> Mono<S> save(S entity) {
-        return super.save(entity).flatMap((S e) -> updateRelations(e));
+        return super.save(entity);
     }
 
     protected <S extends Team> Mono<S> updateRelations(S entity) {

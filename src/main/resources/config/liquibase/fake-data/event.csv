@@ -1,11 +1,1 @@
 id;event_type;team
-1;CORNER;false
-2;FUERA_DE_JUEGO;false
-3;CORNER;true
-4;AMARILLA;true
-5;ROJA;true
-6;FALTA;false
-7;ROJA;false
-8;FUERA_DE_JUEGO;true
-9;FUERA_DE_JUEGO;true
-10;CORNER;true

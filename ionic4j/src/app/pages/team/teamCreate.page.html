@@ -4,10 +4,10 @@
   </ion-toolbar>
 </ion-header>
 
-<form (ngSubmit)="save()">
+<form [formGroup]="team" (ngSubmit)="save()">
   <ion-item>
-    <ion-label>Team Name</ion-label>
-    <ion-input type="text" [(ngModel)]="team.name" name="name"></ion-input>
+    <ion-label>Team Name:</ion-label>
+    <ion-input type="text" formControlName="name"></ion-input>
   </ion-item>
   <button ion-button type="submit" block>Add Team</button>
 </form>

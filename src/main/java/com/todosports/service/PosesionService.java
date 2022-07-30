@@ -1,7 +1,6 @@
 package com.todosports.service;
 
 import com.todosports.domain.Posesion;
-import java.util.List;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -16,6 +15,10 @@ public interface PosesionService {
      * @return the persisted entity.
      */
     Mono<Posesion> save(Posesion posesion);
+
+    Mono<Posesion> close(Posesion posesion);
+
+    Mono<Posesion> change(Posesion posesion);
 
     /**
      * Updates a posesion.

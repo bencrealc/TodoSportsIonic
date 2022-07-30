@@ -53,23 +53,12 @@ public class TeamResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/teams")
-    public Mono<ResponseEntity<Team>> createTeam(@RequestBody Team team) throws URISyntaxException {
+    public Mono<Team> createTeam(@RequestBody Team team) throws URISyntaxException {
         log.debug("REST request to save Team : {}", team);
         if (team.getId() != null) {
             throw new BadRequestAlertException("A new team cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        return teamService
-            .save(team)
-            .map(result -> {
-                try {
-                    return ResponseEntity
-                        .created(new URI("/api/teams/" + result.getId()))
-                        .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
-                        .body(result);
-                } catch (URISyntaxException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+        return teamService.save(team);
     }
 
     /**

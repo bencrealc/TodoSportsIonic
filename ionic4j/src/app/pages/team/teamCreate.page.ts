@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { EventsService } from 'src/app/services/events/events.service';
 import { finalize } from 'rxjs/operators';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { TeamService } from 'src/app/services/team/team.service';
 import { Team } from 'src/app/services/team/team.model';
 
@@ -15,21 +15,25 @@ import { Team } from 'src/app/services/team/team.model';
 })
 export class TeamCreatePage implements OnInit {
   isSaving = false;
+  private team: FormGroup;
 
   constructor(
     public teamService: TeamService,
     public navController: NavController,
-    public eventsService: EventsService,
     public toastController: ToastController,
     public translateService: TranslateService,
     protected fb: FormBuilder
-  ) {}
+  ) {
+    this.team = this.fb.group({
+      name: [''],
+    });
+  }
 
   ngOnInit() {}
-  save(name): void {
+  save(): void {
     this.isSaving = true;
-    const event = this.createFrom(name);
-    this.subscribeToSaveResponse(this.eventsService.create(event));
+    const team = this.createFrom(this.team.value['name']);
+    this.subscribeToSaveResponse(this.teamService.create(team));
   }
 
   protected subscribeToSaveResponse(result: Observable<ArrayBuffer>): void {
