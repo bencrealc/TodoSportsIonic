@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Match } from 'src/app/services/match/match.model';
 import { MatchService } from 'src/app/services/match/match.service';
-
-import { HttpResponse } from '@angular/common/http';
+import { finalize, map, tap } from 'rxjs/operators';
+import { from, Observable, of } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 //import { MatchDeleteDialogComponent } from '../delete/match-delete-dialog.component';
@@ -15,39 +15,21 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class MatchesPage implements OnInit {
   matches?: Match[];
   isLoading = false;
+  //observable$: Observable<ArrayBuffer> = this.matchService.query();
 
-  constructor(protected matchService: MatchService, protected modalService: NgbModal) {}
+  constructor(protected matchService: MatchService, protected modalService: NgbModal) {
+    // this.observable$.pipe(tap(res => this.matches = res));
+  }
 
+  ngOnInit() {}
   loadAll(): void {
     this.isLoading = true;
 
-    this.matchService.query().subscribe({
-      next: (res: HttpResponse<Match[]>) => {
-        this.isLoading = false;
-        this.matches = res.body ?? [];
-      },
-      error: () => {
-        this.isLoading = false;
-      },
-    });
-  }
-
-  ngOnInit(): void {
-    this.loadAll();
+    //this.matchService.query().subscribe(partidos=>this.matches=partidos);
+    //this.matches=this.matchService.query();
   }
 
   trackId(_index: number, item: Match): number {
     return item.id!;
   }
-  /*
-  delete(match: Match): void {
-    const modalRef = this.modalService.open(MatchDeleteDialogComponent, { size: 'lg', backdrop: 'static' });
-    modalRef.componentInstance.match = match;
-    // unsubscribe not needed because closed completes on modal close
-    modalRef.closed.subscribe(reason => {
-      if (reason === 'deleted') {
-        this.loadAll();
-      }
-    });
-  }*/
 }

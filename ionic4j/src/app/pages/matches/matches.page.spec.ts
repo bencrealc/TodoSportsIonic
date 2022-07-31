@@ -1,46 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { HttpHeaders, HttpResponse } from '@angular/common/http';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { of } from 'rxjs';
-
-import { MatchService } from 'src/app/services/match/match.service';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { IonicModule } from '@ionic/angular';
 
 import { MatchesPage } from './matches.page';
 
-describe('Match Management Component', () => {
-  let comp: MatchesPage;
+describe('StatisticsPage', () => {
+  let component: MatchesPage;
   let fixture: ComponentFixture<MatchesPage>;
-  let service: MatchService;
 
-  beforeEach(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
       declarations: [MatchesPage],
-    })
-      .overrideTemplate(MatchesPage, '')
-      .compileComponents();
+      imports: [IonicModule.forRoot()],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(MatchesPage);
-    comp = fixture.componentInstance;
-    service = TestBed.inject(MatchService);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  }));
 
-    const headers = new HttpHeaders();
-    jest.spyOn(service, 'query').mockReturnValue(
-      of(
-        new HttpResponse({
-          body: [{ id: 123 }],
-          headers,
-        })
-      )
-    );
-  });
-
-  it('Should call load all on init', () => {
-    // WHEN
-    comp.ngOnInit();
-
-    // THEN
-    expect(service.query).toHaveBeenCalled();
-    expect(comp.matches?.[0]).toEqual(expect.objectContaining({ id: 123 }));
+  it('should return a list of Match', () => {
+    expect(component).toBeTruthy();
   });
 });
