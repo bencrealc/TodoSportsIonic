@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Matches</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-button class="refresh" (click)="loadAll()" [disabled]="isLoading">
+      <ion-icon icon="sync"></ion-icon>
+      <ion-title>Refresh List</ion-title>
+    </ion-button>
+    <ion-button id="jh-create-entity" data-cy="entityCreateButton" class="create-match" [routerLink]="['/match/new']">
+      <ion-icon name="add-circle"></ion-icon>
+      <ion-title> Create a new Match</ion-title>
+    </ion-button>
+  </div>
+  <div class="alert alert-warning" id="no-result" *ngIf="matches?.length === 0">
+    <ion-title>No matches found</ion-title>
+  </div>
+
+  <div class="table-responsive" id="entities">
+    <ion-row>
+      <ion-col scope="col"><ion-title>ID</ion-title></ion-col>
+      <ion-col scope="col"><ion-title>Local</ion-title></ion-col>
+      <ion-col scope="col"><ion-title>Away</ion-title></ion-col>
+      <ion-col scope="col"></ion-col>
+    </ion-row>
+    <ion-row *ngFor="let match of matches; trackBy: trackId" data-cy="entityTable">
+      <ion-col>{{ match.id }}</ion-col>
+      <ion-col>{{ match.local }}</ion-col>
+      <ion-col>{{ match.away }}</ion-col>
+    </ion-row>
+  </div>
+</ion-content>
