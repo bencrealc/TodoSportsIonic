@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+  <<<<<<< HEAD
   <div>
     <ion-button class="refresh" (click)="loadAll()" [disabled]="isLoading">
       <ion-icon icon="sync"></ion-icon>
@@ -15,6 +16,7 @@
       <ion-title> Create a new Match</ion-title>
     </ion-button>
   </div>
+  ======= >>>>>>> bencrealc
   <div class="alert alert-warning" id="no-result" *ngIf="matches?.length === 0">
     <ion-title>No matches found</ion-title>
   </div>
@@ -26,7 +28,7 @@
       <ion-col scope="col"><ion-title>Away</ion-title></ion-col>
       <ion-col scope="col"></ion-col>
     </ion-row>
-    <ion-row *ngFor="let match of matches; trackBy: trackId" data-cy="entityTable">
+    <ion-row *ngFor="let match of matches; trackBy: trackId" #slidingItem>
       <ion-col>{{ match.id }}</ion-col>
       <ion-col>{{ match.local }}</ion-col>
       <ion-col>{{ match.away }}</ion-col>

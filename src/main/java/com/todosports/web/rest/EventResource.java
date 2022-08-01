@@ -53,12 +53,23 @@ public class EventResource {
      * @throws URISyntaxException if the Location URI syntax is incorrect.
      */
     @PostMapping("/events")
-    public Mono<Event> createEvent(@RequestBody Event event) throws URISyntaxException {
+    public Mono<ResponseEntity<Event>> createEvent(@RequestBody Event event) throws URISyntaxException {
         log.debug("REST request to save Event : {}", event);
         if (event.getId() != null) {
             throw new BadRequestAlertException("A new event cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        return eventService.save(event);
+        return eventService
+            .save(event)
+            .map(result -> {
+                try {
+                    return ResponseEntity
+                        .created(new URI("/api/events/" + result.getId()))
+                        .headers(HeaderUtil.createEntityCreationAlert(applicationName, true, ENTITY_NAME, result.getId().toString()))
+                        .body(result);
+                } catch (URISyntaxException e) {
+                    throw new RuntimeException(e);
+                }
+            });
     }
 
     /**

@@ -3,6 +3,7 @@ package com.todosports.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
+import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
 import org.springframework.data.annotation.Id;
@@ -24,10 +25,13 @@ public class Match implements Serializable {
     private Long id;
 
     @Column("local")
-    private String local;
+    private Team local;
 
     @Column("away")
-    private String away;
+    private Team away;
+
+    @Column("match_day")
+    private Instant matchDay;
 
     @Transient
     @JsonIgnoreProperties(value = { "match" }, allowSetters = true)
@@ -52,30 +56,43 @@ public class Match implements Serializable {
         this.id = id;
     }
 
-    public String getLocal() {
+    public Team getLocal() {
         return this.local;
     }
 
-    public Match local(String local) {
+    public Match local(Team local) {
         this.setLocal(local);
         return this;
     }
 
-    public void setLocal(String local) {
+    public void setLocal(Team local) {
         this.local = local;
     }
 
-    public String getAway() {
+    public Team getAway() {
         return this.away;
     }
 
-    public Match away(String away) {
+    public Match away(Team away) {
         this.setAway(away);
         return this;
     }
 
-    public void setAway(String away) {
+    public void setAway(Team away) {
         this.away = away;
+    }
+
+    public Instant getMatchDay() {
+        return this.matchDay;
+    }
+
+    public Match matchDay(Instant matchDay) {
+        this.setMatchDay(matchDay);
+        return this;
+    }
+
+    public void setMatchDay(Instant matchDay) {
+        this.matchDay = matchDay;
     }
 
     public Set<Event> getEvents() {
@@ -166,6 +183,7 @@ public class Match implements Serializable {
             "id=" + getId() +
             ", local='" + getLocal() + "'" +
             ", away='" + getAway() + "'" +
+            ", matchDay='" + getMatchDay() + "'" +
             "}";
     }
 }

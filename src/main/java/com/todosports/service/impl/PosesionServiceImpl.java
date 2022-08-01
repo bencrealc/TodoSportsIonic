@@ -1,14 +1,8 @@
 package com.todosports.service.impl;
 
-import com.fasterxml.jackson.annotation.JacksonInject.Value;
 import com.todosports.domain.Posesion;
 import com.todosports.repository.PosesionRepository;
 import com.todosports.service.PosesionService;
-//import liquibase.repackaged.net.sf.jsqlparser.expression.DateTimeLiteralExpression.DateTime;
-
-import java.time.Instant;
-import java.time.LocalDate;
-import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

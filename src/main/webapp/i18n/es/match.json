@@ -20,8 +20,10 @@
       "id": "ID",
       "local": "Local",
       "away": "Away",
+      "matchDay": "Match Day",
       "event": "Event",
-      "posesion": "Posesion"
+      "posesion": "Posesion",
+      "team": "Team"
     }
   }
 }

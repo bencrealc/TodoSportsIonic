@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api/api.service';
-import { Posesion } from './posesion.model';
 
 @Injectable({
   providedIn: 'root',
