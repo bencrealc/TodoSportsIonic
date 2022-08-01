@@ -22,4 +22,13 @@
       <ion-col>{{ match.away }}</ion-col>
     </ion-row>
   </div>
+  <ion-button
+    id="jh-create-entity"
+    data-cy="entityCreateButton"
+    class="btn btn-primary jh-create-entity create-match"
+    [routerLink]="['/matches/new']"
+  >
+    <ion-icon icon="add-circle"></ion-icon>
+    <ion-title> Create a new Match</ion-title>
+  </ion-button>
 </ion-content>
