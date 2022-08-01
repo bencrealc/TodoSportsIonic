@@ -35,6 +35,15 @@ const routes: Routes = [
         ],
       },
       {
+        path: 'matches',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../matches/matches.module').then(m => m.MatchesPageModule),
+          },
+        ],
+      },
+      {
         path: 'teamCreate',
         children: [
           {

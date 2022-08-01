@@ -47,6 +47,7 @@
     "@ionic/angular": "^6.1.15",
     "@ngx-translate/core": "14.0.0",
     "@ngx-translate/http-loader": "7.0.0",
+    "dayjs": "^1.11.4",
     "ngx-webstorage": "9.0.0",
     "rxjs": "~6.6.7",
     "ts-sql-query": "^1.30.0",

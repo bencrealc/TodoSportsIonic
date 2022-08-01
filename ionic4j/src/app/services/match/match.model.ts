@@ -8,9 +8,9 @@ export class Match {
   public away?: Team;
   public matchDay?: Date;
   public events?: Event[];
-  public posesion?: Posesion;
+  public posesion?: Posesion[];
 
-  constructor(id?: number, local?: Team, away?: Team, matchDay?: Date, events?: Event[], posesion?: Posesion) {
+  constructor(id?: number, local?: Team, away?: Team, matchDay?: Date, events?: Event[], posesion?: Posesion[]) {
     this.id = id ? id : null;
     this.local = local ? local : null;
     this.away = away ? away : null;

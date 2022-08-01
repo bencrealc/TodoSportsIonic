@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Match } from 'src/app/services/match/match.model';
 import { MatchService } from 'src/app/services/match/match.service';
-import { finalize, map, tap } from 'rxjs/operators';
-import { from, Observable, of } from 'rxjs';
+import { filter, map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { HttpResponse } from '@angular/common/http';
 
 //import { MatchDeleteDialogComponent } from '../delete/match-delete-dialog.component';
 
@@ -21,12 +21,23 @@ export class MatchesPage implements OnInit {
     // this.observable$.pipe(tap(res => this.matches = res));
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadAll();
+    console.log(this.matches);
+  }
+
   loadAll(): void {
     this.isLoading = true;
 
-    //this.matchService.query().subscribe(partidos=>this.matches=partidos);
-    //this.matches=this.matchService.query();
+    this.matchService.get().subscribe({
+      next: (res: HttpResponse<Match[]>) => {
+        this.isLoading = false;
+        this.matches = res.body ?? [];
+      },
+      error: () => {
+        this.isLoading = false;
+      },
+    });
   }
 
   trackId(_index: number, item: Match): number {
