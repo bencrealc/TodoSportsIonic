@@ -5,18 +5,6 @@
 </ion-header>
 
 <ion-content>
-  <<<<<<< HEAD
-  <div>
-    <ion-button class="refresh" (click)="loadAll()" [disabled]="isLoading">
-      <ion-icon icon="sync"></ion-icon>
-      <ion-title>Refresh List</ion-title>
-    </ion-button>
-    <ion-button id="jh-create-entity" data-cy="entityCreateButton" class="create-match" [routerLink]="['/matches/new']">
-      <ion-icon name="add-circle"></ion-icon>
-      <ion-title> Create a new Match</ion-title>
-    </ion-button>
-  </div>
-  ======= >>>>>>> bencrealc
   <div class="alert alert-warning" id="no-result" *ngIf="matches?.length === 0">
     <ion-title>No matches found</ion-title>
   </div>
