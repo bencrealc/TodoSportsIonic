@@ -15,6 +15,10 @@ const routes: Routes = [
     path: 'matches',
     loadChildren: () => import('./pages/matches/matches.module').then(m => m.MatchesPageModule),
   },
+  {
+    path: 'matches/new',
+    loadChildren: () => import('./pages/matches/new/matchesnew.module').then(m => m.MatchesNewPageModule),
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
