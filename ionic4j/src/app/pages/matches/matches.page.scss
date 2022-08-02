@@ -1,30 +1,31 @@
-.refresh {
-  --background: #2d63c8;
-  margin-left: 33%;
-  margin-right: 30%;
-  font-size: 14px;
+.padre {
+  display: flex;
+}
+
+.new-btn {
+  --background: #00cccc;
   white-space: normal;
-  --color: #fff;
 }
-.posvisit-btn {
-  --background: #f06243;
-  font-size: 15px;
-  white-space: normal;
-  margin-left: 33%;
-  margin-right: 30%;
-  --color: #fff;
+.first {
+  background-color: #e0fafa;
+  color: #000;
+  border: 1px solid #eee;
+  padding: 12px 35px;
+  border-collapse: collapse;
 }
-.cambio-btn {
-  --background: #ffff43;
-  font-size: 15px;
-  margin-left: 33%;
-  margin-right: 30%;
-  --color: #000;
+.table-responsive {
+  font-family: 'Arial';
+  margin: 25px auto;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+  text-align: center;
+  border-bottom: 2px solid #00cccc;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05),
+    0px 30px 20px rgba(0, 0, 0, 0.05);
 }
-.create-match {
-  --background: #49ff43;
-  margin-left: 33%;
-  margin-right: 30%;
-  font-size: 15px;
-  --color: #000;
+.second {
+  color: #959595;
+  border: 1px solid #eee;
+  padding: 12px 35px;
+  border-collapse: collapse;
 }
