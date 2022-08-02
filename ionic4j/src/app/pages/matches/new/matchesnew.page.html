@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create New Match</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<form [formGroup]="match" (ngSubmit)="save()">
+  <ion-item>
+    <ion-select interface="popover" formControlName="local" placeholder="Local Team:">
+      <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-select interface="popover" formControlName="visitante" placeholder="Away Team:">
+      <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-datetime formControlName="fecha" first-day-of-week="1"></ion-datetime>
+  </ion-item>
+  <ion-button class="new-match" type="submit" block>Add Match</ion-button>
+</form>

@@ -10,6 +10,7 @@ import { EventType } from 'src/app/services/events/enumerations/event-type.model
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Posesion } from 'src/app/services/posesion/posesion.model';
 import { PosesionService } from 'src/app/services/posesion/posesion.service';
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
 @Component({
   selector: 'app-statistics',
@@ -29,8 +30,11 @@ export class StatisticsPage implements OnInit {
     public posesionService: PosesionService,
     public toastController: ToastController,
     public translateService: TranslateService,
-    protected fb: FormBuilder
-  ) {}
+    protected fb: FormBuilder,
+    private screenOrientation: ScreenOrientation
+  ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
+  }
 
   ngOnInit() {}
 
