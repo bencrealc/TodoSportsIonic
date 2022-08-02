@@ -14,10 +14,10 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="local" type="varchar(255)">
+            <column name="local_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="away" type="varchar(255)">
+            <column name="away_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="match_day" type="${datetimeType}">
@@ -45,8 +45,6 @@
                   tableName="match"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="local" type="string"/>
-            <column name="away" type="string"/>
             <column name="match_day" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>

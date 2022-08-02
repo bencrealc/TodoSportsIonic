@@ -20,21 +20,6 @@
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
     </changeSet>
-
-    <changeSet id="20220728182314-1-relations" author="jhipster">
-
-        <createTable tableName="rel_team__match">
-            <column name="match_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="team_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
-
-        <addPrimaryKey columnNames="team_id, match_id" tableName="rel_team__match"/>
-    </changeSet>
-
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 
     <!--

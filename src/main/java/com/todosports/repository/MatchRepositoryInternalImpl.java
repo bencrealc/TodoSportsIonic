@@ -4,6 +4,7 @@ import static org.springframework.data.relational.core.query.Criteria.where;
 
 import com.todosports.domain.Match;
 import com.todosports.repository.rowmapper.MatchRowMapper;
+import com.todosports.repository.rowmapper.TeamRowMapper;
 import io.r2dbc.spi.Row;
 import io.r2dbc.spi.RowMetadata;
 import java.time.Instant;
@@ -44,6 +45,7 @@ class MatchRepositoryInternalImpl extends SimpleR2dbcRepository<Match, Long> imp
     private final EntityManager entityManager;
 
     private final MatchRowMapper matchMapper;
+    private final TeamRowMapper teamMapper;
 
     private static final Table entityTable = Table.aliased("match", EntityManager.ENTITY_ALIAS);
 
@@ -51,6 +53,7 @@ class MatchRepositoryInternalImpl extends SimpleR2dbcRepository<Match, Long> imp
         R2dbcEntityTemplate template,
         EntityManager entityManager,
         MatchRowMapper matchMapper,
+        TeamRowMapper teamMapper,
         R2dbcEntityOperations entityOperations,
         R2dbcConverter converter
     ) {
@@ -63,6 +66,7 @@ class MatchRepositoryInternalImpl extends SimpleR2dbcRepository<Match, Long> imp
         this.r2dbcEntityTemplate = template;
         this.entityManager = entityManager;
         this.matchMapper = matchMapper;
+        this.teamMapper = teamMapper;
     }
 
     @Override
@@ -91,6 +95,8 @@ class MatchRepositoryInternalImpl extends SimpleR2dbcRepository<Match, Long> imp
 
     private Match process(Row row, RowMetadata metadata) {
         Match entity = matchMapper.apply(row, "e");
+        entity.setLocal(teamMapper.apply(row, "local"));
+        entity.setAway(teamMapper.apply(row, "away"));
         return entity;
     }
 

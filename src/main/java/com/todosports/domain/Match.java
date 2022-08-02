@@ -24,11 +24,19 @@ public class Match implements Serializable {
     @Column("id")
     private Long id;
 
-    @Column("local")
+    @Transient
+    @JsonIgnoreProperties(value = { "teams" }, allowSetters = true)
     private Team local;
 
-    @Column("away")
+    @Column("local_id")
+    private Long localId;
+
+    @Transient
+    @JsonIgnoreProperties(value = { "teams" }, allowSetters = true)
     private Team away;
+
+    @Column("away_id")
+    private Long awayId;
 
     @Column("match_day")
     private Instant matchDay;
@@ -60,17 +68,36 @@ public class Match implements Serializable {
         return this.local;
     }
 
+    public void setLocal(Team local) {
+        this.local = local;
+        this.localId = local != null ? local.getId() : null;
+    }
+
     public Match local(Team local) {
         this.setLocal(local);
         return this;
     }
 
-    public void setLocal(Team local) {
-        this.local = local;
+    public Long getLocalId() {
+        return this.localId;
+    }
+
+    public Match localId(Long localId) {
+        this.setLocalId(localId);
+        return this;
+    }
+
+    public void setLocalId(Long localId) {
+        this.localId = localId;
     }
 
     public Team getAway() {
         return this.away;
+    }
+
+    public void setAway(Team away) {
+        this.away = away;
+        this.awayId = away != null ? away.getId() : null;
     }
 
     public Match away(Team away) {
@@ -78,8 +105,17 @@ public class Match implements Serializable {
         return this;
     }
 
-    public void setAway(Team away) {
-        this.away = away;
+    public Long getAwayId() {
+        return this.awayId;
+    }
+
+    public Match awayId(Long awayId) {
+        this.setAwayId(awayId);
+        return this;
+    }
+
+    public void setAwayId(Long awayId) {
+        this.awayId = awayId;
     }
 
     public Instant getMatchDay() {
@@ -181,8 +217,8 @@ public class Match implements Serializable {
     public String toString() {
         return "Match{" +
             "id=" + getId() +
-            ", local='" + getLocal() + "'" +
-            ", away='" + getAway() + "'" +
+            ", local='" + getLocalId() + "'" +
+            ", away='" + getAwayId() + "'" +
             ", matchDay='" + getMatchDay() + "'" +
             "}";
     }
