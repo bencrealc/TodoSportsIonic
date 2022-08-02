@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { EventsService } from 'src/app/services/events/events.service';
 import { finalize } from 'rxjs/operators';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatchService } from 'src/app/services/match/match.service';
 import { Match } from 'src/app/services/match/match.model';
 import { TeamService } from 'src/app/services/team/team.service';
@@ -22,6 +22,9 @@ export class MatchesNewPage implements OnInit {
   isSaving = false;
   private match: FormGroup;
   teams?: Team[];
+  isSubmitted = false;
+  fecha = new Date(new Date().setHours(new Date().getHours() + 26));
+  defaultDate: string = this.fecha.toISOString();
 
   constructor(
     public matchService: MatchService,
@@ -43,9 +46,28 @@ export class MatchesNewPage implements OnInit {
     });
   }
 
-  ngOnInit() {}
-  save(): void {
+  ngOnInit() {
+    console.log(this.defaultDate);
+
+    this.match = this.fb.group({
+      local: ['', [Validators.required]],
+      visitante: ['', [Validators.required]],
+      fecha: ['', [Validators.required]],
+    });
+  }
+  get errorControl() {
+    return this.match.controls;
+  }
+
+  save() {
     this.isSaving = true;
+    this.isSubmitted = true;
+    if (!this.match.valid) {
+      console.log('Please provide all the required values!');
+      return false;
+    } else {
+      console.log(this.match.value);
+    }
 
     const date = this.stringToDate(this.match.value['fecha']);
     const eqlocal = this.teams.find(item => item.name === this.match.value['local']);
