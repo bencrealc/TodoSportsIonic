@@ -11,6 +11,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Posesion } from 'src/app/services/posesion/posesion.model';
 import { PosesionService } from 'src/app/services/posesion/posesion.service';
 import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-statistics',
@@ -20,8 +21,7 @@ import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/n
 export class StatisticsPage implements OnInit {
   isSaving = false;
   eventTypeValues = Object.keys(EventType);
-
-  Local: String = new Date().toLocaleString();
+  id;
 
   constructor(
     private pickerController: PickerController,
@@ -31,12 +31,17 @@ export class StatisticsPage implements OnInit {
     public toastController: ToastController,
     public translateService: TranslateService,
     protected fb: FormBuilder,
-    private screenOrientation: ScreenOrientation
+    private screenOrientation: ScreenOrientation,
+    private route: ActivatedRoute
   ) {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.LANDSCAPE);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.id = params.id;
+    });
+  }
 
   async inicioButton() {
     const toastLocal = await this.toastController.create({
@@ -129,51 +134,54 @@ export class StatisticsPage implements OnInit {
 
   save(eventTypeValue, teamValue): void {
     this.isSaving = true;
-    const event = this.createFromForm(eventTypeValue, teamValue);
+    const event = this.createFromForm(eventTypeValue, teamValue, this.id);
     this.subscribeToSaveResponse(this.eventsService.create(event));
   }
 
   saveInicio(teamValue): void {
     this.isSaving = true;
-    const posesion = this.createFromPosesion(teamValue, new Date());
+    const posesion = this.createFromPosesion(teamValue, new Date(), this.id);
     this.subscribeToSaveResponse(this.posesionService.create(posesion));
   }
 
   saveFinal(): void {
     this.isSaving = true;
     //const teamValue = this.posesionService.query();
-    const event = this.closeFromPosesion(null, new Date());
+    const event = this.closeFromPosesion(null, new Date(), this.id);
     this.subscribeToSaveResponse(this.posesionService.close(event));
   }
 
   saveChange(): void {
     this.isSaving = true;
     //const teamValue = this.posesionService.query();
-    const event = this.createFromPosesion(null, new Date());
+    const event = this.createFromPosesion(null, new Date(), this.id);
     this.subscribeToSaveResponse(this.posesionService.change(event));
   }
 
-  protected createFromForm(eventTypeValue, teamValue): Event {
+  protected createFromForm(eventTypeValue, teamValue, id): Event {
     return {
       ...new Event(),
       eventType: eventTypeValue,
       team: teamValue,
+      matchId: id,
     };
   }
 
-  protected createFromPosesion(teamValue, timeValue): Posesion {
+  protected createFromPosesion(teamValue, timeValue, id): Posesion {
     return {
       ...new Posesion(),
       team: teamValue,
       start: timeValue,
+      matchId: id,
     };
   }
 
-  protected closeFromPosesion(teamValue, timeValue): Posesion {
+  protected closeFromPosesion(teamValue, timeValue, id): Posesion {
     return {
       ...new Posesion(),
       team: teamValue,
       end: timeValue,
+      matchId: id,
     };
   }
 

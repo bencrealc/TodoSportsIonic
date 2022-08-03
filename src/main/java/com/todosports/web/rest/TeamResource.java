@@ -174,10 +174,9 @@ public class TeamResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the team, or with status {@code 404 (Not Found)}.
      */
     @GetMapping("/teams/{id}")
-    public Mono<ResponseEntity<Team>> getTeam(@PathVariable Long id) {
+    public Mono<Team> getTeam(@PathVariable Long id) {
         log.debug("REST request to get Team : {}", id);
-        Mono<Team> team = teamService.findOne(id);
-        return ResponseUtil.wrapOrNotFound(team);
+        return teamService.findOne(id);
     }
 
     /**

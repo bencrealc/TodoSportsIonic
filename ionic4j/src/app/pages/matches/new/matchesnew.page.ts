@@ -81,7 +81,8 @@ export class MatchesNewPage implements OnInit {
     const eqlocal = this.teams.find(item => item.name === this.match.value['local']);
     const visit = this.teams.find(item => item.name === this.match.value['visitante']);
 
-    const match = this.createFrom(eqlocal, visit, date, null, null);
+    const match = this.createFrom(eqlocal, visit, date, eqlocal.id, visit.id);
+    console.log(match);
     this.subscribeToSaveResponse(this.matchService.create(match));
     if (this.isSubmitted) {
       this.router.navigate(['/tabs/matches']);
@@ -95,20 +96,19 @@ export class MatchesNewPage implements OnInit {
     });
   }
 
-  protected createFrom(local, visit, fecha, events, posesion): Match {
+  protected createFrom(local, visit, fecha, localId, awayId): Match {
     return {
       ...new Match(),
       local: local,
-      away: visit,
+      localId: localId,
+      awayId: awayId,
       matchDay: fecha,
-      events: events,
-      posesion: posesion,
     };
   }
   protected stringToDate(dateFromIonDatetime): Date {
     //const dateFromIonDatetime = this.match.value['fecha']; //2022-08-18T22:48:00+02:00
     const [dateComponents, hora] = dateFromIonDatetime.split('T');
-    const [timeComponents, zona] = hora.split('+');
+    const [timeComponents] = hora.split('+');
     const [year, month, day] = dateComponents.split('-');
     const [hours, minutes, seconds] = timeComponents.split(':');
     const date = new Date(+year, +month - 1, +day, +hours + 2, +minutes, +seconds);

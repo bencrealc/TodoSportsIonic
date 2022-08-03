@@ -19,4 +19,8 @@ export class TeamService {
   get() {
     return this.http.get<Team[]>(ApiService.API_URL + '/teams', { observe: 'response' });
   }
+
+  getById(id) {
+    return this.http.get<Team>(ApiService.API_URL + '/teams/' + id, { observe: 'response' });
+  }
 }

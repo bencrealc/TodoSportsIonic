@@ -26,15 +26,6 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'stats',
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('../statistics/statistics.module').then(m => m.StatisticsPageModule),
-          },
-        ],
-      },
-      {
         path: 'matches',
         children: [
           {

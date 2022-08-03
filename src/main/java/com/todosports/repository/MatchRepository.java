@@ -18,7 +18,7 @@ public interface MatchRepository extends ReactiveCrudRepository<Match, Long>, Ma
     @Override
     <S extends Match> Mono<S> save(S entity);
 
-    @Override
+    @Query("SELECT * FROM match entity")
     Flux<Match> findAll();
 
     @Override
