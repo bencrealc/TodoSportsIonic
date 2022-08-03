@@ -17,11 +17,15 @@
       <ion-col scope="col"><ion-title>Local Team</ion-title></ion-col>
       <ion-col scope="col"><ion-title>Away Team</ion-title></ion-col>
       <ion-col scope="col"><ion-title>Date</ion-title></ion-col>
+      <ion-col scope="col"></ion-col>
     </ion-row>
     <ion-row *ngFor="let match of matches; trackBy: trackId" #slidingItem class="second">
       <ion-col>{{ match.local }}</ion-col>
       <ion-col>{{ match.away }}</ion-col>
       <ion-col>{{ match.matchDay }}</ion-col>
+      <ion-col
+        ><ion-button class="stats" [routerLink]="['/tabs/stats']"><ion-icon icon="add-circle"></ion-icon>Statistics</ion-button></ion-col
+      >
     </ion-row>
   </div>
 </ion-content>

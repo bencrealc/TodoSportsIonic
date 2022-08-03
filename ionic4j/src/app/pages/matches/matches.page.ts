@@ -15,11 +15,8 @@ import { HttpResponse } from '@angular/common/http';
 export class MatchesPage implements OnInit {
   matches?: Match[];
   isLoading = false;
-  //observable$: Observable<ArrayBuffer> = this.matchService.query();
 
-  constructor(protected matchService: MatchService, protected modalService: NgbModal) {
-    // this.observable$.pipe(tap(res => this.matches = res));
-  }
+  constructor(protected matchService: MatchService, protected modalService: NgbModal) {}
 
   ngOnInit() {
     this.loadAll();
