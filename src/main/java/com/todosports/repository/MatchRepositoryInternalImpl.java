@@ -27,6 +27,7 @@ import org.springframework.data.relational.core.sql.Conditions;
 import org.springframework.data.relational.core.sql.Expression;
 import org.springframework.data.relational.core.sql.Select;
 import org.springframework.data.relational.core.sql.SelectBuilder.SelectFromAndJoin;
+import org.springframework.data.relational.core.sql.SelectBuilder.SelectFromAndJoinCondition;
 import org.springframework.data.relational.core.sql.Table;
 import org.springframework.data.relational.repository.support.MappingRelationalEntityInformation;
 import org.springframework.r2dbc.core.DatabaseClient;
@@ -48,6 +49,7 @@ class MatchRepositoryInternalImpl extends SimpleR2dbcRepository<Match, Long> imp
     private final TeamRowMapper teamMapper;
 
     private static final Table entityTable = Table.aliased("match", EntityManager.ENTITY_ALIAS);
+    private static final Table teamTable = Table.aliased("team", "e_team");
 
     public MatchRepositoryInternalImpl(
         R2dbcEntityTemplate template,
@@ -76,7 +78,14 @@ class MatchRepositoryInternalImpl extends SimpleR2dbcRepository<Match, Long> imp
 
     RowsFetchSpec<Match> createQuery(Pageable pageable, Condition whereClause) {
         List<Expression> columns = MatchSqlHelper.getColumns(entityTable, EntityManager.ENTITY_ALIAS);
-        SelectFromAndJoin selectFrom = Select.builder().select(columns).from(entityTable);
+        columns.addAll(TeamSqlHelper.getColumns(teamTable, "team"));
+        SelectFromAndJoinCondition selectFrom = Select
+            .builder()
+            .select(columns)
+            .from(entityTable)
+            .leftOuterJoin(teamTable)
+            .on(Column.create("local_id", entityTable))
+            .equals(Column.create("id", teamTable));
         // we do not support Criteria here for now as of https://github.com/jhipster/generator-jhipster/issues/18269
         String select = entityManager.createSelect(selectFrom, Match.class, pageable, whereClause);
         return db.sql(select).map(this::process);

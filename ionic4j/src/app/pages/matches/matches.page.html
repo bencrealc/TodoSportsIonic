@@ -8,20 +8,27 @@
   <div class="padre">
     <ion-button class="new-btn" [routerLink]="['/matches/new']"> <ion-icon icon="add-circle"></ion-icon> New Match </ion-button>
   </div>
-  <div class="alert alert-warning" id="no-result" *ngIf="matches?.length === 0">
-    <ion-title>No matches found</ion-title>
-  </div>
 
   <div class="table-responsive" id="entities">
     <ion-row class="first">
       <ion-col scope="col"><ion-title>Local Team</ion-title></ion-col>
       <ion-col scope="col"><ion-title>Away Team</ion-title></ion-col>
       <ion-col scope="col"><ion-title>Date</ion-title></ion-col>
+      <ion-col scope="col"><ion-title>Actions</ion-title></ion-col>
     </ion-row>
     <ion-row *ngFor="let match of matches; trackBy: trackId" #slidingItem class="second">
-      <ion-col>{{ match.local }}</ion-col>
-      <ion-col>{{ match.away }}</ion-col>
+      <ion-col>{{ match.local.name }}</ion-col>
+      <ion-col>{{ match.away.name }}</ion-col>
       <ion-col>{{ match.matchDay }}</ion-col>
+      <ion-col
+        ><ion-button class="new-btn" [routerLink]="['/stats/new/',match.id]">
+          <ion-icon icon="football"></ion-icon> Analyse</ion-button
+        ></ion-col
+      >
     </ion-row>
+  </div>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="matches?.length === 0">
+    <ion-title>No matches found</ion-title>
   </div>
 </ion-content>

@@ -6,13 +6,13 @@ export class Posesion {
   public team?: boolean;
   public start?: Date;
   public end?: Date;
-  public matches?: Match[];
+  public matchId?: number;
 
-  constructor(id?: number, team?: boolean, start?: Date, end?: Date, matches?: Match[]) {
+  constructor(id?: number, team?: boolean, start?: Date, end?: Date, matchId?: number) {
     this.id = id ? id : null;
     this.team = team ? team : null;
     this.start = start ? start : null;
     this.end = end ? end : null;
-    this.matches = matches ? matches : null;
+    this.matchId = matchId ? matchId : null;
   }
 }
