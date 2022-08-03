@@ -2,16 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { EventsService } from 'src/app/services/events/events.service';
 import { finalize } from 'rxjs/operators';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { MatchService } from 'src/app/services/match/match.service';
 import { Match } from 'src/app/services/match/match.model';
 import { TeamService } from 'src/app/services/team/team.service';
 import { Team } from 'src/app/services/team/team.model';
-import { format, parseISO } from 'date-fns';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-matchesnew',
@@ -22,20 +20,29 @@ export class MatchesNewPage implements OnInit {
   isSaving = false;
   private match: FormGroup;
   teams?: Team[];
+  isSubmitted = false;
+  fecha = new Date(new Date().setHours(new Date().getHours() + 26));
+  defaultDate: string = this.fecha.toISOString();
 
   constructor(
     public matchService: MatchService,
     public teamService: TeamService,
     public navController: NavController,
     public toastController: ToastController,
+    private router: Router,
     public translateService: TranslateService,
     protected fb: FormBuilder
   ) {
-    this.match = this.fb.group({
-      local: [''],
-      visitante: [''],
-      fecha: [''],
-    });
+    this.match = this.fb.group(
+      {
+        local: ['', [Validators.required]],
+        visitante: ['', [Validators.required]],
+        fecha: ['', [Validators.required]],
+      },
+      {
+        validators: this.validarQueNoSeanIguales,
+      }
+    );
     this.teamService.get().subscribe({
       next: (res: HttpResponse<Team[]>) => {
         this.teams = res.body ?? [];
@@ -44,8 +51,31 @@ export class MatchesNewPage implements OnInit {
   }
 
   ngOnInit() {}
-  save(): void {
+
+  validarQueNoSeanIguales: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+    const local = control.get('local');
+    const visitante = control.get('visitante');
+
+    return local.value != visitante.value ? null : { SonIguales: true };
+  };
+
+  checarSiNoSonIguales(): boolean {
+    return this.match.hasError('SonIguales') && this.match.get('local').dirty && this.match.get('visitante').dirty;
+  }
+
+  get errorControl() {
+    return this.match.controls;
+  }
+
+  save() {
     this.isSaving = true;
+    this.isSubmitted = true;
+    if (!this.match.valid) {
+      console.log('Please provide all the required values!');
+      return false;
+    } else {
+      console.log(this.match.value);
+    }
 
     const date = this.stringToDate(this.match.value['fecha']);
     const eqlocal = this.teams.find(item => item.name === this.match.value['local']);
@@ -54,6 +84,9 @@ export class MatchesNewPage implements OnInit {
     const match = this.createFrom(eqlocal, visit, date, eqlocal.id, visit.id);
     console.log(match);
     this.subscribeToSaveResponse(this.matchService.create(match));
+    if (this.isSubmitted) {
+      this.router.navigate(['/tabs/matches']);
+    }
   }
 
   protected subscribeToSaveResponse(result: Observable<ArrayBuffer>): void {

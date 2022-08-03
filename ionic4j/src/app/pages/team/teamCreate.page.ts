@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 import { EventsService } from 'src/app/services/events/events.service';
 import { finalize } from 'rxjs/operators';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeamService } from 'src/app/services/team/team.service';
 import { Team } from 'src/app/services/team/team.model';
 
@@ -15,6 +15,7 @@ import { Team } from 'src/app/services/team/team.model';
 })
 export class TeamCreatePage implements OnInit {
   isSaving = false;
+  isSubmitted = false;
   private team: FormGroup;
 
   constructor(
@@ -29,9 +30,25 @@ export class TeamCreatePage implements OnInit {
     });
   }
 
-  ngOnInit() {}
-  save(): void {
+  ngOnInit() {
+    this.team = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(3)]],
+    });
+  }
+
+  get errorControl() {
+    return this.team.controls;
+  }
+
+  save() {
     this.isSaving = true;
+    this.isSubmitted = true;
+    if (!this.team.valid) {
+      console.log('Please provide all the required values!');
+      return false;
+    } else {
+      console.log(this.team.value);
+    }
     const team = this.createFrom(this.team.value['name']);
     this.subscribeToSaveResponse(this.teamService.create(team));
   }
