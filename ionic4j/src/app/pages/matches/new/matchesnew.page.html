@@ -22,6 +22,7 @@
   <div *ngIf="isSubmitted && errorControl.visitante.errors?.required">
     <span class="error"> Away Team is required. </span>
   </div>
+  <mat-error class="error" *ngIf="checarSiNoSonIguales()">Away team cannot be equal to Local team</mat-error>
 
   <ion-item>
     <ion-datetime [min]="defaultDate" formControlName="fecha" first-day-of-week="1"></ion-datetime>
@@ -29,7 +30,4 @@
 
   <ion-button class="new-match" type="submit" block>Add Match</ion-button>
   <ion-button class="cancel" [routerLink]="['/tabs/matches']">Cancel</ion-button>
-
-  <!-- Error messages -->
-  <span class="error ion-padding" *ngIf="isSubmitted && errorControl.local.errors?.required"> Local Team is required. </span>
 </form>

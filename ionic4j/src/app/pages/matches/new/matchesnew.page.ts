@@ -2,16 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { EventsService } from 'src/app/services/events/events.service';
 import { finalize } from 'rxjs/operators';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { MatchService } from 'src/app/services/match/match.service';
 import { Match } from 'src/app/services/match/match.model';
 import { TeamService } from 'src/app/services/team/team.service';
 import { Team } from 'src/app/services/team/team.model';
-import { format, parseISO } from 'date-fns';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-matchesnew',
@@ -31,14 +29,20 @@ export class MatchesNewPage implements OnInit {
     public teamService: TeamService,
     public navController: NavController,
     public toastController: ToastController,
+    private router: Router,
     public translateService: TranslateService,
     protected fb: FormBuilder
   ) {
-    this.match = this.fb.group({
-      local: [''],
-      visitante: [''],
-      fecha: [''],
-    });
+    this.match = this.fb.group(
+      {
+        local: ['', [Validators.required]],
+        visitante: ['', [Validators.required]],
+        fecha: ['', [Validators.required]],
+      },
+      {
+        validators: this.validarQueNoSeanIguales,
+      }
+    );
     this.teamService.get().subscribe({
       next: (res: HttpResponse<Team[]>) => {
         this.teams = res.body ?? [];
@@ -46,15 +50,19 @@ export class MatchesNewPage implements OnInit {
     });
   }
 
-  ngOnInit() {
-    console.log(this.defaultDate);
+  ngOnInit() {}
 
-    this.match = this.fb.group({
-      local: ['', [Validators.required]],
-      visitante: ['', [Validators.required]],
-      fecha: ['', [Validators.required]],
-    });
+  validarQueNoSeanIguales: ValidatorFn = (control: FormGroup): ValidationErrors | null => {
+    const local = control.get('local');
+    const visitante = control.get('visitante');
+
+    return local.value != visitante.value ? null : { SonIguales: true };
+  };
+
+  checarSiNoSonIguales(): boolean {
+    return this.match.hasError('SonIguales') && this.match.get('local').dirty && this.match.get('visitante').dirty;
   }
+
   get errorControl() {
     return this.match.controls;
   }
@@ -75,6 +83,9 @@ export class MatchesNewPage implements OnInit {
 
     const match = this.createFrom(eqlocal, visit, date, null, null);
     this.subscribeToSaveResponse(this.matchService.create(match));
+    if (this.isSubmitted) {
+      this.router.navigate(['/tabs/matches']);
+    }
   }
 
   protected subscribeToSaveResponse(result: Observable<ArrayBuffer>): void {
