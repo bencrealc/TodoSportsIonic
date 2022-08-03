@@ -11,11 +11,10 @@ public class MatchSqlHelper {
     public static List<Expression> getColumns(Table table, String columnPrefix) {
         List<Expression> columns = new ArrayList<>();
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
-        columns.add(Column.aliased("local", table, columnPrefix + "_local"));
-        columns.add(Column.aliased("away", table, columnPrefix + "_away"));
+        columns.add(Column.aliased("local_id", table, columnPrefix + "_local_id"));
+        columns.add(Column.aliased("away_id", table, columnPrefix + "_away_id"));
+        columns.add(Column.aliased("match_day", table, columnPrefix + "_match_day"));
 
-        columns.add(Column.aliased("event_id", table, columnPrefix + "_event_id"));
-        columns.add(Column.aliased("posesion_id", table, columnPrefix + "_posesion_id"));
         return columns;
     }
 }

@@ -75,13 +75,15 @@ export class PosesionService {
 
   protected convertDateFromClient(posesion: IPosesion): IPosesion {
     return Object.assign({}, posesion, {
-      time: posesion.time?.isValid() ? posesion.time.toJSON() : undefined,
+      start: posesion.start?.isValid() ? posesion.start.toJSON() : undefined,
+      end: posesion.end?.isValid() ? posesion.end.toJSON() : undefined,
     });
   }
 
   protected convertDateFromServer(res: EntityResponseType): EntityResponseType {
     if (res.body) {
-      res.body.time = res.body.time ? dayjs(res.body.time) : undefined;
+      res.body.start = res.body.start ? dayjs(res.body.start) : undefined;
+      res.body.end = res.body.end ? dayjs(res.body.end) : undefined;
     }
     return res;
   }
@@ -89,7 +91,8 @@ export class PosesionService {
   protected convertDateArrayFromServer(res: EntityArrayResponseType): EntityArrayResponseType {
     if (res.body) {
       res.body.forEach((posesion: IPosesion) => {
-        posesion.time = posesion.time ? dayjs(posesion.time) : undefined;
+        posesion.start = posesion.start ? dayjs(posesion.start) : undefined;
+        posesion.end = posesion.end ? dayjs(posesion.end) : undefined;
       });
     }
     return res;

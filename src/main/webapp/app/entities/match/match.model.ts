@@ -1,12 +1,16 @@
+import dayjs from 'dayjs/esm';
 import { IEvent } from 'app/entities/event/event.model';
 import { IPosesion } from 'app/entities/posesion/posesion.model';
+import { ITeam } from 'app/entities/team/team.model';
 
 export interface IMatch {
   id?: number;
   local?: string | null;
   away?: string | null;
-  event?: IEvent | null;
-  posesion?: IPosesion | null;
+  matchDay?: dayjs.Dayjs | null;
+  events?: IEvent[] | null;
+  posesions?: IPosesion[] | null;
+  teams?: ITeam[] | null;
 }
 
 export class Match implements IMatch {
@@ -14,8 +18,10 @@ export class Match implements IMatch {
     public id?: number,
     public local?: string | null,
     public away?: string | null,
-    public event?: IEvent | null,
-    public posesion?: IPosesion | null
+    public matchDay?: dayjs.Dayjs | null,
+    public events?: IEvent[] | null,
+    public posesions?: IPosesion[] | null,
+    public teams?: ITeam[] | null
   ) {}
 }
 

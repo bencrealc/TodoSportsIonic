@@ -19,6 +19,11 @@ import { RouterModule } from '@angular/router';
         data: { pageTitle: 'todoSportsIonicApp.posesion.home.title' },
         loadChildren: () => import('./posesion/posesion.module').then(m => m.PosesionModule),
       },
+      {
+        path: 'team',
+        data: { pageTitle: 'todoSportsIonicApp.team.home.title' },
+        loadChildren: () => import('./team/team.module').then(m => m.TeamModule),
+      },
       /* jhipster-needle-add-entity-route - JHipster will add entity modules routes here */
     ]),
   ],

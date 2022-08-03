@@ -8,6 +8,8 @@ import { of, Subject, from } from 'rxjs';
 
 import { EventService } from '../service/event.service';
 import { IEvent, Event } from '../event.model';
+import { IMatch } from 'app/entities/match/match.model';
+import { MatchService } from 'app/entities/match/service/match.service';
 
 import { EventUpdateComponent } from './event-update.component';
 
@@ -16,6 +18,7 @@ describe('Event Management Update Component', () => {
   let fixture: ComponentFixture<EventUpdateComponent>;
   let activatedRoute: ActivatedRoute;
   let eventService: EventService;
+  let matchService: MatchService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -37,18 +40,41 @@ describe('Event Management Update Component', () => {
     fixture = TestBed.createComponent(EventUpdateComponent);
     activatedRoute = TestBed.inject(ActivatedRoute);
     eventService = TestBed.inject(EventService);
+    matchService = TestBed.inject(MatchService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
+    it('Should call Match query and add missing value', () => {
+      const event: IEvent = { id: 456 };
+      const match: IMatch = { id: 74060 };
+      event.match = match;
+
+      const matchCollection: IMatch[] = [{ id: 68339 }];
+      jest.spyOn(matchService, 'query').mockReturnValue(of(new HttpResponse({ body: matchCollection })));
+      const additionalMatches = [match];
+      const expectedCollection: IMatch[] = [...additionalMatches, ...matchCollection];
+      jest.spyOn(matchService, 'addMatchToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ event });
+      comp.ngOnInit();
+
+      expect(matchService.query).toHaveBeenCalled();
+      expect(matchService.addMatchToCollectionIfMissing).toHaveBeenCalledWith(matchCollection, ...additionalMatches);
+      expect(comp.matchesSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should update editForm', () => {
       const event: IEvent = { id: 456 };
+      const match: IMatch = { id: 72916 };
+      event.match = match;
 
       activatedRoute.data = of({ event });
       comp.ngOnInit();
 
       expect(comp.editForm.value).toEqual(expect.objectContaining(event));
+      expect(comp.matchesSharedCollection).toContain(match);
     });
   });
 
@@ -113,6 +139,16 @@ describe('Event Management Update Component', () => {
       expect(eventService.update).toHaveBeenCalledWith(event);
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Tracking relationships identifiers', () => {
+    describe('trackMatchById', () => {
+      it('Should return tracked Match primary key', () => {
+        const entity = { id: 123 };
+        const trackResult = comp.trackMatchById(0, entity);
+        expect(trackResult).toEqual(entity.id);
+      });
     });
   });
 });

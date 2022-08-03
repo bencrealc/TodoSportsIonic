@@ -8,7 +8,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -165,16 +164,6 @@ public class MatchResource {
     public Mono<List<Match>> getAllMatches() {
         log.debug("REST request to get all Matches");
         return matchService.findAll().collectList();
-    }
-
-    /**
-     * {@code GET  /matches} : get all the matches as a stream.
-     * @return the {@link Flux} of matches.
-     */
-    @GetMapping(value = "/matches", produces = MediaType.APPLICATION_NDJSON_VALUE)
-    public Flux<Match> getAllMatchesAsStream() {
-        log.debug("REST request to get all Matches as a stream");
-        return matchService.findAll();
     }
 
     /**

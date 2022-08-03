@@ -5,11 +5,11 @@ export interface IEvent {
   id?: number;
   eventType?: EventType | null;
   team?: boolean | null;
-  matches?: IMatch[] | null;
+  match?: IMatch | null;
 }
 
 export class Event implements IEvent {
-  constructor(public id?: number, public eventType?: EventType | null, public team?: boolean | null, public matches?: IMatch[] | null) {
+  constructor(public id?: number, public eventType?: EventType | null, public team?: boolean | null, public match?: IMatch | null) {
     this.team = this.team ?? false;
   }
 }

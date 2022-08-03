@@ -3,11 +3,11 @@ package com.todosports.repository;
 import static org.springframework.data.relational.core.query.Criteria.where;
 
 import com.todosports.domain.Match;
-import com.todosports.repository.rowmapper.EventRowMapper;
 import com.todosports.repository.rowmapper.MatchRowMapper;
-import com.todosports.repository.rowmapper.PosesionRowMapper;
+import com.todosports.repository.rowmapper.TeamRowMapper;
 import io.r2dbc.spi.Row;
 import io.r2dbc.spi.RowMetadata;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +26,7 @@ import org.springframework.data.relational.core.sql.Condition;
 import org.springframework.data.relational.core.sql.Conditions;
 import org.springframework.data.relational.core.sql.Expression;
 import org.springframework.data.relational.core.sql.Select;
+import org.springframework.data.relational.core.sql.SelectBuilder.SelectFromAndJoin;
 import org.springframework.data.relational.core.sql.SelectBuilder.SelectFromAndJoinCondition;
 import org.springframework.data.relational.core.sql.Table;
 import org.springframework.data.relational.repository.support.MappingRelationalEntityInformation;
@@ -44,20 +45,17 @@ class MatchRepositoryInternalImpl extends SimpleR2dbcRepository<Match, Long> imp
     private final R2dbcEntityTemplate r2dbcEntityTemplate;
     private final EntityManager entityManager;
 
-    private final EventRowMapper eventMapper;
-    private final PosesionRowMapper posesionMapper;
     private final MatchRowMapper matchMapper;
+    private final TeamRowMapper teamMapper;
 
     private static final Table entityTable = Table.aliased("match", EntityManager.ENTITY_ALIAS);
-    private static final Table eventTable = Table.aliased("event", "event");
-    private static final Table posesionTable = Table.aliased("posesion", "posesion");
+    private static final Table teamTable = Table.aliased("team", "e_team");
 
     public MatchRepositoryInternalImpl(
         R2dbcEntityTemplate template,
         EntityManager entityManager,
-        EventRowMapper eventMapper,
-        PosesionRowMapper posesionMapper,
         MatchRowMapper matchMapper,
+        TeamRowMapper teamMapper,
         R2dbcEntityOperations entityOperations,
         R2dbcConverter converter
     ) {
@@ -69,9 +67,8 @@ class MatchRepositoryInternalImpl extends SimpleR2dbcRepository<Match, Long> imp
         this.db = template.getDatabaseClient();
         this.r2dbcEntityTemplate = template;
         this.entityManager = entityManager;
-        this.eventMapper = eventMapper;
-        this.posesionMapper = posesionMapper;
         this.matchMapper = matchMapper;
+        this.teamMapper = teamMapper;
     }
 
     @Override
@@ -81,18 +78,14 @@ class MatchRepositoryInternalImpl extends SimpleR2dbcRepository<Match, Long> imp
 
     RowsFetchSpec<Match> createQuery(Pageable pageable, Condition whereClause) {
         List<Expression> columns = MatchSqlHelper.getColumns(entityTable, EntityManager.ENTITY_ALIAS);
-        columns.addAll(EventSqlHelper.getColumns(eventTable, "event"));
-        columns.addAll(PosesionSqlHelper.getColumns(posesionTable, "posesion"));
+        columns.addAll(TeamSqlHelper.getColumns(teamTable, "team"));
         SelectFromAndJoinCondition selectFrom = Select
             .builder()
             .select(columns)
             .from(entityTable)
-            .leftOuterJoin(eventTable)
-            .on(Column.create("event_id", entityTable))
-            .equals(Column.create("id", eventTable))
-            .leftOuterJoin(posesionTable)
-            .on(Column.create("posesion_id", entityTable))
-            .equals(Column.create("id", posesionTable));
+            .leftOuterJoin(teamTable)
+            .on(Column.create("local_id", entityTable))
+            .equals(Column.create("id", teamTable));
         // we do not support Criteria here for now as of https://github.com/jhipster/generator-jhipster/issues/18269
         String select = entityManager.createSelect(selectFrom, Match.class, pageable, whereClause);
         return db.sql(select).map(this::process);
@@ -111,8 +104,8 @@ class MatchRepositoryInternalImpl extends SimpleR2dbcRepository<Match, Long> imp
 
     private Match process(Row row, RowMetadata metadata) {
         Match entity = matchMapper.apply(row, "e");
-        entity.setEvent(eventMapper.apply(row, "event"));
-        entity.setPosesion(posesionMapper.apply(row, "posesion"));
+        entity.setLocal(teamMapper.apply(row, "local"));
+        entity.setAway(teamMapper.apply(row, "away"));
         return entity;
     }
 

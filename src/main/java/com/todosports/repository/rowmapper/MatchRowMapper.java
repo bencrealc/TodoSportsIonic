@@ -2,6 +2,7 @@ package com.todosports.repository.rowmapper;
 
 import com.todosports.domain.Match;
 import io.r2dbc.spi.Row;
+import java.time.Instant;
 import java.util.function.BiFunction;
 import org.springframework.stereotype.Service;
 
@@ -25,10 +26,9 @@ public class MatchRowMapper implements BiFunction<Row, String, Match> {
     public Match apply(Row row, String prefix) {
         Match entity = new Match();
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
-        entity.setLocal(converter.fromRow(row, prefix + "_local", String.class));
-        entity.setAway(converter.fromRow(row, prefix + "_away", String.class));
-        entity.setEventId(converter.fromRow(row, prefix + "_event_id", Long.class));
-        entity.setPosesionId(converter.fromRow(row, prefix + "_posesion_id", Long.class));
+        entity.setLocalId(converter.fromRow(row, prefix + "_local_id", Long.class));
+        entity.setAwayId(converter.fromRow(row, prefix + "_away_id", Long.class));
+        entity.setMatchDay(converter.fromRow(row, prefix + "_match_day", Instant.class));
         return entity;
     }
 }

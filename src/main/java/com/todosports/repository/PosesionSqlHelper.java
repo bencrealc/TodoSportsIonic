@@ -12,9 +12,10 @@ public class PosesionSqlHelper {
         List<Expression> columns = new ArrayList<>();
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
         columns.add(Column.aliased("team", table, columnPrefix + "_team"));
-        columns.add(Column.aliased("paused", table, columnPrefix + "_paused"));
-        columns.add(Column.aliased("time", table, columnPrefix + "_time"));
+        columns.add(Column.aliased("start", table, columnPrefix + "_start"));
+        columns.add(Column.aliased("jhi_end", table, columnPrefix + "_jhi_end"));
 
+        columns.add(Column.aliased("match_id", table, columnPrefix + "_match_id"));
         return columns;
     }
 }

@@ -17,20 +17,29 @@ const routes: Routes = [
         ],
       },
       {
-        path: 'entities',
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('../entities/entities.module').then(m => m.EntitiesPageModule),
-          },
-        ],
-      },
-      {
         path: 'account',
         children: [
           {
             path: '',
             loadChildren: () => import('../account/account.module').then(m => m.AccountPageModule),
+          },
+        ],
+      },
+      {
+        path: 'matches',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../matches/matches.module').then(m => m.MatchesPageModule),
+          },
+        ],
+      },
+      {
+        path: 'teamCreate',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../team/teamCreate.module').then(m => m.TeamCreatePageModule),
           },
         ],
       },

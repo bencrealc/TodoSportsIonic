@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Create New Team</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<form [formGroup]="team" (ngSubmit)="save()">
+  <ion-item>
+    <ion-label>Team Name:</ion-label>
+    <ion-input type="text" formControlName="name"></ion-input>
+  </ion-item>
+
+  <div *ngIf="isSubmitted && errorControl.name.errors?.required">
+    <span class="error"> Name is required. </span>
+  </div>
+  <div *ngIf="isSubmitted && errorControl.name.errors?.minlength">
+    <span class="error"> Name should be min 3 chars long. </span>
+  </div>
+
+  <ion-button type="submit" block class="new-team">Add Team</ion-button>
+</form>

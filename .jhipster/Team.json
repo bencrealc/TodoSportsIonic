@@ -1,0 +1,28 @@
+{
+  "applications": "*",
+  "changelogDate": "20220728182314",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "team",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Team",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "match",
+      "otherEntityRelationshipName": "team",
+      "ownerSide": true,
+      "relationshipName": "match",
+      "relationshipType": "many-to-many"
+    }
+  ],
+  "service": "serviceImpl"
+}

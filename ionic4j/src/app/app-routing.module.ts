@@ -7,6 +7,22 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule) },
   { path: 'signup', loadChildren: () => import('./pages/signup/signup.module').then(m => m.SignupPageModule) },
   { path: 'accessdenied', redirectTo: '', pathMatch: 'full' },
+  {
+    path: 'statistics',
+    loadChildren: () => import('./pages/statistics/statistics.module').then(m => m.StatisticsPageModule),
+  },
+  {
+    path: 'matches',
+    loadChildren: () => import('./pages/matches/matches.module').then(m => m.MatchesPageModule),
+  },
+  {
+    path: 'matches/new',
+    loadChildren: () => import('./pages/matches/new/matchesnew.module').then(m => m.MatchesNewPageModule),
+  },
+  {
+    path: 'stats/new/:id',
+    loadChildren: () => import('./pages/statistics/statistics.module').then(m => m.StatisticsPageModule),
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],

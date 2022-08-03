@@ -8,6 +8,8 @@ import { of, Subject, from } from 'rxjs';
 
 import { PosesionService } from '../service/posesion.service';
 import { IPosesion, Posesion } from '../posesion.model';
+import { IMatch } from 'app/entities/match/match.model';
+import { MatchService } from 'app/entities/match/service/match.service';
 
 import { PosesionUpdateComponent } from './posesion-update.component';
 
@@ -16,6 +18,7 @@ describe('Posesion Management Update Component', () => {
   let fixture: ComponentFixture<PosesionUpdateComponent>;
   let activatedRoute: ActivatedRoute;
   let posesionService: PosesionService;
+  let matchService: MatchService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -37,18 +40,41 @@ describe('Posesion Management Update Component', () => {
     fixture = TestBed.createComponent(PosesionUpdateComponent);
     activatedRoute = TestBed.inject(ActivatedRoute);
     posesionService = TestBed.inject(PosesionService);
+    matchService = TestBed.inject(MatchService);
 
     comp = fixture.componentInstance;
   });
 
   describe('ngOnInit', () => {
+    it('Should call Match query and add missing value', () => {
+      const posesion: IPosesion = { id: 456 };
+      const match: IMatch = { id: 62102 };
+      posesion.match = match;
+
+      const matchCollection: IMatch[] = [{ id: 93013 }];
+      jest.spyOn(matchService, 'query').mockReturnValue(of(new HttpResponse({ body: matchCollection })));
+      const additionalMatches = [match];
+      const expectedCollection: IMatch[] = [...additionalMatches, ...matchCollection];
+      jest.spyOn(matchService, 'addMatchToCollectionIfMissing').mockReturnValue(expectedCollection);
+
+      activatedRoute.data = of({ posesion });
+      comp.ngOnInit();
+
+      expect(matchService.query).toHaveBeenCalled();
+      expect(matchService.addMatchToCollectionIfMissing).toHaveBeenCalledWith(matchCollection, ...additionalMatches);
+      expect(comp.matchesSharedCollection).toEqual(expectedCollection);
+    });
+
     it('Should update editForm', () => {
       const posesion: IPosesion = { id: 456 };
+      const match: IMatch = { id: 19683 };
+      posesion.match = match;
 
       activatedRoute.data = of({ posesion });
       comp.ngOnInit();
 
       expect(comp.editForm.value).toEqual(expect.objectContaining(posesion));
+      expect(comp.matchesSharedCollection).toContain(match);
     });
   });
 
@@ -113,6 +139,16 @@ describe('Posesion Management Update Component', () => {
       expect(posesionService.update).toHaveBeenCalledWith(posesion);
       expect(comp.isSaving).toEqual(false);
       expect(comp.previousState).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('Tracking relationships identifiers', () => {
+    describe('trackMatchById', () => {
+      it('Should return tracked Match primary key', () => {
+        const entity = { id: 123 };
+        const trackResult = comp.trackMatchById(0, entity);
+        expect(trackResult).toEqual(entity.id);
+      });
     });
   });
 });

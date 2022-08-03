@@ -20,6 +20,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "preserveSymlinks": true,
             "customWebpackConfig": {
               "path": "./webpack/webpack.custom.js"
             },
@@ -76,6 +77,7 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
+            "preserveSymlinks": true,
             "browserTarget": "todo-sports-ionic:build:development",
             "port": 4200
           },
@@ -92,6 +94,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "preserveSymlinks": true,
             "configPath": "jest.conf.js"
           }
         }

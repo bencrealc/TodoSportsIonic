@@ -14,20 +14,18 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="local" type="varchar(255)">
+            <column name="local_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="away" type="varchar(255)">
+            <column name="away_id" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="event_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-            <column name="posesion_id" type="bigint">
+            <column name="match_day" type="${datetimeType}">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
+        <dropDefaultValue tableName="match" columnName="match_day" columnDataType="${datetimeType}"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -47,8 +45,7 @@
                   tableName="match"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="local" type="string"/>
-            <column name="away" type="string"/>
+            <column name="match_day" type="date"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

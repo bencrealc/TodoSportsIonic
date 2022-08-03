@@ -3,8 +3,6 @@ package com.todosports.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
 import java.time.Instant;
-import java.util.HashSet;
-import java.util.Set;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
@@ -25,15 +23,18 @@ public class Posesion implements Serializable {
     @Column("team")
     private Boolean team;
 
-    @Column("paused")
-    private Boolean paused;
+    @Column("start")
+    private Instant start;
 
-    @Column("time")
-    private Instant time;
+    @Column("jhi_end")
+    private Instant end;
 
     @Transient
-    @JsonIgnoreProperties(value = { "event", "posesion" }, allowSetters = true)
-    private Set<Match> matches = new HashSet<>();
+    @JsonIgnoreProperties(value = { "events", "posesions", "teams" }, allowSetters = true)
+    private Match match;
+
+    @Column("match_id")
+    private Long matchId;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -63,61 +64,52 @@ public class Posesion implements Serializable {
         this.team = team;
     }
 
-    public Boolean getPaused() {
-        return this.paused;
+    public Instant getStart() {
+        return this.start;
     }
 
-    public Posesion paused(Boolean paused) {
-        this.setPaused(paused);
+    public Posesion start(Instant start) {
+        this.setStart(start);
         return this;
     }
 
-    public void setPaused(Boolean paused) {
-        this.paused = paused;
+    public void setStart(Instant start) {
+        this.start = start;
     }
 
-    public Instant getTime() {
-        return this.time;
+    public Instant getEnd() {
+        return this.end;
     }
 
-    public Posesion time(Instant time) {
-        this.setTime(time);
+    public Posesion end(Instant end) {
+        this.setEnd(end);
         return this;
     }
 
-    public void setTime(Instant time) {
-        this.time = time;
+    public void setEnd(Instant end) {
+        this.end = end;
     }
 
-    public Set<Match> getMatches() {
-        return this.matches;
+    public Match getMatch() {
+        return this.match;
     }
 
-    public void setMatches(Set<Match> matches) {
-        if (this.matches != null) {
-            this.matches.forEach(i -> i.setPosesion(null));
-        }
-        if (matches != null) {
-            matches.forEach(i -> i.setPosesion(this));
-        }
-        this.matches = matches;
+    public void setMatch(Match match) {
+        this.match = match;
+        this.matchId = match != null ? match.getId() : null;
     }
 
-    public Posesion matches(Set<Match> matches) {
-        this.setMatches(matches);
+    public Posesion match(Match match) {
+        this.setMatch(match);
         return this;
     }
 
-    public Posesion addMatch(Match match) {
-        this.matches.add(match);
-        match.setPosesion(this);
-        return this;
+    public Long getMatchId() {
+        return this.matchId;
     }
 
-    public Posesion removeMatch(Match match) {
-        this.matches.remove(match);
-        match.setPosesion(null);
-        return this;
+    public void setMatchId(Long match) {
+        this.matchId = match;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -145,8 +137,8 @@ public class Posesion implements Serializable {
         return "Posesion{" +
             "id=" + getId() +
             ", team='" + getTeam() + "'" +
-            ", paused='" + getPaused() + "'" +
-            ", time='" + getTime() + "'" +
+            ", start='" + getStart() + "'" +
+            ", end='" + getEnd() + "'" +
             "}";
     }
 }

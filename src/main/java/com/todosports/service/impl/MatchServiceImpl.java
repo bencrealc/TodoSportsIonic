@@ -4,6 +4,7 @@ import com.todosports.domain.Match;
 import com.todosports.repository.MatchRepository;
 import com.todosports.service.MatchService;
 import java.util.List;
+import java.util.stream.Collector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -50,6 +51,9 @@ public class MatchServiceImpl implements MatchService {
                 }
                 if (match.getAway() != null) {
                     existingMatch.setAway(match.getAway());
+                }
+                if (match.getMatchDay() != null) {
+                    existingMatch.setMatchDay(match.getMatchDay());
                 }
 
                 return existingMatch;

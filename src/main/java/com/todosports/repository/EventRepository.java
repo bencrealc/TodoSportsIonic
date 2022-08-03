@@ -15,6 +15,12 @@ import reactor.core.publisher.Mono;
 @SuppressWarnings("unused")
 @Repository
 public interface EventRepository extends ReactiveCrudRepository<Event, Long>, EventRepositoryInternal {
+    @Query("SELECT * FROM event entity WHERE entity.match_id = :id")
+    Flux<Event> findByMatch(Long id);
+
+    @Query("SELECT * FROM event entity WHERE entity.match_id IS NULL")
+    Flux<Event> findAllWhereMatchIsNull();
+
     @Override
     <S extends Event> Mono<S> save(S entity);
 

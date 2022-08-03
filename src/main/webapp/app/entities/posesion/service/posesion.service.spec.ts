@@ -26,8 +26,8 @@ describe('Posesion Service', () => {
     elemDefault = {
       id: 0,
       team: false,
-      paused: false,
-      time: currentDate,
+      start: currentDate,
+      end: currentDate,
     };
   });
 
@@ -35,7 +35,8 @@ describe('Posesion Service', () => {
     it('should find an element', () => {
       const returnedFromService = Object.assign(
         {
-          time: currentDate.format(DATE_TIME_FORMAT),
+          start: currentDate.format(DATE_TIME_FORMAT),
+          end: currentDate.format(DATE_TIME_FORMAT),
         },
         elemDefault
       );
@@ -51,14 +52,16 @@ describe('Posesion Service', () => {
       const returnedFromService = Object.assign(
         {
           id: 0,
-          time: currentDate.format(DATE_TIME_FORMAT),
+          start: currentDate.format(DATE_TIME_FORMAT),
+          end: currentDate.format(DATE_TIME_FORMAT),
         },
         elemDefault
       );
 
       const expected = Object.assign(
         {
-          time: currentDate,
+          start: currentDate,
+          end: currentDate,
         },
         returnedFromService
       );
@@ -75,15 +78,16 @@ describe('Posesion Service', () => {
         {
           id: 1,
           team: true,
-          paused: true,
-          time: currentDate.format(DATE_TIME_FORMAT),
+          start: currentDate.format(DATE_TIME_FORMAT),
+          end: currentDate.format(DATE_TIME_FORMAT),
         },
         elemDefault
       );
 
       const expected = Object.assign(
         {
-          time: currentDate,
+          start: currentDate,
+          end: currentDate,
         },
         returnedFromService
       );
@@ -98,8 +102,8 @@ describe('Posesion Service', () => {
     it('should partial update a Posesion', () => {
       const patchObject = Object.assign(
         {
-          paused: true,
-          time: currentDate.format(DATE_TIME_FORMAT),
+          start: currentDate.format(DATE_TIME_FORMAT),
+          end: currentDate.format(DATE_TIME_FORMAT),
         },
         new Posesion()
       );
@@ -108,7 +112,8 @@ describe('Posesion Service', () => {
 
       const expected = Object.assign(
         {
-          time: currentDate,
+          start: currentDate,
+          end: currentDate,
         },
         returnedFromService
       );
@@ -125,15 +130,16 @@ describe('Posesion Service', () => {
         {
           id: 1,
           team: true,
-          paused: true,
-          time: currentDate.format(DATE_TIME_FORMAT),
+          start: currentDate.format(DATE_TIME_FORMAT),
+          end: currentDate.format(DATE_TIME_FORMAT),
         },
         elemDefault
       );
 
       const expected = Object.assign(
         {
-          time: currentDate,
+          start: currentDate,
+          end: currentDate,
         },
         returnedFromService
       );

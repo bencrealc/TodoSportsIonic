@@ -2,9 +2,15 @@
  * Task entity.
  * @author The JHipster team.
  */
- entity Match{
+ 
+entity Match{
  	local String,
-    away String
+    away String,
+    matchDay Instant,
+ }
+ 
+entity Team{
+ 	name String,
  }
  
 entity Event {
@@ -14,21 +20,24 @@ entity Event {
 
 entity Posesion{
 	team Boolean,
-    paused Boolean,
-    time Instant
-    
+    start Instant,
+    end Instant,
 }
 
 enum EventType {
-    GOL, FALTA, AMARILLA, ROJA, TIRO, CORNER, PENALTI, FUERA DE JUEGO
+    GOL, FALTA, AMARILLA, ROJA, TIRO, CORNER, PENALTI, FUERA_DE_JUEGO
 }
 
 // Set service options to all except few
 service all with serviceImpl
 
 relationship ManyToOne {
-    Match to Event
-    Match to Posesion
+    Event to Match
+    Posesion to Match
+}
+
+relationship ManyToMany{
+	Team to Match
 }
 // Set an angular suffix
 // angularSuffix * with mySuffix

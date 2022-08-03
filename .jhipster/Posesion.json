@@ -10,11 +10,11 @@
       "fieldType": "Boolean"
     },
     {
-      "fieldName": "paused",
-      "fieldType": "Boolean"
+      "fieldName": "start",
+      "fieldType": "Instant"
     },
     {
-      "fieldName": "time",
+      "fieldName": "end",
       "fieldType": "Instant"
     }
   ],
@@ -28,7 +28,7 @@
       "otherEntityName": "match",
       "otherEntityRelationshipName": "posesion",
       "relationshipName": "match",
-      "relationshipType": "one-to-many"
+      "relationshipType": "many-to-one"
     }
   ],
   "service": "serviceImpl"

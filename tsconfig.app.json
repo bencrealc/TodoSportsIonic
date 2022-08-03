@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
+    "paths": { "@angular/*": ["../node_modules/@angular/*"] },
     "outDir": "./target/classes/static/app",
     "types": []
   },

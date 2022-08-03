@@ -17,6 +17,7 @@
             "outputPath": "www",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "preserveSymlinks": true,
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
@@ -94,6 +95,7 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
+            "preserveSymlinks": true,
             "polyfills": ["src/polyfills.ts"],
             "tsConfig": "tsconfig.spec.json",
             "testMatch": ["**/?(*.)+(spec).[t]s?(x)"]
@@ -108,12 +110,14 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
+            "preserveSymlinks": true,
             "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
           }
         },
         "e2e": {
           "builder": "@cypress/schematic:cypress",
           "options": {
+            "preserveSymlinks": true,
             "devServerTarget": "app:serve",
             "watch": false,
             "headed": true,
@@ -128,6 +132,7 @@
         "ionic-cordova-build": {
           "builder": "@ionic/angular-toolkit:cordova-build",
           "options": {
+            "preserveSymlinks": true,
             "browserTarget": "app:build"
           },
           "configurations": {
@@ -139,6 +144,7 @@
         "ionic-cordova-serve": {
           "builder": "@ionic/angular-toolkit:cordova-serve",
           "options": {
+            "preserveSymlinks": true,
             "cordovaBuildTarget": "app:ionic-cordova-build",
             "devServerTarget": "app:serve"
           },
@@ -152,6 +158,7 @@
         "cypress-headless": {
           "builder": "@cypress/schematic:cypress",
           "options": {
+            "preserveSymlinks": true,
             "devServerTarget": "app:serve",
             "browser": "chrome"
           },
@@ -164,6 +171,7 @@
         "cypress-open": {
           "builder": "@cypress/schematic:cypress",
           "options": {
+            "preserveSymlinks": true,
             "devServerTarget": "app:serve",
             "watch": true,
             "headless": false

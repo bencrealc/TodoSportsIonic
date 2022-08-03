@@ -3,6 +3,9 @@ package com.todosports.domain;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.v3.oas.annotations.media.Schema;
 import java.io.Serializable;
+import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.relational.core.mapping.Column;
@@ -21,25 +24,30 @@ public class Match implements Serializable {
     @Column("id")
     private Long id;
 
-    @Column("local")
-    private String local;
+    @Transient
+    @JsonIgnoreProperties(value = { "teams" }, allowSetters = true)
+    private Team local;
 
-    @Column("away")
-    private String away;
+    @Column("local_id")
+    private Long localId;
 
     @Transient
-    @JsonIgnoreProperties(value = { "matches" }, allowSetters = true)
-    private Event event;
+    @JsonIgnoreProperties(value = { "teams" }, allowSetters = true)
+    private Team away;
+
+    @Column("away_id")
+    private Long awayId;
+
+    @Column("match_day")
+    private Instant matchDay;
 
     @Transient
-    @JsonIgnoreProperties(value = { "matches" }, allowSetters = true)
-    private Posesion posesion;
+    @JsonIgnoreProperties(value = { "match" }, allowSetters = true)
+    private Set<Event> events = new HashSet<>();
 
-    @Column("event_id")
-    private Long eventId;
-
-    @Column("posesion_id")
-    private Long posesionId;
+    @Transient
+    @JsonIgnoreProperties(value = { "match" }, allowSetters = true)
+    private Set<Posesion> posesions = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
@@ -56,74 +64,133 @@ public class Match implements Serializable {
         this.id = id;
     }
 
-    public String getLocal() {
+    public Team getLocal() {
         return this.local;
     }
 
-    public Match local(String local) {
+    public void setLocal(Team local) {
+        this.local = local;
+        this.localId = local != null ? local.getId() : null;
+    }
+
+    public Match local(Team local) {
         this.setLocal(local);
         return this;
     }
 
-    public void setLocal(String local) {
-        this.local = local;
+    public Long getLocalId() {
+        return this.localId;
     }
 
-    public String getAway() {
+    public Match localId(Long localId) {
+        this.setLocalId(localId);
+        return this;
+    }
+
+    public void setLocalId(Long localId) {
+        this.localId = localId;
+    }
+
+    public Team getAway() {
         return this.away;
     }
 
-    public Match away(String away) {
+    public void setAway(Team away) {
+        this.away = away;
+        this.awayId = away != null ? away.getId() : null;
+    }
+
+    public Match away(Team away) {
         this.setAway(away);
         return this;
     }
 
-    public void setAway(String away) {
-        this.away = away;
+    public Long getAwayId() {
+        return this.awayId;
     }
 
-    public Event getEvent() {
-        return this.event;
-    }
-
-    public void setEvent(Event event) {
-        this.event = event;
-        this.eventId = event != null ? event.getId() : null;
-    }
-
-    public Match event(Event event) {
-        this.setEvent(event);
+    public Match awayId(Long awayId) {
+        this.setAwayId(awayId);
         return this;
     }
 
-    public Posesion getPosesion() {
-        return this.posesion;
+    public void setAwayId(Long awayId) {
+        this.awayId = awayId;
     }
 
-    public void setPosesion(Posesion posesion) {
-        this.posesion = posesion;
-        this.posesionId = posesion != null ? posesion.getId() : null;
+    public Instant getMatchDay() {
+        return this.matchDay;
     }
 
-    public Match posesion(Posesion posesion) {
-        this.setPosesion(posesion);
+    public Match matchDay(Instant matchDay) {
+        this.setMatchDay(matchDay);
         return this;
     }
 
-    public Long getEventId() {
-        return this.eventId;
+    public void setMatchDay(Instant matchDay) {
+        this.matchDay = matchDay;
     }
 
-    public void setEventId(Long event) {
-        this.eventId = event;
+    public Set<Event> getEvents() {
+        return this.events;
     }
 
-    public Long getPosesionId() {
-        return this.posesionId;
+    public void setEvents(Set<Event> events) {
+        if (this.events != null) {
+            this.events.forEach(i -> i.setMatch(null));
+        }
+        if (events != null) {
+            events.forEach(i -> i.setMatch(this));
+        }
+        this.events = events;
     }
 
-    public void setPosesionId(Long posesion) {
-        this.posesionId = posesion;
+    public Match events(Set<Event> events) {
+        this.setEvents(events);
+        return this;
+    }
+
+    public Match addEvent(Event event) {
+        this.events.add(event);
+        event.setMatch(this);
+        return this;
+    }
+
+    public Match removeEvent(Event event) {
+        this.events.remove(event);
+        event.setMatch(null);
+        return this;
+    }
+
+    public Set<Posesion> getPosesions() {
+        return this.posesions;
+    }
+
+    public void setPosesions(Set<Posesion> posesions) {
+        if (this.posesions != null) {
+            this.posesions.forEach(i -> i.setMatch(null));
+        }
+        if (posesions != null) {
+            posesions.forEach(i -> i.setMatch(this));
+        }
+        this.posesions = posesions;
+    }
+
+    public Match posesions(Set<Posesion> posesions) {
+        this.setPosesions(posesions);
+        return this;
+    }
+
+    public Match addPosesion(Posesion posesion) {
+        this.posesions.add(posesion);
+        posesion.setMatch(this);
+        return this;
+    }
+
+    public Match removePosesion(Posesion posesion) {
+        this.posesions.remove(posesion);
+        posesion.setMatch(null);
+        return this;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -150,8 +217,9 @@ public class Match implements Serializable {
     public String toString() {
         return "Match{" +
             "id=" + getId() +
-            ", local='" + getLocal() + "'" +
-            ", away='" + getAway() + "'" +
+            ", local='" + getLocalId() + "'" +
+            ", away='" + getAwayId() + "'" +
+            ", matchDay='" + getMatchDay() + "'" +
             "}";
     }
 }

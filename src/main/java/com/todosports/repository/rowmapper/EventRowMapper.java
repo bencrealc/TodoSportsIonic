@@ -28,6 +28,7 @@ public class EventRowMapper implements BiFunction<Row, String, Event> {
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
         entity.setEventType(converter.fromRow(row, prefix + "_event_type", EventType.class));
         entity.setTeam(converter.fromRow(row, prefix + "_team", Boolean.class));
+        entity.setMatchId(converter.fromRow(row, prefix + "_match_id", Long.class));
         return entity;
     }
 }
