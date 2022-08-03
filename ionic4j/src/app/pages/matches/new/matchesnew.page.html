@@ -27,6 +27,9 @@
   <ion-item>
     <ion-datetime [min]="defaultDate" formControlName="fecha" first-day-of-week="1"></ion-datetime>
   </ion-item>
+  <div *ngIf="isSubmitted && errorControl.fecha.errors?.required">
+    <span class="error"> Date is required. </span>
+  </div>
 
   <ion-button class="new-match" type="submit" block>Add Match</ion-button>
   <ion-button class="cancel" [routerLink]="['/tabs/matches']">Cancel</ion-button>
