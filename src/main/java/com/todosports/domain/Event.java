@@ -33,6 +33,9 @@ public class Event implements Serializable {
     @Column("match_id")
     private Long matchId;
 
+    @Column("user_id")
+    private Long userId;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -97,6 +100,14 @@ public class Event implements Serializable {
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
 
     @Override
     public boolean equals(Object o) {

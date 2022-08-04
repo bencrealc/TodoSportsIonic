@@ -12,6 +12,7 @@ public class TeamSqlHelper {
         List<Expression> columns = new ArrayList<>();
         columns.add(Column.aliased("id", table, columnPrefix + "_id"));
         columns.add(Column.aliased("name", table, columnPrefix + "_name"));
+        columns.add(Column.aliased("user_id", table, columnPrefix + "_user_id"));
 
         return columns;
     }

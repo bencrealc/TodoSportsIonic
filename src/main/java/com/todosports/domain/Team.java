@@ -24,6 +24,17 @@ public class Team implements Serializable {
     @Column("name")
     private String name;
 
+    @Column("user_id")
+    private Long userId;
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     @Transient
     @JsonIgnoreProperties(value = { "events", "posesions", "teams" }, allowSetters = true)
     private Set<Match> matches = new HashSet<>();

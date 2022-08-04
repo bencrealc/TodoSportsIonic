@@ -21,6 +21,7 @@
     <include file="config/liquibase/changelog/20220728182314_added_entity_Team.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20220714082130_added_entity_constraints_Match.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20220714082130_added_entity_constraints_Team.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220714082129_added_entity_constraints_Event.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20220714082130_added_entity_constraints_Posesion.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->

@@ -4,19 +4,12 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
     <!--
-        Added the constraints for entity Event.
+        Added the constraints for entity Posesion.
     -->
-    <changeSet id="20220714082129-2" author="jhipster">
-
-        <addForeignKeyConstraint baseColumnNames="match_id"
-                                 baseTableName="event"
-                                 constraintName="fk_event__match_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="match"/>
-
+    <changeSet id="20220728182314-2" author="jhipster">
         <addForeignKeyConstraint baseColumnNames="user_id"
-                                 baseTableName="event"
-                                 constraintName="fk_event__user_id"
+                                 baseTableName="team"
+                                 constraintName="fk_team__user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="jhi_user"/>
     </changeSet>

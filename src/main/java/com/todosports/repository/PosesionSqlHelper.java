@@ -16,6 +16,7 @@ public class PosesionSqlHelper {
         columns.add(Column.aliased("jhi_end", table, columnPrefix + "_jhi_end"));
 
         columns.add(Column.aliased("match_id", table, columnPrefix + "_match_id"));
+        columns.add(Column.aliased("user_id", table, columnPrefix + "_user_id"));
         return columns;
     }
 }
