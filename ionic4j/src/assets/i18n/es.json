@@ -16,8 +16,36 @@
   "TAB4_TITLE": "Datos partido",
   "TAB5_TITLE": "Partidos",
   "TAB6_TITLE": "Crear equipos",
+  "TAB7_TITLE": "Equipo Local",
+  "TAB8_TITLE": "Equipo Visitante",
+  "TAB9_TITLE": "Fecha",
+  "TAB10_TITLE": "Acciones",
+  "TAB11_TITLE": "Nuevo Partido",
+  "TAB12_TITLE": "Analizar",
+
+  "TAB13_TITLE": "Estadísticas",
+  "TAB14_TITLE": "Inicio de Posesión",
+  "TAB15_TITLE": "Eventos",
+  "TAB16_TITLE": "Cambio Posesión",
+  "TAB17_TITLE": "Fin Posesión",
+
+  "TAB18_TITLE": "Crear Nuevo Partido",
+  "TAB19_TITLE": "El equipo Local es obligatorio",
+  "TAB20_TITLE": "El equipo Visitante es obligatorio",
+  "TAB21_TITLE": "El equipo visitante no puede ser igual al equipo Local",
+  "TAB22_TITLE": "La fecha es obligatoria",
+  "TAB23_TITLE": "Añadir Partido",
+
+  "TAB24_TITLE": "Crear Equipo",
+  "TAB25_TITLE": "Nombre del equipo",
+  "TAB26_TITLE": "El nombre es obligatorio",
+  "TAB27_TITLE": "El nombre debe tener un mínimo de 3 carácteres",
+  "TAB28_TITLE": "Añadir Equipo",
+
+  "TAB29_TITLE": "Partidos Finalizados",
 
   "MAP_TITLE": "Mapa",
+  "CANCEL_BUTTON": "Cancelar",
 
   "TUTORIAL_SLIDE1_TITLE": "Bienvenido/a al Ionic Super Starter",
   "TUTORIAL_SLIDE1_DESCRIPTION": "El <b>Ionic Super Starter</b> es un starter de Ionic completo con muchas páginas preconstruidas y mejores prácticas.",

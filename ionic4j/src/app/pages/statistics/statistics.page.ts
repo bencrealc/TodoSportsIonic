@@ -59,11 +59,11 @@ export class StatisticsPage implements OnInit {
     const picker = await this.pickerController.create({
       buttons: [
         {
-          text: 'Cancelar',
+          text: 'Cancel',
           role: 'cancel',
         },
         {
-          text: 'Confirmar',
+          text: 'Confirm',
           handler: (value: any) => {
             //TODO Save
             this.saveInicio(value['equipo']['value']);
@@ -94,11 +94,11 @@ export class StatisticsPage implements OnInit {
     const picker = await this.pickerController.create({
       buttons: [
         {
-          text: 'Cancelar',
+          text: 'Cancel',
           role: 'cancel',
         },
         {
-          text: 'Confirmar',
+          text: 'Confirm',
           handler: (value: any) => {
             //TODO Save
             this.save(value['evento']['value'], value['equipo']['value']);
