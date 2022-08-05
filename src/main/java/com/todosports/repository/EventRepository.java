@@ -21,6 +21,12 @@ public interface EventRepository extends ReactiveCrudRepository<Event, Long>, Ev
     @Query("SELECT * FROM event entity WHERE entity.match_id IS NULL")
     Flux<Event> findAllWhereMatchIsNull();
 
+    @Query("SELECT * FROM event entity WHERE entity.match_id = :id and entity.team=false")
+    Flux<Event> findByMatchLocal(Long id);
+
+    @Query("SELECT * FROM event entity WHERE entity.match_id = :id and entity.team=true")
+    Flux<Event> findByMatchAway(Long id);
+
     @Override
     <S extends Event> Mono<S> save(S entity);
 

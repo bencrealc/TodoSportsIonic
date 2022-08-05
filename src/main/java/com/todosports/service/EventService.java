@@ -55,6 +55,10 @@ public interface EventService {
      */
     Mono<Event> findOne(Long id);
 
+    Flux<Event> findAllLocal(Long id);
+
+    Flux<Event> findAllAway(Long id);
+
     /**
      * Delete the "id" event.
      *

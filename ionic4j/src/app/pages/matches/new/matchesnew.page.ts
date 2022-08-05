@@ -74,18 +74,18 @@ export class MatchesNewPage implements OnInit {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.match.value);
-    }
+      const date = this.stringToDate(this.match.value['fecha']);
+      const eqlocal = this.teams.find(item => item.name === this.match.value['local']);
+      const visit = this.teams.find(item => item.name === this.match.value['visitante']);
 
-    const date = this.stringToDate(this.match.value['fecha']);
-    const eqlocal = this.teams.find(item => item.name === this.match.value['local']);
-    const visit = this.teams.find(item => item.name === this.match.value['visitante']);
+      const match = this.createFrom(eqlocal, visit, date, eqlocal.id, visit.id);
 
-    const match = this.createFrom(eqlocal, visit, date, eqlocal.id, visit.id);
-    console.log(match);
-    this.subscribeToSaveResponse(this.matchService.create(match));
-    if (this.isSubmitted) {
-      this.router.navigate(['/tabs/matches']);
+      this.subscribeToSaveResponse(this.matchService.create(match));
+      if (this.isSubmitted) {
+        this.router.navigate(['/tabs/matches']).then(() => {
+          window.location.reload();
+        });
+      }
     }
   }
 

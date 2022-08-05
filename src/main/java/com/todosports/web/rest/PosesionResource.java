@@ -8,7 +8,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -185,6 +184,18 @@ public class PosesionResource {
     public Mono<List<Posesion>> getAllPosesions() {
         log.debug("REST request to get all Posesions");
         return posesionService.findAll().collectList();
+    }
+
+    @GetMapping("/posesions/match/{id}")
+    public Mono<List<Posesion>> getAllPosesionsByMatchLocal(@PathVariable(value = "id", required = true) final Long id) {
+        log.debug("REST request to get all Posesions");
+        return posesionService.findAllLocal(id).collectList();
+    }
+
+    @GetMapping("/posesions/match/{id}")
+    public Mono<List<Posesion>> getAllPosesionsByMatchAway(@PathVariable(value = "id", required = true) final Long id) {
+        log.debug("REST request to get all Posesions");
+        return posesionService.findAllAway(id).collectList();
     }
 
     /**

@@ -24,6 +24,12 @@ public interface PosesionRepository extends ReactiveCrudRepository<Posesion, Lon
     @Query("SELECT * FROM posesion entity WHERE entity.jhi_end IS NULL ORDER BY entity.start DESC LIMIT 1 ")
     Mono<Posesion> findByMaxStart();
 
+    @Query("SELECT * FROM posesion entity WHERE entity.match_id = :id and entity.team=false")
+    Flux<Posesion> findByMatchLocal(Long id);
+
+    @Query("SELECT * FROM posesion entity WHERE entity.match_id = :id and entity.team=true")
+    Flux<Posesion> findByMatchAway(Long id);
+
     @Override
     <S extends Posesion> Mono<S> save(S entity);
 

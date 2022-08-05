@@ -167,6 +167,16 @@ public class EventResource {
         return eventService.findAll().collectList();
     }
 
+    @GetMapping("/events/match/{id}")
+    public Mono<List<Event>> getAllEventsByMatchLocal(@PathVariable(value = "id", required = true) final Long id) {
+        return eventService.findAllLocal(id).collectList();
+    }
+
+    @GetMapping("/events/match/{id}")
+    public Mono<List<Event>> getAllEventesByMatchAway(@PathVariable(value = "id", required = true) final Long id) {
+        return eventService.findAllAway(id).collectList();
+    }
+
     /**
      * {@code GET  /events} : get all the events as a stream.
      * @return the {@link Flux} of events.

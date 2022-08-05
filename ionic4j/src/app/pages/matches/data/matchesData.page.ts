@@ -6,6 +6,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { Team } from 'src/app/services/team/team.model';
 import { TeamService } from 'src/app/services/team/team.service';
+import { Posesion } from 'src/app/services/posesion/posesion.model';
 
 //import { MatchDeleteDialogComponent } from '../delete/match-delete-dialog.component';
 
@@ -14,10 +15,11 @@ import { TeamService } from 'src/app/services/team/team.service';
   templateUrl: './matches.page.html',
   styleUrls: ['./matches.page.scss'],
 })
-export class MatchesPage implements OnInit {
-  matches?: Match[];
-  local?: Team;
-  away?: Team;
+export class MatchesDataPage implements OnInit {
+  posesionLocal?: Posesion[];
+  posesionAway?: Posesion[];
+  eventLocal?: Event[];
+  eventAway?: Event[];
   isLoading = false;
 
   //  constructor(protected matchService: MatchService, protected modalService: NgbModal) {}
