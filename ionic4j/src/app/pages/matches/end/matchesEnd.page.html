@@ -5,14 +5,21 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar [formControl]="searchField" debounce="100"></ion-searchbar>
+  <ion-searchbar
+    [formControl]="searchField"
+    (ionChange)="search($event.target.value)"
+    showCancelButton="focus"
+    animated
+    debounce="100"
+  ></ion-searchbar>
+
   <div class="table-responsive" id="entities">
     <ion-row class="first">
       <ion-col scope="col"><ion-title>{{ 'TAB7_TITLE' | translate }}</ion-title></ion-col>
       <ion-col scope="col"><ion-title>{{ 'TAB8_TITLE' | translate }}</ion-title></ion-col>
       <ion-col scope="col"><ion-title>{{ 'TAB9_TITLE' | translate }}</ion-title></ion-col>
     </ion-row>
-    <ion-row *ngFor="let match of matches; trackBy: trackId" #slidingItem class="second">
+    <ion-row *ngFor="let match of matchesFiltered " class="second">
       <ion-col>{{ match.local.name }}</ion-col>
       <ion-col>{{ match.away.name }}</ion-col>
       <ion-col>{{ match.matchDay }}</ion-col>

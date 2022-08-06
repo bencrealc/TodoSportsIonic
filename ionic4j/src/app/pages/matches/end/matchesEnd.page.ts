@@ -1,13 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Match } from 'src/app/services/match/match.model';
 import { MatchService } from 'src/app/services/match/match.service';
-import { filter, map } from 'rxjs/operators';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { Team } from 'src/app/services/team/team.model';
 import { TeamService } from 'src/app/services/team/team.service';
-
-//import { MatchDeleteDialogComponent } from '../delete/match-delete-dialog.component';
 
 @Component({
   selector: 'app-matchesEnd',
@@ -19,6 +16,8 @@ export class MatchesEndPage implements OnInit {
   local?: Team;
   away?: Team;
   isLoading = false;
+  searchTerm: string;
+  matchesFiltered?: Match[];
 
   constructor(protected matchService: MatchService, public teamService: TeamService, protected modalService: NgbModal) {}
 
@@ -66,6 +65,17 @@ export class MatchesEndPage implements OnInit {
     });
   }
 
+  search(query) {
+    if (!query) {
+      // revert back to the original array if no query
+      this.matchesFiltered = this.matches;
+    } else {
+      // filter array by query
+      this.matchesFiltered = this.matches.filter(match => {
+        return match.local.name.includes(query) || match.away.name.includes(query);
+      });
+    }
+  }
   trackId(_index: number, item: Match): number {
     return item.id!;
   }
