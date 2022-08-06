@@ -67,10 +67,8 @@ export class MatchesEndPage implements OnInit {
 
   search(query) {
     if (!query) {
-      // revert back to the original array if no query
       this.matchesFiltered = this.matches;
     } else {
-      // filter array by query
       this.matchesFiltered = this.matches.filter(match => {
         return match.local.name.includes(query) || match.away.name.includes(query);
       });

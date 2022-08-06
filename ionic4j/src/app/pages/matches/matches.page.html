@@ -13,16 +13,16 @@
 
   <div class="table-responsive" id="entities">
     <ion-row class="first">
-      <ion-col scope="col"><ion-title>{{ 'TAB7_TITLE' | translate }}</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>{{ 'TAB8_TITLE' | translate }}</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>{{ 'TAB9_TITLE' | translate }}</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>{{ 'TAB10_TITLE' | translate }}</ion-title></ion-col>
+      <ion-col><ion-title class="col1">{{ 'TAB7_TITLE' | translate }}</ion-title></ion-col>
+      <ion-col><ion-title class="col1">{{ 'TAB8_TITLE' | translate }}</ion-title></ion-col>
+      <ion-col><ion-title class="col1">{{ 'TAB9_TITLE' | translate }}</ion-title></ion-col>
+      <ion-col><ion-title class="col1">{{ 'TAB10_TITLE' | translate }}</ion-title></ion-col>
     </ion-row>
     <ion-row *ngFor="let match of matches; trackBy: trackId" #slidingItem class="second">
-      <ion-col>{{ match.local.name }}</ion-col>
-      <ion-col>{{ match.away.name }}</ion-col>
-      <ion-col>{{ match.matchDay }}</ion-col>
-      <ion-col>
+      <ion-col scope="col">{{ match.local.name }}</ion-col>
+      <ion-col class="col">{{ match.away.name }}</ion-col>
+      <ion-col class="col">{{ match.matchDay }}</ion-col>
+      <ion-col class="col">
         <ion-button class="stats" [routerLink]="['/stats/new/',match.id]">
           <ion-icon icon="football"></ion-icon> {{ 'TAB12_TITLE' | translate }}</ion-button
         >

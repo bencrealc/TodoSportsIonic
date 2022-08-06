@@ -15,8 +15,10 @@
   background-color: #e0fafa;
   color: #000;
   border: 1px solid #eee;
-  padding: 12px 35px;
+  padding: 12px 5px;
   border-collapse: collapse;
+  justify-content: center;
+  white-space: normal;
 }
 .table-responsive {
   font-family: 'Arial';
@@ -31,6 +33,14 @@
 .second {
   color: #959595;
   border: 1px solid #eee;
-  padding: 12px 35px;
+  padding: 12px 5px;
   border-collapse: collapse;
+}
+.col {
+  width: 70px;
+}
+.col1 {
+  font-size: 19px;
+
+  justify-content: center;
 }
