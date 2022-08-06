@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content>
+  <ion-searchbar [formControl]="searchField" debounce="100"></ion-searchbar>
   <div class="table-responsive" id="entities">
     <ion-row class="first">
       <ion-col scope="col"><ion-title>{{ 'TAB7_TITLE' | translate }}</ion-title></ion-col>

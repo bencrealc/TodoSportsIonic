@@ -17,6 +17,10 @@ export class MatchService {
     return this.http.get<Match[]>(ApiService.API_URL + '/matches', { observe: 'response' });
   }
 
+  getMatchesFinished() {
+    return this.http.get<Match[]>(ApiService.API_URL + '/matchesfinished', { observe: 'response' });
+  }
+
   create(match) {
     return this.apiService.post('matches', match, { observe: 'response' });
   }

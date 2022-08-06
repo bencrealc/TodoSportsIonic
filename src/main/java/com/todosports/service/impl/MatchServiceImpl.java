@@ -68,6 +68,13 @@ public class MatchServiceImpl implements MatchService {
         return matchRepository.findAll();
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Flux<Match> findMatchesFinished() {
+        log.debug("Request to get all Matches Finished");
+        return matchRepository.findMatchesFinished();
+    }
+
     public Mono<Long> countAll() {
         return matchRepository.count();
     }

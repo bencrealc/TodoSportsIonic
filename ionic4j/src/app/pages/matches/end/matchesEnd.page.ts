@@ -20,11 +20,7 @@ export class MatchesEndPage implements OnInit {
   away?: Team;
   isLoading = false;
 
-  //  constructor(protected matchService: MatchService, protected modalService: NgbModal) {}
-
-  constructor(protected matchService: MatchService, public teamService: TeamService, protected modalService: NgbModal) {
-    // this.observable$.pipe(tap(res => this.matches = res));
-  }
+  constructor(protected matchService: MatchService, public teamService: TeamService, protected modalService: NgbModal) {}
 
   ngOnInit() {
     this.loadAll();
@@ -33,7 +29,7 @@ export class MatchesEndPage implements OnInit {
   loadAll(): void {
     this.isLoading = true;
 
-    this.matchService.get().subscribe({
+    this.matchService.getMatchesFinished().subscribe({
       next: (res: HttpResponse<Match[]>) => {
         this.isLoading = false;
         this.matches = res.body ?? [];
