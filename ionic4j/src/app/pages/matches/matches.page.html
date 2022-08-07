@@ -10,6 +10,9 @@
       <ion-icon icon="add-circle"></ion-icon> {{ 'TAB11_TITLE' | translate }}
     </ion-button>
   </div>
+  <div>
+    <ion-searchbar [formControl]="searchField" (ionChange)="search($event.target.value)" showCancelButton="focus" animated></ion-searchbar>
+  </div>
 
   <div class="table-responsive" id="entities">
     <ion-row class="first">
@@ -18,7 +21,7 @@
       <ion-col><ion-title class="col1">{{ 'TAB9_TITLE' | translate }}</ion-title></ion-col>
       <ion-col><ion-title class="col1">{{ 'TAB10_TITLE' | translate }}</ion-title></ion-col>
     </ion-row>
-    <ion-row *ngFor="let match of matches; trackBy: trackId" #slidingItem class="second">
+    <ion-row *ngFor="let match of matchesFiltered; trackBy: trackId" #slidingItem class="second">
       <ion-col scope="col">{{ match.local.name }}</ion-col>
       <ion-col class="col">{{ match.away.name }}</ion-col>
       <ion-col class="col">{{ match.matchDay }}</ion-col>
