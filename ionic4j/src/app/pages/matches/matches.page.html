@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="padre">
+  <div class="padre" *ngIf="admin ===true">
     <ion-button class="new-btn" [routerLink]="['/matches/new']">
       <ion-icon icon="add-circle"></ion-icon> {{ 'TAB11_TITLE' | translate }}
     </ion-button>
@@ -22,7 +22,7 @@
       <ion-col><ion-title class="col1">{{ 'TAB10_TITLE' | translate }}</ion-title></ion-col>
     </ion-row>
     <ion-row *ngFor="let match of matchesFiltered; trackBy: trackId" #slidingItem class="second">
-      <ion-col scope="col">{{ match.local.name }}</ion-col>
+      <ion-col class="col">{{ match.local.name }}</ion-col>
       <ion-col class="col">{{ match.away.name }}</ion-col>
       <ion-col class="col">{{ match.matchDay }}</ion-col>
       <ion-col class="col">

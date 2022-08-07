@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { Team } from 'src/app/services/team/team.model';
 import { TeamService } from 'src/app/services/team/team.service';
+import { AccountService } from '../../services/auth/account.service';
 
 @Component({
   selector: 'app-matches',
@@ -18,11 +19,24 @@ export class MatchesPage implements OnInit {
   isLoading = false;
   searchTerm: string;
   matchesFiltered?: Match[];
+  admin: boolean;
 
-  constructor(protected matchService: MatchService, public teamService: TeamService, protected modalService: NgbModal) {}
+  constructor(
+    protected matchService: MatchService,
+    private accountService: AccountService,
+    public teamService: TeamService,
+    protected modalService: NgbModal
+  ) {}
 
   ngOnInit() {
     this.loadAll();
+    this.accountService.identity().then(account => {
+      if (account.firstName == 'Administrator') {
+        this.admin = true;
+      } else {
+        this.admin = false;
+      }
+    });
   }
 
   loadAll(): void {

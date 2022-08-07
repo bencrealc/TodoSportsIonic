@@ -18,11 +18,13 @@
       <ion-col scope="col"><ion-title>{{ 'TAB7_TITLE' | translate }}</ion-title></ion-col>
       <ion-col scope="col"><ion-title>{{ 'TAB8_TITLE' | translate }}</ion-title></ion-col>
       <ion-col scope="col"><ion-title>{{ 'TAB9_TITLE' | translate }}</ion-title></ion-col>
+      <ion-col scope="col"><ion-title>{{ 'TAB30_TITLE' | translate }}</ion-title></ion-col>
     </ion-row>
     <ion-row *ngFor="let match of matchesFiltered " class="second">
       <ion-col>{{ match.local.name }}</ion-col>
       <ion-col>{{ match.away.name }}</ion-col>
       <ion-col>{{ match.matchDay }}</ion-col>
+      <ion-col [routerLink]="['/match/end/',match.id]"><ion-title class="link">0-2</ion-title></ion-col>
     </ion-row>
   </div>
 
