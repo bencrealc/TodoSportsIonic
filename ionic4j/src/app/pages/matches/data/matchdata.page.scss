@@ -1,6 +1,10 @@
 .padre {
   display: flex;
 }
+.data {
+  float: right;
+  --background: #bebebe;
+}
 
 .first {
   color: #000;
