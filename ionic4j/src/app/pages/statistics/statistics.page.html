@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <div class="padre">
-      <ion-title>{{ 'TAB13_TITLE' | translate }}</ion-title>
+      <ion-title>{{ 'ESTADISTICAS' | translate }}</ion-title>
       <ion-title
         ><ion-button class="stats" [routerLink]="['/tabs/matches']"><ion-icon name="arrow-redo"></ion-icon></ion-button
       ></ion-title>
@@ -10,11 +10,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="inicioButton()" expand="block" size="large" class="poslocal-btn">{{ 'TAB14_TITLE' | translate }}</ion-button>
+  <ion-button (click)="inicioButton()" expand="block" size="large" class="poslocal-btn">{{ 'INICIO_POSESION' | translate }}</ion-button>
 
-  <ion-button (click)="eventosButton()" expand="block" size="large" class="eventos-btn">{{ 'TAB15_TITLE' | translate }}</ion-button>
+  <ion-button (click)="eventosButton()" expand="block" size="large" class="eventos-btn">{{ 'EVENTOS' | translate }}</ion-button>
 
-  <ion-button (click)="saveChange()" expand="block" size="large" class="cambio-btn">{{ 'TAB16_TITLE' | translate }}</ion-button>
+  <ion-button (click)="saveChange()" expand="block" size="large" class="cambio-btn">{{ 'CAMBIO_POSESION' | translate }}</ion-button>
 
-  <ion-button (click)="saveFinal()" expand="block" size="large" class="posvisit-btn">{{ 'TAB17_TITLE' | translate }}</ion-button>
+  <ion-button (click)="saveFinal()" expand="block" size="large" class="posvisit-btn">{{ 'FIN_POSESION' | translate }}</ion-button>
 </ion-content>

@@ -33,14 +33,22 @@
 .second {
   color: #959595;
   border: 1px solid #eee;
-  padding: 12px 5px;
+  padding: 5px 5px;
   border-collapse: collapse;
 }
 .col {
   width: 70px;
+  white-space: normal;
+
+  justify-content: center;
+}
+.colP {
+  width: 70px;
+  white-space: normal;
+  padding-top: 20px;
+  justify-content: center;
 }
 .col1 {
   font-size: 19px;
-
   justify-content: center;
 }

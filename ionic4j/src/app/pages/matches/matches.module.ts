@@ -10,7 +10,8 @@ import { MatchesPage } from './matches.page';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, IonicModule, MatchesPageRoutingModule, TranslateModule, Ng2SearchPipeModule],
-  declarations: [MatchesPage],
+  declarations: [MatchesPage, Ng2SearchPipeModule],
   providers: [FormBuilder],
+  exports: [Ng2SearchPipeModule],
 })
 export class MatchesPageModule {}

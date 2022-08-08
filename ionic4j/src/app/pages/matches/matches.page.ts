@@ -21,8 +21,6 @@ export class MatchesPage implements OnInit {
   matchesFiltered?: Match[] = [];
   admin: boolean;
 
-  //  constructor(protected matchService: MatchService, protected modalService: NgbModal) {}
-
   constructor(
     private accountService: AccountService,
     protected matchService: MatchService,
@@ -37,10 +35,11 @@ export class MatchesPage implements OnInit {
   loadAll(): void {
     this.isLoading = true;
 
-    this.matchService.get().subscribe({
+    this.matchService.getMatchesToplay().subscribe({
       next: (res: HttpResponse<Match[]>) => {
         this.isLoading = false;
         this.matches = res.body ?? [];
+        this.matchesFiltered = res.body ?? [];
         console.log(this.matches);
         for (let value of this.matches) {
           this.teamService.getById(value.localId).subscribe({
@@ -79,13 +78,9 @@ export class MatchesPage implements OnInit {
   }
 
   search(query) {
-    if (!query) {
-      this.matchesFiltered = this.matches;
-    } else {
-      this.matchesFiltered = this.matches.filter(match => {
-        return match.local.name.includes(query) || match.away.name.includes(query);
-      });
-    }
+    this.matchesFiltered = this.matches.filter(match => {
+      return match.local.name.includes(query) || match.away.name.includes(query);
+    });
   }
 
   trackId(_index: number, item: Match): number {

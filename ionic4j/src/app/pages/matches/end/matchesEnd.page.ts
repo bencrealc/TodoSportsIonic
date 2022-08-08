@@ -32,6 +32,7 @@ export class MatchesEndPage implements OnInit {
       next: (res: HttpResponse<Match[]>) => {
         this.isLoading = false;
         this.matches = res.body ?? [];
+        this.matchesFiltered = res.body ?? [];
         console.log(this.matches);
         for (let value of this.matches) {
           this.teamService.getById(value.localId).subscribe({
@@ -66,13 +67,9 @@ export class MatchesEndPage implements OnInit {
   }
 
   search(query) {
-    if (!query) {
-      this.matchesFiltered = this.matches;
-    } else {
-      this.matchesFiltered = this.matches.filter(match => {
-        return match.local.name.includes(query) || match.away.name.includes(query);
-      });
-    }
+    this.matchesFiltered = this.matches.filter(match => {
+      return match.local.name.includes(query) || match.away.name.includes(query);
+    });
   }
   trackId(_index: number, item: Match): number {
     return item.id!;

@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ 'TAB5_TITLE' | translate }}</ion-title>
+    <ion-title>{{ 'PARTIDOS' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="padre" *ngIf="admin === true">
     <ion-button class="new-btn" [routerLink]="['/matches/new']">
-      <ion-icon icon="add-circle"></ion-icon> {{ 'TAB11_TITLE' | translate }}
+      <ion-icon icon="add-circle"></ion-icon> {{ 'NUEVO_PARTIDO' | translate }}
     </ion-button>
   </div>
   <div>
@@ -16,18 +16,18 @@
 
   <div class="table-responsive" id="entities">
     <ion-row class="first">
-      <ion-col><ion-title class="col1">{{ 'TAB7_TITLE' | translate }}</ion-title></ion-col>
-      <ion-col><ion-title class="col1">{{ 'TAB8_TITLE' | translate }}</ion-title></ion-col>
-      <ion-col><ion-title class="col1">{{ 'TAB9_TITLE' | translate }}</ion-title></ion-col>
-      <ion-col><ion-title class="col1">{{ 'TAB10_TITLE' | translate }}</ion-title></ion-col>
+      <ion-col><ion-title class="col1">{{ 'EQUIPO_LOCAL' | translate }}</ion-title></ion-col>
+      <ion-col><ion-title class="col1">{{ 'EQUIPO_VISITANTE' | translate }}</ion-title></ion-col>
+      <ion-col><ion-title class="col1">{{ 'FECHA' | translate }}</ion-title></ion-col>
+      <ion-col><ion-title class="col1">{{ 'ACCIONES' | translate }}</ion-title></ion-col>
     </ion-row>
     <ion-row *ngFor="let match of matchesFiltered; trackBy: trackId" #slidingItem class="second">
-      <ion-col class="col">{{ match.local.name }}</ion-col>
-      <ion-col class="col">{{ match.away.name }}</ion-col>
-      <ion-col class="col">{{ match.matchDay }}</ion-col>
+      <ion-col class="colP">{{ match.local.name }}</ion-col>
+      <ion-col class="colP">{{ match.away.name }}</ion-col>
+      <ion-col class="colP">{{ match.matchDay }}</ion-col>
       <ion-col class="col">
         <ion-button class="stats" [routerLink]="['/stats/new/',match.id]">
-          <ion-icon icon="football"></ion-icon> {{ 'TAB12_TITLE' | translate }}</ion-button
+          <ion-icon icon="football"></ion-icon> {{ 'ANALIZAR' | translate }}</ion-button
         >
       </ion-col>
     </ion-row>

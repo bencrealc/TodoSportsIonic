@@ -1,21 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ 'TAB24_TITLE' | translate }}</ion-title>
+    <ion-title>{{ 'CREAR_EQUIPO' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <form [formGroup]="team" (ngSubmit)="save()">
   <ion-item>
-    <ion-label>{{ 'TAB25_TITLE' | translate }}:</ion-label>
+    <ion-label>{{ 'NOMBRE_EQUIPO' | translate }}:</ion-label>
     <ion-input type="text" formControlName="name"></ion-input>
   </ion-item>
 
   <div *ngIf="isSubmitted && errorControl.name.errors?.required">
-    <span class="error"> {{ 'TAB26_TITLE' | translate }}. </span>
+    <span class="error"> {{ 'NOMBRE_OB' | translate }}. </span>
   </div>
   <div *ngIf="isSubmitted && errorControl.name.errors?.minlength">
-    <span class="error"> {{ 'TAB27_TITLE' | translate }}. </span>
+    <span class="error"> {{ 'NOMBRE_MINIMO' | translate }}. </span>
   </div>
 
-  <ion-button type="submit" block class="new-team">{{ 'TAB28_TITLE' | translate }}</ion-button>
+  <ion-button type="submit" block class="new-team">{{ 'AÑADIR_EQUIPO' | translate }}</ion-button>
 </form>

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ 'TAB29_TITLE' | translate }}</ion-title>
+    <ion-title>{{ 'PARTIDOS_FIN' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,12 +15,12 @@
 
   <div class="table-responsive" id="entities">
     <ion-row class="first">
-      <ion-col scope="col"><ion-title>{{ 'TAB7_TITLE' | translate }}</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>{{ 'TAB8_TITLE' | translate }}</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>{{ 'TAB9_TITLE' | translate }}</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>{{ 'TAB30_TITLE' | translate }}</ion-title></ion-col>
+      <ion-col scope="col"><ion-title>{{ 'EQUIPO_LOCAL' | translate }}</ion-title></ion-col>
+      <ion-col scope="col"><ion-title>{{ 'EQUIPO_VISITANTE' | translate }}</ion-title></ion-col>
+      <ion-col scope="col"><ion-title>{{ 'FECHA' | translate }}</ion-title></ion-col>
+      <ion-col scope="col"><ion-title>{{ 'RESULTADOS' | translate }}</ion-title></ion-col>
     </ion-row>
-    <ion-row *ngFor="let match of matchesFiltered " class="second">
+    <ion-row *ngFor="let match of matchesFiltered" class="second">
       <ion-col>{{ match.local.name }}</ion-col>
       <ion-col>{{ match.away.name }}</ion-col>
       <ion-col>{{ match.matchDay }}</ion-col>
@@ -29,6 +29,6 @@
   </div>
 
   <div class="alert alert-warning" id="no-result" *ngIf="matches?.length === 0">
-    <ion-title>No matches found</ion-title>
+    <ion-title>{{ 'NO_FOUND' | translate }}</ion-title>
   </div>
 </ion-content>
