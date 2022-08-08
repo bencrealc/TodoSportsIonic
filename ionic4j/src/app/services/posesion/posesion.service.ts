@@ -17,8 +17,8 @@ export class PosesionService {
     return this.apiService.get('posesions', null, { observe: 'response' });
   }
 
-  getPosesion(id) {
-    return this.http.get<Posesion[]>(ApiService.API_URL + '/posesions/match/' + id, { observe: 'response' });
+  getPosesion(team, id) {
+    return this.http.get<Posesion[]>(ApiService.API_URL + '/posesions/match/' + team + '/' + id, { observe: 'response' });
   }
 
   close(posesion) {

@@ -86,7 +86,7 @@ export class MatchesNewPage implements OnInit {
 
       toastCreado.present();
 
-      const match = this.createFrom(eqlocal, visit, date, eqlocal.id, visit.id);
+      const match = this.createFrom(date, eqlocal.id, visit.id);
 
       this.subscribeToSaveResponse(this.matchService.create(match));
       if (this.isSubmitted) {
@@ -104,10 +104,9 @@ export class MatchesNewPage implements OnInit {
     });
   }
 
-  protected createFrom(local, visit, fecha, localId, awayId): Match {
+  protected createFrom(fecha, localId, awayId): Match {
     return {
       ...new Match(),
-      local: local,
       localId: localId,
       awayId: awayId,
       matchDay: fecha,

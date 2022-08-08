@@ -13,29 +13,25 @@ import { AccountService } from '../../services/auth/account.service';
   styleUrls: ['./matches.page.scss'],
 })
 export class MatchesPage implements OnInit {
-  matches?: Match[];
+  matches?: Match[] = [];
   local?: Team;
   away?: Team;
   isLoading = false;
   searchTerm: string;
-  matchesFiltered?: Match[];
+  matchesFiltered?: Match[] = [];
   admin: boolean;
 
   //  constructor(protected matchService: MatchService, protected modalService: NgbModal) {}
 
-  constructor(protected matchService: MatchService, public teamService: TeamService, protected modalService: NgbModal) {
-    // this.observable$.pipe(tap(res => this.matches = res));
-  }
+  constructor(
+    private accountService: AccountService,
+    protected matchService: MatchService,
+    public teamService: TeamService,
+    protected modalService: NgbModal
+  ) {}
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().then(account => {
-      if (account.firstName == 'Administrator') {
-        this.admin = true;
-      } else {
-        this.admin = false;
-      }
-    });
   }
 
   loadAll(): void {
@@ -75,6 +71,10 @@ export class MatchesPage implements OnInit {
       error: () => {
         this.isLoading = false;
       },
+    });
+
+    this.accountService.hasAuthority('ROLE_ADMIN').then(res => {
+      this.admin = res;
     });
   }
 

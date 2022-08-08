@@ -9,15 +9,11 @@ import { AccountService } from '../../services/auth/account.service';
 export class TabsPage {
   admin: boolean;
 
-  constructor(private accountService: AccountService) {}
-
-  ngOnInit() {
-    this.accountService.identity().then(account => {
-      if (account.firstName == 'Administrator') {
-        this.admin = true;
-      } else {
-        this.admin = false;
-      }
+  constructor(private accountService: AccountService) {
+    this.accountService.hasAuthority('ROLE_ADMIN').then(res => {
+      this.admin = res;
     });
   }
+
+  ngOnInit() {}
 }
