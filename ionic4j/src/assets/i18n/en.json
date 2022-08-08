@@ -18,6 +18,44 @@
 
   "TAB5_TITLE": "Matches",
   "TAB6_TITLE": "Create teams",
+  "TAB7_TITLE": "Local Team",
+  "TAB8_TITLE": "Away Team",
+  "TAB9_TITLE": "Date",
+  "TAB10_TITLE": "Actions",
+  "TAB11_TITLE": "New Match",
+  "TAB12_TITLE": "Analyse",
+
+  "TAB13_TITLE": "Statistics",
+  "TAB14_TITLE": "Start Possession",
+  "TAB15_TITLE": "Events",
+  "TAB16_TITLE": "Change Possession",
+  "TAB17_TITLE": "End Possession",
+
+  "TAB18_TITLE": "Create New Match",
+  "TAB19_TITLE": "Local Team is required",
+  "TAB20_TITLE": "Away Team is required",
+  "TAB21_TITLE": "Away team cannot be equal to Local team",
+  "TAB22_TITLE": "Date is required",
+  "TAB23_TITLE": "Add Match",
+
+  "TAB24_TITLE": "Create New Team",
+  "TAB25_TITLE": "Team Name",
+  "TAB26_TITLE": "Name is required",
+  "TAB27_TITLE": "Name should be min 3 chars long",
+  "TAB28_TITLE": "Add Team",
+
+  "TAB29_TITLE": "Finished Matches",
+  "TAB30_TITLE": "Results",
+
+  "TAB31_TITLE": "Match Data",
+  "TAB32_TITLE": "Goals",
+  "TAB33_TITLE": "Shots",
+  "TAB34_TITLE": "Fouls",
+  "TAB35_TITLE": "Yellow Cards",
+  "TAB36_TITLE": "Red Cards",
+  "TAB37_TITLE": "Offsides",
+  "TAB38_TITLE": "Corners",
+  "TAB39_TITLE": "Ball Possession",
 
   "MAP_TITLE": "Map",
 

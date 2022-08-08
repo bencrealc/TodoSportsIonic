@@ -186,13 +186,13 @@ public class PosesionResource {
         return posesionService.findAll().collectList();
     }
 
-    @GetMapping("/posesions/match/{id}")
+    @GetMapping("/posesions/match/local/{id}")
     public Mono<List<Posesion>> getAllPosesionsByMatchLocal(@PathVariable(value = "id", required = true) final Long id) {
         log.debug("REST request to get all Posesions");
         return posesionService.findAllLocal(id).collectList();
     }
 
-    @GetMapping("/posesions/match/{id}")
+    @GetMapping("/posesions/match/away/{id}")
     public Mono<List<Posesion>> getAllPosesionsByMatchAway(@PathVariable(value = "id", required = true) final Long id) {
         log.debug("REST request to get all Posesions");
         return posesionService.findAllAway(id).collectList();

@@ -21,6 +21,9 @@ public interface MatchRepository extends ReactiveCrudRepository<Match, Long>, Ma
     @Query("SELECT * FROM match entity")
     Flux<Match> findAll();
 
+    @Query("SELECT * FROM match WHERE match_day < NOW()")
+    Flux<Match> findMatchesFinished();
+
     @Override
     Mono<Match> findById(Long id);
 

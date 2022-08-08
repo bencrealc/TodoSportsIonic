@@ -166,6 +166,12 @@ public class MatchResource {
         return matchService.findAll().collectList();
     }
 
+    @GetMapping("/matchesfinished")
+    public Mono<List<Match>> getAllMatchesFinished() {
+        log.debug("REST request to get all Matches Finished");
+        return matchService.findMatchesFinished().collectList();
+    }
+
     /**
      * {@code GET  /matches/:id} : get the "id" match.
      *

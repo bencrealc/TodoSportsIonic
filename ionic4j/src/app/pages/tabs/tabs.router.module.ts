@@ -34,12 +34,22 @@ const routes: Routes = [
           },
         ],
       },
+
       {
         path: 'teamCreate',
         children: [
           {
             path: '',
             loadChildren: () => import('../team/teamCreate.module').then(m => m.TeamCreatePageModule),
+          },
+        ],
+      },
+      {
+        path: 'matchesEnd',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../matches/end/matchesEnd.module').then(m => m.MatchesEndPageModule),
           },
         ],
       },

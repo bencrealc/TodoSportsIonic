@@ -1,36 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Create New Match</ion-title>
+    <ion-title>{{ 'TAB18_TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <form [formGroup]="match" (ngSubmit)="save()" novalidate>
   <ion-item>
-    <ion-select interface="popover" formControlName="local" placeholder="Local Team:">
+    <ion-select interface="popover" formControlName="local" placeholder="{{ 'TAB7_TITLE' | translate }}:">
       <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
     </ion-select>
   </ion-item>
   <div *ngIf="isSubmitted && errorControl.local.errors?.required">
-    <span class="error"> Local Team is required. </span>
+    <span class="error"> {{ 'TAB19_TITLE' | translate }}. </span>
   </div>
 
   <ion-item>
-    <ion-select interface="popover" formControlName="visitante" placeholder="Away Team:">
+    <ion-select interface="popover" formControlName="visitante" placeholder="{{ 'TAB8_TITLE' | translate }}:">
       <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
     </ion-select>
   </ion-item>
   <div *ngIf="isSubmitted && errorControl.visitante.errors?.required">
-    <span class="error"> Away Team is required. </span>
+    <span class="error"> {{ 'TAB20_TITLE' | translate }}. </span>
   </div>
-  <mat-error class="error" *ngIf="checarSiNoSonIguales()">Away team cannot be equal to Local team</mat-error>
+  <mat-error class="error" *ngIf="checarSiNoSonIguales()">{{ 'TAB21_TITLE' | translate }}.</mat-error>
 
   <ion-item>
     <ion-datetime [min]="defaultDate" formControlName="fecha" minuteValues="0,15,30,45" first-day-of-week="1"> </ion-datetime>
   </ion-item>
   <div *ngIf="isSubmitted && errorControl.fecha.errors?.required">
-    <span class="error"> Date is required. </span>
+    <span class="error"> {{ 'TAB22_TITLE' | translate }}. </span>
   </div>
 
-  <ion-button class="new-match" type="submit" block>Add Match</ion-button>
-  <ion-button class="cancel" [routerLink]="['/tabs/matches']">Cancel</ion-button>
+  <ion-button class="new-match" type="submit" block>{{ 'TAB23_TITLE' | translate }}</ion-button>
+  <ion-button class="cancel" [routerLink]="['/tabs/matches']">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
 </form>

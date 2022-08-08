@@ -5,43 +5,30 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { Team } from 'src/app/services/team/team.model';
 import { TeamService } from 'src/app/services/team/team.service';
-import { AccountService } from '../../services/auth/account.service';
 
 @Component({
-  selector: 'app-matches',
-  templateUrl: './matches.page.html',
-  styleUrls: ['./matches.page.scss'],
+  selector: 'app-matchesEnd',
+  templateUrl: './matchesEnd.page.html',
+  styleUrls: ['./matchesEnd.page.scss'],
 })
-export class MatchesPage implements OnInit {
+export class MatchesEndPage implements OnInit {
   matches?: Match[];
   local?: Team;
   away?: Team;
   isLoading = false;
   searchTerm: string;
   matchesFiltered?: Match[];
-  admin: boolean;
 
-  //  constructor(protected matchService: MatchService, protected modalService: NgbModal) {}
-
-  constructor(protected matchService: MatchService, public teamService: TeamService, protected modalService: NgbModal) {
-    // this.observable$.pipe(tap(res => this.matches = res));
-  }
+  constructor(protected matchService: MatchService, public teamService: TeamService, protected modalService: NgbModal) {}
 
   ngOnInit() {
     this.loadAll();
-    this.accountService.identity().then(account => {
-      if (account.firstName == 'Administrator') {
-        this.admin = true;
-      } else {
-        this.admin = false;
-      }
-    });
   }
 
   loadAll(): void {
     this.isLoading = true;
 
-    this.matchService.get().subscribe({
+    this.matchService.getMatchesFinished().subscribe({
       next: (res: HttpResponse<Match[]>) => {
         this.isLoading = false;
         this.matches = res.body ?? [];
@@ -87,7 +74,6 @@ export class MatchesPage implements OnInit {
       });
     }
   }
-
   trackId(_index: number, item: Match): number {
     return item.id!;
   }

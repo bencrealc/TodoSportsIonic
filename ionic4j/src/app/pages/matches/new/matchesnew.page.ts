@@ -67,7 +67,13 @@ export class MatchesNewPage implements OnInit {
     return this.match.controls;
   }
 
-  save() {
+  async save() {
+    const toastCreado = await this.toastController.create({
+      message: 'El partido ha sido creado',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
     this.isSaving = true;
     this.isSubmitted = true;
     if (!this.match.valid) {
@@ -77,6 +83,8 @@ export class MatchesNewPage implements OnInit {
       const date = this.stringToDate(this.match.value['fecha']);
       const eqlocal = this.teams.find(item => item.name === this.match.value['local']);
       const visit = this.teams.find(item => item.name === this.match.value['visitante']);
+
+      toastCreado.present();
 
       const match = this.createFrom(eqlocal, visit, date, eqlocal.id, visit.id);
 

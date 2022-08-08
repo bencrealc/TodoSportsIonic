@@ -15,10 +15,8 @@
   background-color: #e0fafa;
   color: #000;
   border: 1px solid #eee;
-  padding: 12px 5px;
+  padding: 12px 35px;
   border-collapse: collapse;
-  justify-content: center;
-  white-space: normal;
 }
 .table-responsive {
   font-family: 'Arial';
@@ -33,14 +31,21 @@
 .second {
   color: #959595;
   border: 1px solid #eee;
-  padding: 12px 5px;
+  padding: 12px 35px;
   border-collapse: collapse;
 }
-.col {
-  width: 70px;
+.list-divider {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: #ebeaea;
+  margin-top: 20px;
 }
-.col1 {
-  font-size: 19px;
-
-  justify-content: center;
+.normal-font {
+  font-size: 1rem;
+}
+.link {
+  text-decoration: underline;
+  color: rgb(66, 63, 248);
+  font-size: 1rem;
 }

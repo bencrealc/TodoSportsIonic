@@ -167,12 +167,12 @@ public class EventResource {
         return eventService.findAll().collectList();
     }
 
-    @GetMapping("/events/match/{id}")
+    @GetMapping("/events/match/local/{id}")
     public Mono<List<Event>> getAllEventsByMatchLocal(@PathVariable(value = "id", required = true) final Long id) {
         return eventService.findAllLocal(id).collectList();
     }
 
-    @GetMapping("/events/match/{id}")
+    @GetMapping("/events/match/away/{id}")
     public Mono<List<Event>> getAllEventesByMatchAway(@PathVariable(value = "id", required = true) final Long id) {
         return eventService.findAllAway(id).collectList();
     }

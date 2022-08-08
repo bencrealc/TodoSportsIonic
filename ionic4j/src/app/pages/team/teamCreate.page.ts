@@ -49,14 +49,20 @@ export class TeamCreatePage implements OnInit {
     return this.team.controls;
   }
 
-  save() {
+  async save() {
+    const toastCreado = await this.toastController.create({
+      message: 'El equipo ha sido creado',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
     this.isSaving = true;
     this.isSubmitted = true;
     if (!this.team.valid) {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.team.value);
+      toastCreado.present();
     }
     const team = this.createFrom(this.team.value['name'], this.account.id);
     this.subscribeToSaveResponse(this.teamService.create(team));
