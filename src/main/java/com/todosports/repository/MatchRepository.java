@@ -21,10 +21,10 @@ public interface MatchRepository extends ReactiveCrudRepository<Match, Long>, Ma
     @Query("SELECT * FROM match entity")
     Flux<Match> findAll();
 
-    @Query("SELECT * FROM match WHERE match_day < NOW()")
+    @Query("SELECT * FROM match WHERE match_day < (NOW() + interval '2 hour')")
     Flux<Match> findMatchesFinished();
 
-    @Query("SELECT * FROM match WHERE match_day>= NOW()")
+    @Query("SELECT * FROM match WHERE match_day>= (NOW() - interval '2 hour') ")
     Flux<Match> findMatchesToplay();
 
     @Override

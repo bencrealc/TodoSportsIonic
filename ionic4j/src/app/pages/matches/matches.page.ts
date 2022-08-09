@@ -20,6 +20,9 @@ export class MatchesPage implements OnInit {
   searchTerm: string;
   matchesFiltered?: Match[] = [];
   admin: boolean;
+  boton: boolean;
+  inicio: Date;
+  final: Date;
 
   constructor(
     private accountService: AccountService,
@@ -81,6 +84,21 @@ export class MatchesPage implements OnInit {
     this.matchesFiltered = this.matches.filter(match => {
       return match.local.name.includes(query) || match.away.name.includes(query);
     });
+  }
+  disponible(fechaPartido) {
+    console.log('buenas');
+
+    this.inicio = fechaPartido;
+    this.inicio.setMinutes(fechaPartido.getMinutes() - 5);
+
+    this.final = fechaPartido;
+    this.final.setTime(fechaPartido.getTime() + 2 * 60 * 60 * 1000);
+
+    if (fechaPartido.before(this.final) && fechaPartido.after(this.inicio)) {
+      this.boton = true;
+    } else {
+      this.boton = false;
+    }
   }
 
   trackId(_index: number, item: Match): number {
