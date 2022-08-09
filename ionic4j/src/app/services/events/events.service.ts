@@ -16,4 +16,8 @@ export class EventsService {
   getEvents(team, id) {
     return this.http.get<Event[]>(ApiService.API_URL + '/events/match/' + team + '/' + id, { observe: 'response' });
   }
+
+  getUsers(id) {
+    return this.http.get<number>(ApiService.API_URL + '/events/match/' + id, { observe: 'response' });
+  }
 }

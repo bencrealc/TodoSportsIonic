@@ -27,6 +27,9 @@ public interface EventRepository extends ReactiveCrudRepository<Event, Long>, Ev
     @Query("SELECT * FROM event entity WHERE entity.match_id = :id and entity.team=true")
     Flux<Event> findByMatchAway(Long id);
 
+    @Query("SELECT COUNT(DISTINCT entity.user_id) FROM event entity WHERE entity.match_id = :id")
+    Mono<Long> findUsers(Long id);
+
     @Override
     <S extends Event> Mono<S> save(S entity);
 
