@@ -13,12 +13,12 @@ import { AccountService } from '../../services/auth/account.service';
   styleUrls: ['./matches.page.scss'],
 })
 export class MatchesPage implements OnInit {
-  matches?: Match[] = [];
-  local?: Team;
-  away?: Team;
+  matches: Match[] = [];
+  local: Team;
+  away: Team;
   isLoading = false;
   searchTerm: string;
-  matchesFiltered?: Match[] = [];
+  matchesFiltered: Match[] = [];
   admin: boolean;
   boton: boolean;
   inicio: Date;
@@ -32,52 +32,57 @@ export class MatchesPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.accountService.hasAuthority('ROLE_ADMIN').then(res => {
+      this.admin = res;
+      console.log(this.admin);
+    });
     this.loadAll();
   }
 
-  loadAll(): void {
+  loadAll() {
     this.isLoading = true;
 
-    this.matchService.getMatchesToplay().subscribe({
+    return this.matchService.getMatchesToplay().subscribe({
       next: (res: HttpResponse<Match[]>) => {
         this.isLoading = false;
         this.matches = res.body ?? [];
-        this.matchesFiltered = res.body ?? [];
-        console.log(this.matches);
-        for (let value of this.matches) {
-          this.teamService.getById(value.localId).subscribe({
-            next: (res: HttpResponse<Team>) => {
-              this.local = res.body ?? null;
-              var index = this.matches.indexOf(value);
-              value.local = this.local;
-              this.matches[index] = value;
-            },
-            error: () => {
-              this.isLoading = false;
-            },
-          });
-
-          this.teamService.getById(value.awayId).subscribe({
-            next: (res: HttpResponse<Team>) => {
-              this.away = res.body ?? null;
-              var index = this.matches.indexOf(value);
-              value.away = this.away;
-              this.matches[index] = value;
-            },
-            error: () => {
-              this.isLoading = false;
-            },
-          });
-        }
+        this.matchesFiltered = this.matches;
+        this.teamsName();
       },
       error: () => {
         this.isLoading = false;
       },
     });
+  }
 
-    this.accountService.hasAuthority('ROLE_ADMIN').then(res => {
-      this.admin = res;
-    });
+  teamsName(): void {
+    for (let value of this.matches) {
+      this.teamService.getById(value.localId).subscribe({
+        next: (res: HttpResponse<Team>) => {
+          this.local = res.body ?? null;
+          var index = this.matches.indexOf(value);
+          value.local = this.local;
+          this.matches[index] = value;
+          console.log(value.local);
+        },
+        error: () => {
+          this.isLoading = false;
+        },
+      });
+
+      this.teamService.getById(value.awayId).subscribe({
+        next: (res: HttpResponse<Team>) => {
+          this.away = res.body ?? null;
+          var index = this.matches.indexOf(value);
+          value.away = this.away;
+          this.matches[index] = value;
+          console.log(value.away);
+        },
+        error: () => {
+          this.isLoading = false;
+        },
+      });
+    }
   }
 
   search(query) {
@@ -85,23 +90,23 @@ export class MatchesPage implements OnInit {
       return match.local.name.includes(query) || match.away.name.includes(query);
     });
   }
-  disponible(fechaPartido) {
-    console.log('buenas');
-
-    this.inicio = fechaPartido;
-    this.inicio.setMinutes(fechaPartido.getMinutes() - 5);
-
-    this.final = fechaPartido;
-    this.final.setTime(fechaPartido.getTime() + 2 * 60 * 60 * 1000);
-
-    if (fechaPartido.before(this.final) && fechaPartido.after(this.inicio)) {
-      this.boton = true;
-    } else {
-      this.boton = false;
-    }
-  }
 
   trackId(_index: number, item: Match): number {
     return item.id!;
+  }
+
+  dateValue(matchDay): boolean {
+    var today = new Date();
+    var partido = new Date(matchDay);
+
+    partido.setHours(partido.getHours() - 2);
+    var later = new Date(matchDay);
+    later.setHours(later.getHours() + 3);
+    var res = false;
+
+    if (partido.getTime() <= today.getTime() && today.getTime() <= later.getTime()) {
+      res = true;
+    }
+    return res;
   }
 }
