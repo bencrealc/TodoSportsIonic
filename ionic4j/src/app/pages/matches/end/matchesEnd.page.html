@@ -6,7 +6,7 @@
 
 <ion-content>
   <ion-searchbar
-    [formControl]="searchField"
+    formControl="searchField"
     (ionChange)="search($event.target.value)"
     showCancelButton="focus"
     animated
@@ -24,7 +24,9 @@
       <ion-col>{{ match.local.name }}</ion-col>
       <ion-col>{{ match.away.name }}</ion-col>
       <ion-col>{{stringToDate(match.matchDay)}}</ion-col>
-      <ion-col [routerLink]="['/match/end/',match.id]"><ion-title class="link">0-2</ion-title></ion-col>
+      <ion-col [routerLink]="['/match/end/',match.id]"
+        ><ion-button class="stats"><ion-icon name="open"></ion-icon></ion-button
+      ></ion-col>
     </ion-row>
   </div>
 

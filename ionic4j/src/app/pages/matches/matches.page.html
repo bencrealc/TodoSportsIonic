@@ -11,7 +11,7 @@
     </ion-button>
   </div>
   <div>
-    <ion-searchbar [formControl]="searchField" (ionChange)="search($event.target.value)" showCancelButton="focus" animated></ion-searchbar>
+    <ion-searchbar formControl="searchField" (ionChange)="search($event.target.value)" showCancelButton="focus" animated></ion-searchbar>
   </div>
 
   <div class="table-responsive" id="entities">
@@ -25,8 +25,9 @@
       <ion-col class="colP">{{ match.local.name }}</ion-col>
       <ion-col class="colP">{{ match.away.name }}</ion-col>
       <ion-col class="colP">{{stringToDate(match.matchDay)}}</ion-col>
-      <ion-col class="col" (ionload)="disponible(match.matchDay)">
-        <ion-button *ngIf="boton === true" class="stats" [routerLink]="['/stats/new/',match.id]">
+
+      <ion-col class="col">
+        <ion-button *ngIf="dateValue(match.matchDay)" class="stats" [routerLink]="['/stats/new/',match.id]">
           <ion-icon icon="football"></ion-icon> {{ 'ANALIZAR' | translate }}</ion-button
         >
       </ion-col>

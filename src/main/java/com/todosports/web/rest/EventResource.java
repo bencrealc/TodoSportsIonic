@@ -8,7 +8,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -175,6 +174,11 @@ public class EventResource {
     @GetMapping("/events/match/away/{id}")
     public Mono<List<Event>> getAllEventesByMatchAway(@PathVariable(value = "id", required = true) final Long id) {
         return eventService.findAllAway(id).collectList();
+    }
+
+    @GetMapping("/events/match/{id}")
+    public Mono<Long> getUsers(@PathVariable(value = "id", required = true) final Long id) {
+        return eventService.findUsers(id);
     }
 
     /**

@@ -9,6 +9,7 @@ import { TeamService } from 'src/app/services/team/team.service';
 import { Team } from 'src/app/services/team/team.model';
 import { AccountService } from 'src/app/services/auth/account.service';
 import { Account } from 'src/model/account.model';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-teamCreate',
@@ -26,6 +27,7 @@ export class TeamCreatePage implements OnInit {
     public navController: NavController,
     public toastController: ToastController,
     public translateService: TranslateService,
+    private router: Router,
     private accountService: AccountService,
     protected fb: FormBuilder
   ) {
@@ -66,6 +68,9 @@ export class TeamCreatePage implements OnInit {
     }
     const team = this.createFrom(this.team.value['name'], this.account.id);
     this.subscribeToSaveResponse(this.teamService.create(team));
+    if (this.isSubmitted) {
+      this.router.navigate(['/tabs/teamCreate']);
+    }
   }
 
   protected subscribeToSaveResponse(result: Observable<ArrayBuffer>): void {

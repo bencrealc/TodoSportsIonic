@@ -83,13 +83,16 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Flux<Event> findAllLocal(Long id) {
-        // TODO Auto-generated method stub
         return eventRepository.findByMatchLocal(id);
     }
 
     @Override
     public Flux<Event> findAllAway(Long id) {
-        // TODO Auto-generated method stub
         return eventRepository.findByMatchAway(id);
+    }
+
+    @Override
+    public Mono<Long> findUsers(Long id) {
+        return eventRepository.findUsers(id);
     }
 }

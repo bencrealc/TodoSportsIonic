@@ -59,6 +59,8 @@ public interface EventService {
 
     Flux<Event> findAllAway(Long id);
 
+    Mono<Long> findUsers(Long id);
+
     /**
      * Delete the "id" event.
      *
