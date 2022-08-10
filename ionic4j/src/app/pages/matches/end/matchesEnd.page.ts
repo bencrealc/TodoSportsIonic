@@ -74,4 +74,14 @@ export class MatchesEndPage implements OnInit {
   trackId(_index: number, item: Match): number {
     return item.id!;
   }
+
+  stringToDate(matchDay) {
+    //const dateFromIonDatetime = this.match.value['fecha']; //2022-08-18T22:48:00+02:00
+
+    const [dia, hora] = matchDay.split('T');
+
+    const [year, month, day] = dia.split('-');
+    const [hours, minutes, seconds] = hora.split(':');
+    return day + '-' + month + '-' + year + ' ' + hours + ':' + minutes + 'h';
+  }
 }

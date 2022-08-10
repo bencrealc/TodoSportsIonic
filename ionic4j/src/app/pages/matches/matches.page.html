@@ -24,8 +24,8 @@
     <ion-row *ngFor="let match of matchesFiltered; trackBy: trackId" #slidingItem class="second">
       <ion-col class="colP">{{ match.local.name }}</ion-col>
       <ion-col class="colP">{{ match.away.name }}</ion-col>
-      <ion-col class="colP">{{ match.matchDay }}</ion-col>
-      <ion-col class="col" (onload)="disponible(match.matchDay)">
+      <ion-col class="colP">{{stringToDate(match.matchDay)}}</ion-col>
+      <ion-col class="col" (ionload)="disponible(match.matchDay)">
         <ion-button *ngIf="boton === true" class="stats" [routerLink]="['/stats/new/',match.id]">
           <ion-icon icon="football"></ion-icon> {{ 'ANALIZAR' | translate }}</ion-button
         >
