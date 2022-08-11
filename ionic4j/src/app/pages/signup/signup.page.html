@@ -1,9 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+    <div class="padre">
+      <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+      <ion-title
+        ><ion-button class="redo" [routerLink]="['/']"><ion-icon name="arrow-redo"></ion-icon></ion-button
+      ></ion-title>
+    </div>
   </ion-toolbar>
 </ion-header>
 
