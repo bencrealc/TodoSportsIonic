@@ -156,12 +156,20 @@ export class MatchDataPage implements OnInit {
 
   sumPosesion(): void {
     for (let i = 0; i < this.pLocal.length; i++) {
-      this.posesionLocal = this.posesionLocal + (new Date(this.pLocal[i].end).getTime() - new Date(this.pLocal[i].start).getTime());
+      if (this.pLocal[i].end === null) {
+        this.posesionLocal = this.posesionLocal + 0;
+      } else {
+        this.posesionLocal = this.posesionLocal + (new Date(this.pLocal[i].end).getTime() - new Date(this.pLocal[i].start).getTime());
+      }
       console.log('Posesion ' + this.posesionLocal);
     }
 
     for (let i = 0; i < this.pLocal.length; i++) {
-      this.posesionAway = this.posesionAway + (new Date(this.pAway[i].end).getTime() - new Date(this.pAway[i].start).getTime());
+      if (this.pAway[i].end === null) {
+        this.posesionAway = this.posesionAway + 0;
+      } else {
+        this.posesionAway = this.posesionAway + (new Date(this.pAway[i].end).getTime() - new Date(this.pAway[i].start).getTime());
+      }
     }
 
     var total = this.posesionLocal + this.posesionAway;
