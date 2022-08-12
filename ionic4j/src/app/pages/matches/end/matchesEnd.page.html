@@ -15,15 +15,15 @@
 
   <div class="table-responsive" id="entities">
     <ion-row class="first">
-      <ion-col scope="col"><ion-title>{{ 'EQUIPO_LOCAL' | translate }}</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>{{ 'EQUIPO_VISITANTE' | translate }}</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>{{ 'FECHA' | translate }}</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>{{ 'RESULTADOS' | translate }}</ion-title></ion-col>
+      <ion-col class="col1">{{ 'EQUIPO_LOCAL' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'EQUIPO_VISITANTE' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'FECHA' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'RESULTADOS' | translate }}</ion-col>
     </ion-row>
     <ion-row *ngFor="let match of matchesFiltered" class="second">
-      <ion-col>{{ match.local.name }}</ion-col>
-      <ion-col>{{ match.away.name }}</ion-col>
-      <ion-col>{{stringToDate(match.matchDay)}}</ion-col>
+      <ion-col class="colP">{{ match.local.name }}</ion-col>
+      <ion-col class="colP">{{ match.away.name }}</ion-col>
+      <ion-col class="colP">{{stringToDate(match.matchDay)}}</ion-col>
       <ion-col [routerLink]="['/match/end/',match.id]"
         ><ion-button class="stats"><ion-icon name="open"></ion-icon></ion-button
       ></ion-col>

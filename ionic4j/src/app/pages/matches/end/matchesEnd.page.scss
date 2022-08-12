@@ -15,7 +15,7 @@
   background-color: #e0fafa;
   color: #000;
   border: 1px solid #eee;
-  padding: 12px 35px;
+  padding: 5px 5px;
   border-collapse: collapse;
 }
 .table-responsive {
@@ -31,7 +31,7 @@
 .second {
   color: #959595;
   border: 1px solid #eee;
-  padding: 12px 35px;
+  padding: 5px 5px;
   border-collapse: collapse;
 }
 .list-divider {
@@ -48,4 +48,17 @@
   text-decoration: underline;
   color: rgb(66, 63, 248);
   font-size: 1rem;
+}
+.colP {
+  width: 70px;
+  white-space: normal;
+  padding-top: 20px;
+  justify-content: center;
+}
+.col1 {
+  width: 70px;
+  white-space: normal;
+  font-size: 17px;
+  justify-content: center;
+  text-overflow: inherit;
 }
