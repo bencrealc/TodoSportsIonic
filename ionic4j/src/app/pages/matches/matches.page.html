@@ -16,10 +16,10 @@
 
   <div class="table-responsive" id="entities">
     <ion-row class="first">
-      <ion-col><ion-title class="col1">{{ 'EQUIPO_LOCAL' | translate }}</ion-title></ion-col>
-      <ion-col><ion-title class="col1">{{ 'EQUIPO_VISITANTE' | translate }}</ion-title></ion-col>
-      <ion-col><ion-title class="col1">{{ 'FECHA' | translate }}</ion-title></ion-col>
-      <ion-col><ion-title class="col1">{{ 'ACCIONES' | translate }}</ion-title></ion-col>
+      <ion-col class="col1">{{ 'EQUIPO_LOCAL' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'EQUIPO_VISITANTE' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'FECHA' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'ACCIONES' | translate }}</ion-col>
     </ion-row>
     <ion-row *ngFor="let match of matchesFiltered; trackBy: trackId" #slidingItem class="second">
       <ion-col class="colP">{{ match.local.name }}</ion-col>

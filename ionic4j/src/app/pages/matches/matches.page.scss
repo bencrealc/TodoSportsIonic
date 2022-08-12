@@ -15,10 +15,9 @@
   background-color: #e0fafa;
   color: #000;
   border: 1px solid #eee;
-  padding: 12px 5px;
+  padding: 5px 5px;
   border-collapse: collapse;
   justify-content: center;
-  white-space: normal;
 }
 .table-responsive {
   font-family: 'Arial';
@@ -26,6 +25,7 @@
   border-collapse: collapse;
   border: 1px solid #eee;
   text-align: center;
+  white-space: normal;
   border-bottom: 2px solid #00cccc;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05),
     0px 30px 20px rgba(0, 0, 0, 0.05);
@@ -49,6 +49,9 @@
   justify-content: center;
 }
 .col1 {
-  font-size: 19px;
+  width: 70px;
+  white-space: normal;
+  font-size: 17px;
   justify-content: center;
+  text-overflow: inherit;
 }
