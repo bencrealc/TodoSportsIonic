@@ -1,34 +1,62 @@
-<ion-header>
-  <ion-toolbar>
-    <div class="padre">
-      <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
-      <ion-title
-        ><ion-button class="redo" [routerLink]="['/']"><ion-icon name="arrow-redo"></ion-icon></ion-button
-      ></ion-title>
-    </div>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <ion-grid class="grid1">
+    <ion-row class="row1">
+      <ion-col> </ion-col>
+    </ion-row>
 
-<ion-content class="ion-padding">
-  <form (submit)="doLogin()">
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating">{{ 'USERNAME' | translate }}</ion-label>
-        <ion-input type="string" [(ngModel)]="account.username" name="username"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>{{ 'REMEMBER_ME' | translate }}</ion-label>
-        <ion-toggle [(ngModel)]="account.rememberMe" name="rememberMe"></ion-toggle>
-      </ion-item>
-      <ion-row class="ion-padding">
-        <ion-col>
-          <ion-button expand="block" type="submit" color="primary" id="login">{{ 'LOGIN_BUTTON' | translate }}</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-list>
-  </form>
+    <ion-row class="row2">
+      <ion-col> </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-slide>
+    <div class="contaier-login">
+      <ion-grid>
+        <form (submit)="doLogin()">
+          <ion-row>
+            <ion-button class="redo" [routerLink]="['/']"><ion-icon name="arrow-redo"></ion-icon></ion-button>
+            <ion-col>
+              <h1>{{ 'LOGIN_TITLE' | translate }}</h1>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item>
+                  <ion-icon name="person" class="icon-login"></ion-icon>
+                  <ion-input
+                    name="user"
+                    type="string"
+                    [(ngModel)]="account.username"
+                    required
+                    placeholder="{{ 'EMAIL' | translate }}"
+                  ></ion-input>
+                </ion-item>
+                <br />
+                <ion-item>
+                  <ion-icon name="lock-closed" class="icon-login"></ion-icon>
+                  <ion-input
+                    name="password"
+                    type="password"
+                    [(ngModel)]="account.password"
+                    required
+                    placeholder="{{ 'PASSWORD' | translate }}"
+                  ></ion-input>
+                </ion-item>
+                <br />
+                <ion-item>
+                  <ion-label>{{ 'REMEMBER_ME' | translate }}</ion-label>
+                  <ion-toggle [(ngModel)]="account.rememberMe" name="rememberMe"></ion-toggle>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" class="button" fill="solid" id="login"> {{ 'LOGIN_BUTTON' | translate }} </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>
+    </div>
+  </ion-slide>
 </ion-content>

@@ -1,14 +1,14 @@
 {
   "NAME": "Nombre",
-  "FIRST_NAME": "First Name",
-  "LAST_NAME": "Last Name",
+  "FIRST_NAME": "Nombre",
+  "LAST_NAME": "Apellidos",
   "PASSWORD": "Contraseña",
-  "REMEMBER_ME": "Remember Me",
+  "REMEMBER_ME": "Recordarme",
   "EMAIL": "Email",
-  "USERNAME": "Username",
+  "USERNAME": "Nombre de usuario",
   "LOGIN": "Iniciar sesión",
   "SIGNUP": "Registrarse",
-  "NO_ACCOUNT_MESSAGE": "Don't have an account yet?",
+  "NO_ACCOUNT_MESSAGE": "¿No tienes una cuenta aun?",
 
   "INICIO": "Inicio",
   "BUSCAR": "Buscar",
@@ -77,16 +77,17 @@
   "SETTINGS_PAGE_PROFILE": "Editar Perfil",
 
   "WELCOME_TITLE": "Bienvenido/a",
-  "LOGOUT_TITLE": "Logout",
+  "WELCOME_INIC": "Bienvenido/a, esto es TodoSports",
+  "LOGOUT_TITLE": "Cerrar sesión",
 
   "LOGIN_TITLE": "Iniciar sesión",
   "LOGIN_ERROR": "No se ha podido iniciar sesión. Por favor revisa la información de la cuenta e inténtalo de nuevo.",
   "LOGIN_BUTTON": "Iniciar sesión",
   "SIGNUP_TITLE": "Registro",
   "SIGNUP_ERROR": "No se ha podido crear la cuenta. Por favor revisa la información de la cuenta e inténtalo de nuevo.",
-  "SIGNUP_SUCCESS": "Registration saved! Please check your email for confirmation.",
-  "EXISTING_USER_ERROR": "Email is already in use! Please choose another one.",
-  "INVALID_PASSWORD_ERROR": "Invalid password, please try again.",
+  "SIGNUP_SUCCESS": "¡Registro guardado! Por favor, revise su correo electrónico para confirmarlo.",
+  "EXISTING_USER_ERROR": "¡Correo electrónico en uso! Por favor elija otro.",
+  "INVALID_PASSWORD_ERROR": "Contraseña incorrecta, por favor vuelva a intentarlo",
   "SIGNUP_BUTTON": "Registrarse",
 
   "LIST_MASTER_TITLE": "Items",
@@ -97,5 +98,5 @@
   "CARDS_TITLE": "Social",
 
   "SEARCH_TITLE": "Buscar",
-  "EMPTY_ENTITIES_MESSAGE": "You haven't generated entities yet. Run `yo jhipster-ionic:entity <name>`"
+  "EMPTY_ENTITIES_MESSAGE": "Aún no has generado entidades. Corra `yo jhipster-ionic:entity <name>`"
 }

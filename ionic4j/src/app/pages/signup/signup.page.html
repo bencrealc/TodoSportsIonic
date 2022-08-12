@@ -1,42 +1,75 @@
-<ion-header>
-  <ion-toolbar>
-    <div class="padre">
-      <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
-      <ion-title
-        ><ion-button class="redo" [routerLink]="['/']"><ion-icon name="arrow-redo"></ion-icon></ion-button
-      ></ion-title>
+<ion-content>
+  <ion-grid class="grid1">
+    <ion-row class="row1">
+      <ion-col> </ion-col>
+    </ion-row>
+
+    <ion-row class="row2">
+      <ion-col> </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-slide>
+    <div class="contaier-login">
+      <ion-grid>
+        <form (submit)="doSignup()">
+          <ion-row>
+            <ion-button class="redo" [routerLink]="['/']"><ion-icon name="arrow-redo"></ion-icon></ion-button>
+            <ion-col>
+              <h1>{{ 'SIGNUP_TITLE' | translate }}</h1>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item>
+                  <ion-input
+                    name="firstName"
+                    type="string"
+                    [(ngModel)]="account.firstName"
+                    required
+                    placeholder="{{ 'FIRST_NAME' | translate }}"
+                  ></ion-input>
+                </ion-item>
+                <br />
+                <ion-item>
+                  <ion-input
+                    name="lastName"
+                    type="string"
+                    [(ngModel)]="account.lastName"
+                    required
+                    placeholder="{{ 'LAST_NAME' | translate }}"
+                  ></ion-input>
+                </ion-item>
+                <br />
+                <ion-item>
+                  <ion-input
+                    name="email"
+                    type="email"
+                    [(ngModel)]="account.email"
+                    required
+                    placeholder="{{ 'EMAIL' | translate }}"
+                  ></ion-input>
+                </ion-item>
+                <br />
+                <ion-item>
+                  <ion-input
+                    name="password"
+                    type="password"
+                    [(ngModel)]="account.password"
+                    required
+                    placeholder="{{ 'PASSWORD' | translate }}"
+                  ></ion-input>
+                </ion-item>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" class="button" fill="solid"> {{ 'SIGNUP_BUTTON' | translate }} </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>
     </div>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content class="ion-padding">
-  <form (submit)="doSignup()">
-    <ion-list>
-      <ion-item>
-        <ion-label position="floating">{{ 'FIRST_NAME' | translate }}</ion-label>
-        <ion-input type="string" [(ngModel)]="account.firstName" name="firstName"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">{{ 'LAST_NAME' | translate }}</ion-label>
-        <ion-input type="string" [(ngModel)]="account.lastName" name="lastName"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label position="floating">{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
-
-      <ion-row class="ion-padding">
-        <ion-col>
-          <ion-button expand="block" type="submit" color="primary">{{ 'SIGNUP_BUTTON' | translate }}</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-list>
-  </form>
+  </ion-slide>
 </ion-content>
