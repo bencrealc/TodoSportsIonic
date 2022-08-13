@@ -80,4 +80,19 @@ public class EventServiceImpl implements EventService {
         log.debug("Request to delete Event : {}", id);
         return eventRepository.deleteById(id);
     }
+
+    @Override
+    public Flux<Event> findAllLocal(Long id) {
+        return eventRepository.findByMatchLocal(id);
+    }
+
+    @Override
+    public Flux<Event> findAllAway(Long id) {
+        return eventRepository.findByMatchAway(id);
+    }
+
+    @Override
+    public Mono<Long> findUsers(Long id) {
+        return eventRepository.findUsers(id);
+    }
 }

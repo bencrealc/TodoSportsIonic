@@ -99,6 +99,20 @@ public class PosesionServiceImpl implements PosesionService {
         return posesionRepository.findAll();
     }
 
+    @Override
+    @Transactional(readOnly = true)
+    public Flux<Posesion> findAllLocal(Long id) {
+        log.debug("Request to get all Posesions");
+        return posesionRepository.findByMatchLocal(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Flux<Posesion> findAllAway(Long id) {
+        log.debug("Request to get all Posesions");
+        return posesionRepository.findByMatchAway(id);
+    }
+
     public Mono<Long> countAll() {
         return posesionRepository.count();
     }

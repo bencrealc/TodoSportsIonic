@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'PARTIDOS_FIN' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-searchbar
+    formControl="searchField"
+    (ionChange)="search($event.target.value)"
+    showCancelButton="focus"
+    animated
+    debounce="100"
+  ></ion-searchbar>
+
+  <div class="table-responsive" id="entities">
+    <ion-row class="first">
+      <ion-col class="col1">{{ 'EQUIPO_LOCAL' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'EQUIPO_VISITANTE' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'FECHA' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'RESULTADOS' | translate }}</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let match of matchesFiltered" class="second">
+      <ion-col class="colP">{{ match.local.name }}</ion-col>
+      <ion-col class="colP">{{ match.away.name }}</ion-col>
+      <ion-col class="colP">{{stringToDate(match.matchDay)}}</ion-col>
+      <ion-col [routerLink]="['/match/end/',match.id]"
+        ><ion-button class="stats"><ion-icon name="open"></ion-icon></ion-button
+      ></ion-col>
+    </ion-row>
+  </div>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="matches?.length === 0">
+    <ion-title>{{ 'NO_FOUND' | translate }}</ion-title>
+  </div>
+</ion-content>

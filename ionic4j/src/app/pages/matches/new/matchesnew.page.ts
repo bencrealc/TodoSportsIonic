@@ -67,25 +67,31 @@ export class MatchesNewPage implements OnInit {
     return this.match.controls;
   }
 
-  save() {
+  async save() {
+    const toastCreado = await this.toastController.create({
+      message: 'El partido ha sido creado',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
     this.isSaving = true;
     this.isSubmitted = true;
     if (!this.match.valid) {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.match.value);
-    }
+      const date = this.stringToDate(this.match.value['fecha']);
+      const eqlocal = this.teams.find(item => item.name === this.match.value['local']);
+      const visit = this.teams.find(item => item.name === this.match.value['visitante']);
 
-    const date = this.stringToDate(this.match.value['fecha']);
-    const eqlocal = this.teams.find(item => item.name === this.match.value['local']);
-    const visit = this.teams.find(item => item.name === this.match.value['visitante']);
+      toastCreado.present();
 
-    const match = this.createFrom(eqlocal, visit, date, eqlocal.id, visit.id);
-    console.log(match);
-    this.subscribeToSaveResponse(this.matchService.create(match));
-    if (this.isSubmitted) {
-      this.router.navigate(['/tabs/matches']);
+      const match = this.createFrom(date, eqlocal.id, visit.id);
+
+      this.subscribeToSaveResponse(this.matchService.create(match));
+      if (this.isSubmitted) {
+        this.router.navigate(['/tabs/matches']);
+      }
     }
   }
 
@@ -96,10 +102,9 @@ export class MatchesNewPage implements OnInit {
     });
   }
 
-  protected createFrom(local, visit, fecha, localId, awayId): Match {
+  protected createFrom(fecha, localId, awayId): Match {
     return {
       ...new Match(),
-      local: local,
       localId: localId,
       awayId: awayId,
       matchDay: fecha,

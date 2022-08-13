@@ -1,30 +1,36 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Matches</ion-title>
+    <ion-title>{{ 'PARTIDOS' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="padre">
-    <ion-button class="new-btn" [routerLink]="['/matches/new']"> <ion-icon icon="add-circle"></ion-icon> New Match </ion-button>
+  <div class="padre" *ngIf="admin === true">
+    <ion-button class="new-btn" [routerLink]="['/matches/new']">
+      <ion-icon icon="add-circle"></ion-icon> {{ 'NUEVO_PARTIDO' | translate }}
+    </ion-button>
+  </div>
+  <div>
+    <ion-searchbar formControl="searchField" (ionChange)="search($event.target.value)" showCancelButton="focus" animated></ion-searchbar>
   </div>
 
   <div class="table-responsive" id="entities">
     <ion-row class="first">
-      <ion-col scope="col"><ion-title>Local Team</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>Away Team</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>Date</ion-title></ion-col>
-      <ion-col scope="col"><ion-title>Actions</ion-title></ion-col>
+      <ion-col class="col1">{{ 'EQUIPO_LOCAL' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'EQUIPO_VISITANTE' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'FECHA' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'ACCIONES' | translate }}</ion-col>
     </ion-row>
-    <ion-row *ngFor="let match of matches; trackBy: trackId" #slidingItem class="second">
-      <ion-col>{{ match.local.name }}</ion-col>
-      <ion-col>{{ match.away.name }}</ion-col>
-      <ion-col>{{ match.matchDay }}</ion-col>
-      <ion-col
-        ><ion-button class="new-btn" [routerLink]="['/stats/new/',match.id]">
-          <ion-icon icon="football"></ion-icon> Analyse</ion-button
-        ></ion-col
-      >
+    <ion-row *ngFor="let match of matchesFiltered; trackBy: trackId" #slidingItem class="second">
+      <ion-col class="colP">{{ match.local.name }}</ion-col>
+      <ion-col class="colP">{{ match.away.name }}</ion-col>
+      <ion-col class="colP">{{stringToDate(match.matchDay)}}</ion-col>
+
+      <ion-col class="col">
+        <ion-button *ngIf="dateValue(match.matchDay)" class="stats" [routerLink]="['/stats/new/',match.id]">
+          <ion-icon icon="football"></ion-icon> {{ 'ANALIZAR' | translate }}</ion-button
+        >
+      </ion-col>
     </ion-row>
   </div>
 

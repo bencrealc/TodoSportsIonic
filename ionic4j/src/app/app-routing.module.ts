@@ -16,12 +16,20 @@ const routes: Routes = [
     loadChildren: () => import('./pages/matches/matches.module').then(m => m.MatchesPageModule),
   },
   {
+    path: 'matches/end',
+    loadChildren: () => import('./pages/matches/end/matchesEnd.module').then(m => m.MatchesEndPageModule),
+  },
+  {
     path: 'matches/new',
     loadChildren: () => import('./pages/matches/new/matchesnew.module').then(m => m.MatchesNewPageModule),
   },
   {
     path: 'stats/new/:id',
     loadChildren: () => import('./pages/statistics/statistics.module').then(m => m.StatisticsPageModule),
+  },
+  {
+    path: 'match/end/:id',
+    loadChildren: () => import('./pages/matches/data/matchdata.module').then(m => m.MatchDataPageModule),
   },
 ];
 @NgModule({

@@ -13,5 +13,11 @@
                                  constraintName="fk_posesion__match_id"
                                  referencedColumnNames="id"
                                  referencedTableName="match"/>
+        
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="posesion"
+                                 constraintName="fk_posesion__user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
     </changeSet>
 </databaseChangeLog>

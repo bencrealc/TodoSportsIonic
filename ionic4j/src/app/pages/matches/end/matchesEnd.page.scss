@@ -1,0 +1,64 @@
+.padre {
+  display: flex;
+}
+
+.new-btn {
+  --background: #00cccc;
+  white-space: normal;
+}
+.stats {
+  --background: #e0fafa;
+  white-space: normal;
+  color: #959595;
+}
+.first {
+  background-color: #e0fafa;
+  color: #000;
+  border: 1px solid #eee;
+  padding: 5px 5px;
+  border-collapse: collapse;
+}
+.table-responsive {
+  font-family: 'Arial';
+  margin: 25px auto;
+  border-collapse: collapse;
+  border: 1px solid #eee;
+  text-align: center;
+  border-bottom: 2px solid #00cccc;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05),
+    0px 30px 20px rgba(0, 0, 0, 0.05);
+}
+.second {
+  color: #959595;
+  border: 1px solid #eee;
+  padding: 5px 5px;
+  border-collapse: collapse;
+}
+.list-divider {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: #ebeaea;
+  margin-top: 20px;
+}
+.normal-font {
+  font-size: 1rem;
+}
+.link {
+  text-decoration: underline;
+  color: rgb(66, 63, 248);
+  font-size: 1rem;
+}
+.colP {
+  width: 70px;
+  white-space: normal;
+  padding-top: 20px;
+  justify-content: center;
+}
+.col1 {
+  width: 70px;
+  white-space: normal;
+  font-size: 17px;
+  justify-content: center;
+  text-overflow: inherit;
+}

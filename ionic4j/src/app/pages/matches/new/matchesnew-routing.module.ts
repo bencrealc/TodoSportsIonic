@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { MatchesNewPage } from 'src/app/pages/matches/new/matchesnew.page';
+import { MatchesPage } from '../matches.page';
 
 const routes: Routes = [
   {

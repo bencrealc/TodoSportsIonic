@@ -1,23 +1,63 @@
 {
   "NAME": "Nombre",
-  "FIRST_NAME": "First Name",
-  "LAST_NAME": "Last Name",
+  "FIRST_NAME": "Nombre",
+  "LAST_NAME": "Apellidos",
   "PASSWORD": "Contraseña",
-  "REMEMBER_ME": "Remember Me",
+  "REMEMBER_ME": "Recordarme",
   "EMAIL": "Email",
-  "USERNAME": "Username",
+  "USERNAME": "Nombre de usuario",
   "LOGIN": "Iniciar sesión",
   "SIGNUP": "Registrarse",
-  "NO_ACCOUNT_MESSAGE": "Don't have an account yet?",
+  "NO_ACCOUNT_MESSAGE": "¿No tienes una cuenta aun?",
 
-  "TAB1_TITLE": "Items",
-  "TAB2_TITLE": "Buscar",
-  "TAB3_TITLE": "Cuenta",
-  "TAB4_TITLE": "Datos partido",
-  "TAB5_TITLE": "Partidos",
-  "TAB6_TITLE": "Crear equipos",
+  "INICIO": "Inicio",
+  "BUSCAR": "Buscar",
+  "CUENTA": "Cuenta",
+
+  "DATOS_PARTIDO": "Datos partido",
+  "PARTIDOS": "Partidos",
+  "CREAR_EQUIPOS": "Crear equipos",
+  "EQUIPO_LOCAL": "Equipo Local",
+  "EQUIPO_VISITANTE": "Equipo Visitante",
+  "FECHA": "Fecha",
+  "ACCIONES": "Acciones",
+  "NUEVO_PARTIDO": "Nuevo Partido",
+  "ANALIZAR": "Analizar",
+  "NO_FOUND": "No se ha encontrado ningún partido",
+
+  "ESTADISTICAS": "Estadísticas",
+  "INICIO_POSESION": "Inicio de Posesión",
+  "EVENTOS": "Eventos",
+  "CAMBIO_POSESION": "Cambio Posesión",
+  "FIN_POSESION": "Fin Posesión",
+
+  "CREAR_NUEVO_PARTIDO": "Crear Nuevo Partido",
+  "TL_OBLIGATORIO": "El equipo Local es obligatorio",
+  "TV_OBLIGATORIO": "El equipo Visitante es obligatorio",
+  "DIFERENTE": "El equipo visitante no puede ser igual al equipo Local",
+  "FECHA_OBLIGATORIA": "La fecha es obligatoria",
+  "AÑADIR_PARTIDO": "Añadir Partido",
+
+  "CREAR_EQUIPO": "Crear Equipo",
+  "NOMBRE_EQUIPO": "Nombre del equipo",
+  "NOMBRE_OB": "El nombre es obligatorio",
+  "NOMBRE_MINIMO": "El nombre debe tener un mínimo de 3 carácteres",
+  "AÑADIR_EQUIPO": "Añadir Equipo",
+
+  "PARTIDOS_FIN": "Partidos Finalizados",
+  "RESULTADOS": "Resultados",
+
+  "GOLES": "Goles",
+  "TIROS": "Tiros",
+  "FALTAS": "Faltas",
+  "AMARILLAS": "Tarjetas Amarillas",
+  "ROJAS": "Tarjetas Rojas",
+  "FUERA_JUEGO": "Fuera de Juego",
+  "CORNERS": "Corners",
+  "POSESION": "Posesión del Balón",
 
   "MAP_TITLE": "Mapa",
+  "CANCEL_BUTTON": "Cancelar",
 
   "TUTORIAL_SLIDE1_TITLE": "Bienvenido/a al Ionic Super Starter",
   "TUTORIAL_SLIDE1_DESCRIPTION": "El <b>Ionic Super Starter</b> es un starter de Ionic completo con muchas páginas preconstruidas y mejores prácticas.",
@@ -36,17 +76,18 @@
 
   "SETTINGS_PAGE_PROFILE": "Editar Perfil",
 
-  "WELCOME_TITLE": "Bienvenido/a",
-  "LOGOUT_TITLE": "Logout",
+  "WELCOME_TITLE": "Hola",
+  "WELCOME_INIC": "Bienvenido/a, esto es TodoSports",
+  "LOGOUT_TITLE": "Cerrar sesión",
 
   "LOGIN_TITLE": "Iniciar sesión",
   "LOGIN_ERROR": "No se ha podido iniciar sesión. Por favor revisa la información de la cuenta e inténtalo de nuevo.",
   "LOGIN_BUTTON": "Iniciar sesión",
   "SIGNUP_TITLE": "Registro",
   "SIGNUP_ERROR": "No se ha podido crear la cuenta. Por favor revisa la información de la cuenta e inténtalo de nuevo.",
-  "SIGNUP_SUCCESS": "Registration saved! Please check your email for confirmation.",
-  "EXISTING_USER_ERROR": "Email is already in use! Please choose another one.",
-  "INVALID_PASSWORD_ERROR": "Invalid password, please try again.",
+  "SIGNUP_SUCCESS": "¡Registro guardado! Por favor, revise su correo electrónico para confirmarlo.",
+  "EXISTING_USER_ERROR": "¡Correo electrónico en uso! Por favor elija otro.",
+  "INVALID_PASSWORD_ERROR": "Contraseña incorrecta, por favor vuelva a intentarlo",
   "SIGNUP_BUTTON": "Registrarse",
 
   "LIST_MASTER_TITLE": "Items",
@@ -57,5 +98,5 @@
   "CARDS_TITLE": "Social",
 
   "SEARCH_TITLE": "Buscar",
-  "EMPTY_ENTITIES_MESSAGE": "You haven't generated entities yet. Run `yo jhipster-ionic:entity <name>`"
+  "EMPTY_ENTITIES_MESSAGE": "Aún no has generado entidades. Corra `yo jhipster-ionic:entity <name>`"
 }

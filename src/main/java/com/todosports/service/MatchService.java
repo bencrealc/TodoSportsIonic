@@ -40,6 +40,10 @@ public interface MatchService {
      */
     Flux<Match> findAll();
 
+    Flux<Match> findMatchesFinished();
+
+    Flux<Match> findMatchesToplay();
+
     /**
      * Returns the number of matches available.
      * @return the number of entities in the database.

@@ -26,6 +26,7 @@ public class TeamRowMapper implements BiFunction<Row, String, Team> {
         Team entity = new Team();
         entity.setId(converter.fromRow(row, prefix + "_id", Long.class));
         entity.setName(converter.fromRow(row, prefix + "_name", String.class));
+        entity.setUserId(converter.fromRow(row, prefix + "_user_id", Long.class));
         return entity;
     }
 }

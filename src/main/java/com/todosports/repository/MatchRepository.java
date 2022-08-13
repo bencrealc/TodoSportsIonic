@@ -18,8 +18,14 @@ public interface MatchRepository extends ReactiveCrudRepository<Match, Long>, Ma
     @Override
     <S extends Match> Mono<S> save(S entity);
 
-    @Query("SELECT * FROM match entity")
+    @Query("SELECT * FROM match entity ORDER BY match_day")
     Flux<Match> findAll();
+
+    @Query("SELECT * FROM match WHERE( match_day  + interval '3 hour') <NOW() ORDER BY match_day")
+    Flux<Match> findMatchesFinished();
+
+    @Query("SELECT * FROM match WHERE match_day>= (NOW() - interval '3 hour') ORDER BY match_day")
+    Flux<Match> findMatchesToplay();
 
     @Override
     Mono<Match> findById(Long id);

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from '../../services/user/user.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -35,6 +36,7 @@ export class SignupPage implements OnInit {
   constructor(
     public navController: NavController,
     public userService: UserService,
+    private router: Router,
     public toastController: ToastController,
     public translateService: TranslateService
   ) {
@@ -60,6 +62,7 @@ export class SignupPage implements OnInit {
           position: 'top',
         });
         toast.present();
+        this.router.navigate(['/tabs/home']);
       },
       async response => {
         // Unable to sign up

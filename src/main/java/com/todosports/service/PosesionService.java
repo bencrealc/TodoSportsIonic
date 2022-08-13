@@ -43,6 +43,10 @@ public interface PosesionService {
      */
     Flux<Posesion> findAll();
 
+    Flux<Posesion> findAllLocal(Long id);
+
+    Flux<Posesion> findAllAway(Long id);
+
     /**
      * Returns the number of posesions available.
      * @return the number of entities in the database.

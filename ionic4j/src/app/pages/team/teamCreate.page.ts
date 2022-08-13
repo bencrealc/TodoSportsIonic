@@ -7,6 +7,9 @@ import { finalize } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeamService } from 'src/app/services/team/team.service';
 import { Team } from 'src/app/services/team/team.model';
+import { AccountService } from 'src/app/services/auth/account.service';
+import { Account } from 'src/model/account.model';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-teamCreate',
@@ -17,12 +20,15 @@ export class TeamCreatePage implements OnInit {
   isSaving = false;
   isSubmitted = false;
   private team: FormGroup;
+  account: Account;
 
   constructor(
     public teamService: TeamService,
     public navController: NavController,
     public toastController: ToastController,
     public translateService: TranslateService,
+    private router: Router,
+    private accountService: AccountService,
     protected fb: FormBuilder
   ) {
     this.team = this.fb.group({
@@ -34,23 +40,37 @@ export class TeamCreatePage implements OnInit {
     this.team = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
     });
+    this.accountService.identity().then(account => {
+      if (account != null) {
+        this.account = account;
+      }
+    });
   }
 
   get errorControl() {
     return this.team.controls;
   }
 
-  save() {
+  async save() {
+    const toastCreado = await this.toastController.create({
+      message: 'El equipo ha sido creado',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
     this.isSaving = true;
     this.isSubmitted = true;
     if (!this.team.valid) {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      console.log(this.team.value);
+      toastCreado.present();
     }
-    const team = this.createFrom(this.team.value['name']);
+    const team = this.createFrom(this.team.value['name'], this.account.id);
     this.subscribeToSaveResponse(this.teamService.create(team));
+    if (this.isSubmitted) {
+      this.router.navigate(['/tabs/teamCreate']);
+    }
   }
 
   protected subscribeToSaveResponse(result: Observable<ArrayBuffer>): void {
@@ -60,10 +80,11 @@ export class TeamCreatePage implements OnInit {
     });
   }
 
-  protected createFrom(name): Team {
+  protected createFrom(name, userId): Team {
     return {
       ...new Team(),
       name: name,
+      userId: userId,
     };
   }
 

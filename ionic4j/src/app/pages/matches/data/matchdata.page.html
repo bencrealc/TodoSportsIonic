@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'DATOS_PARTIDO' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<div class="padre">
+  <ion-title
+    ><ion-button class="data" [routerLink]="['/tabs/matchesEnd']"><ion-icon name="arrow-redo"></ion-icon></ion-button
+  ></ion-title>
+</div>
+
+<ion-content>
+  <ion-card>
+    <div class="table-responsive" id="entities">
+      <ion-row class="first">
+        <ion-col class="col1">{{ 'EQUIPO_LOCAL' | translate }}</ion-col>
+        <ion-col></ion-col>
+        <ion-col class="col1">{{ 'EQUIPO_VISITANTE' | translate }}</ion-col>
+      </ion-row>
+      <ion-row class="second">
+        <ion-col class="colTeam">{{ golesLocal }}</ion-col>
+        <ion-col class="col">{{ 'GOLES' | translate }}</ion-col>
+        <ion-col class="colTeam">{{ golesAway}}</ion-col>
+      </ion-row>
+      <ion-row class="second">
+        <ion-col class="colTeam">{{ tirosLocal }}</ion-col>
+        <ion-col class="col">{{ 'TIROS' | translate }}</ion-col>
+        <ion-col class="colTeam">{{ tirosAway }}</ion-col>
+      </ion-row>
+      <ion-row class="second">
+        <ion-col class="colTeam">{{ faltasLocal }}</ion-col>
+        <ion-col class="col">{{ 'FALTAS' | translate }}</ion-col>
+        <ion-col class="colTeam">{{ faltasAway }}</ion-col>
+      </ion-row>
+      <ion-row class="second">
+        <ion-col class="colTeam">{{ amarillasLocal }}</ion-col>
+        <ion-col class="col">{{ 'AMARILLAS' | translate }}</ion-col>
+        <ion-col class="colTeam">{{ amarillasAway }}</ion-col>
+      </ion-row>
+      <ion-row class="second">
+        <ion-col class="colTeam">{{ rojasLocal }}</ion-col>
+        <ion-col class="col">{{ 'ROJAS' | translate }}</ion-col>
+        <ion-col class="colTeam">{{ rojasAway }}</ion-col>
+      </ion-row>
+      <ion-row class="second">
+        <ion-col class="colTeam">{{ offsideLocal }}</ion-col>
+        <ion-col class="col">{{ 'FUERA_JUEGO' | translate }}</ion-col>
+        <ion-col class="colTeam">{{ offsideAway }}</ion-col>
+      </ion-row>
+      <ion-row class="second">
+        <ion-col class="colTeam">{{ cornerLocal }}</ion-col>
+        <ion-col class="col">{{ 'CORNERS' | translate }}</ion-col>
+        <ion-col class="colTeam">{{ cornerAway }}</ion-col>
+      </ion-row>
+      <ion-row class="second">
+        <ion-col class="colTeam">{{ posesionLocal }} %</ion-col>
+        <ion-col class="col">{{ 'POSESION' | translate }}</ion-col>
+        <ion-col class="colTeam">{{ posesionAway }} %</ion-col>
+      </ion-row>
+    </div>
+  </ion-card>
+</ion-content>

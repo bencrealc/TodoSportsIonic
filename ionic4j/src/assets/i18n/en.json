@@ -12,12 +12,51 @@
   "SIGNUP": "Sign up",
   "NO_ACCOUNT_MESSAGE": "Don't have an account yet?",
 
-  "TAB1_TITLE": "Home",
-  "TAB2_TITLE": "Entities",
-  "TAB3_TITLE": "Account",
+  "INICIO": "Home",
+  "BUSCAR": "Search",
+  "CUENTA": "Account",
 
-  "TAB5_TITLE": "Matches",
-  "TAB6_TITLE": "Create teams",
+  "DATOS_PARTIDO": "Match Data",
+  "PARTIDOS": "Matches",
+  "CREAR_EQUIPOS": "Create teams",
+  "EQUIPO_LOCAL": "Local Team",
+  "EQUIPO_VISITANTE": "Away Team",
+  "FECHA": "Date",
+  "ACCIONES": "Actions",
+  "NUEVO_PARTIDO": "New Match",
+  "ANALIZAR": "Analyse",
+  "NO_FOUND": "No matches found",
+
+  "ESTADISTICAS": "Statistics",
+  "INICIO_POSESION": "Start Possession",
+  "EVENTOS": "Events",
+  "CAMBIO_POSESION": "Change Possession",
+  "FIN_POSESION": "End Possession",
+
+  "CREAR_NUEVO_PARTIDO": "Create New Match",
+  "TL_OBLIGATORIO": "Local Team is required",
+  "TV_OBLIGATORIO": "Away Team is required",
+  "DIFERENTE": "Away team cannot be equal to Local team",
+  "FECHA_OBLIGATORIA": "Date is required",
+  "AÑADIR_PARTIDO": "Add Match",
+
+  "CREAR_EQUIPO": "Create Team",
+  "NOMBRE_EQUIPO": "Team Name",
+  "NOMBRE_OB": "Name is required",
+  "NOMBRE_MINIMO": "Name should be min 3 chars long",
+  "AÑADIR_EQUIPO": "Add Team",
+
+  "PARTIDOS_FIN": "Finished Matches",
+  "RESULTADOS": "Results",
+
+  "GOLES": "Goals",
+  "TIROS": "Shots",
+  "FALTAS": "Fouls",
+  "AMARILLAS": "Yellow Cards",
+  "ROJAS": "Red Cards",
+  "FUERA_JUEGO": "Offsides",
+  "CORNERS": "Corners",
+  "POSESION": "Ball Possession",
 
   "MAP_TITLE": "Map",
 
@@ -47,7 +86,8 @@
 
   "SETTINGS_PAGE_PROFILE": "Edit Profile",
 
-  "WELCOME_TITLE": "Welcome",
+  "WELCOME_TITLE": "Hello",
+  "WELCOME_INIC": "Welcome, this is TodoSports",
   "LOGOUT_TITLE": "Logout",
 
   "LOGIN_TITLE": "Sign in",

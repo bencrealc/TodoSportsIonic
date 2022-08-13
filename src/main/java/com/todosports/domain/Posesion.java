@@ -36,6 +36,9 @@ public class Posesion implements Serializable {
     @Column("match_id")
     private Long matchId;
 
+    @Column("user_id")
+    private Long userId;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
@@ -123,6 +126,14 @@ public class Posesion implements Serializable {
             return false;
         }
         return id != null && id.equals(((Posesion) o).id);
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     @Override
