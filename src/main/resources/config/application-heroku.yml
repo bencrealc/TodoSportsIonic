@@ -19,9 +19,9 @@ eureka:
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: ${JDBC_DATABASE_URL}
-    username: ${JDBC_DATABASE_USERNAME}
-    password: ${JDBC_DATABASE_PASSWORD}
+    url: ${R2DBC_DATABASE_URL}
+    username: ${R2DBC_DATABASE_USERNAME}
+    password: ${R2DBC_DATABASE_PASSWORD}
     hikari:
       maximumPoolSize: 8
 server:
