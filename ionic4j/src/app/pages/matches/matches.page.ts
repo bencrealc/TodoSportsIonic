@@ -45,10 +45,11 @@ export class MatchesPage implements OnInit {
 
     return this.matchService.getMatchesToplay().subscribe({
       next: (res: HttpResponse<Match[]>) => {
-        this.isLoading = false;
+        this.isLoading = true;
         this.matches = res.body ?? [];
-        this.matchesFiltered = this.matches;
-        this.teamsName();
+        this.matchesFiltered = res.body ?? [];
+        console.log(this.matches);
+        //this.teamsName();
       },
       error: () => {
         this.isLoading = false;
@@ -56,10 +57,12 @@ export class MatchesPage implements OnInit {
     });
   }
 
-  teamsName(): void {
+  /*teamsName(): void {
+    console.log("Estos son los partidos: "+ this.matches)
     for (let value of this.matches) {
       this.teamService.getById(value.localId).subscribe({
         next: (res: HttpResponse<Team>) => {
+          this.isLoading = true;
           this.local = res.body ?? null;
           var index = this.matches.indexOf(value);
           value.local = this.local;
@@ -73,6 +76,7 @@ export class MatchesPage implements OnInit {
 
       this.teamService.getById(value.awayId).subscribe({
         next: (res: HttpResponse<Team>) => {
+          this.isLoading = true;
           this.away = res.body ?? null;
           var index = this.matches.indexOf(value);
           value.away = this.away;
@@ -84,7 +88,7 @@ export class MatchesPage implements OnInit {
         },
       });
     }
-  }
+  }*/
 
   search(query) {
     this.matchesFiltered = this.matches.filter(match => {
