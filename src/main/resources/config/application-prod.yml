@@ -33,7 +33,7 @@ spring:
       enabled: false
   # Replace by 'prod, faker' to add the faker context and have sample data loaded in production
   liquibase:
-    contexts: prod
+    contexts: prod, faker
     url: jdbc:postgresql://xjffhyxcbtqybb:075cfc1aa980dc4099c9e73559e94fd1826d54db54a2ad66cbf14a4929e72c8e@ec2-176-34-215-248.eu-west-1.compute.amazonaws.com:5432/darqm3tf6jnfuv
   mail:
     host: localhost
