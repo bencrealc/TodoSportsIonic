@@ -23,8 +23,8 @@
     </ion-row>
     <div *ngIf="matches?.length != 0">
       <ion-row *ngFor="let match of matchesFiltered; trackBy: trackId" #slidingItem class="second">
-        <ion-col class="colP">{{ match.local.name }}</ion-col>
-        <ion-col class="colP">{{ match.away.name }}</ion-col>
+        <ion-col class="colP">{{ match.localId }}</ion-col>
+        <ion-col class="colP">{{ match.awayId }}</ion-col>
         <ion-col class="colP">{{stringToDate(match.matchDay)}}</ion-col>
 
         <ion-col class="col">

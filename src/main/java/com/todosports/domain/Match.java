@@ -29,14 +29,14 @@ public class Match implements Serializable {
     private Team local;
 
     @Column("local_id")
-    private Long localId;
+    private String localId;
 
     @Transient
     @JsonIgnoreProperties(value = { "teams" }, allowSetters = true)
     private Team away;
 
     @Column("away_id")
-    private Long awayId;
+    private String awayId;
 
     @Column("match_day")
     private Instant matchDay;
@@ -70,7 +70,7 @@ public class Match implements Serializable {
 
     public void setLocal(Team local) {
         this.local = local;
-        this.localId = local != null ? local.getId() : null;
+        this.localId = local != null ? local.getName() : null;
     }
 
     public Match local(Team local) {
@@ -78,16 +78,16 @@ public class Match implements Serializable {
         return this;
     }
 
-    public Long getLocalId() {
+    public String getLocalId() {
         return this.localId;
     }
 
-    public Match localId(Long localId) {
+    public Match localId(String localId) {
         this.setLocalId(localId);
         return this;
     }
 
-    public void setLocalId(Long localId) {
+    public void setLocalId(String localId) {
         this.localId = localId;
     }
 
@@ -97,7 +97,7 @@ public class Match implements Serializable {
 
     public void setAway(Team away) {
         this.away = away;
-        this.awayId = away != null ? away.getId() : null;
+        this.awayId = away != null ? away.getName() : null;
     }
 
     public Match away(Team away) {
@@ -105,16 +105,16 @@ public class Match implements Serializable {
         return this;
     }
 
-    public Long getAwayId() {
+    public String getAwayId() {
         return this.awayId;
     }
 
-    public Match awayId(Long awayId) {
+    public Match awayId(String awayId) {
         this.setAwayId(awayId);
         return this;
     }
 
-    public void setAwayId(Long awayId) {
+    public void setAwayId(String awayId) {
         this.awayId = awayId;
     }
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserRouteAccessService } from 'src/app/services/auth/user-route-access.service';
 
 import { MatchesEndPage } from './matchesEnd.page';
 
@@ -7,6 +8,10 @@ const routes: Routes = [
   {
     path: '',
     component: MatchesEndPage,
+    data: {
+      authorities: ['ROLE_USER'],
+    },
+    canActivate: [UserRouteAccessService],
   },
 ];
 

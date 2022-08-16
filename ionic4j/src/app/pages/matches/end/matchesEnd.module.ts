@@ -10,7 +10,7 @@ import { MatchesEndPage } from './matchesEnd.page';
 
 @NgModule({
   imports: [CommonModule, ReactiveFormsModule, IonicModule, MatchesEndPageRoutingModule, TranslateModule, Ng2SearchPipeModule],
-  declarations: [MatchesEndPage, Ng2SearchPipeModule],
+  declarations: [MatchesEndPage],
   providers: [FormBuilder],
   exports: [Ng2SearchPipeModule],
 })

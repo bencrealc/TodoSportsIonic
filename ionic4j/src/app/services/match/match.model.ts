@@ -5,9 +5,9 @@ import { Team } from '../team/team.model';
 export class Match {
   public id?: number;
   public local?: Team;
-  public localId?: number;
+  public localId?: string;
   public away?: Team;
-  public awayId?: number;
+  public awayId?: string;
   public matchDay?: Date;
   public events?: Event[];
   public posesion?: Posesion[];
@@ -15,9 +15,9 @@ export class Match {
   constructor(
     id?: number,
     local?: Team,
-    localId?: number,
+    localId?: string,
     away?: Team,
-    awayId?: number,
+    awayId?: string,
     matchDay?: Date,
     events?: Event[],
     posesion?: Posesion[]

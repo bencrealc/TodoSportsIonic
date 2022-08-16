@@ -11,13 +11,13 @@
         <addForeignKeyConstraint baseColumnNames="local_id"
                                  baseTableName="match"
                                  constraintName="fk_match__local_id"
-                                 referencedColumnNames="id"
+                                 referencedColumnNames="name"
                                  referencedTableName="team"/>
 
         <addForeignKeyConstraint baseColumnNames="away_id"
                                  baseTableName="match"
                                  constraintName="fk_match__away_id"
-                                 referencedColumnNames="id"
+                                 referencedColumnNames="name"
                                  referencedTableName="team"/>
     </changeSet>
 </databaseChangeLog>

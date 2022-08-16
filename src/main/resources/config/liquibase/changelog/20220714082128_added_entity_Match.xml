@@ -14,10 +14,10 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="local_id" type="bigint">
+            <column name="local_id" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="away_id" type="bigint">
+            <column name="away_id" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="match_day" type="${datetimeType}">

@@ -86,7 +86,7 @@ export class MatchesNewPage implements OnInit {
 
       toastCreado.present();
 
-      const match = this.createFrom(date, eqlocal.id, visit.id);
+      const match = this.createFrom(date, eqlocal.name, visit.name);
 
       this.subscribeToSaveResponse(this.matchService.create(match));
       if (this.isSubmitted) {
