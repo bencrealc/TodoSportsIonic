@@ -1,7 +1,7 @@
 .new-match {
-  --background: #49ff43;
+  --background: #fbdb5c;
   white-space: normal;
-  color: #000;
+  color: rgba(0, 0, 0, 0.75);
   margin-bottom: 200px;
 }
 .cancel {
@@ -14,4 +14,9 @@
   color: red;
   font-size: 12px;
   margin-left: 17px;
+}
+.padre {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }
