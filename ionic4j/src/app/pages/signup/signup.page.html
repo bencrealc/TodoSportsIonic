@@ -23,6 +23,16 @@
               <ion-list>
                 <ion-item>
                   <ion-input
+                    name="login"
+                    type="string"
+                    [(ngModel)]="account.login"
+                    required
+                    placeholder="{{ 'USERNAME' | translate }}"
+                  ></ion-input>
+                </ion-item>
+                <br />
+                <ion-item>
+                  <ion-input
                     name="firstName"
                     type="string"
                     [(ngModel)]="account.firstName"

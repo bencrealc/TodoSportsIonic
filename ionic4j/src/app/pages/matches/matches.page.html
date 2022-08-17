@@ -11,7 +11,7 @@
     </ion-button>
   </div>
   <div>
-    <ion-searchbar formControl="searchField" (ionChange)="search($event.target.value)" showCancelButton="focus" animated></ion-searchbar>
+    <ion-searchbar (ionChange)="search($event.target.value)" showCancelButton="focus" animated></ion-searchbar>
   </div>
 
   <div class="table-responsive" id="entities">
@@ -21,17 +21,19 @@
       <ion-col class="col1">{{ 'FECHA' | translate }}</ion-col>
       <ion-col class="col1">{{ 'ACCIONES' | translate }}</ion-col>
     </ion-row>
-    <ion-row *ngFor="let match of matchesFiltered; trackBy: trackId" #slidingItem class="second">
-      <ion-col class="colP">{{ match.local.name }}</ion-col>
-      <ion-col class="colP">{{ match.away.name }}</ion-col>
-      <ion-col class="colP">{{stringToDate(match.matchDay)}}</ion-col>
+    <div *ngIf="matches?.length != 0">
+      <ion-row *ngFor="let match of matchesFiltered; trackBy: trackId" #slidingItem class="second">
+        <ion-col class="colP">{{ match.localId }}</ion-col>
+        <ion-col class="colP">{{ match.awayId }}</ion-col>
+        <ion-col class="colP">{{stringToDate(match.matchDay)}}</ion-col>
 
-      <ion-col class="col">
-        <ion-button *ngIf="dateValue(match.matchDay)" class="stats" [routerLink]="['/stats/new/',match.id]">
-          <ion-icon icon="football"></ion-icon> {{ 'ANALIZAR' | translate }}</ion-button
-        >
-      </ion-col>
-    </ion-row>
+        <ion-col class="col">
+          <ion-button *ngIf="dateValue(match.matchDay)" class="stats" [routerLink]="['/stats/new/',match.id]">
+            <ion-icon icon="football"></ion-icon> {{ 'ANALIZAR' | translate }}</ion-button
+          >
+        </ion-col>
+      </ion-row>
+    </div>
   </div>
 
   <div class="alert alert-warning" id="no-result" *ngIf="matches?.length === 0">

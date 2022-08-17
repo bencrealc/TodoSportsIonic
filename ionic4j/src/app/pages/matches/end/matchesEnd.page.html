@@ -5,13 +5,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-searchbar
-    formControl="searchField"
-    (ionChange)="search($event.target.value)"
-    showCancelButton="focus"
-    animated
-    debounce="100"
-  ></ion-searchbar>
+  <ion-searchbar (ionChange)="search($event.target.value)" showCancelButton="focus" animated debounce="100"></ion-searchbar>
 
   <div class="table-responsive" id="entities">
     <ion-row class="first">
@@ -21,8 +15,8 @@
       <ion-col class="col1">{{ 'RESULTADOS' | translate }}</ion-col>
     </ion-row>
     <ion-row *ngFor="let match of matchesFiltered" class="second">
-      <ion-col class="colP">{{ match.local.name }}</ion-col>
-      <ion-col class="colP">{{ match.away.name }}</ion-col>
+      <ion-col class="colP">{{ match.localId }}</ion-col>
+      <ion-col class="colP">{{ match.awayId }}</ion-col>
       <ion-col class="colP">{{stringToDate(match.matchDay)}}</ion-col>
       <ion-col [routerLink]="['/match/end/',match.id]"
         ><ion-button class="stats"><ion-icon name="open"></ion-icon></ion-button

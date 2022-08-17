@@ -164,7 +164,7 @@ export class MatchDataPage implements OnInit {
       console.log('Posesion ' + this.posesionLocal);
     }
 
-    for (let i = 0; i < this.pLocal.length; i++) {
+    for (let i = 0; i < this.pAway.length; i++) {
       if (this.pAway[i].end === null) {
         this.posesionAway = this.posesionAway + 0;
       } else {
@@ -174,6 +174,8 @@ export class MatchDataPage implements OnInit {
 
     var total = this.posesionLocal + this.posesionAway;
     this.posesionLocal = Math.round((this.posesionLocal * 100) / total);
+    console.log(this.posesionLocal);
     this.posesionAway = Math.round((this.posesionAway * 100) / total);
+    console.log(this.posesionAway);
   }
 }

@@ -34,31 +34,6 @@ export class MatchesEndPage implements OnInit {
         this.matches = res.body ?? [];
         this.matchesFiltered = res.body ?? [];
         console.log(this.matches);
-        for (let value of this.matches) {
-          this.teamService.getById(value.localId).subscribe({
-            next: (res: HttpResponse<Team>) => {
-              this.local = res.body ?? null;
-              var index = this.matches.indexOf(value);
-              value.local = this.local;
-              this.matches[index] = value;
-            },
-            error: () => {
-              this.isLoading = false;
-            },
-          });
-
-          this.teamService.getById(value.awayId).subscribe({
-            next: (res: HttpResponse<Team>) => {
-              this.away = res.body ?? null;
-              var index = this.matches.indexOf(value);
-              value.away = this.away;
-              this.matches[index] = value;
-            },
-            error: () => {
-              this.isLoading = false;
-            },
-          });
-        }
       },
       error: () => {
         this.isLoading = false;

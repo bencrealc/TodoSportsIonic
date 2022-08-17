@@ -45,10 +45,10 @@ export class MatchesPage implements OnInit {
 
     return this.matchService.getMatchesToplay().subscribe({
       next: (res: HttpResponse<Match[]>) => {
-        this.isLoading = false;
+        this.isLoading = true;
         this.matches = res.body ?? [];
-        this.matchesFiltered = this.matches;
-        this.teamsName();
+        this.matchesFiltered = res.body ?? [];
+        console.log(this.matches);
       },
       error: () => {
         this.isLoading = false;
@@ -56,39 +56,9 @@ export class MatchesPage implements OnInit {
     });
   }
 
-  teamsName(): void {
-    for (let value of this.matches) {
-      this.teamService.getById(value.localId).subscribe({
-        next: (res: HttpResponse<Team>) => {
-          this.local = res.body ?? null;
-          var index = this.matches.indexOf(value);
-          value.local = this.local;
-          this.matches[index] = value;
-          console.log(value.local);
-        },
-        error: () => {
-          this.isLoading = false;
-        },
-      });
-
-      this.teamService.getById(value.awayId).subscribe({
-        next: (res: HttpResponse<Team>) => {
-          this.away = res.body ?? null;
-          var index = this.matches.indexOf(value);
-          value.away = this.away;
-          this.matches[index] = value;
-          console.log(value.away);
-        },
-        error: () => {
-          this.isLoading = false;
-        },
-      });
-    }
-  }
-
   search(query) {
     this.matchesFiltered = this.matches.filter(match => {
-      return match.local.name.includes(query) || match.away.name.includes(query);
+      return match.localId.includes(query) || match.awayId.includes(query);
     });
   }
 
