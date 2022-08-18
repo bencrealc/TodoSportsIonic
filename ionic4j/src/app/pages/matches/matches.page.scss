@@ -3,18 +3,22 @@
 }
 
 .new-btn {
-  --background: #00cccc;
+  --background: #fbdb5c;
   white-space: normal;
+  color: rgba(0, 0, 0, 0.75);
 }
 .stats {
   --background: #e0fafa;
   white-space: normal;
   color: #959595;
 }
+ion-icon {
+  padding-right: 7px;
+}
 .first {
-  background-color: #e0fafa;
+  background-color: #7aee80;
   color: #000;
-  border: 1px solid #eee;
+  border: 1px solid rgb(171, 223, 169);
   padding: 5px 5px;
   border-collapse: collapse;
   justify-content: center;
@@ -26,7 +30,7 @@
   border: 1px solid #eee;
   text-align: center;
   white-space: normal;
-  border-bottom: 2px solid #00cccc;
+  border-bottom: 2px solid #4cb050;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05),
     0px 30px 20px rgba(0, 0, 0, 0.05);
 }

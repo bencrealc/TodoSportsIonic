@@ -3,34 +3,38 @@
     <ion-title>{{ 'CREAR_NUEVO_PARTIDO' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
+<ion-slide>
+  <form [formGroup]="match" (ngSubmit)="save()" novalidate>
+    <ion-item>
+      <ion-select interface="popover" formControlName="local" placeholder="{{ 'EQUIPO_LOCAL' | translate }}:">
+        <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div *ngIf="isSubmitted && errorControl.local.errors?.required">
+      <span class="error"> {{ 'TL_OBLIGATORIO' | translate }}. </span>
+    </div>
 
-<form [formGroup]="match" (ngSubmit)="save()" novalidate>
-  <ion-item>
-    <ion-select interface="popover" formControlName="local" placeholder="{{ 'EQUIPO_LOCAL' | translate }}:">
-      <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <div *ngIf="isSubmitted && errorControl.local.errors?.required">
-    <span class="error"> {{ 'TL_OBLIGATORIO' | translate }}. </span>
-  </div>
+    <ion-item>
+      <ion-select interface="popover" formControlName="visitante" placeholder="{{ 'EQUIPO_VISITANTE' | translate }}:">
+        <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div *ngIf="isSubmitted && errorControl.visitante.errors?.required">
+      <span class="error"> {{ 'TV_OBLIGATORIO' | translate }}. </span>
+    </div>
+    <mat-error class="error" *ngIf="checarSiNoSonIguales()">{{ 'DIFERENTE' | translate }}.</mat-error>
 
-  <ion-item>
-    <ion-select interface="popover" formControlName="visitante" placeholder="{{ 'EQUIPO_VISITANTE' | translate }}:">
-      <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
-    </ion-select>
-  </ion-item>
-  <div *ngIf="isSubmitted && errorControl.visitante.errors?.required">
-    <span class="error"> {{ 'TV_OBLIGATORIO' | translate }}. </span>
-  </div>
-  <mat-error class="error" *ngIf="checarSiNoSonIguales()">{{ 'DIFERENTE' | translate }}.</mat-error>
-
-  <ion-item>
-    <ion-datetime [min]="defaultDate" formControlName="fecha" minuteValues="0,15,30,45" first-day-of-week="1"> </ion-datetime>
-  </ion-item>
-  <div *ngIf="isSubmitted && errorControl.fecha.errors?.required">
-    <span class="error"> {{ 'FECHA_OBLIGATORIA' | translate }}. </span>
-  </div>
-
-  <ion-button class="new-match" type="submit" block>{{ 'AÑADIR_PARTIDO' | translate }}</ion-button>
-  <ion-button class="cancel" [routerLink]="['/tabs/matches']">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
-</form>
+    <ion-item>
+      <ion-datetime [min]="defaultDate" formControlName="fecha" minuteValues="0,15,30,45" first-day-of-week="1">
+        <span slot="time-label">Hora</span>
+      </ion-datetime>
+    </ion-item>
+    <div *ngIf="isSubmitted && errorControl.fecha.errors?.required">
+      <span class="error"> {{ 'FECHA_OBLIGATORIA' | translate }}. </span>
+    </div>
+    <div class="padre">
+      <ion-button class="new-match" type="submit" block>{{ 'AÑADIR_PARTIDO' | translate }}</ion-button>
+      <ion-button class="cancel" [routerLink]="['/tabs/matches']">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
+    </div>
+  </form>
+</ion-slide>
