@@ -31,6 +31,7 @@
     "@angular/router": "~13.3.6",
     "@awesome-cordova-plugins/screen-orientation": "^5.44.0",
     "@capacitor-community/http": "1.4.1",
+    "@capacitor/android": "3.5.1",
     "@capacitor/app": "1.1.1",
     "@capacitor/browser": "1.0.7",
     "@capacitor/core": "3.5.1",

@@ -81,7 +81,7 @@ jhipster:
   # CORS is only enabled by default with the "dev" profile
   cors:
     # TODO CAMBIAR IP POR LA ACTUAL
-    allowed-origins: 'http://192.168.1.134:8100,https://localhost:8100,http://192.168.1.134:9000,https://localhost:9000,http://192.168.1.134:4200,https://localhost:4200'
+    allowed-origins: 'http://192.168.1.134:8100,https://localhost:8100,http://192.168.1.134:9000,https://localhost:9000,http://192.168.1.134:4200,https://localhost:4200,http://localhost,http://192.168.1.166'
 
     # Enable CORS when running in GitHub Codespaces
     allowed-origin-patterns: 'https://*.githubpreview.dev'
