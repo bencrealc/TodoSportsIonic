@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { LoginService } from '../../services/login/login.service';
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
 @Component({
   selector: 'app-login',
@@ -23,8 +24,11 @@ export class LoginPage implements OnInit {
     public translateService: TranslateService,
     public loginService: LoginService,
     public toastController: ToastController,
-    public navController: NavController
-  ) {}
+    public navController: NavController,
+    private screenOrientation: ScreenOrientation
+  ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  }
 
   ngOnInit() {
     this.translateService.get('LOGIN_ERROR').subscribe(value => {

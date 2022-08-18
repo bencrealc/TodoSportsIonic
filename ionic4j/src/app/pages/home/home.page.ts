@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { Account } from 'src/model/account.model';
 import { AccountService } from '../../services/auth/account.service';
 import { LoginService } from '../../services/login/login.service';
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,14 @@ import { LoginService } from '../../services/login/login.service';
 export class HomePage implements OnInit {
   account: Account;
 
-  constructor(public navController: NavController, private accountService: AccountService, private loginService: LoginService) {}
+  constructor(
+    public navController: NavController,
+    private accountService: AccountService,
+    private screenOrientation: ScreenOrientation,
+    private loginService: LoginService
+  ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  }
 
   ngOnInit() {
     this.accountService.identity().then(account => {

@@ -3,6 +3,7 @@ import { NavController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from '../../services/user/user.service';
 import { Router, RouterModule } from '@angular/router';
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
 @Component({
   selector: 'app-signup',
@@ -38,8 +39,10 @@ export class SignupPage implements OnInit {
     public userService: UserService,
     private router: Router,
     public toastController: ToastController,
+    private screenOrientation: ScreenOrientation,
     public translateService: TranslateService
   ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     this.translateService.get(['SIGNUP_ERROR', 'SIGNUP_SUCCESS', 'EXISTING_USER_ERROR', 'INVALID_PASSWORD_ERROR']).subscribe(values => {
       this.signupErrorString = values.SIGNUP_ERROR;
       this.signupSuccessString = values.SIGNUP_SUCCESS;

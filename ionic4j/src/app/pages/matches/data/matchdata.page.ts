@@ -7,6 +7,7 @@ import { EventsService } from 'src/app/services/events/events.service';
 import { Posesion } from 'src/app/services/posesion/posesion.model';
 import { HttpResponse } from '@angular/common/http';
 import { Event } from 'src/app/services/events/event.model';
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
 @Component({
   selector: 'app-matchdata',
@@ -55,8 +56,11 @@ export class MatchDataPage implements OnInit {
     public translateService: TranslateService,
     private route: ActivatedRoute,
     private posesionService: PosesionService,
+    private screenOrientation: ScreenOrientation,
     private eventService: EventsService
-  ) {}
+  ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => {

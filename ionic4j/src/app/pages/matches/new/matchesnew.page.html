@@ -1,40 +1,66 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{ 'CREAR_NUEVO_PARTIDO' | translate }}</ion-title>
-  </ion-toolbar>
-</ion-header>
-<ion-slide>
-  <form [formGroup]="match" (ngSubmit)="save()" novalidate>
-    <ion-item>
-      <ion-select interface="popover" formControlName="local" placeholder="{{ 'EQUIPO_LOCAL' | translate }}:">
-        <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <div *ngIf="isSubmitted && errorControl.local.errors?.required">
-      <span class="error"> {{ 'TL_OBLIGATORIO' | translate }}. </span>
-    </div>
+<ion-content>
+  <ion-grid class="grid1">
+    <ion-row class="row1">
+      <ion-col> </ion-col>
+    </ion-row>
 
-    <ion-item>
-      <ion-select interface="popover" formControlName="visitante" placeholder="{{ 'EQUIPO_VISITANTE' | translate }}:">
-        <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <div *ngIf="isSubmitted && errorControl.visitante.errors?.required">
-      <span class="error"> {{ 'TV_OBLIGATORIO' | translate }}. </span>
-    </div>
-    <mat-error class="error" *ngIf="checarSiNoSonIguales()">{{ 'DIFERENTE' | translate }}.</mat-error>
+    <ion-row class="row2">
+      <ion-col> </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-slide>
+    <div class="contaier-login">
+      <ion-grid>
+        <form [formGroup]="match" (ngSubmit)="save()" novalidate>
+          <ion-row>
+            <ion-col>
+              <h1>{{ 'CREAR_NUEVO_PARTIDO' | translate }}</h1>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-list>
+                <ion-item>
+                  <ion-select interface="popover" formControlName="local" placeholder="{{ 'EQUIPO_LOCAL' | translate }}:">
+                    <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <div *ngIf="isSubmitted && errorControl.local.errors?.required">
+                  <span class="error"> {{ 'TL_OBLIGATORIO' | translate }}. </span>
+                </div>
+                <br />
+                <ion-item>
+                  <ion-select interface="popover" formControlName="visitante" placeholder="{{ 'EQUIPO_VISITANTE' | translate }}:">
+                    <ion-select-option *ngFor="let team of teams;">{{ team.name }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+                <div *ngIf="isSubmitted && errorControl.visitante.errors?.required">
+                  <span class="error"> {{ 'TV_OBLIGATORIO' | translate }}. </span>
+                </div>
+                <mat-error class="error" *ngIf="checarSiNoSonIguales()">{{ 'DIFERENTE' | translate }}.</mat-error>
 
-    <ion-item>
-      <ion-datetime [min]="defaultDate" formControlName="fecha" minuteValues="0,15,30,45" first-day-of-week="1">
-        <span slot="time-label">Hora</span>
-      </ion-datetime>
-    </ion-item>
-    <div *ngIf="isSubmitted && errorControl.fecha.errors?.required">
-      <span class="error"> {{ 'FECHA_OBLIGATORIA' | translate }}. </span>
+                <br />
+                <ion-item>
+                  <ion-datetime locale="es-ES" [min]="defaultDate" formControlName="fecha" minuteValues="0,15,30,45" first-day-of-week="1">
+                    <span slot="time-label">Hora</span>
+                  </ion-datetime>
+                </ion-item>
+                <div *ngIf="isSubmitted && errorControl.fecha.errors?.required">
+                  <span class="error"> {{ 'FECHA_OBLIGATORIA' | translate }}. </span>
+                </div>
+              </ion-list>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <div class="padre">
+                <ion-button class="new-match" type="submit" block fill="solid">{{ 'AÑADIR_PARTIDO' | translate }}</ion-button>
+                <ion-button class="cancel" [routerLink]="['/tabs/matches']" fill="solid">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
+              </div></ion-col
+            >
+          </ion-row>
+        </form>
+      </ion-grid>
     </div>
-    <div class="padre">
-      <ion-button class="new-match" type="submit" block>{{ 'AÑADIR_PARTIDO' | translate }}</ion-button>
-      <ion-button class="cancel" [routerLink]="['/tabs/matches']">{{ 'CANCEL_BUTTON' | translate }}</ion-button>
-    </div>
-  </form>
-</ion-slide>
+  </ion-slide>
+</ion-content>

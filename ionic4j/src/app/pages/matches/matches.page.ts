@@ -6,6 +6,7 @@ import { HttpResponse } from '@angular/common/http';
 import { Team } from 'src/app/services/team/team.model';
 import { TeamService } from 'src/app/services/team/team.service';
 import { AccountService } from '../../services/auth/account.service';
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
 @Component({
   selector: 'app-matches',
@@ -28,8 +29,10 @@ export class MatchesPage implements OnInit {
     private accountService: AccountService,
     protected matchService: MatchService,
     public teamService: TeamService,
+    private screenOrientation: ScreenOrientation,
     protected modalService: NgbModal
   ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     this.accountService.hasAuthority('ROLE_ADMIN').then(res => {
       this.admin = res;
       console.log(this.admin);

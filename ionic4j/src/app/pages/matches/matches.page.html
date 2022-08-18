@@ -1,15 +1,17 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>{{ 'PARTIDOS' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <div class="padre" *ngIf="admin === true">
+        <ion-button class="new-btn" [routerLink]="['/matches/new']">
+          <ion-icon icon="add-circle"></ion-icon>{{ 'NUEVO_PARTIDO' | translate }}
+        </ion-button>
+      </div>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="padre" *ngIf="admin === true">
-    <ion-button class="new-btn" [routerLink]="['/matches/new']">
-      <ion-icon icon="add-circle"></ion-icon>{{ 'NUEVO_PARTIDO' | translate }}
-    </ion-button>
-  </div>
   <div>
     <ion-searchbar (ionChange)="search($event.target.value)" showCancelButton="focus" animated></ion-searchbar>
   </div>

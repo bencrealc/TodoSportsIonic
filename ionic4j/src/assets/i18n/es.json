@@ -77,7 +77,11 @@
   "SETTINGS_PAGE_PROFILE": "Editar Perfil",
 
   "WELCOME_TITLE": "Hola",
+  "WELCOME_INTRO": "Disfruta las Ligas Regionales con",
   "WELCOME_INIC": "Bienvenido/a, esto es TodoSports",
+  "BODY": "Ahora podrás añadir datos en tiempo real mientras ves un partido.",
+  "BODY1": "Posesiones, Faltas, goles...",
+  "BODY2": "¡Conviértete en el número 1 de las estadísticas!",
   "LOGOUT_TITLE": "Cerrar sesión",
 
   "LOGIN_TITLE": "Iniciar sesión",
