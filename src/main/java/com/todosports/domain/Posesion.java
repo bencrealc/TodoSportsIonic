@@ -24,10 +24,10 @@ public class Posesion implements Serializable {
     private Boolean team;
 
     @Column("start")
-    private Instant start;
+    private Long start;
 
     @Column("jhi_end")
-    private Instant end;
+    private Long end;
 
     @Transient
     @JsonIgnoreProperties(value = { "events", "posesions", "teams" }, allowSetters = true)
@@ -67,29 +67,29 @@ public class Posesion implements Serializable {
         this.team = team;
     }
 
-    public Instant getStart() {
+    public Long getStart() {
         return this.start;
     }
 
-    public Posesion start(Instant start) {
+    public Posesion start(Long start) {
         this.setStart(start);
         return this;
     }
 
-    public void setStart(Instant start) {
+    public void setStart(Long start) {
         this.start = start;
     }
 
-    public Instant getEnd() {
+    public Long getEnd() {
         return this.end;
     }
 
-    public Posesion end(Instant end) {
+    public Posesion end(Long end) {
         this.setEnd(end);
         return this;
     }
 
-    public void setEnd(Instant end) {
+    public void setEnd(Long end) {
         this.end = end;
     }
 

@@ -1,16 +1,17 @@
 .padre {
   display: flex;
 }
-
 .new-btn {
   --background: #fbdb5c;
   white-space: normal;
   color: rgba(0, 0, 0, 0.75);
 }
 .stats {
-  --background: #e0fafa;
-  white-space: normal;
-  color: #959595;
+  --background: #fbdb5c;
+  color: rgba(39, 37, 37, 0.75);
+  width: 100%;
+  display: flex;
+  font-size: 13px;
 }
 ion-icon {
   padding-right: 7px;

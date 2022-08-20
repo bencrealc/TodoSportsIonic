@@ -10,6 +10,7 @@ import { Team } from 'src/app/services/team/team.model';
 import { AccountService } from 'src/app/services/auth/account.service';
 import { Account } from 'src/model/account.model';
 import { Router, RouterModule } from '@angular/router';
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
 @Component({
   selector: 'app-teamCreate',
@@ -29,8 +30,10 @@ export class TeamCreatePage implements OnInit {
     public translateService: TranslateService,
     private router: Router,
     private accountService: AccountService,
+    private screenOrientation: ScreenOrientation,
     protected fb: FormBuilder
   ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     this.team = this.fb.group({
       name: [''],
     });

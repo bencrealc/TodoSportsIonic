@@ -17,10 +17,10 @@
             <column name="team" type="boolean">
                 <constraints nullable="true" />
             </column>
-            <column name="start" type="${datetimeType}">
+            <column name="start" type="bigint">
                 <constraints nullable="true" />
             </column>
-            <column name="jhi_end" type="${datetimeType}">
+            <column name="jhi_end" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="match_id" type="bigint">
@@ -32,8 +32,8 @@
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="posesion" columnName="start" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="posesion" columnName="jhi_end" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="posesion" columnName="start" columnDataType="bigint"/>
+        <dropDefaultValue tableName="posesion" columnName="jhi_end" columnDataType="bigint"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -54,8 +54,8 @@
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
             <column name="team" type="boolean"/>
-            <column name="start" type="date"/>
-            <column name="jhi_end" type="date"/>
+            <column name="start" type="numeric"/>
+            <column name="jhi_end" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

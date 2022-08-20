@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { HttpResponse } from '@angular/common/http';
 import { Team } from 'src/app/services/team/team.model';
 import { TeamService } from 'src/app/services/team/team.service';
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
 @Component({
   selector: 'app-matchesEnd',
@@ -19,7 +20,14 @@ export class MatchesEndPage implements OnInit {
   searchTerm: string;
   matchesFiltered?: Match[];
 
-  constructor(protected matchService: MatchService, public teamService: TeamService, protected modalService: NgbModal) {}
+  constructor(
+    protected matchService: MatchService,
+    public teamService: TeamService,
+    private screenOrientation: ScreenOrientation,
+    protected modalService: NgbModal
+  ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  }
 
   ngOnInit() {
     this.loadAll();

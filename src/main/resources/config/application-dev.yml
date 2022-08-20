@@ -81,7 +81,7 @@ jhipster:
   # CORS is only enabled by default with the "dev" profile
   cors:
     # TODO CAMBIAR IP POR LA ACTUAL
-    allowed-origins: 'http://192.168.1.134:8100,https://localhost:8100,http://192.168.1.134:9000,https://localhost:9000,http://192.168.1.134:4200,https://localhost:4200,http://localhost,http://192.168.1.166'
+    allowed-origins: 'http://192.168.1.134:8100,https://localhost:8100,http://192.168.1.134:9000,https://localhost:9000,http://192.168.1.134:4200,https://localhost:4200'
 
     # Enable CORS when running in GitHub Codespaces
     allowed-origin-patterns: 'https://*.githubpreview.dev'
@@ -99,12 +99,12 @@ jhipster:
         token-validity-in-seconds: 86400
         token-validity-in-seconds-for-remember-me: 2592000
   mail: # TODO CAMBIAR IP POR LA ACTUAL
-    base-url: http://192.168.1.134:8080
+    base-url: http://192.168.56.1:8080
   logging:
     use-json-format: false # By default, logs are not in Json format
     logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
       enabled: false
-      host: 192.168.1.134 # TODO CAMBIAR IP POR LA ACTUAL
+      host: 192.168.56.1 # TODO CAMBIAR IP POR LA ACTUAL
       port: 5000
       queue-size: 512
 # ===================================================================

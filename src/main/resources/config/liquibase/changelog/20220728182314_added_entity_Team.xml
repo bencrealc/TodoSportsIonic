@@ -15,7 +15,7 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints unique="true" nullable="false" />
             </column>
             <column name="user_id" type="bigint">
                 <constraints nullable="true" />

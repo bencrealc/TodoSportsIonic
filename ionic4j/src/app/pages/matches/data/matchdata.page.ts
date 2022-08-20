@@ -7,6 +7,7 @@ import { EventsService } from 'src/app/services/events/events.service';
 import { Posesion } from 'src/app/services/posesion/posesion.model';
 import { HttpResponse } from '@angular/common/http';
 import { Event } from 'src/app/services/events/event.model';
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
 @Component({
   selector: 'app-matchdata',
@@ -55,34 +56,33 @@ export class MatchDataPage implements OnInit {
     public translateService: TranslateService,
     private route: ActivatedRoute,
     private posesionService: PosesionService,
+    private screenOrientation: ScreenOrientation,
     private eventService: EventsService
-  ) {}
+  ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+  }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params.id;
     });
-    this.loadAll();
-  }
-
-  loadAll(): void {
     this.loadEvents();
-    this.loadPosesion();
+    await this.loadPosesion();
   }
 
-  loadPosesion(): void {
+  async loadPosesion() {
     this.posesionService.getPosesion('local', this.id).subscribe({
       next: (res: HttpResponse<Posesion[]>) => {
         this.pLocal = res.body ?? [];
         console.log(this.pLocal);
-      },
-    });
 
-    this.posesionService.getPosesion('away', this.id).subscribe({
-      next: (res: HttpResponse<Posesion[]>) => {
-        this.pAway = res.body ?? [];
-        console.log(this.pAway);
-        this.sumPosesion();
+        this.posesionService.getPosesion('away', this.id).subscribe({
+          next: (res: HttpResponse<Posesion[]>) => {
+            this.pAway = res.body ?? [];
+            console.log(this.pAway);
+            return this.sumPosesion();
+          },
+        });
       },
     });
   }
@@ -100,28 +100,28 @@ export class MatchDataPage implements OnInit {
         this.cornerLocal = this.eLocal.filter(e => e.eventType === 'CORNER').length;
         this.penaltiLocal = this.eLocal.filter(e => e.eventType === 'PENALTI').length;
         this.offsideLocal = this.eLocal.filter(e => e.eventType === 'FUERA_DE_JUEGO').length;
-      },
-    });
 
-    this.eventService.getEvents('away', this.id).subscribe({
-      next: (res: HttpResponse<Event[]>) => {
-        this.eAway = res.body ?? [];
-        this.golesAway = this.eAway.filter(e => e.eventType === 'GOL').length;
-        this.faltasAway = this.eAway.filter(e => e.eventType === 'FALTA').length;
-        this.amarillasAway = this.eAway.filter(e => e.eventType === 'AMARILLA').length;
-        this.rojasAway = this.eAway.filter(e => e.eventType === 'ROJA').length;
-        this.tirosAway = this.eAway.filter(e => e.eventType === 'TIRO').length;
-        this.cornerAway = this.eAway.filter(e => e.eventType === 'CORNER').length;
-        this.penaltiAway = this.eAway.filter(e => e.eventType === 'PENALTI').length;
-        this.offsideAway = this.eAway.filter(e => e.eventType === 'FUERA_DE_JUEGO').length;
-      },
-    });
+        this.eventService.getEvents('away', this.id).subscribe({
+          next: (res: HttpResponse<Event[]>) => {
+            this.eAway = res.body ?? [];
+            this.golesAway = this.eAway.filter(e => e.eventType === 'GOL').length;
+            this.faltasAway = this.eAway.filter(e => e.eventType === 'FALTA').length;
+            this.amarillasAway = this.eAway.filter(e => e.eventType === 'AMARILLA').length;
+            this.rojasAway = this.eAway.filter(e => e.eventType === 'ROJA').length;
+            this.tirosAway = this.eAway.filter(e => e.eventType === 'TIRO').length;
+            this.cornerAway = this.eAway.filter(e => e.eventType === 'CORNER').length;
+            this.penaltiAway = this.eAway.filter(e => e.eventType === 'PENALTI').length;
+            this.offsideAway = this.eAway.filter(e => e.eventType === 'FUERA_DE_JUEGO').length;
 
-    this.eventService.getUsers(this.id).subscribe({
-      next: (res: HttpResponse<number>) => {
-        this.users = res.body ?? 0;
-        console.log(this.users);
-        this.average();
+            this.eventService.getUsers(this.id).subscribe({
+              next: (res: HttpResponse<number>) => {
+                this.users = res.body ?? 0;
+                console.log(this.users);
+                this.average();
+              },
+            });
+          },
+        });
       },
     });
   }
@@ -159,17 +159,18 @@ export class MatchDataPage implements OnInit {
       if (this.pLocal[i].end === null) {
         this.posesionLocal = this.posesionLocal + 0;
       } else {
-        this.posesionLocal = this.posesionLocal + (new Date(this.pLocal[i].end).getTime() - new Date(this.pLocal[i].start).getTime());
+        this.posesionLocal = this.posesionLocal + (this.pLocal[i].end - this.pLocal[i].start);
       }
-      console.log('Posesion ' + this.posesionLocal);
+      console.log('Posesion Local' + this.posesionLocal);
     }
 
     for (let i = 0; i < this.pAway.length; i++) {
       if (this.pAway[i].end === null) {
         this.posesionAway = this.posesionAway + 0;
       } else {
-        this.posesionAway = this.posesionAway + (new Date(this.pAway[i].end).getTime() - new Date(this.pAway[i].start).getTime());
+        this.posesionAway = this.posesionAway + (this.pAway[i].end - this.pAway[i].start);
       }
+      console.log('Posesion Visitante ' + this.posesionLocal);
     }
 
     var total = this.posesionLocal + this.posesionAway;

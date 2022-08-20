@@ -10,6 +10,7 @@ import { TeamService } from 'src/app/services/team/team.service';
 import { Team } from 'src/app/services/team/team.model';
 import { HttpResponse } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
 
 @Component({
   selector: 'app-matchesnew',
@@ -31,8 +32,10 @@ export class MatchesNewPage implements OnInit {
     public toastController: ToastController,
     private router: Router,
     public translateService: TranslateService,
+    private screenOrientation: ScreenOrientation,
     protected fb: FormBuilder
   ) {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     this.match = this.fb.group(
       {
         local: ['', [Validators.required]],

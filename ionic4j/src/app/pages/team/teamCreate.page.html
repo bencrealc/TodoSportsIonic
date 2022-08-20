@@ -1,21 +1,42 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{ 'CREAR_EQUIPO' | translate }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <ion-grid class="grid1">
+    <ion-row class="row1">
+      <ion-col> </ion-col>
+    </ion-row>
 
-<form [formGroup]="team" (ngSubmit)="save()">
-  <ion-item>
-    <ion-label>{{ 'NOMBRE_EQUIPO' | translate }}:</ion-label>
-    <ion-input type="text" formControlName="name"></ion-input>
-  </ion-item>
-
-  <div *ngIf="isSubmitted && errorControl.name.errors?.required">
-    <span class="error"> {{ 'NOMBRE_OB' | translate }}. </span>
-  </div>
-  <div *ngIf="isSubmitted && errorControl.name.errors?.minlength">
-    <span class="error"> {{ 'NOMBRE_MINIMO' | translate }}. </span>
-  </div>
-
-  <ion-button type="submit" block class="new-team">{{ 'AÑADIR_EQUIPO' | translate }}</ion-button>
-</form>
+    <ion-row class="row2">
+      <ion-col> </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-slide>
+    <div class="contaier-login">
+      <ion-grid>
+        <form [formGroup]="team" (ngSubmit)="save()">
+          <ion-row>
+            <ion-col>
+              <h1>{{ 'CREAR_EQUIPO' | translate }}</h1>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-input formControlName="name" type="text" placeholder="{{ 'NOMBRE_EQUIPO' | translate }}"></ion-input>
+              </ion-item>
+              <div *ngIf="isSubmitted && errorControl.name.errors?.required">
+                <span class="error"> {{ 'NOMBRE_OB' | translate }}. </span>
+              </div>
+              <div *ngIf="isSubmitted && errorControl.name.errors?.minlength">
+                <span class="error"> {{ 'NOMBRE_MINIMO' | translate }}. </span>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button type="submit" block class="new-team" fill="solid"> {{ 'AÑADIR_EQUIPO' | translate }} </ion-button>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>
+    </div>
+  </ion-slide>
+</ion-content>
