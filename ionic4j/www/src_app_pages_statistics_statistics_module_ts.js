@@ -245,19 +245,19 @@ let StatisticsPage = class StatisticsPage {
     }
     saveInicio(teamValue) {
         this.isSaving = true;
-        const posesion = this.createFromPosesion(teamValue, new Date(), this.id, this.account.id);
+        const posesion = this.createFromPosesion(teamValue, new Date().getTime(), this.id, this.account.id);
         this.subscribeToSaveResponse(this.posesionService.create(posesion));
     }
     saveFinal() {
         this.isSaving = true;
         //const teamValue = this.posesionService.query();
-        const event = this.closeFromPosesion(null, new Date(), this.id, this.account.id);
+        const event = this.closeFromPosesion(null, new Date().getTime(), this.id, this.account.id);
         this.subscribeToSaveResponse(this.posesionService.close(event));
     }
     saveChange() {
         this.isSaving = true;
         //const teamValue = this.posesionService.query();
-        const event = this.createFromPosesion(null, new Date(), this.id, this.account.id);
+        const event = this.createFromPosesion(null, new Date().getTime(), this.id, this.account.id);
         this.subscribeToSaveResponse(this.posesionService.change(event));
     }
     createFromForm(eventTypeValue, teamValue, id, userId) {

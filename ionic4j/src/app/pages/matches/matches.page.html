@@ -21,7 +21,7 @@
       <ion-col class="col1">{{ 'EQUIPO_LOCAL' | translate }}</ion-col>
       <ion-col class="col1">{{ 'EQUIPO_VISITANTE' | translate }}</ion-col>
       <ion-col class="col1">{{ 'FECHA' | translate }}</ion-col>
-      <ion-col class="col1">{{ 'ACCIONES' | translate }}</ion-col>
+      <ion-col class="col1">{{ 'ANALIZAR' | translate }}</ion-col>
     </ion-row>
     <div *ngIf="matches?.length != 0">
       <ion-row *ngFor="let match of matchesFiltered; trackBy: trackId" #slidingItem class="second">
@@ -31,8 +31,8 @@
 
         <ion-col class="col">
           <ion-button *ngIf="dateValue(match.matchDay)" class="stats" [routerLink]="['/stats/new/',match.id]">
-            <ion-icon icon="football"></ion-icon> {{ 'ANALIZAR' | translate }}</ion-button
-          >
+            <ion-icon icon="podium"></ion-icon
+          ></ion-button>
         </ion-col>
       </ion-row>
     </div>

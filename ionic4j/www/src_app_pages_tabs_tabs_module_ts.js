@@ -184,7 +184,7 @@ TabsPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
   \******************************************************/
 /***/ ((module) => {
 
-module.exports = "ion-label {\n  white-space: normal;\n}\n\n.top-44 {\n  height: 64px;\n  bottom: 64px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQUE7QUFDRjs7QUFDQTtFQUNFLFlBQUE7RUFDQSx1QkFBQTtBQUVGIiwiZmlsZSI6InRhYnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWxhYmVsIHtcclxuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xyXG59XHJcbi50b3AtNDQge1xyXG4gIGhlaWdodDogNjRweDtcclxuICBib3R0b206IDY0cHggIWltcG9ydGFudDtcclxufVxyXG4iXX0= */";
+module.exports = "ion-label {\n  white-space: normal;\n}\n\n.top-44 {\n  height: 64px;\n  bottom: 64px !important;\n}\n\nion-tab-button {\n  --color-selected: #33752e;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQUE7QUFDRjs7QUFDQTtFQUNFLFlBQUE7RUFDQSx1QkFBQTtBQUVGOztBQUNBO0VBQ0UseUJBQUE7QUFFRiIsImZpbGUiOiJ0YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1sYWJlbCB7XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG59XG4udG9wLTQ0IHtcbiAgaGVpZ2h0OiA2NHB4O1xuICBib3R0b206IDY0cHggIWltcG9ydGFudDtcbn1cblxuaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiAjMzM3NTJlO1xufVxuIl19 */";
 
 /***/ }),
 
@@ -194,7 +194,7 @@ module.exports = "ion-label {\n  white-space: normal;\n}\n\n.top-44 {\n  height:
   \******************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-tabs>\r\n  <ion-tab-bar slot=\"bottom\" class=\"top-44\">\r\n    <ion-tab-button tab=\"home\">\r\n      <ion-icon name=\"flash\"></ion-icon>\r\n      <ion-label> {{ 'INICIO' | translate }} </ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"matches\">\r\n      <ion-icon name=\"list\"></ion-icon>\r\n      <ion-label> {{ 'PARTIDOS' | translate }} </ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"teamCreate\" *ngIf=\"admin ===true\">\r\n      <ion-icon name=\"shirt\"></ion-icon>\r\n      <ion-label> {{ 'CREAR_EQUIPOS' | translate }} </ion-label>\r\n    </ion-tab-button>\r\n\r\n    <ion-tab-button tab=\"matchesEnd\">\r\n      <ion-icon name=\"football\"></ion-icon>\r\n      <ion-label> {{ 'PARTIDOS_FIN' | translate }} </ion-label>\r\n    </ion-tab-button>\r\n  </ion-tab-bar>\r\n</ion-tabs>\r\n";
+module.exports = "<ion-tabs>\n  <ion-tab-bar slot=\"bottom\" class=\"top-44\">\n    <ion-tab-button tab=\"home\">\n      <ion-icon name=\"home\"></ion-icon>\n      <ion-label> {{ 'INICIO' | translate }} </ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"matches\">\n      <ion-icon name=\"list\"></ion-icon>\n      <ion-label> {{ 'PARTIDOS' | translate }} </ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"matchesEnd\">\n      <ion-icon name=\"football\"></ion-icon>\n      <ion-label> {{ 'PARTIDOS_FIN' | translate }} </ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"teamCreate\" *ngIf=\"admin ===true\">\n      <ion-icon name=\"shirt\"></ion-icon>\n      <ion-label> {{ 'CREAR_EQUIPOS' | translate }} </ion-label>\n    </ion-tab-button>\n\n    \n  </ion-tab-bar>\n</ion-tabs>\n";
 
 /***/ })
 

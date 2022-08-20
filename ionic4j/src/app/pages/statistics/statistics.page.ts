@@ -11,7 +11,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Posesion } from 'src/app/services/posesion/posesion.model';
 import { PosesionService } from 'src/app/services/posesion/posesion.service';
 import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AccountService } from 'src/app/services/auth/account.service';
 import { Account } from 'src/model/account.model';
 
@@ -34,6 +34,7 @@ export class StatisticsPage implements OnInit {
     public toastController: ToastController,
     public translateService: TranslateService,
     protected fb: FormBuilder,
+    private router: Router,
     private screenOrientation: ScreenOrientation,
     private route: ActivatedRoute,
     private accountService: AccountService
@@ -211,4 +212,9 @@ export class StatisticsPage implements OnInit {
   }
 
   protected onSaveFinalize(): void {}
+
+  backToMatches() {
+    this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+    this.router.navigate(['/tabs/matches']).then();
+  }
 }

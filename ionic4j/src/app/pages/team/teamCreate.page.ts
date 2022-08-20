@@ -72,7 +72,7 @@ export class TeamCreatePage implements OnInit {
     const team = this.createFrom(this.team.value['name'], this.account.id);
     this.subscribeToSaveResponse(this.teamService.create(team));
     if (this.isSubmitted) {
-      this.router.navigate(['/tabs/teamCreate']);
+      this.team.reset();
     }
   }
 

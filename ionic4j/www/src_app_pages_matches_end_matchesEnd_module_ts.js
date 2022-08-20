@@ -97,13 +97,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MatchesEndPage": () => (/* binding */ MatchesEndPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _matchesEnd_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./matchesEnd.page.html?ngResource */ 7299);
 /* harmony import */ var _matchesEnd_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./matchesEnd.page.scss?ngResource */ 67523);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 3184);
 /* harmony import */ var src_app_services_match_match_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/match/match.service */ 82661);
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ 99048);
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ 99048);
 /* harmony import */ var src_app_services_team_team_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/team/team.service */ 40790);
+/* harmony import */ var _awesome_cordova_plugins_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @awesome-cordova-plugins/screen-orientation/ngx */ 11898);
+
 
 
 
@@ -112,11 +114,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let MatchesEndPage = class MatchesEndPage {
-    constructor(matchService, teamService, modalService) {
+    constructor(matchService, teamService, screenOrientation, modalService) {
         this.matchService = matchService;
         this.teamService = teamService;
+        this.screenOrientation = screenOrientation;
         this.modalService = modalService;
         this.isLoading = false;
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     }
     ngOnInit() {
         this.loadAll();
@@ -138,7 +142,7 @@ let MatchesEndPage = class MatchesEndPage {
     }
     search(query) {
         this.matchesFiltered = this.matches.filter(match => {
-            return match.local.name.includes(query) || match.away.name.includes(query);
+            return match.localId.includes(query) || match.awayId.includes(query);
         });
     }
     trackId(_index, item) {
@@ -155,10 +159,11 @@ let MatchesEndPage = class MatchesEndPage {
 MatchesEndPage.ctorParameters = () => [
     { type: src_app_services_match_match_service__WEBPACK_IMPORTED_MODULE_2__.MatchService },
     { type: src_app_services_team_team_service__WEBPACK_IMPORTED_MODULE_3__.TeamService },
-    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__.NgbModal }
+    { type: _awesome_cordova_plugins_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__.ScreenOrientation },
+    { type: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__.NgbModal }
 ];
-MatchesEndPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_6__.Component)({
+MatchesEndPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
         selector: 'app-matchesEnd',
         template: _matchesEnd_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_matchesEnd_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]

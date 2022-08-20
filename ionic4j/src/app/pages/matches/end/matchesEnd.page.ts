@@ -51,7 +51,7 @@ export class MatchesEndPage implements OnInit {
 
   search(query) {
     this.matchesFiltered = this.matches.filter(match => {
-      return match.local.name.includes(query) || match.away.name.includes(query);
+      return match.localId.includes(query) || match.awayId.includes(query);
     });
   }
   trackId(_index: number, item: Match): number {

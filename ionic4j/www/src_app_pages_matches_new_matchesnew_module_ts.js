@@ -11,10 +11,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MatchesNewPageRoutingModule": () => (/* binding */ MatchesNewPageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 34929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 52816);
 /* harmony import */ var src_app_pages_matches_new_matchesnew_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/pages/matches/new/matchesnew.page */ 92024);
+/* harmony import */ var src_app_services_auth_user_route_access_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/auth/user-route-access.service */ 51284);
+
 
 
 
@@ -23,14 +25,18 @@ const routes = [
     {
         path: '',
         component: src_app_pages_matches_new_matchesnew_page__WEBPACK_IMPORTED_MODULE_0__.MatchesNewPage,
+        data: {
+            authorities: ['ROLE_USER'],
+        },
+        canActivate: [src_app_services_auth_user_route_access_service__WEBPACK_IMPORTED_MODULE_1__.UserRouteAccessService],
     },
 ];
 let MatchesNewPageRoutingModule = class MatchesNewPageRoutingModule {
 };
-MatchesNewPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.NgModule)({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule.forChild(routes)],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule],
+MatchesNewPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterModule.forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterModule],
     })
 ], MatchesNewPageRoutingModule);
 
@@ -88,18 +94,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MatchesNewPage": () => (/* binding */ MatchesNewPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _matchesnew_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./matchesnew.page.html?ngResource */ 34302);
 /* harmony import */ var _matchesnew_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./matchesnew.page.scss?ngResource */ 22000);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/angular */ 93819);
-/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ngx-translate/core */ 87514);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ 44661);
-/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ 90587);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ngx-translate/core */ 87514);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ 44661);
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/forms */ 90587);
 /* harmony import */ var src_app_services_match_match_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/match/match.service */ 82661);
 /* harmony import */ var src_app_services_match_match_model__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/match/match.model */ 58772);
 /* harmony import */ var src_app_services_team_team_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/team/team.service */ 40790);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var _awesome_cordova_plugins_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @awesome-cordova-plugins/screen-orientation/ngx */ 11898);
+
 
 
 
@@ -113,13 +121,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let MatchesNewPage = class MatchesNewPage {
-    constructor(matchService, teamService, navController, toastController, router, translateService, fb) {
+    constructor(matchService, teamService, navController, toastController, router, translateService, screenOrientation, fb) {
         this.matchService = matchService;
         this.teamService = teamService;
         this.navController = navController;
         this.toastController = toastController;
         this.router = router;
         this.translateService = translateService;
+        this.screenOrientation = screenOrientation;
         this.fb = fb;
         this.isSaving = false;
         this.isSubmitted = false;
@@ -130,10 +139,11 @@ let MatchesNewPage = class MatchesNewPage {
             const visitante = control.get('visitante');
             return local.value != visitante.value ? null : { SonIguales: true };
         };
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.match = this.fb.group({
-            local: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required]],
-            visitante: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required]],
-            fecha: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_5__.Validators.required]],
+            local: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]],
+            visitante: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]],
+            fecha: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_6__.Validators.required]],
         }, {
             validators: this.validarQueNoSeanIguales,
         });
@@ -152,7 +162,7 @@ let MatchesNewPage = class MatchesNewPage {
         return this.match.controls;
     }
     save() {
-        return (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__awaiter)(this, void 0, void 0, function* () {
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__awaiter)(this, void 0, void 0, function* () {
             const toastCreado = yield this.toastController.create({
                 message: 'El partido ha sido creado',
                 duration: 2000,
@@ -173,13 +183,14 @@ let MatchesNewPage = class MatchesNewPage {
                 const match = this.createFrom(date, eqlocal.name, visit.name);
                 this.subscribeToSaveResponse(this.matchService.create(match));
                 if (this.isSubmitted) {
-                    this.router.navigate(['/tabs/matches']);
+                    this.router.navigate(['/tabs/matches']).then(() => { window.location.reload(); });
+                    ;
                 }
             }
         });
     }
     subscribeToSaveResponse(result) {
-        result.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__.finalize)(() => this.onSaveFinalize())).subscribe({
+        result.pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_8__.finalize)(() => this.onSaveFinalize())).subscribe({
             next: () => this.onSaveSuccess(),
             error: () => this.onSaveError(),
         });
@@ -205,19 +216,97 @@ let MatchesNewPage = class MatchesNewPage {
 MatchesNewPage.ctorParameters = () => [
     { type: src_app_services_match_match_service__WEBPACK_IMPORTED_MODULE_2__.MatchService },
     { type: src_app_services_team_team_service__WEBPACK_IMPORTED_MODULE_4__.TeamService },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.NavController },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__.ToastController },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_9__.Router },
-    { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_10__.TranslateService },
-    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_5__.FormBuilder }
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.NavController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_9__.ToastController },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_10__.Router },
+    { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_11__.TranslateService },
+    { type: _awesome_cordova_plugins_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_5__.ScreenOrientation },
+    { type: _angular_forms__WEBPACK_IMPORTED_MODULE_6__.FormBuilder }
 ];
-MatchesNewPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_11__.Component)({
+MatchesNewPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_12__.Component)({
         selector: 'app-matchesnew',
         template: _matchesnew_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_matchesnew_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
     })
 ], MatchesNewPage);
+
+
+
+/***/ }),
+
+/***/ 51284:
+/*!************************************************************!*\
+  !*** ./src/app/services/auth/user-route-access.service.ts ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UserRouteAccessService": () => (/* binding */ UserRouteAccessService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _account_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./account.service */ 150);
+
+
+
+
+
+let UserRouteAccessService = class UserRouteAccessService {
+    constructor(router, navController, accountService // private stateStorageService: StateStorageService
+    ) {
+        this.router = router;
+        this.navController = navController;
+        this.accountService = accountService;
+    }
+    canActivate(route, state) {
+        const authorities = route.data['authorities'];
+        // We need to call the checkLogin / and so the accountService.identity() function, to ensure,
+        // that the client has a principal too, if they already logged in by the server.
+        // This could happen on a page refresh.
+        return this.checkLogin(authorities, state.url);
+    }
+    checkLogin(authorities, url) {
+        return this.accountService.identity().then(account => {
+            if (!authorities || authorities.length === 0) {
+                return true;
+            }
+            if (account) {
+                const hasAnyAuthority = this.accountService.hasAnyAuthority(authorities);
+                if (hasAnyAuthority) {
+                    return true;
+                }
+                if ((0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.isDevMode)()) {
+                    console.error('User has not any of required authorities: ', authorities);
+                }
+                return false;
+            }
+            // this.stateStorageService.storeUrl(url);
+            // this.router.navigate(['accessdenied']).then(() => {
+            //     // only show the login dialog, if the user hasn't logged in yet
+            //     if (!account) {
+            //         // this.loginModalService.open();
+            //         console.log('go to login page');
+            //     }
+            // });
+            this.navController.navigateRoot('/accessdenied');
+            return false;
+        });
+    }
+};
+UserRouteAccessService.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__.Router },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.NavController },
+    { type: _account_service__WEBPACK_IMPORTED_MODULE_0__.AccountService }
+];
+UserRouteAccessService = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable)({
+        providedIn: 'root',
+    })
+], UserRouteAccessService);
 
 
 
@@ -362,7 +451,7 @@ TeamService = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
   \*******************************************************************/
 /***/ ((module) => {
 
-module.exports = ".new-match {\n  --background: #fbdb5c;\n  white-space: normal;\n  color: rgba(0, 0, 0, 0.75);\n  margin-bottom: 200px;\n}\n\n.cancel {\n  --background: #f06243;\n  white-space: normal;\n  --color: #000;\n  margin-bottom: 200px;\n}\n\n.error {\n  color: red;\n  font-size: 12px;\n  margin-left: 17px;\n}\n\n.padre {\n  margin-top: 20px;\n  display: flex;\n  justify-content: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hdGNoZXNuZXcucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UscUJBQUE7RUFDQSxtQkFBQTtFQUNBLDBCQUFBO0VBQ0Esb0JBQUE7QUFDRjs7QUFDQTtFQUNFLHFCQUFBO0VBQ0EsbUJBQUE7RUFDQSxhQUFBO0VBQ0Esb0JBQUE7QUFFRjs7QUFBQTtFQUNFLFVBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUFHRjs7QUFEQTtFQUNFLGdCQUFBO0VBQ0EsYUFBQTtFQUNBLHVCQUFBO0FBSUYiLCJmaWxlIjoibWF0Y2hlc25ldy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubmV3LW1hdGNoIHtcclxuICAtLWJhY2tncm91bmQ6ICNmYmRiNWM7XHJcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcclxuICBjb2xvcjogcmdiYSgwLCAwLCAwLCAwLjc1KTtcclxuICBtYXJnaW4tYm90dG9tOiAyMDBweDtcclxufVxyXG4uY2FuY2VsIHtcclxuICAtLWJhY2tncm91bmQ6ICNmMDYyNDM7XHJcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcclxuICAtLWNvbG9yOiAjMDAwO1xyXG4gIG1hcmdpbi1ib3R0b206IDIwMHB4O1xyXG59XHJcbi5lcnJvciB7XHJcbiAgY29sb3I6IHJlZDtcclxuICBmb250LXNpemU6IDEycHg7XHJcbiAgbWFyZ2luLWxlZnQ6IDE3cHg7XHJcbn1cclxuLnBhZHJlIHtcclxuICBtYXJnaW4tdG9wOiAyMHB4O1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XHJcbn1cclxuIl19 */";
+module.exports = ".padre {\n  display: flex;\n  justify-content: center;\n}\n\n.new-match {\n  --background: #fbdb5c;\n  white-space: normal;\n  color: rgba(0, 0, 0, 0.75);\n  margin-top: 5px;\n}\n\n.cancel {\n  --background: #f06243;\n  white-space: normal;\n  --color: #000;\n  margin-top: 5px;\n}\n\n.error {\n  color: red;\n  font-size: 12px;\n  margin-left: 17px;\n}\n\n.grid1 {\n  height: 100%;\n  padding: 0px;\n}\n\n.contaier-login {\n  width: 90%;\n  padding: 10px;\n  background: #ffffff;\n  border-radius: 5px;\n  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);\n}\n\n.row1 {\n  height: 50%;\n  background: linear-gradient(45deg, #7aee80 0%, #71dd76 100%);\n}\n\n.row2 {\n  height: 50%;\n}\n\nion-slide {\n  width: 100%;\n  height: 100%;\n  position: absolute !important;\n  top: 0px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hdGNoZXNuZXcucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0EsMEJBQUE7RUFDQSxlQUFBO0FBRUY7O0FBQUE7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7QUFHRjs7QUFBQTtFQUNFLFVBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUFHRjs7QUFEQTtFQUNFLFlBQUE7RUFDQSxZQUFBO0FBSUY7O0FBREE7RUFDRSxVQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFHQSxnREFBQTtBQUlGOztBQURBO0VBQ0UsV0FBQTtFQUdBLDREQUFBO0FBSUY7O0FBREE7RUFDRSxXQUFBO0FBSUY7O0FBREE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLDZCQUFBO0VBQ0EsbUJBQUE7QUFJRiIsImZpbGUiOiJtYXRjaGVzbmV3LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wYWRyZSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuLm5ldy1tYXRjaCB7XG4gIC0tYmFja2dyb3VuZDogI2ZiZGI1YztcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbiAgY29sb3I6IHJnYmEoMCwgMCwgMCwgMC43NSk7XG4gIG1hcmdpbi10b3A6IDVweDtcbn1cbi5jYW5jZWwge1xuICAtLWJhY2tncm91bmQ6ICNmMDYyNDM7XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG4gIC0tY29sb3I6ICMwMDA7XG4gIG1hcmdpbi10b3A6IDVweDtcbn1cblxuLmVycm9yIHtcbiAgY29sb3I6IHJlZDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBtYXJnaW4tbGVmdDogMTdweDtcbn1cbi5ncmlkMSB7XG4gIGhlaWdodDogMTAwJTtcbiAgcGFkZGluZzogMHB4O1xufVxuXG4uY29udGFpZXItbG9naW4ge1xuICB3aWR0aDogOTAlO1xuICBwYWRkaW5nOiAxMHB4O1xuICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIC13ZWJraXQtYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDFweCByZ2JhKDAsIDAsIDAsIDAuNzUpO1xuICAtbW96LWJveC1zaGFkb3c6IDBweCAwcHggMTBweCAxcHggcmdiYSgwLCAwLCAwLCAwLjc1KTtcbiAgYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDFweCByZ2JhKDAsIDAsIDAsIDAuNzUpO1xufVxuXG4ucm93MSB7XG4gIGhlaWdodDogNTAlO1xuICBiYWNrZ3JvdW5kOiAtbW96LWxpbmVhci1ncmFkaWVudCg0NWRlZywgIzdhZWU4MCAwJSwgIzcxZGQ3NiAxMDAlKTtcbiAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQoNDVkZWcsICM3YWVlODAgMCUsICM3MWRkNzYgMTAwJSk7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg0NWRlZywgIzdhZWU4MCAwJSwgIzcxZGQ3NiAxMDAlKTtcbn1cblxuLnJvdzIge1xuICBoZWlnaHQ6IDUwJTtcbn1cblxuaW9uLXNsaWRlIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgcG9zaXRpb246IGFic29sdXRlICFpbXBvcnRhbnQ7XG4gIHRvcDogMHB4ICFpbXBvcnRhbnQ7XG59XG4iXX0= */";
 
 /***/ }),
 
@@ -372,7 +461,7 @@ module.exports = ".new-match {\n  --background: #fbdb5c;\n  white-space: normal;
   \*******************************************************************/
 /***/ ((module) => {
 
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title>{{ 'CREAR_NUEVO_PARTIDO' | translate }}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-slide>\r\n  <form [formGroup]=\"match\" (ngSubmit)=\"save()\" novalidate>\r\n    <ion-item>\r\n      <ion-select interface=\"popover\" formControlName=\"local\" placeholder=\"{{ 'EQUIPO_LOCAL' | translate }}:\">\r\n        <ion-select-option *ngFor=\"let team of teams;\">{{ team.name }}</ion-select-option>\r\n      </ion-select>\r\n    </ion-item>\r\n    <div *ngIf=\"isSubmitted && errorControl.local.errors?.required\">\r\n      <span class=\"error\"> {{ 'TL_OBLIGATORIO' | translate }}. </span>\r\n    </div>\r\n\r\n    <ion-item>\r\n      <ion-select interface=\"popover\" formControlName=\"visitante\" placeholder=\"{{ 'EQUIPO_VISITANTE' | translate }}:\">\r\n        <ion-select-option *ngFor=\"let team of teams;\">{{ team.name }}</ion-select-option>\r\n      </ion-select>\r\n    </ion-item>\r\n    <div *ngIf=\"isSubmitted && errorControl.visitante.errors?.required\">\r\n      <span class=\"error\"> {{ 'TV_OBLIGATORIO' | translate }}. </span>\r\n    </div>\r\n    <mat-error class=\"error\" *ngIf=\"checarSiNoSonIguales()\">{{ 'DIFERENTE' | translate }}.</mat-error>\r\n\r\n    <ion-item>\r\n      <ion-datetime [min]=\"defaultDate\" formControlName=\"fecha\" minuteValues=\"0,15,30,45\" first-day-of-week=\"1\">\r\n        <span slot=\"time-label\">Hora</span>\r\n      </ion-datetime>\r\n    </ion-item>\r\n    <div *ngIf=\"isSubmitted && errorControl.fecha.errors?.required\">\r\n      <span class=\"error\"> {{ 'FECHA_OBLIGATORIA' | translate }}. </span>\r\n    </div>\r\n    <div class=\"padre\">\r\n      <ion-button class=\"new-match\" type=\"submit\" block>{{ 'AÑADIR_PARTIDO' | translate }}</ion-button>\r\n      <ion-button class=\"cancel\" [routerLink]=\"['/tabs/matches']\">{{ 'CANCEL_BUTTON' | translate }}</ion-button>\r\n    </div>\r\n  </form>\r\n</ion-slide>\r\n";
+module.exports = "<ion-content>\n  <ion-grid class=\"grid1\">\n    <ion-row class=\"row1\">\n      <ion-col> </ion-col>\n    </ion-row>\n\n    <ion-row class=\"row2\">\n      <ion-col> </ion-col>\n    </ion-row>\n  </ion-grid>\n  <ion-slide>\n    <div class=\"contaier-login\">\n      <ion-grid>\n        <form [formGroup]=\"match\" (ngSubmit)=\"save()\" novalidate>\n          <ion-row>\n            <ion-col>\n              <h1>{{ 'CREAR_NUEVO_PARTIDO' | translate }}</h1>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <ion-list>\n                <ion-item>\n                  <ion-select interface=\"popover\" formControlName=\"local\" placeholder=\"{{ 'EQUIPO_LOCAL' | translate }}:\">\n                    <ion-select-option *ngFor=\"let team of teams;\">{{ team.name }}</ion-select-option>\n                  </ion-select>\n                </ion-item>\n                <div *ngIf=\"isSubmitted && errorControl.local.errors?.required\">\n                  <span class=\"error\"> {{ 'TL_OBLIGATORIO' | translate }}. </span>\n                </div>\n                <br />\n                <ion-item>\n                  <ion-select interface=\"popover\" formControlName=\"visitante\" placeholder=\"{{ 'EQUIPO_VISITANTE' | translate }}:\">\n                    <ion-select-option *ngFor=\"let team of teams;\">{{ team.name }}</ion-select-option>\n                  </ion-select>\n                </ion-item>\n                <div *ngIf=\"isSubmitted && errorControl.visitante.errors?.required\">\n                  <span class=\"error\"> {{ 'TV_OBLIGATORIO' | translate }}. </span>\n                </div>\n                <mat-error class=\"error\" *ngIf=\"checarSiNoSonIguales()\">{{ 'DIFERENTE' | translate }}.</mat-error>\n\n                <br />\n                <ion-item>\n                  <ion-datetime locale=\"es-ES\" [min]=\"defaultDate\" formControlName=\"fecha\" minuteValues=\"0,15,30,45\" first-day-of-week=\"1\">\n                    <span slot=\"time-label\">Hora</span>\n                  </ion-datetime>\n                </ion-item>\n                <div *ngIf=\"isSubmitted && errorControl.fecha.errors?.required\">\n                  <span class=\"error\"> {{ 'FECHA_OBLIGATORIA' | translate }}. </span>\n                </div>\n              </ion-list>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class=\"padre\">\n                <ion-button class=\"new-match\" type=\"submit\" block fill=\"solid\">{{ 'AÑADIR_PARTIDO' | translate }}</ion-button>\n                <ion-button class=\"cancel\" [routerLink]=\"['/tabs/matches']\" fill=\"solid\">{{ 'CANCEL_BUTTON' | translate }}</ion-button>\n              </div></ion-col\n            >\n          </ion-row>\n        </form>\n      </ion-grid>\n    </div>\n  </ion-slide>\n</ion-content>\n";
 
 /***/ })
 

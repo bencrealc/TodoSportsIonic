@@ -10,14 +10,14 @@
       <ion-label> {{ 'PARTIDOS' | translate }} </ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="teamCreate" *ngIf="admin ===true">
-      <ion-icon name="shirt"></ion-icon>
-      <ion-label> {{ 'CREAR_EQUIPOS' | translate }} </ion-label>
-    </ion-tab-button>
-
     <ion-tab-button tab="matchesEnd">
       <ion-icon name="football"></ion-icon>
       <ion-label> {{ 'PARTIDOS_FIN' | translate }} </ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="teamCreate" *ngIf="admin ===true">
+      <ion-icon name="shirt"></ion-icon>
+      <ion-label> {{ 'CREAR_EQUIPOS' | translate }} </ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

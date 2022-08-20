@@ -93,7 +93,9 @@ export class MatchesNewPage implements OnInit {
 
       this.subscribeToSaveResponse(this.matchService.create(match));
       if (this.isSubmitted) {
-        this.router.navigate(['/tabs/matches']);
+        this.router.navigate(['/tabs/matches']).then(() => {
+          window.location.reload();
+        });
       }
     }
   }

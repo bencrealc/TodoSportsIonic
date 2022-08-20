@@ -74,8 +74,6 @@
 
   "TUTORIAL_SLIDE4_TITLE": "Ready to Play?",
 
-  "WELCOME_INTRO": "The starting point for your next hipster Ionic app",
-
   "SETTINGS_TITLE": "Settings",
   "SETTINGS_OPTION1": "Option 1",
   "SETTINGS_OPTION2": "Option 2",
@@ -87,7 +85,11 @@
   "SETTINGS_PAGE_PROFILE": "Edit Profile",
 
   "WELCOME_TITLE": "Hello",
+  "WELCOME_INTRO": "Enjoy Regional Leagues with ",
   "WELCOME_INIC": "Welcome, this is TodoSports",
+  "BODY": "Now you can add data in real time while watching a game.",
+  "BODY1": "Possessions, fouls, goals...",
+  "BODY2": "Become number 1 in the statistics!",
   "LOGOUT_TITLE": "Logout",
 
   "LOGIN_TITLE": "Sign in",

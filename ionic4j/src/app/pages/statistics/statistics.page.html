@@ -3,7 +3,7 @@
     <div class="padre">
       <ion-title>{{ 'ESTADISTICAS' | translate }}</ion-title>
       <ion-title
-        ><ion-button class="stats" [routerLink]="['/tabs/matches']"><ion-icon name="arrow-redo"></ion-icon></ion-button
+        ><ion-button class="stats" (click)="backToMatches()"><ion-icon name="arrow-redo"></ion-icon></ion-button
       ></ion-title>
     </div>
   </ion-toolbar>

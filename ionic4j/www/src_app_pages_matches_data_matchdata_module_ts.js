@@ -11,10 +11,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MatchDataPageRoutingModule": () => (/* binding */ MatchDataPageRoutingModule)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! tslib */ 34929);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ 52816);
 /* harmony import */ var src_app_pages_matches_data_matchdata_page__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! src/app/pages/matches/data/matchdata.page */ 11817);
+/* harmony import */ var src_app_services_auth_user_route_access_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/auth/user-route-access.service */ 51284);
+
 
 
 
@@ -23,14 +25,18 @@ const routes = [
     {
         path: '',
         component: src_app_pages_matches_data_matchdata_page__WEBPACK_IMPORTED_MODULE_0__.MatchDataPage,
+        data: {
+            authorities: ['ROLE_USER'],
+        },
+        canActivate: [src_app_services_auth_user_route_access_service__WEBPACK_IMPORTED_MODULE_1__.UserRouteAccessService],
     },
 ];
 let MatchDataPageRoutingModule = class MatchDataPageRoutingModule {
 };
-MatchDataPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_2__.NgModule)({
-        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule.forChild(routes)],
-        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_3__.RouterModule],
+MatchDataPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_2__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_3__.NgModule)({
+        imports: [_angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterModule.forChild(routes)],
+        exports: [_angular_router__WEBPACK_IMPORTED_MODULE_4__.RouterModule],
     })
 ], MatchDataPageRoutingModule);
 
@@ -91,15 +97,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "MatchDataPage": () => (/* binding */ MatchDataPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _matchdata_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./matchdata.page.html?ngResource */ 79908);
 /* harmony import */ var _matchdata_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./matchdata.page.scss?ngResource */ 14143);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
-/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ngx-translate/core */ 87514);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ngx-translate/core */ 87514);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/router */ 52816);
 /* harmony import */ var src_app_services_posesion_posesion_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/posesion/posesion.service */ 60591);
 /* harmony import */ var src_app_services_events_events_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/events/events.service */ 11716);
+/* harmony import */ var _awesome_cordova_plugins_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @awesome-cordova-plugins/screen-orientation/ngx */ 11898);
+
 
 
 
@@ -110,12 +118,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let MatchDataPage = class MatchDataPage {
-    constructor(navController, toastController, translateService, route, posesionService, eventService) {
+    constructor(navController, toastController, translateService, route, posesionService, screenOrientation, eventService) {
         this.navController = navController;
         this.toastController = toastController;
         this.translateService = translateService;
         this.route = route;
         this.posesionService = posesionService;
+        this.screenOrientation = screenOrientation;
         this.eventService = eventService;
         this.eLocal = [];
         this.eAway = [];
@@ -140,32 +149,34 @@ let MatchDataPage = class MatchDataPage {
         this.offsideLocal = 0;
         this.offsideAway = 0;
         this.users = 0;
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
     }
     ngOnInit() {
-        this.route.params.subscribe(params => {
-            this.id = params.id;
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+            this.route.params.subscribe(params => {
+                this.id = params.id;
+            });
+            this.loadEvents();
+            yield this.loadPosesion();
         });
-        this.loadAll();
-    }
-    loadAll() {
-        this.loadEvents();
-        this.loadPosesion();
     }
     loadPosesion() {
-        this.posesionService.getPosesion('local', this.id).subscribe({
-            next: (res) => {
-                var _a;
-                this.pLocal = (_a = res.body) !== null && _a !== void 0 ? _a : [];
-                console.log(this.pLocal);
-            },
-        });
-        this.posesionService.getPosesion('away', this.id).subscribe({
-            next: (res) => {
-                var _a;
-                this.pAway = (_a = res.body) !== null && _a !== void 0 ? _a : [];
-                console.log(this.pAway);
-                this.sumPosesion();
-            },
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__awaiter)(this, void 0, void 0, function* () {
+            this.posesionService.getPosesion('local', this.id).subscribe({
+                next: (res) => {
+                    var _a;
+                    this.pLocal = (_a = res.body) !== null && _a !== void 0 ? _a : [];
+                    console.log(this.pLocal);
+                    this.posesionService.getPosesion('away', this.id).subscribe({
+                        next: (res) => {
+                            var _a;
+                            this.pAway = (_a = res.body) !== null && _a !== void 0 ? _a : [];
+                            console.log(this.pAway);
+                            return this.sumPosesion();
+                        },
+                    });
+                },
+            });
         });
     }
     loadEvents() {
@@ -182,28 +193,28 @@ let MatchDataPage = class MatchDataPage {
                 this.cornerLocal = this.eLocal.filter(e => e.eventType === 'CORNER').length;
                 this.penaltiLocal = this.eLocal.filter(e => e.eventType === 'PENALTI').length;
                 this.offsideLocal = this.eLocal.filter(e => e.eventType === 'FUERA_DE_JUEGO').length;
-            },
-        });
-        this.eventService.getEvents('away', this.id).subscribe({
-            next: (res) => {
-                var _a;
-                this.eAway = (_a = res.body) !== null && _a !== void 0 ? _a : [];
-                this.golesAway = this.eAway.filter(e => e.eventType === 'GOL').length;
-                this.faltasAway = this.eAway.filter(e => e.eventType === 'FALTA').length;
-                this.amarillasAway = this.eAway.filter(e => e.eventType === 'AMARILLA').length;
-                this.rojasAway = this.eAway.filter(e => e.eventType === 'ROJA').length;
-                this.tirosAway = this.eAway.filter(e => e.eventType === 'TIRO').length;
-                this.cornerAway = this.eAway.filter(e => e.eventType === 'CORNER').length;
-                this.penaltiAway = this.eAway.filter(e => e.eventType === 'PENALTI').length;
-                this.offsideAway = this.eAway.filter(e => e.eventType === 'FUERA_DE_JUEGO').length;
-            },
-        });
-        this.eventService.getUsers(this.id).subscribe({
-            next: (res) => {
-                var _a;
-                this.users = (_a = res.body) !== null && _a !== void 0 ? _a : 0;
-                console.log(this.users);
-                this.average();
+                this.eventService.getEvents('away', this.id).subscribe({
+                    next: (res) => {
+                        var _a;
+                        this.eAway = (_a = res.body) !== null && _a !== void 0 ? _a : [];
+                        this.golesAway = this.eAway.filter(e => e.eventType === 'GOL').length;
+                        this.faltasAway = this.eAway.filter(e => e.eventType === 'FALTA').length;
+                        this.amarillasAway = this.eAway.filter(e => e.eventType === 'AMARILLA').length;
+                        this.rojasAway = this.eAway.filter(e => e.eventType === 'ROJA').length;
+                        this.tirosAway = this.eAway.filter(e => e.eventType === 'TIRO').length;
+                        this.cornerAway = this.eAway.filter(e => e.eventType === 'CORNER').length;
+                        this.penaltiAway = this.eAway.filter(e => e.eventType === 'PENALTI').length;
+                        this.offsideAway = this.eAway.filter(e => e.eventType === 'FUERA_DE_JUEGO').length;
+                        this.eventService.getUsers(this.id).subscribe({
+                            next: (res) => {
+                                var _a;
+                                this.users = (_a = res.body) !== null && _a !== void 0 ? _a : 0;
+                                console.log(this.users);
+                                this.average();
+                            },
+                        });
+                    },
+                });
             },
         });
     }
@@ -233,17 +244,18 @@ let MatchDataPage = class MatchDataPage {
                 this.posesionLocal = this.posesionLocal + 0;
             }
             else {
-                this.posesionLocal = this.posesionLocal + (new Date(this.pLocal[i].end).getTime() - new Date(this.pLocal[i].start).getTime());
+                this.posesionLocal = this.posesionLocal + (this.pLocal[i].end - this.pLocal[i].start);
             }
-            console.log('Posesion ' + this.posesionLocal);
+            console.log('Posesion Local' + this.posesionLocal);
         }
         for (let i = 0; i < this.pAway.length; i++) {
             if (this.pAway[i].end === null) {
                 this.posesionAway = this.posesionAway + 0;
             }
             else {
-                this.posesionAway = this.posesionAway + (new Date(this.pAway[i].end).getTime() - new Date(this.pAway[i].start).getTime());
+                this.posesionAway = this.posesionAway + (this.pAway[i].end - this.pAway[i].start);
             }
+            console.log('Posesion Visitante ' + this.posesionLocal);
         }
         var total = this.posesionLocal + this.posesionAway;
         this.posesionLocal = Math.round((this.posesionLocal * 100) / total);
@@ -253,20 +265,98 @@ let MatchDataPage = class MatchDataPage {
     }
 };
 MatchDataPage.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavController },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController },
-    { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__.TranslateService },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.ActivatedRoute },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.NavController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__.ToastController },
+    { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__.TranslateService },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_8__.ActivatedRoute },
     { type: src_app_services_posesion_posesion_service__WEBPACK_IMPORTED_MODULE_2__.PosesionService },
+    { type: _awesome_cordova_plugins_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_4__.ScreenOrientation },
     { type: src_app_services_events_events_service__WEBPACK_IMPORTED_MODULE_3__.EventsService }
 ];
-MatchDataPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
+MatchDataPage = (0,tslib__WEBPACK_IMPORTED_MODULE_5__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_9__.Component)({
         selector: 'app-matchdata',
         template: _matchdata_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_matchdata_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
     })
 ], MatchDataPage);
+
+
+
+/***/ }),
+
+/***/ 51284:
+/*!************************************************************!*\
+  !*** ./src/app/services/auth/user-route-access.service.ts ***!
+  \************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "UserRouteAccessService": () => (/* binding */ UserRouteAccessService)
+/* harmony export */ });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _account_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./account.service */ 150);
+
+
+
+
+
+let UserRouteAccessService = class UserRouteAccessService {
+    constructor(router, navController, accountService // private stateStorageService: StateStorageService
+    ) {
+        this.router = router;
+        this.navController = navController;
+        this.accountService = accountService;
+    }
+    canActivate(route, state) {
+        const authorities = route.data['authorities'];
+        // We need to call the checkLogin / and so the accountService.identity() function, to ensure,
+        // that the client has a principal too, if they already logged in by the server.
+        // This could happen on a page refresh.
+        return this.checkLogin(authorities, state.url);
+    }
+    checkLogin(authorities, url) {
+        return this.accountService.identity().then(account => {
+            if (!authorities || authorities.length === 0) {
+                return true;
+            }
+            if (account) {
+                const hasAnyAuthority = this.accountService.hasAnyAuthority(authorities);
+                if (hasAnyAuthority) {
+                    return true;
+                }
+                if ((0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.isDevMode)()) {
+                    console.error('User has not any of required authorities: ', authorities);
+                }
+                return false;
+            }
+            // this.stateStorageService.storeUrl(url);
+            // this.router.navigate(['accessdenied']).then(() => {
+            //     // only show the login dialog, if the user hasn't logged in yet
+            //     if (!account) {
+            //         // this.loginModalService.open();
+            //         console.log('go to login page');
+            //     }
+            // });
+            this.navController.navigateRoot('/accessdenied');
+            return false;
+        });
+    }
+};
+UserRouteAccessService.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__.Router },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__.NavController },
+    { type: _account_service__WEBPACK_IMPORTED_MODULE_0__.AccountService }
+];
+UserRouteAccessService = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_1__.Injectable)({
+        providedIn: 'root',
+    })
+], UserRouteAccessService);
 
 
 

@@ -56,14 +56,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "SignupPage": () => (/* binding */ SignupPage)
 /* harmony export */ });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! tslib */ 34929);
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _signup_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./signup.page.html?ngResource */ 45722);
 /* harmony import */ var _signup_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./signup.page.scss?ngResource */ 62124);
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/core */ 3184);
-/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ 93819);
-/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ngx-translate/core */ 87514);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ 93819);
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ngx-translate/core */ 87514);
 /* harmony import */ var _services_user_user_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/user/user.service */ 9709);
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ 52816);
+/* harmony import */ var _awesome_cordova_plugins_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @awesome-cordova-plugins/screen-orientation/ngx */ 11898);
+
 
 
 
@@ -73,11 +75,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let SignupPage = class SignupPage {
-    constructor(navController, userService, router, toastController, translateService) {
+    constructor(navController, userService, router, toastController, screenOrientation, translateService) {
         this.navController = navController;
         this.userService = userService;
         this.router = router;
         this.toastController = toastController;
+        this.screenOrientation = screenOrientation;
         this.translateService = translateService;
         // The account fields for the signup form
         this.account = {
@@ -88,6 +91,7 @@ let SignupPage = class SignupPage {
             password: '',
             langKey: 'es',
         };
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
         this.translateService.get(['SIGNUP_ERROR', 'SIGNUP_SUCCESS', 'EXISTING_USER_ERROR', 'INVALID_PASSWORD_ERROR']).subscribe(values => {
             this.signupErrorString = values.SIGNUP_ERROR;
             this.signupSuccessString = values.SIGNUP_SUCCESS;
@@ -98,7 +102,7 @@ let SignupPage = class SignupPage {
     ngOnInit() { }
     doSignup() {
         // Attempt to login in through our User service
-        this.userService.signup(this.account).subscribe(() => (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function* () {
+        this.userService.signup(this.account).subscribe(() => (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
             const toast = yield this.toastController.create({
                 message: this.signupSuccessString,
                 duration: 3000,
@@ -106,7 +110,7 @@ let SignupPage = class SignupPage {
             });
             toast.present();
             this.router.navigate(['/tabs/home']);
-        }), (response) => (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__awaiter)(this, void 0, void 0, function* () {
+        }), (response) => (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__awaiter)(this, void 0, void 0, function* () {
             // Unable to sign up
             const error = JSON.parse(response.error);
             let displayError = this.signupErrorString;
@@ -129,14 +133,15 @@ let SignupPage = class SignupPage {
     }
 };
 SignupPage.ctorParameters = () => [
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.NavController },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.NavController },
     { type: _services_user_user_service__WEBPACK_IMPORTED_MODULE_2__.UserService },
-    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__.Router },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__.ToastController },
-    { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__.TranslateService }
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__.Router },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__.ToastController },
+    { type: _awesome_cordova_plugins_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_3__.ScreenOrientation },
+    { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__.TranslateService }
 ];
-SignupPage = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
-    (0,_angular_core__WEBPACK_IMPORTED_MODULE_7__.Component)({
+SignupPage = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
+    (0,_angular_core__WEBPACK_IMPORTED_MODULE_8__.Component)({
         selector: 'app-signup',
         template: _signup_page_html_ngResource__WEBPACK_IMPORTED_MODULE_0__,
         styles: [_signup_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_1__]
