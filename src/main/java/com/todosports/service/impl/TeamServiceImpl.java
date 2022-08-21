@@ -4,6 +4,7 @@ import com.todosports.domain.Team;
 import com.todosports.repository.TeamRepository;
 import com.todosports.service.TeamService;
 import java.util.List;
+import javax.validation.OverridesAttribute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Pageable;
@@ -75,6 +76,12 @@ public class TeamServiceImpl implements TeamService {
     public Mono<Team> findOne(Long id) {
         log.debug("Request to get Team : {}", id);
         return teamRepository.findOneWithEagerRelationships(id);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Mono<Team> findByName(String name) {
+        return teamRepository.findName(name);
     }
 
     @Override

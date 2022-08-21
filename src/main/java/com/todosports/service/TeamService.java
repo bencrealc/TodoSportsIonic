@@ -40,6 +40,7 @@ public interface TeamService {
      * @return the list of entities.
      */
     Flux<Team> findAll();
+    Mono<Team> findByName(String name);
 
     /**
      * Get all the teams with eager load of many-to-many relationships.

@@ -179,6 +179,12 @@ public class TeamResource {
         return teamService.findOne(id);
     }
 
+    @GetMapping("/teams/{name}")
+    public Mono<Team> getTeam(@PathVariable String name) {
+        log.debug("REST request to get Team : {}", name);
+        return teamService.findByName(name);
+    }
+
     /**
      * {@code DELETE  /teams/:id} : delete the "id" team.
      *

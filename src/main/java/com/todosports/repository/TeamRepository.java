@@ -29,6 +29,9 @@ public interface TeamRepository extends ReactiveCrudRepository<Team, Long>, Team
     )
     Flux<Team> findByMatch(Long id);
 
+    @Query("SELECT * FROM public.team WHERE team.name =:name")
+    Mono<Team> findName(String name);
+
     @Override
     <S extends Team> Mono<S> save(S entity);
 

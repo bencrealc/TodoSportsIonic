@@ -28,6 +28,7 @@
               <div *ngIf="isSubmitted && errorControl.name.errors?.minlength">
                 <span class="error"> {{ 'NOMBRE_MINIMO' | translate }}. </span>
               </div>
+              <mat-error class="error" *ngIf="checarSiExiste()">{{ 'EXISTS' | translate }}.</mat-error>
             </ion-col>
           </ion-row>
           <ion-row>
