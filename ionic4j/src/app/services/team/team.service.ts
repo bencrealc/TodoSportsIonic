@@ -23,4 +23,7 @@ export class TeamService {
   getById(id) {
     return this.http.get<Team>(ApiService.API_URL + '/teams/' + id, { observe: 'response' });
   }
+  getByName(name) {
+    return this.http.get<Team>(ApiService.API_URL + '/teams/' + name, { observe: 'response' });
+  }
 }

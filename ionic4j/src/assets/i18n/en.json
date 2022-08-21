@@ -37,6 +37,7 @@
   "TL_OBLIGATORIO": "Local Team is required",
   "TV_OBLIGATORIO": "Away Team is required",
   "DIFERENTE": "Away team cannot be equal to Local team",
+  "EXISTS": "This team already exists",
   "FECHA_OBLIGATORIA": "Date is required",
   "AÑADIR_PARTIDO": "Add Match",
 

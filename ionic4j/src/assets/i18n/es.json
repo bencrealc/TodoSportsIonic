@@ -35,6 +35,7 @@
   "TL_OBLIGATORIO": "El equipo Local es obligatorio",
   "TV_OBLIGATORIO": "El equipo Visitante es obligatorio",
   "DIFERENTE": "El equipo visitante no puede ser igual al equipo Local",
+  "EXISTS": "Este equipo ya existe",
   "FECHA_OBLIGATORIA": "La fecha es obligatoria",
   "AÑADIR_PARTIDO": "Añadir Partido",
 

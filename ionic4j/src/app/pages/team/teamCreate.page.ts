@@ -2,15 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
-import { EventsService } from 'src/app/services/events/events.service';
 import { finalize } from 'rxjs/operators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeamService } from 'src/app/services/team/team.service';
 import { Team } from 'src/app/services/team/team.model';
 import { AccountService } from 'src/app/services/auth/account.service';
 import { Account } from 'src/model/account.model';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { ScreenOrientation } from '@awesome-cordova-plugins/screen-orientation/ngx';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-teamCreate',
@@ -22,6 +22,7 @@ export class TeamCreatePage implements OnInit {
   isSubmitted = false;
   private team: FormGroup;
   account: Account;
+  teams?: Team[];
 
   constructor(
     public teamService: TeamService,
@@ -34,8 +35,11 @@ export class TeamCreatePage implements OnInit {
     protected fb: FormBuilder
   ) {
     this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-    this.team = this.fb.group({
-      name: [''],
+
+    this.teamService.get().subscribe({
+      next: (res: HttpResponse<Team[]>) => {
+        this.teams = res.body ?? [];
+      },
     });
   }
 
@@ -61,18 +65,34 @@ export class TeamCreatePage implements OnInit {
       position: 'top',
       color: 'light',
     });
+
+    const toastDuplicate = await this.toastController.create({
+      message: 'El equipo ya existe',
+      duration: 2000,
+      position: 'top',
+      color: 'danger',
+    });
     this.isSaving = true;
     this.isSubmitted = true;
     if (!this.team.valid) {
       console.log('Please provide all the required values!');
       return false;
     } else {
-      toastCreado.present();
-    }
-    const team = this.createFrom(this.team.value['name'], this.account.id);
-    this.subscribeToSaveResponse(this.teamService.create(team));
-    if (this.isSubmitted) {
-      this.team.reset();
+      const equipo = this.createFrom(this.team.value['name'], this.account.id);
+      if (this.isSubmitted) {
+        var equal = false;
+        if (this.teams.filter(x => x.name === equipo.name).length != 0) {
+          equal = true;
+          toastDuplicate.present();
+        }
+        if (this.isSubmitted && equal === false) {
+          this.teams.push(equipo);
+          toastCreado.present();
+          this.subscribeToSaveResponse(this.teamService.create(equipo));
+          this.router.navigate(['/tabs/teamCreate']);
+          this.team.reset();
+        }
+      }
     }
   }
 
