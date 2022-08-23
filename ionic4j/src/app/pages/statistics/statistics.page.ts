@@ -139,6 +139,7 @@ export class StatisticsPage implements OnInit {
         },
       ],
     });
+
     await picker.present();
   }
 
@@ -154,17 +155,31 @@ export class StatisticsPage implements OnInit {
     this.subscribeToSaveResponse(this.posesionService.create(posesion));
   }
 
-  saveFinal(): void {
+  async saveFinal() {
     this.isSaving = true;
     //const teamValue = this.posesionService.query();
     const event = this.closeFromPosesion(null, new Date().getTime(), this.id, this.account.id);
+    const toasti = await this.toastController.create({
+      message: 'Se ha finalizado la posesión ',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
+    toasti.present();
     this.subscribeToSaveResponse(this.posesionService.close(event));
   }
 
-  saveChange(): void {
+  async saveChange() {
     this.isSaving = true;
-    //const teamValue = this.posesionService.query();
+    const teamValue = this.posesionService.query();
     const event = this.createFromPosesion(null, new Date().getTime(), this.id, this.account.id);
+    const toasti = await this.toastController.create({
+      message: 'Se ha cambiado la posesión ',
+      duration: 2000,
+      position: 'top',
+      color: 'light',
+    });
+    toasti.present();
     this.subscribeToSaveResponse(this.posesionService.change(event));
   }
 
