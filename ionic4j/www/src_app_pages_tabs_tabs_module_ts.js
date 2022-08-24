@@ -1,6 +1,26 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_tabs_tabs_module_ts"],{
 
+/***/ 74436:
+/*!******************************************************!*\
+  !*** ./src/app/pages/tabs/tabs.page.scss?ngResource ***!
+  \******************************************************/
+/***/ ((module) => {
+
+module.exports = "ion-label {\n  white-space: normal;\n}\n\n.top-44 {\n  height: 64px;\n  bottom: 64px !important;\n}\n\nion-tab-button {\n  --color-selected: #33752e;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQUE7QUFDRjs7QUFDQTtFQUNFLFlBQUE7RUFDQSx1QkFBQTtBQUVGOztBQUNBO0VBQ0UseUJBQUE7QUFFRiIsImZpbGUiOiJ0YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1sYWJlbCB7XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG59XG4udG9wLTQ0IHtcbiAgaGVpZ2h0OiA2NHB4O1xuICBib3R0b206IDY0cHggIWltcG9ydGFudDtcbn1cblxuaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiAjMzM3NTJlO1xufVxuIl19 */";
+
+/***/ }),
+
+/***/ 97867:
+/*!******************************************************!*\
+  !*** ./src/app/pages/tabs/tabs.page.html?ngResource ***!
+  \******************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-tabs>\n  <ion-tab-bar slot=\"bottom\" class=\"top-44\">\n    <ion-tab-button tab=\"home\">\n      <ion-icon name=\"home\"></ion-icon>\n      <ion-label> {{ 'INICIO' | translate }} </ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"matches\">\n      <ion-icon name=\"list\"></ion-icon>\n      <ion-label> {{ 'PARTIDOS' | translate }} </ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"matchesEnd\">\n      <ion-icon name=\"football\"></ion-icon>\n      <ion-label> {{ 'PARTIDOS_FIN' | translate }} </ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"teamCreate\" *ngIf=\"admin ===true\">\n      <ion-icon name=\"shirt\"></ion-icon>\n      <ion-label> {{ 'CREAR_EQUIPOS' | translate }} </ion-label>\n    </ion-tab-button>\n  </ion-tab-bar>\n</ion-tabs>\n";
+
+/***/ }),
+
 /***/ 5557:
 /*!*******************************************!*\
   !*** ./src/app/pages/tabs/tabs.module.ts ***!
@@ -175,26 +195,6 @@ TabsPageRoutingModule = (0,tslib__WEBPACK_IMPORTED_MODULE_1__.__decorate)([
 ], TabsPageRoutingModule);
 
 
-
-/***/ }),
-
-/***/ 74436:
-/*!******************************************************!*\
-  !*** ./src/app/pages/tabs/tabs.page.scss?ngResource ***!
-  \******************************************************/
-/***/ ((module) => {
-
-module.exports = "ion-label {\n  white-space: normal;\n}\n\n.top-44 {\n  height: 64px;\n  bottom: 64px !important;\n}\n\nion-tab-button {\n  --color-selected: #33752e;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRhYnMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsbUJBQUE7QUFDRjs7QUFDQTtFQUNFLFlBQUE7RUFDQSx1QkFBQTtBQUVGOztBQUNBO0VBQ0UseUJBQUE7QUFFRiIsImZpbGUiOiJ0YWJzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi1sYWJlbCB7XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG59XG4udG9wLTQ0IHtcbiAgaGVpZ2h0OiA2NHB4O1xuICBib3R0b206IDY0cHggIWltcG9ydGFudDtcbn1cblxuaW9uLXRhYi1idXR0b24ge1xuICAtLWNvbG9yLXNlbGVjdGVkOiAjMzM3NTJlO1xufVxuIl19 */";
-
-/***/ }),
-
-/***/ 97867:
-/*!******************************************************!*\
-  !*** ./src/app/pages/tabs/tabs.page.html?ngResource ***!
-  \******************************************************/
-/***/ ((module) => {
-
-module.exports = "<ion-tabs>\n  <ion-tab-bar slot=\"bottom\" class=\"top-44\">\n    <ion-tab-button tab=\"home\">\n      <ion-icon name=\"home\"></ion-icon>\n      <ion-label> {{ 'INICIO' | translate }} </ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"matches\">\n      <ion-icon name=\"list\"></ion-icon>\n      <ion-label> {{ 'PARTIDOS' | translate }} </ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"matchesEnd\">\n      <ion-icon name=\"football\"></ion-icon>\n      <ion-label> {{ 'PARTIDOS_FIN' | translate }} </ion-label>\n    </ion-tab-button>\n\n    <ion-tab-button tab=\"teamCreate\" *ngIf=\"admin ===true\">\n      <ion-icon name=\"shirt\"></ion-icon>\n      <ion-label> {{ 'CREAR_EQUIPOS' | translate }} </ion-label>\n    </ion-tab-button>\n\n    \n  </ion-tab-bar>\n</ion-tabs>\n";
 
 /***/ })
 

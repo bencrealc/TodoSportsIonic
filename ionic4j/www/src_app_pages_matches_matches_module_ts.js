@@ -1,6 +1,26 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_matches_matches_module_ts"],{
 
+/***/ 96954:
+/*!************************************************************!*\
+  !*** ./src/app/pages/matches/matches.page.scss?ngResource ***!
+  \************************************************************/
+/***/ ((module) => {
+
+module.exports = ".padre {\n  display: flex;\n}\n\n.new-btn {\n  --background: #fbdb5c;\n  white-space: normal;\n  color: rgba(0, 0, 0, 0.75);\n}\n\n.stats {\n  --background: #fbdb5c;\n  white-space: normal;\n  color: rgba(39, 37, 37, 0.75);\n}\n\nion-icon {\n  padding-right: 7px;\n}\n\n.first {\n  background-color: #7aee80;\n  color: #000;\n  border: 1px solid #abdfa9;\n  padding: 5px 5px;\n  border-collapse: collapse;\n  justify-content: center;\n}\n\n.table-responsive {\n  font-family: \"Arial\";\n  margin: 25px auto;\n  border-collapse: collapse;\n  border: 1px solid #eee;\n  text-align: center;\n  white-space: normal;\n  border-bottom: 2px solid #4cb050;\n  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);\n}\n\n.second {\n  color: #959595;\n  border: 1px solid #eee;\n  padding: 5px 5px;\n  border-collapse: collapse;\n}\n\n.col {\n  width: 70px;\n  white-space: normal;\n  justify-content: center;\n}\n\n.colP {\n  width: 70px;\n  white-space: normal;\n  padding-top: 20px;\n  justify-content: center;\n}\n\n.col1 {\n  width: 70px;\n  white-space: normal;\n  font-size: 17px;\n  justify-content: center;\n  text-overflow: inherit;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hdGNoZXMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtBQUNGOztBQUNBO0VBQ0UscUJBQUE7RUFDQSxtQkFBQTtFQUNBLDBCQUFBO0FBRUY7O0FBQUE7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0EsNkJBQUE7QUFHRjs7QUFEQTtFQUNFLGtCQUFBO0FBSUY7O0FBRkE7RUFDRSx5QkFBQTtFQUNBLFdBQUE7RUFDQSx5QkFBQTtFQUNBLGdCQUFBO0VBQ0EseUJBQUE7RUFDQSx1QkFBQTtBQUtGOztBQUhBO0VBQ0Usb0JBQUE7RUFDQSxpQkFBQTtFQUNBLHlCQUFBO0VBQ0Esc0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0NBQUE7RUFDQSxvSkFBQTtBQU1GOztBQUhBO0VBQ0UsY0FBQTtFQUNBLHNCQUFBO0VBQ0EsZ0JBQUE7RUFDQSx5QkFBQTtBQU1GOztBQUpBO0VBQ0UsV0FBQTtFQUNBLG1CQUFBO0VBRUEsdUJBQUE7QUFNRjs7QUFKQTtFQUNFLFdBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsdUJBQUE7QUFPRjs7QUFMQTtFQUNFLFdBQUE7RUFDQSxtQkFBQTtFQUNBLGVBQUE7RUFDQSx1QkFBQTtFQUNBLHNCQUFBO0FBUUYiLCJmaWxlIjoibWF0Y2hlcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGFkcmUge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuLm5ldy1idG4ge1xuICAtLWJhY2tncm91bmQ6ICNmYmRiNWM7XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG4gIGNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuNzUpO1xufVxuLnN0YXRzIHtcbiAgLS1iYWNrZ3JvdW5kOiAjZmJkYjVjO1xuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xuICBjb2xvcjogcmdiYSgzOSwgMzcsIDM3LCAwLjc1KTtcbn1cbmlvbi1pY29uIHtcbiAgcGFkZGluZy1yaWdodDogN3B4O1xufVxuLmZpcnN0IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzdhZWU4MDtcbiAgY29sb3I6ICMwMDA7XG4gIGJvcmRlcjogMXB4IHNvbGlkIHJnYigxNzEsIDIyMywgMTY5KTtcbiAgcGFkZGluZzogNXB4IDVweDtcbiAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG4udGFibGUtcmVzcG9uc2l2ZSB7XG4gIGZvbnQtZmFtaWx5OiAnQXJpYWwnO1xuICBtYXJnaW46IDI1cHggYXV0bztcbiAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcbiAgYm9yZGVyOiAxcHggc29saWQgI2VlZTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xuICBib3JkZXItYm90dG9tOiAycHggc29saWQgIzRjYjA1MDtcbiAgYm94LXNoYWRvdzogMHB4IDBweCAyMHB4IHJnYmEoMCwgMCwgMCwgMC4xKSwgMHB4IDEwcHggMjBweCByZ2JhKDAsIDAsIDAsIDAuMDUpLCAwcHggMjBweCAyMHB4IHJnYmEoMCwgMCwgMCwgMC4wNSksXG4gICAgMHB4IDMwcHggMjBweCByZ2JhKDAsIDAsIDAsIDAuMDUpO1xufVxuLnNlY29uZCB7XG4gIGNvbG9yOiAjOTU5NTk1O1xuICBib3JkZXI6IDFweCBzb2xpZCAjZWVlO1xuICBwYWRkaW5nOiA1cHggNXB4O1xuICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xufVxuLmNvbCB7XG4gIHdpZHRoOiA3MHB4O1xuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xuXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuLmNvbFAge1xuICB3aWR0aDogNzBweDtcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbiAgcGFkZGluZy10b3A6IDIwcHg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuLmNvbDEge1xuICB3aWR0aDogNzBweDtcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbiAgZm9udC1zaXplOiAxN3B4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgdGV4dC1vdmVyZmxvdzogaW5oZXJpdDtcbn1cbiJdfQ== */";
+
+/***/ }),
+
+/***/ 82541:
+/*!************************************************************!*\
+  !*** ./src/app/pages/matches/matches.page.html?ngResource ***!
+  \************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>{{ 'PARTIDOS' | translate }}</ion-title>\n    <ion-buttons slot=\"end\">\n      <div class=\"padre\" *ngIf=\"admin === true\">\n        <ion-button class=\"new-btn\" [routerLink]=\"['/matches/new']\">\n          <ion-icon icon=\"add-circle\"></ion-icon>{{ 'NUEVO_PARTIDO' | translate }}\n        </ion-button>\n      </div>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div>\n    <ion-searchbar (ionChange)=\"search($event.target.value)\" showCancelButton=\"focus\" animated></ion-searchbar>\n  </div>\n\n    <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\n      <ion-refresher-content></ion-refresher-content>\n    </ion-refresher>\n  \n  <div class=\"table-responsive\" id=\"entities\">\n    <ion-row class=\"first\">\n      <ion-col class=\"col1\">{{ 'EQUIPO_LOCAL' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'EQUIPO_VISITANTE' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'FECHA' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'ANALIZAR' | translate }}</ion-col>\n    </ion-row>\n    <div *ngIf=\"matches?.length != 0\">\n      <ion-row *ngFor=\"let match of matchesFiltered; trackBy: trackId\" #slidingItem class=\"second\">\n        <ion-col class=\"colP\">{{ match.localId }}</ion-col>\n        <ion-col class=\"colP\">{{ match.awayId }}</ion-col>\n        <ion-col class=\"colP\">{{stringToDate(match.matchDay)}}</ion-col>\n\n        <ion-col class=\"col\">\n          <ion-button *ngIf=\"dateValue(match.matchDay)\" class=\"stats\" [routerLink]=\"['/stats/new/',match.id]\">\n            <ion-icon icon=\"podium\"></ion-icon\n          ></ion-button>\n        </ion-col>\n      </ion-row>\n    </div>\n  </div>\n\n  <div class=\"alert alert-warning\" id=\"no-result\" *ngIf=\"matches?.length === 0\">\n    <ion-title>{{ 'NO_FOUND' | translate }}</ion-title>\n  </div>\n</ion-content>\n";
+
+/***/ }),
+
 /***/ 29283:
 /*!*********************************************************!*\
   !*** ./src/app/pages/matches/matches-routing.module.ts ***!
@@ -177,6 +197,12 @@ let MatchesPage = class MatchesPage {
         }
         return res;
     }
+    doRefresh(event) {
+        this.matches = [];
+        this.matchesFiltered = [];
+        this.loadAll();
+        event.target.complete();
+    }
 };
 MatchesPage.ctorParameters = () => [
     { type: _services_auth_account_service__WEBPACK_IMPORTED_MODULE_4__.AccountService },
@@ -194,26 +220,6 @@ MatchesPage = (0,tslib__WEBPACK_IMPORTED_MODULE_7__.__decorate)([
 ], MatchesPage);
 
 
-
-/***/ }),
-
-/***/ 96954:
-/*!************************************************************!*\
-  !*** ./src/app/pages/matches/matches.page.scss?ngResource ***!
-  \************************************************************/
-/***/ ((module) => {
-
-module.exports = ".padre {\n  display: flex;\n}\n\n.new-btn {\n  --background: #fbdb5c;\n  white-space: normal;\n  color: rgba(0, 0, 0, 0.75);\n}\n\n.stats {\n  --background: #fbdb5c;\n  white-space: normal;\n  color: rgba(39, 37, 37, 0.75);\n}\n\nion-icon {\n  padding-right: 7px;\n}\n\n.first {\n  background-color: #7aee80;\n  color: #000;\n  border: 1px solid #abdfa9;\n  padding: 5px 5px;\n  border-collapse: collapse;\n  justify-content: center;\n}\n\n.table-responsive {\n  font-family: \"Arial\";\n  margin: 25px auto;\n  border-collapse: collapse;\n  border: 1px solid #eee;\n  text-align: center;\n  white-space: normal;\n  border-bottom: 2px solid #4cb050;\n  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);\n}\n\n.second {\n  color: #959595;\n  border: 1px solid #eee;\n  padding: 5px 5px;\n  border-collapse: collapse;\n}\n\n.col {\n  width: 70px;\n  white-space: normal;\n  justify-content: center;\n}\n\n.colP {\n  width: 70px;\n  white-space: normal;\n  padding-top: 20px;\n  justify-content: center;\n}\n\n.col1 {\n  width: 70px;\n  white-space: normal;\n  font-size: 17px;\n  justify-content: center;\n  text-overflow: inherit;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hdGNoZXMucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtBQUNGOztBQUNBO0VBQ0UscUJBQUE7RUFDQSxtQkFBQTtFQUNBLDBCQUFBO0FBRUY7O0FBQUE7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0EsNkJBQUE7QUFHRjs7QUFEQTtFQUNFLGtCQUFBO0FBSUY7O0FBRkE7RUFDRSx5QkFBQTtFQUNBLFdBQUE7RUFDQSx5QkFBQTtFQUNBLGdCQUFBO0VBQ0EseUJBQUE7RUFDQSx1QkFBQTtBQUtGOztBQUhBO0VBQ0Usb0JBQUE7RUFDQSxpQkFBQTtFQUNBLHlCQUFBO0VBQ0Esc0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0NBQUE7RUFDQSxvSkFBQTtBQU1GOztBQUhBO0VBQ0UsY0FBQTtFQUNBLHNCQUFBO0VBQ0EsZ0JBQUE7RUFDQSx5QkFBQTtBQU1GOztBQUpBO0VBQ0UsV0FBQTtFQUNBLG1CQUFBO0VBRUEsdUJBQUE7QUFNRjs7QUFKQTtFQUNFLFdBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsdUJBQUE7QUFPRjs7QUFMQTtFQUNFLFdBQUE7RUFDQSxtQkFBQTtFQUNBLGVBQUE7RUFDQSx1QkFBQTtFQUNBLHNCQUFBO0FBUUYiLCJmaWxlIjoibWF0Y2hlcy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGFkcmUge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuLm5ldy1idG4ge1xuICAtLWJhY2tncm91bmQ6ICNmYmRiNWM7XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG4gIGNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuNzUpO1xufVxuLnN0YXRzIHtcbiAgLS1iYWNrZ3JvdW5kOiAjZmJkYjVjO1xuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xuICBjb2xvcjogcmdiYSgzOSwgMzcsIDM3LCAwLjc1KTtcbn1cbmlvbi1pY29uIHtcbiAgcGFkZGluZy1yaWdodDogN3B4O1xufVxuLmZpcnN0IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzdhZWU4MDtcbiAgY29sb3I6ICMwMDA7XG4gIGJvcmRlcjogMXB4IHNvbGlkIHJnYigxNzEsIDIyMywgMTY5KTtcbiAgcGFkZGluZzogNXB4IDVweDtcbiAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcbiAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7XG59XG4udGFibGUtcmVzcG9uc2l2ZSB7XG4gIGZvbnQtZmFtaWx5OiAnQXJpYWwnO1xuICBtYXJnaW46IDI1cHggYXV0bztcbiAgYm9yZGVyLWNvbGxhcHNlOiBjb2xsYXBzZTtcbiAgYm9yZGVyOiAxcHggc29saWQgI2VlZTtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xuICBib3JkZXItYm90dG9tOiAycHggc29saWQgIzRjYjA1MDtcbiAgYm94LXNoYWRvdzogMHB4IDBweCAyMHB4IHJnYmEoMCwgMCwgMCwgMC4xKSwgMHB4IDEwcHggMjBweCByZ2JhKDAsIDAsIDAsIDAuMDUpLCAwcHggMjBweCAyMHB4IHJnYmEoMCwgMCwgMCwgMC4wNSksXG4gICAgMHB4IDMwcHggMjBweCByZ2JhKDAsIDAsIDAsIDAuMDUpO1xufVxuLnNlY29uZCB7XG4gIGNvbG9yOiAjOTU5NTk1O1xuICBib3JkZXI6IDFweCBzb2xpZCAjZWVlO1xuICBwYWRkaW5nOiA1cHggNXB4O1xuICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xufVxuLmNvbCB7XG4gIHdpZHRoOiA3MHB4O1xuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xuXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuLmNvbFAge1xuICB3aWR0aDogNzBweDtcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbiAgcGFkZGluZy10b3A6IDIwcHg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuLmNvbDEge1xuICB3aWR0aDogNzBweDtcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbiAgZm9udC1zaXplOiAxN3B4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgdGV4dC1vdmVyZmxvdzogaW5oZXJpdDtcbn1cbiJdfQ== */";
-
-/***/ }),
-
-/***/ 82541:
-/*!************************************************************!*\
-  !*** ./src/app/pages/matches/matches.page.html?ngResource ***!
-  \************************************************************/
-/***/ ((module) => {
-
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>{{ 'PARTIDOS' | translate }}</ion-title>\n    <ion-buttons slot=\"end\">\n      <div class=\"padre\" *ngIf=\"admin === true\">\n        <ion-button class=\"new-btn\" [routerLink]=\"['/matches/new']\">\n          <ion-icon icon=\"add-circle\"></ion-icon>{{ 'NUEVO_PARTIDO' | translate }}\n        </ion-button>\n      </div>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <div>\n    <ion-searchbar (ionChange)=\"search($event.target.value)\" showCancelButton=\"focus\" animated></ion-searchbar>\n  </div>\n\n  <div class=\"table-responsive\" id=\"entities\">\n    <ion-row class=\"first\">\n      <ion-col class=\"col1\">{{ 'EQUIPO_LOCAL' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'EQUIPO_VISITANTE' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'FECHA' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'ANALIZAR' | translate }}</ion-col>\n    </ion-row>\n    <div *ngIf=\"matches?.length != 0\">\n      <ion-row *ngFor=\"let match of matchesFiltered; trackBy: trackId\" #slidingItem class=\"second\">\n        <ion-col class=\"colP\">{{ match.localId }}</ion-col>\n        <ion-col class=\"colP\">{{ match.awayId }}</ion-col>\n        <ion-col class=\"colP\">{{stringToDate(match.matchDay)}}</ion-col>\n\n        <ion-col class=\"col\">\n          <ion-button *ngIf=\"dateValue(match.matchDay)\" class=\"stats\" [routerLink]=\"['/stats/new/',match.id]\">\n            <ion-icon icon=\"podium\"></ion-icon></ion-button\n          >\n        </ion-col>\n      </ion-row>\n    </div>\n  </div>\n\n  <div class=\"alert alert-warning\" id=\"no-result\" *ngIf=\"matches?.length === 0\">\n    <ion-title>No matches found</ion-title>\n  </div>\n</ion-content>\n";
 
 /***/ })
 

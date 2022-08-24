@@ -7,6 +7,10 @@
 <ion-content>
   <ion-searchbar (ionChange)="search($event.target.value)" showCancelButton="focus" animated debounce="100"></ion-searchbar>
 
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <div class="table-responsive" id="entities">
     <ion-row class="first">
       <ion-col class="col1">{{ 'EQUIPO_LOCAL' | translate }}</ion-col>

@@ -174,6 +174,9 @@ export class MatchDataPage implements OnInit {
     }
 
     var total = this.posesionLocal + this.posesionAway;
+    if (total == 0) {
+      total = 1;
+    }
     this.posesionLocal = Math.round((this.posesionLocal * 100) / total);
     console.log(this.posesionLocal);
     this.posesionAway = Math.round((this.posesionAway * 100) / total);

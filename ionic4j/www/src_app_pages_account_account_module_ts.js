@@ -1,6 +1,26 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_account_account_module_ts"],{
 
+/***/ 77110:
+/*!************************************************************!*\
+  !*** ./src/app/pages/account/account.page.scss?ngResource ***!
+  \************************************************************/
+/***/ ((module) => {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhY2NvdW50LnBhZ2Uuc2NzcyJ9 */";
+
+/***/ }),
+
+/***/ 96216:
+/*!************************************************************!*\
+  !*** ./src/app/pages/account/account.page.html?ngResource ***!
+  \************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title> {{ 'CUENTA' | translate }} </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content></ion-content>\r\n";
+
+/***/ }),
+
 /***/ 36868:
 /*!*************************************************!*\
   !*** ./src/app/pages/account/account.module.ts ***!
@@ -158,26 +178,6 @@ UserRouteAccessService = (0,tslib__WEBPACK_IMPORTED_MODULE_4__.__decorate)([
 ], UserRouteAccessService);
 
 
-
-/***/ }),
-
-/***/ 77110:
-/*!************************************************************!*\
-  !*** ./src/app/pages/account/account.page.scss?ngResource ***!
-  \************************************************************/
-/***/ ((module) => {
-
-module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJhY2NvdW50LnBhZ2Uuc2NzcyJ9 */";
-
-/***/ }),
-
-/***/ 96216:
-/*!************************************************************!*\
-  !*** ./src/app/pages/account/account.page.html?ngResource ***!
-  \************************************************************/
-/***/ ((module) => {
-
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <ion-title> {{ 'CUENTA' | translate }} </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content></ion-content>\r\n";
 
 /***/ })
 

@@ -1,5 +1,16 @@
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["main"],{
 
+/***/ 33383:
+/*!***********************************************!*\
+  !*** ./src/app/app.component.html?ngResource ***!
+  \***********************************************/
+/***/ ((module) => {
+
+"use strict";
+module.exports = "<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n";
+
+/***/ }),
+
 /***/ 90158:
 /*!***************************************!*\
   !*** ./src/app/app-routing.module.ts ***!
@@ -697,7 +708,7 @@ __webpack_require__.r(__webpack_exports__);
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-const apiHost = 'http://192.168.56.1:8080/'; // TODO CAMBIAR IP POR LA ACTUAL
+const apiHost = 'http://192.168.1.134:8080/'; // TODO CAMBIAR IP POR LA ACTUAL
 const environment = {
     production: false,
     apiUrl: `${apiHost}api`,
@@ -983,17 +994,6 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = () => (Object.keys(map));
 webpackAsyncContext.id = 50863;
 module.exports = webpackAsyncContext;
-
-/***/ }),
-
-/***/ 33383:
-/*!***********************************************!*\
-  !*** ./src/app/app.component.html?ngResource ***!
-  \***********************************************/
-/***/ ((module) => {
-
-"use strict";
-module.exports = "<ion-app>\r\n  <ion-router-outlet></ion-router-outlet>\r\n</ion-app>\r\n";
 
 /***/ })
 

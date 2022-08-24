@@ -165,6 +165,9 @@ let TeamService = class TeamService {
     getById(id) {
         return this.http.get(_api_api_service__WEBPACK_IMPORTED_MODULE_0__.ApiService.API_URL + '/teams/' + id, { observe: 'response' });
     }
+    getByName(name) {
+        return this.http.get(_api_api_service__WEBPACK_IMPORTED_MODULE_0__.ApiService.API_URL + '/teams/' + name, { observe: 'response' });
+    }
 };
 TeamService.API_URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiUrl;
 TeamService.ctorParameters = () => [

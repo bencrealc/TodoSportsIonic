@@ -1,6 +1,26 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_team_teamCreate_module_ts"],{
 
+/***/ 60216:
+/*!************************************************************!*\
+  !*** ./src/app/pages/team/teamCreate.page.scss?ngResource ***!
+  \************************************************************/
+/***/ ((module) => {
+
+module.exports = ".error {\n  color: red;\n  font-size: 12px;\n  margin-left: 17px;\n}\n\n.padre {\n  display: flex;\n  justify-content: center;\n}\n\n.redo {\n  float: right;\n  --background: #bebebe;\n  position: absolute !important;\n  top: -2px !important;\n  right: 2px !important;\n}\n\n.grid1 {\n  height: 100%;\n  padding: 0px;\n}\n\n.contaier-login {\n  width: 90%;\n  padding: 10px;\n  background: #ffffff;\n  border-radius: 5px;\n  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);\n}\n\n.row1 {\n  height: 50%;\n  background: linear-gradient(45deg, #7aee80 0%, #71dd76 100%);\n}\n\n.row2 {\n  height: 50%;\n}\n\nion-button {\n  margin-top: 5px;\n  margin-bottom: 15px;\n  --background: #fbdb5c;\n  color: rgba(0, 0, 0, 0.75);\n}\n\nion-slide {\n  width: 100%;\n  height: 100%;\n  position: absolute !important;\n  top: 0px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlYW1DcmVhdGUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsVUFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtBQUNGOztBQUNBO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FBRUY7O0FBQUE7RUFDRSxZQUFBO0VBQ0EscUJBQUE7RUFDQSw2QkFBQTtFQUNBLG9CQUFBO0VBQ0EscUJBQUE7QUFHRjs7QUFEQTtFQUNFLFlBQUE7RUFDQSxZQUFBO0FBSUY7O0FBREE7RUFDRSxVQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFHQSxnREFBQTtBQUlGOztBQURBO0VBQ0UsV0FBQTtFQUdBLDREQUFBO0FBSUY7O0FBREE7RUFDRSxXQUFBO0FBSUY7O0FBREE7RUFDRSxlQUFBO0VBQ0EsbUJBQUE7RUFDQSxxQkFBQTtFQUNBLDBCQUFBO0FBSUY7O0FBREE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLDZCQUFBO0VBQ0EsbUJBQUE7QUFJRiIsImZpbGUiOiJ0ZWFtQ3JlYXRlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5lcnJvciB7XG4gIGNvbG9yOiByZWQ7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgbWFyZ2luLWxlZnQ6IDE3cHg7XG59XG4ucGFkcmUge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cbi5yZWRvIHtcbiAgZmxvYXQ6IHJpZ2h0O1xuICAtLWJhY2tncm91bmQ6ICNiZWJlYmU7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZSAhaW1wb3J0YW50O1xuICB0b3A6IC0ycHggIWltcG9ydGFudDtcbiAgcmlnaHQ6IDJweCAhaW1wb3J0YW50O1xufVxuLmdyaWQxIHtcbiAgaGVpZ2h0OiAxMDAlO1xuICBwYWRkaW5nOiAwcHg7XG59XG5cbi5jb250YWllci1sb2dpbiB7XG4gIHdpZHRoOiA5MCU7XG4gIHBhZGRpbmc6IDEwcHg7XG4gIGJhY2tncm91bmQ6ICNmZmZmZmY7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgLXdlYmtpdC1ib3gtc2hhZG93OiAwcHggMHB4IDEwcHggMXB4IHJnYmEoMCwgMCwgMCwgMC43NSk7XG4gIC1tb3otYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDFweCByZ2JhKDAsIDAsIDAsIDAuNzUpO1xuICBib3gtc2hhZG93OiAwcHggMHB4IDEwcHggMXB4IHJnYmEoMCwgMCwgMCwgMC43NSk7XG59XG5cbi5yb3cxIHtcbiAgaGVpZ2h0OiA1MCU7XG4gIGJhY2tncm91bmQ6IC1tb3otbGluZWFyLWdyYWRpZW50KDQ1ZGVnLCAjN2FlZTgwIDAlLCAjNzFkZDc2IDEwMCUpO1xuICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCg0NWRlZywgIzdhZWU4MCAwJSwgIzcxZGQ3NiAxMDAlKTtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDQ1ZGVnLCAjN2FlZTgwIDAlLCAjNzFkZDc2IDEwMCUpO1xufVxuXG4ucm93MiB7XG4gIGhlaWdodDogNTAlO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgbWFyZ2luLXRvcDogNXB4O1xuICBtYXJnaW4tYm90dG9tOiAxNXB4O1xuICAtLWJhY2tncm91bmQ6ICNmYmRiNWM7XG4gIGNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuNzUpO1xufVxuXG5pb24tc2xpZGUge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBwb3NpdGlvbjogYWJzb2x1dGUgIWltcG9ydGFudDtcbiAgdG9wOiAwcHggIWltcG9ydGFudDtcbn1cbiJdfQ== */";
+
+/***/ }),
+
+/***/ 18093:
+/*!************************************************************!*\
+  !*** ./src/app/pages/team/teamCreate.page.html?ngResource ***!
+  \************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-content>\r\n  <ion-grid class=\"grid1\">\r\n    <ion-row class=\"row1\">\r\n      <ion-col> </ion-col>\r\n    </ion-row>\r\n\r\n    <ion-row class=\"row2\">\r\n      <ion-col> </ion-col>\r\n    </ion-row>\r\n  </ion-grid>\r\n  <ion-slide>\r\n    <div class=\"contaier-login\">\r\n      <ion-grid>\r\n        <form [formGroup]=\"team\" (ngSubmit)=\"save()\">\r\n          <ion-row>\r\n            <ion-col>\r\n              <h1>{{ 'CREAR_EQUIPO' | translate }}</h1>\r\n            </ion-col>\r\n          </ion-row>\r\n          <ion-row>\r\n            <ion-col>\r\n              <ion-item>\r\n                <ion-input formControlName=\"name\" type=\"text\" placeholder=\"{{ 'NOMBRE_EQUIPO' | translate }}\"></ion-input>\r\n              </ion-item>\r\n              <div *ngIf=\"isSubmitted && errorControl.name.errors?.required\">\r\n                <span class=\"error\"> {{ 'NOMBRE_OB' | translate }}. </span>\r\n              </div>\r\n              <div *ngIf=\"isSubmitted && errorControl.name.errors?.minlength\">\r\n                <span class=\"error\"> {{ 'NOMBRE_MINIMO' | translate }}. </span>\r\n              </div>\r\n            </ion-col>\r\n          </ion-row>\r\n          <ion-row>\r\n            <ion-col>\r\n              <ion-button type=\"submit\" block class=\"new-team\" fill=\"solid\"> {{ 'AÑADIR_EQUIPO' | translate }} </ion-button>\r\n            </ion-col>\r\n          </ion-row>\r\n        </form>\r\n      </ion-grid>\r\n    </div>\r\n  </ion-slide>\r\n</ion-content>\r\n";
+
+/***/ }),
+
 /***/ 77371:
 /*!*************************************************!*\
   !*** ./src/app/pages/team/teamCreate.module.ts ***!
@@ -90,8 +110,11 @@ let TeamCreatePage = class TeamCreatePage {
         this.isSaving = false;
         this.isSubmitted = false;
         this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
-        this.team = this.fb.group({
-            name: [''],
+        this.teamService.get().subscribe({
+            next: (res) => {
+                var _a;
+                this.teams = (_a = res.body) !== null && _a !== void 0 ? _a : [];
+            },
         });
     }
     ngOnInit() {
@@ -115,6 +138,12 @@ let TeamCreatePage = class TeamCreatePage {
                 position: 'top',
                 color: 'light',
             });
+            const toastDuplicate = yield this.toastController.create({
+                message: 'El equipo ya existe',
+                duration: 2000,
+                position: 'top',
+                color: 'danger',
+            });
             this.isSaving = true;
             this.isSubmitted = true;
             if (!this.team.valid) {
@@ -122,12 +151,21 @@ let TeamCreatePage = class TeamCreatePage {
                 return false;
             }
             else {
-                toastCreado.present();
-            }
-            const team = this.createFrom(this.team.value['name'], this.account.id);
-            this.subscribeToSaveResponse(this.teamService.create(team));
-            if (this.isSubmitted) {
-                this.team.reset();
+                const equipo = this.createFrom(this.team.value['name'], this.account.id);
+                if (this.isSubmitted) {
+                    var equal = false;
+                    if (this.teams.filter(x => x.name === equipo.name).length != 0) {
+                        equal = true;
+                        toastDuplicate.present();
+                    }
+                    if (this.isSubmitted && equal === false) {
+                        this.teams.push(equipo);
+                        toastCreado.present();
+                        this.subscribeToSaveResponse(this.teamService.create(equipo));
+                        this.router.navigate(['/tabs/teamCreate']);
+                        this.team.reset();
+                    }
+                }
             }
         });
     }
@@ -344,6 +382,9 @@ let TeamService = class TeamService {
     getById(id) {
         return this.http.get(_api_api_service__WEBPACK_IMPORTED_MODULE_0__.ApiService.API_URL + '/teams/' + id, { observe: 'response' });
     }
+    getByName(name) {
+        return this.http.get(_api_api_service__WEBPACK_IMPORTED_MODULE_0__.ApiService.API_URL + '/teams/' + name, { observe: 'response' });
+    }
 };
 TeamService.API_URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiUrl;
 TeamService.ctorParameters = () => [
@@ -357,26 +398,6 @@ TeamService = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 ], TeamService);
 
 
-
-/***/ }),
-
-/***/ 60216:
-/*!************************************************************!*\
-  !*** ./src/app/pages/team/teamCreate.page.scss?ngResource ***!
-  \************************************************************/
-/***/ ((module) => {
-
-module.exports = ".error {\n  color: red;\n  font-size: 12px;\n  margin-left: 17px;\n}\n\n.padre {\n  display: flex;\n  justify-content: center;\n}\n\n.redo {\n  float: right;\n  --background: #bebebe;\n  position: absolute !important;\n  top: -2px !important;\n  right: 2px !important;\n}\n\n.grid1 {\n  height: 100%;\n  padding: 0px;\n}\n\n.contaier-login {\n  width: 90%;\n  padding: 10px;\n  background: #ffffff;\n  border-radius: 5px;\n  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);\n}\n\n.row1 {\n  height: 50%;\n  background: linear-gradient(45deg, #7aee80 0%, #71dd76 100%);\n}\n\n.row2 {\n  height: 50%;\n}\n\nion-button {\n  margin-top: 5px;\n  margin-bottom: 15px;\n  --background: #fbdb5c;\n  color: rgba(0, 0, 0, 0.75);\n}\n\nion-slide {\n  width: 100%;\n  height: 100%;\n  position: absolute !important;\n  top: 0px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlYW1DcmVhdGUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsVUFBQTtFQUNBLGVBQUE7RUFDQSxpQkFBQTtBQUNGOztBQUNBO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FBRUY7O0FBQUE7RUFDRSxZQUFBO0VBQ0EscUJBQUE7RUFDQSw2QkFBQTtFQUNBLG9CQUFBO0VBQ0EscUJBQUE7QUFHRjs7QUFEQTtFQUNFLFlBQUE7RUFDQSxZQUFBO0FBSUY7O0FBREE7RUFDRSxVQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFHQSxnREFBQTtBQUlGOztBQURBO0VBQ0UsV0FBQTtFQUdBLDREQUFBO0FBSUY7O0FBREE7RUFDRSxXQUFBO0FBSUY7O0FBREE7RUFDRSxlQUFBO0VBQ0EsbUJBQUE7RUFDQSxxQkFBQTtFQUNBLDBCQUFBO0FBSUY7O0FBREE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLDZCQUFBO0VBQ0EsbUJBQUE7QUFJRiIsImZpbGUiOiJ0ZWFtQ3JlYXRlLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5lcnJvciB7XG4gIGNvbG9yOiByZWQ7XG4gIGZvbnQtc2l6ZTogMTJweDtcbiAgbWFyZ2luLWxlZnQ6IDE3cHg7XG59XG4ucGFkcmUge1xuICBkaXNwbGF5OiBmbGV4O1xuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbn1cbi5yZWRvIHtcbiAgZmxvYXQ6IHJpZ2h0O1xuICAtLWJhY2tncm91bmQ6ICNiZWJlYmU7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZSAhaW1wb3J0YW50O1xuICB0b3A6IC0ycHggIWltcG9ydGFudDtcbiAgcmlnaHQ6IDJweCAhaW1wb3J0YW50O1xufVxuLmdyaWQxIHtcbiAgaGVpZ2h0OiAxMDAlO1xuICBwYWRkaW5nOiAwcHg7XG59XG5cbi5jb250YWllci1sb2dpbiB7XG4gIHdpZHRoOiA5MCU7XG4gIHBhZGRpbmc6IDEwcHg7XG4gIGJhY2tncm91bmQ6ICNmZmZmZmY7XG4gIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgLXdlYmtpdC1ib3gtc2hhZG93OiAwcHggMHB4IDEwcHggMXB4IHJnYmEoMCwgMCwgMCwgMC43NSk7XG4gIC1tb3otYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDFweCByZ2JhKDAsIDAsIDAsIDAuNzUpO1xuICBib3gtc2hhZG93OiAwcHggMHB4IDEwcHggMXB4IHJnYmEoMCwgMCwgMCwgMC43NSk7XG59XG5cbi5yb3cxIHtcbiAgaGVpZ2h0OiA1MCU7XG4gIGJhY2tncm91bmQ6IC1tb3otbGluZWFyLWdyYWRpZW50KDQ1ZGVnLCAjN2FlZTgwIDAlLCAjNzFkZDc2IDEwMCUpO1xuICBiYWNrZ3JvdW5kOiAtd2Via2l0LWxpbmVhci1ncmFkaWVudCg0NWRlZywgIzdhZWU4MCAwJSwgIzcxZGQ3NiAxMDAlKTtcbiAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDQ1ZGVnLCAjN2FlZTgwIDAlLCAjNzFkZDc2IDEwMCUpO1xufVxuXG4ucm93MiB7XG4gIGhlaWdodDogNTAlO1xufVxuXG5pb24tYnV0dG9uIHtcbiAgbWFyZ2luLXRvcDogNXB4O1xuICBtYXJnaW4tYm90dG9tOiAxNXB4O1xuICAtLWJhY2tncm91bmQ6ICNmYmRiNWM7XG4gIGNvbG9yOiByZ2JhKDAsIDAsIDAsIDAuNzUpO1xufVxuXG5pb24tc2xpZGUge1xuICB3aWR0aDogMTAwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBwb3NpdGlvbjogYWJzb2x1dGUgIWltcG9ydGFudDtcbiAgdG9wOiAwcHggIWltcG9ydGFudDtcbn1cbiJdfQ== */";
-
-/***/ }),
-
-/***/ 18093:
-/*!************************************************************!*\
-  !*** ./src/app/pages/team/teamCreate.page.html?ngResource ***!
-  \************************************************************/
-/***/ ((module) => {
-
-module.exports = "<ion-content>\n  <ion-grid class=\"grid1\">\n    <ion-row class=\"row1\">\n      <ion-col> </ion-col>\n    </ion-row>\n\n    <ion-row class=\"row2\">\n      <ion-col> </ion-col>\n    </ion-row>\n  </ion-grid>\n  <ion-slide>\n    <div class=\"contaier-login\">\n      <ion-grid>\n        <form [formGroup]=\"team\" (ngSubmit)=\"save()\">\n          <ion-row>\n            <ion-col>\n              <h1>{{ 'CREAR_EQUIPO' | translate }}</h1>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <ion-item>\n                <ion-input formControlName=\"name\" type=\"text\" placeholder=\"{{ 'NOMBRE_EQUIPO' | translate }}\"></ion-input>\n              </ion-item>\n              <div *ngIf=\"isSubmitted && errorControl.name.errors?.required\">\n                <span class=\"error\"> {{ 'NOMBRE_OB' | translate }}. </span>\n              </div>\n              <div *ngIf=\"isSubmitted && errorControl.name.errors?.minlength\">\n                <span class=\"error\"> {{ 'NOMBRE_MINIMO' | translate }}. </span>\n              </div>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <ion-button type=\"submit\" block class=\"new-team\" fill=\"solid\"> {{ 'AÑADIR_EQUIPO' | translate }} </ion-button>\n            </ion-col>\n          </ion-row>\n        </form>\n      </ion-grid>\n    </div>\n  </ion-slide>\n</ion-content>\n";
 
 /***/ })
 

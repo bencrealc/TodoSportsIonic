@@ -1,6 +1,26 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_matches_end_matchesEnd_module_ts"],{
 
+/***/ 67523:
+/*!*******************************************************************!*\
+  !*** ./src/app/pages/matches/end/matchesEnd.page.scss?ngResource ***!
+  \*******************************************************************/
+/***/ ((module) => {
+
+module.exports = ".padre {\n  display: flex;\n}\n\n.new-btn {\n  --background: #00cccc;\n  white-space: normal;\n}\n\n.stats {\n  --background: #fbdb5c;\n  white-space: normal;\n  color: rgba(39, 37, 37, 0.75);\n}\n\n.first {\n  background-color: #7aee80;\n  color: #000;\n  border: 1px solid #abdfa9;\n  padding: 5px 5px;\n  border-collapse: collapse;\n}\n\n.table-responsive {\n  font-family: \"Arial\";\n  margin: 25px auto;\n  border-collapse: collapse;\n  border: 1px solid #eee;\n  text-align: center;\n  border-bottom: 2px solid #4cb050;\n  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);\n}\n\n.second {\n  color: #959595;\n  border: 1px solid #eee;\n  padding: 5px 5px;\n  border-collapse: collapse;\n}\n\n.list-divider {\n  display: flex;\n  justify-content: space-between;\n  padding: 5px 10px;\n  background: #ebeaea;\n  margin-top: 20px;\n}\n\n.normal-font {\n  font-size: 1rem;\n}\n\n.link {\n  text-decoration: underline;\n  color: #423ff8;\n  font-size: 1rem;\n}\n\n.colP {\n  width: 70px;\n  white-space: normal;\n  padding-top: 20px;\n  justify-content: center;\n}\n\n.col1 {\n  width: 70px;\n  white-space: normal;\n  font-size: 17px;\n  justify-content: center;\n  text-overflow: inherit;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hdGNoZXNFbmQucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtBQUNGOztBQUVBO0VBQ0UscUJBQUE7RUFDQSxtQkFBQTtBQUNGOztBQUNBO0VBQ0UscUJBQUE7RUFDQSxtQkFBQTtFQUNBLDZCQUFBO0FBRUY7O0FBQUE7RUFDRSx5QkFBQTtFQUNBLFdBQUE7RUFDQSx5QkFBQTtFQUNBLGdCQUFBO0VBQ0EseUJBQUE7QUFHRjs7QUFEQTtFQUNFLG9CQUFBO0VBQ0EsaUJBQUE7RUFDQSx5QkFBQTtFQUNBLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQ0FBQTtFQUNBLG9KQUFBO0FBSUY7O0FBREE7RUFDRSxjQUFBO0VBQ0Esc0JBQUE7RUFDQSxnQkFBQTtFQUNBLHlCQUFBO0FBSUY7O0FBRkE7RUFDRSxhQUFBO0VBQ0EsOEJBQUE7RUFDQSxpQkFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0JBQUE7QUFLRjs7QUFIQTtFQUNFLGVBQUE7QUFNRjs7QUFKQTtFQUNFLDBCQUFBO0VBQ0EsY0FBQTtFQUNBLGVBQUE7QUFPRjs7QUFMQTtFQUNFLFdBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsdUJBQUE7QUFRRjs7QUFOQTtFQUNFLFdBQUE7RUFDQSxtQkFBQTtFQUNBLGVBQUE7RUFDQSx1QkFBQTtFQUNBLHNCQUFBO0FBU0YiLCJmaWxlIjoibWF0Y2hlc0VuZC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGFkcmUge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbn1cclxuXHJcbi5uZXctYnRuIHtcclxuICAtLWJhY2tncm91bmQ6ICMwMGNjY2M7XHJcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcclxufVxyXG4uc3RhdHMge1xyXG4gIC0tYmFja2dyb3VuZDogI2ZiZGI1YztcclxuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xyXG4gIGNvbG9yOiByZ2JhKDM5LCAzNywgMzcsIDAuNzUpO1xyXG59XHJcbi5maXJzdCB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzdhZWU4MDtcclxuICBjb2xvcjogIzAwMDtcclxuICBib3JkZXI6IDFweCBzb2xpZCByZ2IoMTcxLCAyMjMsIDE2OSk7XHJcbiAgcGFkZGluZzogNXB4IDVweDtcclxuICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xyXG59XHJcbi50YWJsZS1yZXNwb25zaXZlIHtcclxuICBmb250LWZhbWlseTogJ0FyaWFsJztcclxuICBtYXJnaW46IDI1cHggYXV0bztcclxuICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xyXG4gIGJvcmRlcjogMXB4IHNvbGlkICNlZWU7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjNGNiMDUwO1xyXG4gIGJveC1zaGFkb3c6IDBweCAwcHggMjBweCByZ2JhKDAsIDAsIDAsIDAuMSksIDBweCAxMHB4IDIwcHggcmdiYSgwLCAwLCAwLCAwLjA1KSwgMHB4IDIwcHggMjBweCByZ2JhKDAsIDAsIDAsIDAuMDUpLFxyXG4gICAgMHB4IDMwcHggMjBweCByZ2JhKDAsIDAsIDAsIDAuMDUpO1xyXG59XHJcbi5zZWNvbmQge1xyXG4gIGNvbG9yOiAjOTU5NTk1O1xyXG4gIGJvcmRlcjogMXB4IHNvbGlkICNlZWU7XHJcbiAgcGFkZGluZzogNXB4IDVweDtcclxuICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xyXG59XHJcbi5saXN0LWRpdmlkZXIge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gIHBhZGRpbmc6IDVweCAxMHB4O1xyXG4gIGJhY2tncm91bmQ6ICNlYmVhZWE7XHJcbiAgbWFyZ2luLXRvcDogMjBweDtcclxufVxyXG4ubm9ybWFsLWZvbnQge1xyXG4gIGZvbnQtc2l6ZTogMXJlbTtcclxufVxyXG4ubGluayB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XHJcbiAgY29sb3I6IHJnYig2NiwgNjMsIDI0OCk7XHJcbiAgZm9udC1zaXplOiAxcmVtO1xyXG59XHJcbi5jb2xQIHtcclxuICB3aWR0aDogNzBweDtcclxuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xyXG4gIHBhZGRpbmctdG9wOiAyMHB4O1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG59XHJcbi5jb2wxIHtcclxuICB3aWR0aDogNzBweDtcclxuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xyXG4gIGZvbnQtc2l6ZTogMTdweDtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICB0ZXh0LW92ZXJmbG93OiBpbmhlcml0O1xyXG59XHJcbiJdfQ== */";
+
+/***/ }),
+
+/***/ 7299:
+/*!*******************************************************************!*\
+  !*** ./src/app/pages/matches/end/matchesEnd.page.html?ngResource ***!
+  \*******************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>{{ 'PARTIDOS_FIN' | translate }}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-searchbar (ionChange)=\"search($event.target.value)\" showCancelButton=\"focus\" animated debounce=\"100\"></ion-searchbar>\n\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\n    <ion-refresher-content></ion-refresher-content>\n  </ion-refresher>\n  \n  <div class=\"table-responsive\" id=\"entities\">\n    <ion-row class=\"first\">\n      <ion-col class=\"col1\">{{ 'EQUIPO_LOCAL' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'EQUIPO_VISITANTE' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'FECHA' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'RESULTADOS' | translate }}</ion-col>\n    </ion-row>\n    <ion-row *ngFor=\"let match of matchesFiltered\" class=\"second\">\n      <ion-col class=\"colP\">{{ match.localId }}</ion-col>\n      <ion-col class=\"colP\">{{ match.awayId }}</ion-col>\n      <ion-col class=\"colP\">{{stringToDate(match.matchDay)}}</ion-col>\n      <ion-col [routerLink]=\"['/match/end/',match.id]\"\n        ><ion-button class=\"stats\"><ion-icon name=\"open\"></ion-icon></ion-button\n      ></ion-col>\n    </ion-row>\n  </div>\n\n  <div class=\"alert alert-warning\" id=\"no-result\" *ngIf=\"matches?.length === 0\">\n    <ion-title>{{ 'NO_FOUND' | translate }}</ion-title>\n  </div>\n</ion-content>\n";
+
+/***/ }),
+
 /***/ 1170:
 /*!****************************************************************!*\
   !*** ./src/app/pages/matches/end/matchesEnd-routing.module.ts ***!
@@ -155,6 +175,12 @@ let MatchesEndPage = class MatchesEndPage {
         const [hours, minutes, seconds] = hora.split(':');
         return day + '-' + month + '-' + year + ' ' + hours + ':' + minutes + 'h';
     }
+    doRefresh(event) {
+        this.matches = [];
+        this.matchesFiltered = [];
+        this.loadAll();
+        event.target.complete();
+    }
 };
 MatchesEndPage.ctorParameters = () => [
     { type: src_app_services_match_match_service__WEBPACK_IMPORTED_MODULE_2__.MatchService },
@@ -171,26 +197,6 @@ MatchesEndPage = (0,tslib__WEBPACK_IMPORTED_MODULE_6__.__decorate)([
 ], MatchesEndPage);
 
 
-
-/***/ }),
-
-/***/ 67523:
-/*!*******************************************************************!*\
-  !*** ./src/app/pages/matches/end/matchesEnd.page.scss?ngResource ***!
-  \*******************************************************************/
-/***/ ((module) => {
-
-module.exports = ".padre {\n  display: flex;\n}\n\n.new-btn {\n  --background: #00cccc;\n  white-space: normal;\n}\n\n.stats {\n  --background: #fbdb5c;\n  white-space: normal;\n  color: rgba(39, 37, 37, 0.75);\n}\n\n.first {\n  background-color: #7aee80;\n  color: #000;\n  border: 1px solid #abdfa9;\n  padding: 5px 5px;\n  border-collapse: collapse;\n}\n\n.table-responsive {\n  font-family: \"Arial\";\n  margin: 25px auto;\n  border-collapse: collapse;\n  border: 1px solid #eee;\n  text-align: center;\n  border-bottom: 2px solid #4cb050;\n  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1), 0px 10px 20px rgba(0, 0, 0, 0.05), 0px 20px 20px rgba(0, 0, 0, 0.05), 0px 30px 20px rgba(0, 0, 0, 0.05);\n}\n\n.second {\n  color: #959595;\n  border: 1px solid #eee;\n  padding: 5px 5px;\n  border-collapse: collapse;\n}\n\n.list-divider {\n  display: flex;\n  justify-content: space-between;\n  padding: 5px 10px;\n  background: #ebeaea;\n  margin-top: 20px;\n}\n\n.normal-font {\n  font-size: 1rem;\n}\n\n.link {\n  text-decoration: underline;\n  color: #423ff8;\n  font-size: 1rem;\n}\n\n.colP {\n  width: 70px;\n  white-space: normal;\n  padding-top: 20px;\n  justify-content: center;\n}\n\n.col1 {\n  width: 70px;\n  white-space: normal;\n  font-size: 17px;\n  justify-content: center;\n  text-overflow: inherit;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hdGNoZXNFbmQucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtBQUNGOztBQUVBO0VBQ0UscUJBQUE7RUFDQSxtQkFBQTtBQUNGOztBQUNBO0VBQ0UscUJBQUE7RUFDQSxtQkFBQTtFQUNBLDZCQUFBO0FBRUY7O0FBQUE7RUFDRSx5QkFBQTtFQUNBLFdBQUE7RUFDQSx5QkFBQTtFQUNBLGdCQUFBO0VBQ0EseUJBQUE7QUFHRjs7QUFEQTtFQUNFLG9CQUFBO0VBQ0EsaUJBQUE7RUFDQSx5QkFBQTtFQUNBLHNCQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQ0FBQTtFQUNBLG9KQUFBO0FBSUY7O0FBREE7RUFDRSxjQUFBO0VBQ0Esc0JBQUE7RUFDQSxnQkFBQTtFQUNBLHlCQUFBO0FBSUY7O0FBRkE7RUFDRSxhQUFBO0VBQ0EsOEJBQUE7RUFDQSxpQkFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0JBQUE7QUFLRjs7QUFIQTtFQUNFLGVBQUE7QUFNRjs7QUFKQTtFQUNFLDBCQUFBO0VBQ0EsY0FBQTtFQUNBLGVBQUE7QUFPRjs7QUFMQTtFQUNFLFdBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsdUJBQUE7QUFRRjs7QUFOQTtFQUNFLFdBQUE7RUFDQSxtQkFBQTtFQUNBLGVBQUE7RUFDQSx1QkFBQTtFQUNBLHNCQUFBO0FBU0YiLCJmaWxlIjoibWF0Y2hlc0VuZC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIucGFkcmUge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbn1cclxuXHJcbi5uZXctYnRuIHtcclxuICAtLWJhY2tncm91bmQ6ICMwMGNjY2M7XHJcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcclxufVxyXG4uc3RhdHMge1xyXG4gIC0tYmFja2dyb3VuZDogI2ZiZGI1YztcclxuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xyXG4gIGNvbG9yOiByZ2JhKDM5LCAzNywgMzcsIDAuNzUpO1xyXG59XHJcbi5maXJzdCB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzdhZWU4MDtcclxuICBjb2xvcjogIzAwMDtcclxuICBib3JkZXI6IDFweCBzb2xpZCByZ2IoMTcxLCAyMjMsIDE2OSk7XHJcbiAgcGFkZGluZzogNXB4IDVweDtcclxuICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xyXG59XHJcbi50YWJsZS1yZXNwb25zaXZlIHtcclxuICBmb250LWZhbWlseTogJ0FyaWFsJztcclxuICBtYXJnaW46IDI1cHggYXV0bztcclxuICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xyXG4gIGJvcmRlcjogMXB4IHNvbGlkICNlZWU7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGJvcmRlci1ib3R0b206IDJweCBzb2xpZCAjNGNiMDUwO1xyXG4gIGJveC1zaGFkb3c6IDBweCAwcHggMjBweCByZ2JhKDAsIDAsIDAsIDAuMSksIDBweCAxMHB4IDIwcHggcmdiYSgwLCAwLCAwLCAwLjA1KSwgMHB4IDIwcHggMjBweCByZ2JhKDAsIDAsIDAsIDAuMDUpLFxyXG4gICAgMHB4IDMwcHggMjBweCByZ2JhKDAsIDAsIDAsIDAuMDUpO1xyXG59XHJcbi5zZWNvbmQge1xyXG4gIGNvbG9yOiAjOTU5NTk1O1xyXG4gIGJvcmRlcjogMXB4IHNvbGlkICNlZWU7XHJcbiAgcGFkZGluZzogNXB4IDVweDtcclxuICBib3JkZXItY29sbGFwc2U6IGNvbGxhcHNlO1xyXG59XHJcbi5saXN0LWRpdmlkZXIge1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG4gIHBhZGRpbmc6IDVweCAxMHB4O1xyXG4gIGJhY2tncm91bmQ6ICNlYmVhZWE7XHJcbiAgbWFyZ2luLXRvcDogMjBweDtcclxufVxyXG4ubm9ybWFsLWZvbnQge1xyXG4gIGZvbnQtc2l6ZTogMXJlbTtcclxufVxyXG4ubGluayB7XHJcbiAgdGV4dC1kZWNvcmF0aW9uOiB1bmRlcmxpbmU7XHJcbiAgY29sb3I6IHJnYig2NiwgNjMsIDI0OCk7XHJcbiAgZm9udC1zaXplOiAxcmVtO1xyXG59XHJcbi5jb2xQIHtcclxuICB3aWR0aDogNzBweDtcclxuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xyXG4gIHBhZGRpbmctdG9wOiAyMHB4O1xyXG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xyXG59XHJcbi5jb2wxIHtcclxuICB3aWR0aDogNzBweDtcclxuICB3aGl0ZS1zcGFjZTogbm9ybWFsO1xyXG4gIGZvbnQtc2l6ZTogMTdweDtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICB0ZXh0LW92ZXJmbG93OiBpbmhlcml0O1xyXG59XHJcbiJdfQ== */";
-
-/***/ }),
-
-/***/ 7299:
-/*!*******************************************************************!*\
-  !*** ./src/app/pages/matches/end/matchesEnd.page.html?ngResource ***!
-  \*******************************************************************/
-/***/ ((module) => {
-
-module.exports = "<ion-header>\n  <ion-toolbar>\n    <ion-title>{{ 'PARTIDOS_FIN' | translate }}</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-searchbar (ionChange)=\"search($event.target.value)\" showCancelButton=\"focus\" animated debounce=\"100\"></ion-searchbar>\n\n  <div class=\"table-responsive\" id=\"entities\">\n    <ion-row class=\"first\">\n      <ion-col class=\"col1\">{{ 'EQUIPO_LOCAL' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'EQUIPO_VISITANTE' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'FECHA' | translate }}</ion-col>\n      <ion-col class=\"col1\">{{ 'RESULTADOS' | translate }}</ion-col>\n    </ion-row>\n    <ion-row *ngFor=\"let match of matchesFiltered\" class=\"second\">\n      <ion-col class=\"colP\">{{ match.localId }}</ion-col>\n      <ion-col class=\"colP\">{{ match.awayId }}</ion-col>\n      <ion-col class=\"colP\">{{stringToDate(match.matchDay)}}</ion-col>\n      <ion-col [routerLink]=\"['/match/end/',match.id]\"\n        ><ion-button class=\"stats\"><ion-icon name=\"open\"></ion-icon></ion-button\n      ></ion-col>\n    </ion-row>\n  </div>\n\n  <div class=\"alert alert-warning\" id=\"no-result\" *ngIf=\"matches?.length === 0\">\n    <ion-title>{{ 'NO_FOUND' | translate }}</ion-title>\n  </div>\n</ion-content>\n";
 
 /***/ })
 

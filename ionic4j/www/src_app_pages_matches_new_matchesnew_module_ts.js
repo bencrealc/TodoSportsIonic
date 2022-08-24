@@ -1,6 +1,26 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_matches_new_matchesnew_module_ts"],{
 
+/***/ 22000:
+/*!*******************************************************************!*\
+  !*** ./src/app/pages/matches/new/matchesnew.page.scss?ngResource ***!
+  \*******************************************************************/
+/***/ ((module) => {
+
+module.exports = ".padre {\n  display: flex;\n  justify-content: center;\n}\n\n.new-match {\n  --background: #fbdb5c;\n  white-space: normal;\n  color: rgba(0, 0, 0, 0.75);\n  margin-top: 5px;\n}\n\n.cancel {\n  --background: #f06243;\n  white-space: normal;\n  --color: #000;\n  margin-top: 5px;\n}\n\n.error {\n  color: red;\n  font-size: 12px;\n  margin-left: 17px;\n}\n\n.grid1 {\n  height: 100%;\n  padding: 0px;\n}\n\n.contaier-login {\n  width: 90%;\n  padding: 10px;\n  background: #ffffff;\n  border-radius: 5px;\n  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);\n}\n\n.row1 {\n  height: 50%;\n  background: linear-gradient(45deg, #7aee80 0%, #71dd76 100%);\n}\n\n.row2 {\n  height: 50%;\n}\n\nion-slide {\n  width: 100%;\n  height: 100%;\n  position: absolute !important;\n  top: 0px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hdGNoZXNuZXcucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0EsMEJBQUE7RUFDQSxlQUFBO0FBRUY7O0FBQUE7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7QUFHRjs7QUFBQTtFQUNFLFVBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUFHRjs7QUFEQTtFQUNFLFlBQUE7RUFDQSxZQUFBO0FBSUY7O0FBREE7RUFDRSxVQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFHQSxnREFBQTtBQUlGOztBQURBO0VBQ0UsV0FBQTtFQUdBLDREQUFBO0FBSUY7O0FBREE7RUFDRSxXQUFBO0FBSUY7O0FBREE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLDZCQUFBO0VBQ0EsbUJBQUE7QUFJRiIsImZpbGUiOiJtYXRjaGVzbmV3LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wYWRyZSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuLm5ldy1tYXRjaCB7XG4gIC0tYmFja2dyb3VuZDogI2ZiZGI1YztcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbiAgY29sb3I6IHJnYmEoMCwgMCwgMCwgMC43NSk7XG4gIG1hcmdpbi10b3A6IDVweDtcbn1cbi5jYW5jZWwge1xuICAtLWJhY2tncm91bmQ6ICNmMDYyNDM7XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG4gIC0tY29sb3I6ICMwMDA7XG4gIG1hcmdpbi10b3A6IDVweDtcbn1cblxuLmVycm9yIHtcbiAgY29sb3I6IHJlZDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBtYXJnaW4tbGVmdDogMTdweDtcbn1cbi5ncmlkMSB7XG4gIGhlaWdodDogMTAwJTtcbiAgcGFkZGluZzogMHB4O1xufVxuXG4uY29udGFpZXItbG9naW4ge1xuICB3aWR0aDogOTAlO1xuICBwYWRkaW5nOiAxMHB4O1xuICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIC13ZWJraXQtYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDFweCByZ2JhKDAsIDAsIDAsIDAuNzUpO1xuICAtbW96LWJveC1zaGFkb3c6IDBweCAwcHggMTBweCAxcHggcmdiYSgwLCAwLCAwLCAwLjc1KTtcbiAgYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDFweCByZ2JhKDAsIDAsIDAsIDAuNzUpO1xufVxuXG4ucm93MSB7XG4gIGhlaWdodDogNTAlO1xuICBiYWNrZ3JvdW5kOiAtbW96LWxpbmVhci1ncmFkaWVudCg0NWRlZywgIzdhZWU4MCAwJSwgIzcxZGQ3NiAxMDAlKTtcbiAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQoNDVkZWcsICM3YWVlODAgMCUsICM3MWRkNzYgMTAwJSk7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg0NWRlZywgIzdhZWU4MCAwJSwgIzcxZGQ3NiAxMDAlKTtcbn1cblxuLnJvdzIge1xuICBoZWlnaHQ6IDUwJTtcbn1cblxuaW9uLXNsaWRlIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgcG9zaXRpb246IGFic29sdXRlICFpbXBvcnRhbnQ7XG4gIHRvcDogMHB4ICFpbXBvcnRhbnQ7XG59XG4iXX0= */";
+
+/***/ }),
+
+/***/ 34302:
+/*!*******************************************************************!*\
+  !*** ./src/app/pages/matches/new/matchesnew.page.html?ngResource ***!
+  \*******************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-content>\n  <ion-grid class=\"grid1\">\n    <ion-row class=\"row1\">\n      <ion-col> </ion-col>\n    </ion-row>\n\n    <ion-row class=\"row2\">\n      <ion-col> </ion-col>\n    </ion-row>\n  </ion-grid>\n  <ion-slide>\n    <div class=\"contaier-login\">\n      <ion-grid>\n        <form [formGroup]=\"match\" (ngSubmit)=\"save()\" novalidate>\n          <ion-row>\n            <ion-col>\n              <h1>{{ 'CREAR_NUEVO_PARTIDO' | translate }}</h1>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <ion-list>\n                <ion-item>\n                  <ion-select interface=\"popover\" formControlName=\"local\" placeholder=\"{{ 'EQUIPO_LOCAL' | translate }}:\">\n                    <ion-select-option *ngFor=\"let team of teams;\">{{ team.name }}</ion-select-option>\n                  </ion-select>\n                </ion-item>\n                <div *ngIf=\"isSubmitted && errorControl.local.errors?.required\">\n                  <span class=\"error\"> {{ 'TL_OBLIGATORIO' | translate }}. </span>\n                </div>\n                <br />\n                <ion-item>\n                  <ion-select interface=\"popover\" formControlName=\"visitante\" placeholder=\"{{ 'EQUIPO_VISITANTE' | translate }}:\">\n                    <ion-select-option *ngFor=\"let team of teams;\">{{ team.name }}</ion-select-option>\n                  </ion-select>\n                </ion-item>\n                <div *ngIf=\"isSubmitted && errorControl.visitante.errors?.required\">\n                  <span class=\"error\"> {{ 'TV_OBLIGATORIO' | translate }}. </span>\n                </div>\n                <mat-error class=\"error\" *ngIf=\"checarSiNoSonIguales()\">{{ 'DIFERENTE' | translate }}.</mat-error>\n\n                <br />\n                <ion-item>\n                  <ion-datetime locale=\"es-ES\" [min]=\"defaultDate\" formControlName=\"fecha\" minuteValues=\"0,15,30,45\" first-day-of-week=\"1\">\n                    <span slot=\"time-label\">Hora</span>\n                  </ion-datetime>\n                </ion-item>\n                <div *ngIf=\"isSubmitted && errorControl.fecha.errors?.required\">\n                  <span class=\"error\"> {{ 'FECHA_OBLIGATORIA' | translate }}. </span>\n                </div>\n              </ion-list>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class=\"padre\">\n                <ion-button class=\"new-match\" type=\"submit\" block fill=\"solid\">{{ 'AÑADIR_PARTIDO' | translate }}</ion-button>\n                <ion-button class=\"cancel\" [routerLink]=\"['/tabs/matches']\" fill=\"solid\">{{ 'CANCEL_BUTTON' | translate }}</ion-button>\n              </div></ion-col\n            >\n          </ion-row>\n        </form>\n      </ion-grid>\n    </div>\n  </ion-slide>\n</ion-content>\n";
+
+/***/ }),
+
 /***/ 11498:
 /*!****************************************************************!*\
   !*** ./src/app/pages/matches/new/matchesnew-routing.module.ts ***!
@@ -183,8 +203,9 @@ let MatchesNewPage = class MatchesNewPage {
                 const match = this.createFrom(date, eqlocal.name, visit.name);
                 this.subscribeToSaveResponse(this.matchService.create(match));
                 if (this.isSubmitted) {
-                    this.router.navigate(['/tabs/matches']).then(() => { window.location.reload(); });
-                    ;
+                    this.router.navigate(['/tabs/matches']).then(() => {
+                        window.location.reload();
+                    });
                 }
             }
         });
@@ -429,6 +450,9 @@ let TeamService = class TeamService {
     getById(id) {
         return this.http.get(_api_api_service__WEBPACK_IMPORTED_MODULE_0__.ApiService.API_URL + '/teams/' + id, { observe: 'response' });
     }
+    getByName(name) {
+        return this.http.get(_api_api_service__WEBPACK_IMPORTED_MODULE_0__.ApiService.API_URL + '/teams/' + name, { observe: 'response' });
+    }
 };
 TeamService.API_URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_1__.environment.apiUrl;
 TeamService.ctorParameters = () => [
@@ -442,26 +466,6 @@ TeamService = (0,tslib__WEBPACK_IMPORTED_MODULE_3__.__decorate)([
 ], TeamService);
 
 
-
-/***/ }),
-
-/***/ 22000:
-/*!*******************************************************************!*\
-  !*** ./src/app/pages/matches/new/matchesnew.page.scss?ngResource ***!
-  \*******************************************************************/
-/***/ ((module) => {
-
-module.exports = ".padre {\n  display: flex;\n  justify-content: center;\n}\n\n.new-match {\n  --background: #fbdb5c;\n  white-space: normal;\n  color: rgba(0, 0, 0, 0.75);\n  margin-top: 5px;\n}\n\n.cancel {\n  --background: #f06243;\n  white-space: normal;\n  --color: #000;\n  margin-top: 5px;\n}\n\n.error {\n  color: red;\n  font-size: 12px;\n  margin-left: 17px;\n}\n\n.grid1 {\n  height: 100%;\n  padding: 0px;\n}\n\n.contaier-login {\n  width: 90%;\n  padding: 10px;\n  background: #ffffff;\n  border-radius: 5px;\n  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);\n}\n\n.row1 {\n  height: 50%;\n  background: linear-gradient(45deg, #7aee80 0%, #71dd76 100%);\n}\n\n.row2 {\n  height: 50%;\n}\n\nion-slide {\n  width: 100%;\n  height: 100%;\n  position: absolute !important;\n  top: 0px !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1hdGNoZXNuZXcucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsYUFBQTtFQUNBLHVCQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0EsMEJBQUE7RUFDQSxlQUFBO0FBRUY7O0FBQUE7RUFDRSxxQkFBQTtFQUNBLG1CQUFBO0VBQ0EsYUFBQTtFQUNBLGVBQUE7QUFHRjs7QUFBQTtFQUNFLFVBQUE7RUFDQSxlQUFBO0VBQ0EsaUJBQUE7QUFHRjs7QUFEQTtFQUNFLFlBQUE7RUFDQSxZQUFBO0FBSUY7O0FBREE7RUFDRSxVQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFHQSxnREFBQTtBQUlGOztBQURBO0VBQ0UsV0FBQTtFQUdBLDREQUFBO0FBSUY7O0FBREE7RUFDRSxXQUFBO0FBSUY7O0FBREE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLDZCQUFBO0VBQ0EsbUJBQUE7QUFJRiIsImZpbGUiOiJtYXRjaGVzbmV3LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5wYWRyZSB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xufVxuLm5ldy1tYXRjaCB7XG4gIC0tYmFja2dyb3VuZDogI2ZiZGI1YztcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcbiAgY29sb3I6IHJnYmEoMCwgMCwgMCwgMC43NSk7XG4gIG1hcmdpbi10b3A6IDVweDtcbn1cbi5jYW5jZWwge1xuICAtLWJhY2tncm91bmQ6ICNmMDYyNDM7XG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XG4gIC0tY29sb3I6ICMwMDA7XG4gIG1hcmdpbi10b3A6IDVweDtcbn1cblxuLmVycm9yIHtcbiAgY29sb3I6IHJlZDtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBtYXJnaW4tbGVmdDogMTdweDtcbn1cbi5ncmlkMSB7XG4gIGhlaWdodDogMTAwJTtcbiAgcGFkZGluZzogMHB4O1xufVxuXG4uY29udGFpZXItbG9naW4ge1xuICB3aWR0aDogOTAlO1xuICBwYWRkaW5nOiAxMHB4O1xuICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIC13ZWJraXQtYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDFweCByZ2JhKDAsIDAsIDAsIDAuNzUpO1xuICAtbW96LWJveC1zaGFkb3c6IDBweCAwcHggMTBweCAxcHggcmdiYSgwLCAwLCAwLCAwLjc1KTtcbiAgYm94LXNoYWRvdzogMHB4IDBweCAxMHB4IDFweCByZ2JhKDAsIDAsIDAsIDAuNzUpO1xufVxuXG4ucm93MSB7XG4gIGhlaWdodDogNTAlO1xuICBiYWNrZ3JvdW5kOiAtbW96LWxpbmVhci1ncmFkaWVudCg0NWRlZywgIzdhZWU4MCAwJSwgIzcxZGQ3NiAxMDAlKTtcbiAgYmFja2dyb3VuZDogLXdlYmtpdC1saW5lYXItZ3JhZGllbnQoNDVkZWcsICM3YWVlODAgMCUsICM3MWRkNzYgMTAwJSk7XG4gIGJhY2tncm91bmQ6IGxpbmVhci1ncmFkaWVudCg0NWRlZywgIzdhZWU4MCAwJSwgIzcxZGQ3NiAxMDAlKTtcbn1cblxuLnJvdzIge1xuICBoZWlnaHQ6IDUwJTtcbn1cblxuaW9uLXNsaWRlIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbiAgcG9zaXRpb246IGFic29sdXRlICFpbXBvcnRhbnQ7XG4gIHRvcDogMHB4ICFpbXBvcnRhbnQ7XG59XG4iXX0= */";
-
-/***/ }),
-
-/***/ 34302:
-/*!*******************************************************************!*\
-  !*** ./src/app/pages/matches/new/matchesnew.page.html?ngResource ***!
-  \*******************************************************************/
-/***/ ((module) => {
-
-module.exports = "<ion-content>\n  <ion-grid class=\"grid1\">\n    <ion-row class=\"row1\">\n      <ion-col> </ion-col>\n    </ion-row>\n\n    <ion-row class=\"row2\">\n      <ion-col> </ion-col>\n    </ion-row>\n  </ion-grid>\n  <ion-slide>\n    <div class=\"contaier-login\">\n      <ion-grid>\n        <form [formGroup]=\"match\" (ngSubmit)=\"save()\" novalidate>\n          <ion-row>\n            <ion-col>\n              <h1>{{ 'CREAR_NUEVO_PARTIDO' | translate }}</h1>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <ion-list>\n                <ion-item>\n                  <ion-select interface=\"popover\" formControlName=\"local\" placeholder=\"{{ 'EQUIPO_LOCAL' | translate }}:\">\n                    <ion-select-option *ngFor=\"let team of teams;\">{{ team.name }}</ion-select-option>\n                  </ion-select>\n                </ion-item>\n                <div *ngIf=\"isSubmitted && errorControl.local.errors?.required\">\n                  <span class=\"error\"> {{ 'TL_OBLIGATORIO' | translate }}. </span>\n                </div>\n                <br />\n                <ion-item>\n                  <ion-select interface=\"popover\" formControlName=\"visitante\" placeholder=\"{{ 'EQUIPO_VISITANTE' | translate }}:\">\n                    <ion-select-option *ngFor=\"let team of teams;\">{{ team.name }}</ion-select-option>\n                  </ion-select>\n                </ion-item>\n                <div *ngIf=\"isSubmitted && errorControl.visitante.errors?.required\">\n                  <span class=\"error\"> {{ 'TV_OBLIGATORIO' | translate }}. </span>\n                </div>\n                <mat-error class=\"error\" *ngIf=\"checarSiNoSonIguales()\">{{ 'DIFERENTE' | translate }}.</mat-error>\n\n                <br />\n                <ion-item>\n                  <ion-datetime locale=\"es-ES\" [min]=\"defaultDate\" formControlName=\"fecha\" minuteValues=\"0,15,30,45\" first-day-of-week=\"1\">\n                    <span slot=\"time-label\">Hora</span>\n                  </ion-datetime>\n                </ion-item>\n                <div *ngIf=\"isSubmitted && errorControl.fecha.errors?.required\">\n                  <span class=\"error\"> {{ 'FECHA_OBLIGATORIA' | translate }}. </span>\n                </div>\n              </ion-list>\n            </ion-col>\n          </ion-row>\n          <ion-row>\n            <ion-col>\n              <div class=\"padre\">\n                <ion-button class=\"new-match\" type=\"submit\" block fill=\"solid\">{{ 'AÑADIR_PARTIDO' | translate }}</ion-button>\n                <ion-button class=\"cancel\" [routerLink]=\"['/tabs/matches']\" fill=\"solid\">{{ 'CANCEL_BUTTON' | translate }}</ion-button>\n              </div></ion-col\n            >\n          </ion-row>\n        </form>\n      </ion-grid>\n    </div>\n  </ion-slide>\n</ion-content>\n";
 
 /***/ })
 

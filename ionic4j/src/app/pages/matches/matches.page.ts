@@ -92,4 +92,12 @@ export class MatchesPage implements OnInit {
     }
     return res;
   }
+
+  doRefresh(event) {
+    this.matches = [];
+    this.matchesFiltered = [];
+    this.loadAll();
+
+    event.target.complete();
+  }
 }

@@ -67,4 +67,12 @@ export class MatchesEndPage implements OnInit {
     const [hours, minutes, seconds] = hora.split(':');
     return day + '-' + month + '-' + year + ' ' + hours + ':' + minutes + 'h';
   }
+
+  doRefresh(event) {
+    this.matches = [];
+    this.matchesFiltered = [];
+    this.loadAll();
+
+    event.target.complete();
+  }
 }

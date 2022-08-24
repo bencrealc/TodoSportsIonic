@@ -1,6 +1,26 @@
 "use strict";
 (self["webpackChunkapp"] = self["webpackChunkapp"] || []).push([["src_app_pages_statistics_statistics_module_ts"],{
 
+/***/ 98837:
+/*!******************************************************************!*\
+  !*** ./src/app/pages/statistics/statistics.page.scss?ngResource ***!
+  \******************************************************************/
+/***/ ((module) => {
+
+module.exports = ".stats {\n  float: right;\n  --background: #bebebe;\n}\n\n.padre {\n  display: flex;\n  justify-content: center;\n}\n\n.poslocal-btn {\n  --background: #49ff43;\n  font-size: 14px;\n  margin-top: 20px;\n  white-space: normal;\n  --color: #000;\n}\n\n.posvisit-btn {\n  --background: #f06243;\n  font-size: 15px;\n  margin-top: 20px;\n  white-space: normal;\n  --color: #000;\n}\n\n.cambio-btn {\n  --background: #ffff43;\n  font-size: 15px;\n  white-space: normal;\n  margin-top: 20px;\n  --color: #000;\n}\n\n.eventos-btn {\n  --background: #6ee1f0;\n  font-size: 15px;\n  margin-top: 20px;\n  --color: #000;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0YXRpc3RpY3MucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBQTtFQUNBLHFCQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxhQUFBO0VBQ0EsdUJBQUE7QUFFRjs7QUFDQTtFQUNFLHFCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxhQUFBO0FBRUY7O0FBQUE7RUFDRSxxQkFBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtFQUNBLG1CQUFBO0VBQ0EsYUFBQTtBQUdGOztBQURBO0VBQ0UscUJBQUE7RUFDQSxlQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLGFBQUE7QUFJRjs7QUFGQTtFQUNFLHFCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsYUFBQTtBQUtGIiwiZmlsZSI6InN0YXRpc3RpY3MucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN0YXRzIHtcclxuICBmbG9hdDogcmlnaHQ7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjYmViZWJlO1xyXG59XHJcbi5wYWRyZSB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxufVxyXG5cclxuLnBvc2xvY2FsLWJ0biB7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjNDlmZjQzO1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICBtYXJnaW4tdG9wOiAyMHB4O1xyXG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XHJcbiAgLS1jb2xvcjogIzAwMDtcclxufVxyXG4ucG9zdmlzaXQtYnRuIHtcclxuICAtLWJhY2tncm91bmQ6ICNmMDYyNDM7XHJcbiAgZm9udC1zaXplOiAxNXB4O1xyXG4gIG1hcmdpbi10b3A6IDIwcHg7XHJcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcclxuICAtLWNvbG9yOiAjMDAwO1xyXG59XHJcbi5jYW1iaW8tYnRuIHtcclxuICAtLWJhY2tncm91bmQ6ICNmZmZmNDM7XHJcbiAgZm9udC1zaXplOiAxNXB4O1xyXG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XHJcbiAgbWFyZ2luLXRvcDogMjBweDtcclxuICAtLWNvbG9yOiAjMDAwO1xyXG59XHJcbi5ldmVudG9zLWJ0biB7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjNmVlMWYwO1xyXG4gIGZvbnQtc2l6ZTogMTVweDtcclxuICBtYXJnaW4tdG9wOiAyMHB4O1xyXG4gIC0tY29sb3I6ICMwMDA7XHJcbn1cclxuIl19 */";
+
+/***/ }),
+
+/***/ 27517:
+/*!******************************************************************!*\
+  !*** ./src/app/pages/statistics/statistics.page.html?ngResource ***!
+  \******************************************************************/
+/***/ ((module) => {
+
+module.exports = "<ion-header>\n  <ion-toolbar>\n    <div class=\"padre\">\n      <ion-title>{{ 'ESTADISTICAS' | translate }}</ion-title>\n      <ion-title\n        ><ion-button class=\"stats\" (click)=\"backToMatches()\"><ion-icon name=\"arrow-redo\"></ion-icon></ion-button\n      ></ion-title>\n    </div>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-button (click)=\"inicioButton()\" expand=\"block\" size=\"large\" class=\"poslocal-btn\">{{ 'INICIO_POSESION' | translate }}</ion-button>\n\n  <ion-button (click)=\"eventosButton()\" expand=\"block\" size=\"large\" class=\"eventos-btn\">{{ 'EVENTOS' | translate }}</ion-button>\n\n  <ion-button (click)=\"saveChange()\" expand=\"block\" size=\"large\" class=\"cambio-btn\">{{ 'CAMBIO_POSESION' | translate }}</ion-button>\n\n  <ion-button (click)=\"saveFinal()\" expand=\"block\" size=\"large\" class=\"posvisit-btn\">{{ 'FIN_POSESION' | translate }}</ion-button>\n</ion-content>\n";
+
+/***/ }),
+
 /***/ 69764:
 /*!***************************************************************!*\
   !*** ./src/app/pages/statistics/statistics-routing.module.ts ***!
@@ -122,7 +142,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let StatisticsPage = class StatisticsPage {
-    constructor(pickerController, navController, eventsService, posesionService, toastController, translateService, fb, screenOrientation, route, accountService) {
+    constructor(pickerController, navController, eventsService, posesionService, toastController, translateService, fb, router, screenOrientation, route, accountService) {
         this.pickerController = pickerController;
         this.navController = navController;
         this.eventsService = eventsService;
@@ -130,6 +150,7 @@ let StatisticsPage = class StatisticsPage {
         this.toastController = toastController;
         this.translateService = translateService;
         this.fb = fb;
+        this.router = router;
         this.screenOrientation = screenOrientation;
         this.route = route;
         this.accountService = accountService;
@@ -249,16 +270,34 @@ let StatisticsPage = class StatisticsPage {
         this.subscribeToSaveResponse(this.posesionService.create(posesion));
     }
     saveFinal() {
-        this.isSaving = true;
-        //const teamValue = this.posesionService.query();
-        const event = this.closeFromPosesion(null, new Date().getTime(), this.id, this.account.id);
-        this.subscribeToSaveResponse(this.posesionService.close(event));
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(this, void 0, void 0, function* () {
+            this.isSaving = true;
+            //const teamValue = this.posesionService.query();
+            const event = this.closeFromPosesion(null, new Date().getTime(), this.id, this.account.id);
+            const toasti = yield this.toastController.create({
+                message: 'Se ha finalizado la posesión ',
+                duration: 2000,
+                position: 'top',
+                color: 'light',
+            });
+            toasti.present();
+            this.subscribeToSaveResponse(this.posesionService.close(event));
+        });
     }
     saveChange() {
-        this.isSaving = true;
-        //const teamValue = this.posesionService.query();
-        const event = this.createFromPosesion(null, new Date().getTime(), this.id, this.account.id);
-        this.subscribeToSaveResponse(this.posesionService.change(event));
+        return (0,tslib__WEBPACK_IMPORTED_MODULE_9__.__awaiter)(this, void 0, void 0, function* () {
+            this.isSaving = true;
+            const teamValue = this.posesionService.query();
+            const event = this.createFromPosesion(null, new Date().getTime(), this.id, this.account.id);
+            const toasti = yield this.toastController.create({
+                message: 'Se ha cambiado la posesión ',
+                duration: 2000,
+                position: 'top',
+                color: 'light',
+            });
+            toasti.present();
+            this.subscribeToSaveResponse(this.posesionService.change(event));
+        });
     }
     createFromForm(eventTypeValue, teamValue, id, userId) {
         return Object.assign(Object.assign({}, new src_app_services_events_event_model__WEBPACK_IMPORTED_MODULE_3__.Event()), { eventType: eventTypeValue, team: teamValue, matchId: id, userId: userId });
@@ -280,6 +319,10 @@ let StatisticsPage = class StatisticsPage {
         // Api for inheritance.
     }
     onSaveFinalize() { }
+    backToMatches() {
+        this.screenOrientation.lock(this.screenOrientation.ORIENTATIONS.PORTRAIT);
+        this.router.navigate(['/tabs/matches']).then();
+    }
 };
 StatisticsPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.PickerController },
@@ -289,6 +332,7 @@ StatisticsPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__.ToastController },
     { type: _ngx_translate_core__WEBPACK_IMPORTED_MODULE_12__.TranslateService },
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_13__.FormBuilder },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_14__.Router },
     { type: _awesome_cordova_plugins_screen_orientation_ngx__WEBPACK_IMPORTED_MODULE_7__.ScreenOrientation },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_14__.ActivatedRoute },
     { type: src_app_services_auth_account_service__WEBPACK_IMPORTED_MODULE_8__.AccountService }
@@ -375,26 +419,6 @@ class Posesion {
     }
 }
 
-
-/***/ }),
-
-/***/ 98837:
-/*!******************************************************************!*\
-  !*** ./src/app/pages/statistics/statistics.page.scss?ngResource ***!
-  \******************************************************************/
-/***/ ((module) => {
-
-module.exports = ".stats {\n  float: right;\n  --background: #bebebe;\n}\n\n.padre {\n  display: flex;\n  justify-content: center;\n}\n\n.poslocal-btn {\n  --background: #2d63c8;\n  font-size: 14px;\n  margin-top: 10px;\n  white-space: normal;\n  --color: #fff;\n}\n\n.posvisit-btn {\n  --background: #f06243;\n  font-size: 15px;\n  margin-top: 10px;\n  white-space: normal;\n  --color: #fff;\n}\n\n.cambio-btn {\n  --background: #ffff43;\n  font-size: 15px;\n  white-space: normal;\n  margin-top: 10px;\n  --color: #000;\n}\n\n.eventos-btn {\n  --background: #49ff43;\n  font-size: 15px;\n  margin-top: 10px;\n  --color: #000;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0YXRpc3RpY3MucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBQTtFQUNBLHFCQUFBO0FBQ0Y7O0FBQ0E7RUFDRSxhQUFBO0VBQ0EsdUJBQUE7QUFFRjs7QUFDQTtFQUNFLHFCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxhQUFBO0FBRUY7O0FBQUE7RUFDRSxxQkFBQTtFQUNBLGVBQUE7RUFDQSxnQkFBQTtFQUNBLG1CQUFBO0VBQ0EsYUFBQTtBQUdGOztBQURBO0VBQ0UscUJBQUE7RUFDQSxlQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLGFBQUE7QUFJRjs7QUFGQTtFQUNFLHFCQUFBO0VBQ0EsZUFBQTtFQUNBLGdCQUFBO0VBQ0EsYUFBQTtBQUtGIiwiZmlsZSI6InN0YXRpc3RpY3MucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN0YXRzIHtcclxuICBmbG9hdDogcmlnaHQ7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjYmViZWJlO1xyXG59XHJcbi5wYWRyZSB7XHJcbiAgZGlzcGxheTogZmxleDtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxufVxyXG5cclxuLnBvc2xvY2FsLWJ0biB7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjMmQ2M2M4O1xyXG4gIGZvbnQtc2l6ZTogMTRweDtcclxuICBtYXJnaW4tdG9wOiAxMHB4O1xyXG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XHJcbiAgLS1jb2xvcjogI2ZmZjtcclxufVxyXG4ucG9zdmlzaXQtYnRuIHtcclxuICAtLWJhY2tncm91bmQ6ICNmMDYyNDM7XHJcbiAgZm9udC1zaXplOiAxNXB4O1xyXG4gIG1hcmdpbi10b3A6IDEwcHg7XHJcbiAgd2hpdGUtc3BhY2U6IG5vcm1hbDtcclxuICAtLWNvbG9yOiAjZmZmO1xyXG59XHJcbi5jYW1iaW8tYnRuIHtcclxuICAtLWJhY2tncm91bmQ6ICNmZmZmNDM7XHJcbiAgZm9udC1zaXplOiAxNXB4O1xyXG4gIHdoaXRlLXNwYWNlOiBub3JtYWw7XHJcbiAgbWFyZ2luLXRvcDogMTBweDtcclxuICAtLWNvbG9yOiAjMDAwO1xyXG59XHJcbi5ldmVudG9zLWJ0biB7XHJcbiAgLS1iYWNrZ3JvdW5kOiAjNDlmZjQzO1xyXG4gIGZvbnQtc2l6ZTogMTVweDtcclxuICBtYXJnaW4tdG9wOiAxMHB4O1xyXG4gIC0tY29sb3I6ICMwMDA7XHJcbn1cclxuIl19 */";
-
-/***/ }),
-
-/***/ 27517:
-/*!******************************************************************!*\
-  !*** ./src/app/pages/statistics/statistics.page.html?ngResource ***!
-  \******************************************************************/
-/***/ ((module) => {
-
-module.exports = "<ion-header>\r\n  <ion-toolbar>\r\n    <div class=\"padre\">\r\n      <ion-title>{{ 'ESTADISTICAS' | translate }}</ion-title>\r\n      <ion-title\r\n        ><ion-button class=\"stats\" [routerLink]=\"['/tabs/matches']\"><ion-icon name=\"arrow-redo\"></ion-icon></ion-button\r\n      ></ion-title>\r\n    </div>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-button (click)=\"inicioButton()\" expand=\"block\" size=\"large\" class=\"poslocal-btn\">{{ 'INICIO_POSESION' | translate }}</ion-button>\r\n\r\n  <ion-button (click)=\"eventosButton()\" expand=\"block\" size=\"large\" class=\"eventos-btn\">{{ 'EVENTOS' | translate }}</ion-button>\r\n\r\n  <ion-button (click)=\"saveChange()\" expand=\"block\" size=\"large\" class=\"cambio-btn\">{{ 'CAMBIO_POSESION' | translate }}</ion-button>\r\n\r\n  <ion-button (click)=\"saveFinal()\" expand=\"block\" size=\"large\" class=\"posvisit-btn\">{{ 'FIN_POSESION' | translate }}</ion-button>\r\n</ion-content>\r\n";
 
 /***/ })
 
